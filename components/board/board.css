@@ -1,0 +1,106 @@
+body {
+    background-color: #f5f5f5;
+    font-family: sans-serif;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    margin: 0;
+    padding: 0;
+  }
+  
+  h2 {
+    font-size: 36px;
+    font-weight: 700;
+    margin: 0;
+  }
+  
+  .task_card {
+    background-color: white;
+    display: flex;
+    width: 396px;
+    padding: 32px 24px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+    border-radius: 30px;
+    box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.16);
+  }
+  
+  .task_card_label {
+    display: flex;
+    padding: 4px 16px;
+    align-items: flex-start;
+    gap: 10px;
+    border-radius: 8px;
+    background: #0038ff;
+    color: white;
+  }
+  
+  
+  .task_card_head {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+  }
+  
+  
+  .task_card_head svg:hover {
+      cursor: pointer;
+  }
+  
+  
+  .task_category_font {
+    color: #42526e;
+  }
+  
+  .task_category_table_td {
+    padding-right: 25px;
+  }
+  
+  .task_card_priority {
+    padding-left: 10px;
+  }
+  
+  .task_assigned_contact {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin: 16px;
+  }
+  
+  .task_assigned_contact svg {
+    margin-right: 16px;
+  }
+  
+  .task_card_subtasks {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .task_card_subtask {
+    padding: 6px 16px;
+    gap: 16px;
+  }
+  
+  .task_card_subtask input {
+    margin-right: 16px;
+  }
+  
+  .task_card_buttons {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-end;
+    width: 100%;
+    gap: 8px;
+  }
+  
+  
+  .task_card_button {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      cursor: pointer;
+  }
+  
