@@ -11,7 +11,13 @@ body {
     display: flex;
     align-items: center;
 }
-
+.underLine {
+    border-top: 3px solid #29ABE2;
+    width: 100px;
+    margin-top: -30px;
+    padding-bottom: 30px;
+    border-radius: 1px;
+}
 .name {
     background-image: url(/assets/img/person.png);
     background-repeat: no-repeat;
@@ -57,7 +63,6 @@ body {
 
 h1 {
     font-size: 47px;
-    border-bottom: 3px solid #29ABE2;
     font-weight: 700;
     padding-bottom: 16px;
     margin-top: -5px;

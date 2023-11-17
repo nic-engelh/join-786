@@ -5,6 +5,15 @@ body {
 
 }
 
+.underLine {
+    border-top: 3px solid #29ABE2;
+    width: 100px;
+    margin-top: -20px;
+    padding-bottom: 20px;
+    border-radius: 1px;
+}
+
+    
 .mail {
     background-image: url(/assets/img/mail.jpg);
     background-repeat: no-repeat;
@@ -41,10 +50,6 @@ body {
 h1 {
     margin-top: 32px;
     font-size: 47px;
-    border-bottom: 3px solid #29ABE2;
-    width: 139px;
-    height: 72px;
-
 }
 
 .position {
