@@ -6,7 +6,7 @@ body {
 }
 
 .mail {
-    background-image: url(assets/img/mail.jpg);
+    background-image: url(/assets/img/mail.jpg);
     background-repeat: no-repeat;
     background-position: 330px;
     width: 322px;
@@ -27,7 +27,7 @@ body {
 }
 
 .hide {
-    background-image: url(assets/img/lock.jpg);
+    background-image: url(/assets/img/lock.jpg);
     background-repeat: no-repeat;
     background-position: 330px;
     width: 322px;
