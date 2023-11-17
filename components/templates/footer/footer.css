@@ -1,0 +1,33 @@
+#footer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-evenly;
+  background-color: #2a3647;
+  height: 80px;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.footer_category {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #cdcdcd;
+  gap: 4px;
+  width: 76px;
+  height: 76px;
+}
+
+.footer_category:hover {
+  cursor: pointer;
+  border-radius: 8px;
+  background-color: #091931;
+}
+
+.footer_category img {
+  width: 24px;
+}
