@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="style.register.css">
+    <script src="login.compomemt.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+
+</head>
+
+<body>
+    <div class="logo">
+        <img src="assets/img/Capa 1.png" alt="">
+    </div>
+    <div class="mobileVision">
+
+        <div class="position">
+            <img onclick="myFunction()" class="arrow" src="assets/img/arrow-left-line.png" alt="">
+            <h1>Sign up</h1>
+            <form class="password-container" onsubmit="myfunction()">
+                <input required class="name" minlength="4" placeholder="Name" type="text" id="Name">
+                <input required class="mail" minlength="7" placeholder="Email" type="email" id="mail">
+                <input required class="hide" minlength="7" placeholder="Password" type="password" id="password">
+                <input required class="hide" minlength="7" placeholder="Confirm Password" type="password" id="password">
+                <div class="remember"> <input class="rememberBox" type="checkbox" onclick="myFunction()"> <b class="remember-text">I accept the <a class="acceptLink" href="">Privacy policy</a></b> </div>
+                <button class="login">Sign up</button>
+            </form>
+        </div>
+
+        <div class="linkPosition">
+            <div onclick="myFunction()"><a class="bottomLinks" href="">Privacy Policy</a></div>
+            <div onclick="myFunction()"><a class="bottomLinks" href="">Legal notice</a></div>
+        </div>
+    </div>
+    </div>
+</body>
+
+</html>
