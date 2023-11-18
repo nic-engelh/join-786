@@ -1,0 +1,36 @@
+body {
+    margin: 0px;
+    margin-top: 128px;
+    margin-left: 16px;
+    margin-right: 16px;
+    background: #F6F7F8;
+    font-family: 'Inter', sans-serif;
+}
+
+
+.privacy {
+    display: inline-flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    width: 428px;
+    height: 926px;
+}
+
+h1 {
+    font-size: 47px;
+    font-style: normal;
+    font-weight: 700;
+}
+
+h2 {
+    font-size: 27px;
+    font-style: normal;
+    font-weight: 700;
+}
+
+p {
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+}
