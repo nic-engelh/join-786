@@ -84,6 +84,46 @@
 }
 
 #frame-205 {
-    height: 88px;
-    width: 282px;
+    max-height: 88px;
 }
+
+.h-auto {
+    height: auto;
+}
+
+grow-1 {
+    flex-grow: 1;
+}
+
+.m-none {
+    margin: none !important;
+}
+
+#frame-79 {
+    width: 120px;
+    height: 120px;
+    border-radius: 70px;
+    border-width: 3px;
+    border-style: solid;
+    border-color: white;
+    box-shadow: 0px 0px 4px 0px rgba(0,0,0,0.1);
+    background-color: #D1D1D1;
+}
+
+
+#group-13 {
+    position: absolute;
+    top: 292px; 
+    left: 138px;
+}
+
+#addcontact-top-close {
+    width: 32px;
+    position: absolute;
+    top: 24px;
+    left: 348px;
+}
+
+#frame-195 {
+    padding: 66px, 24px, 66px, 24px;
+} 
