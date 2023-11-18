@@ -124,6 +124,11 @@ grow-1 {
     left: 348px;
 }
 
-#frame-195 {
-    padding: 66px, 24px, 66px, 24px;
-} 
+#add-contact-text-mobile {
+    width: 364px;
+    height: 153px;
+    position: absolute;
+    top: 444px;
+    left: 16px;
+    gap: 15px;
+}
