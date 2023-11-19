@@ -158,7 +158,7 @@
 }
 
 .contact-input-email {
-    background-image: url('/assets/img/contacts/mail-contact-input.svg');
+    background-image: url('/assets/img/contacts/mail-contact-input.png');
     background-position: 301px;
     background-repeat: no-repeat;
     background-size: 24px;
@@ -186,4 +186,13 @@
     border: none !important;
 }
 
-
+.visually-hidden {
+    position: absolute;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    border: 0;
+    padding: 0;
+  }
