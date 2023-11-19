@@ -91,7 +91,7 @@
     height: auto;
 }
 
-grow-1 {
+.grow-1 {
     flex-grow: 1;
 }
 
@@ -130,3 +130,60 @@ grow-1 {
     top: 444px;
     left: 16px;
 }
+
+.contact-input {
+    width: 87.92%;
+    max-width: 364px;
+    max-height: 41px;
+    border-radius: 10px;
+    border-style: solid;
+    border-width: 1px;
+    border-color: #D1D1D1;
+    font-size: 20px;
+    font-family: 'Inter';
+    font-weight: 400;
+    color: black;
+    padding: 13px 21px 13px 21px;
+}
+
+.contact-input:focus {
+    border: 1px solid #29ABE2;
+}
+
+.contact-input-name {
+    background-image: url('/assets/img/contacts/person-contact-input.svg');
+    background-position: 301px;
+    background-repeat: no-repeat;
+    background-size: 24px;
+}
+
+.contact-input-email {
+    background-image: url('/assets/img/contacts/mail-contact-input.svg');
+    background-position: 301px;
+    background-repeat: no-repeat;
+    background-size: 24px;
+}
+
+.contact-input-phone {
+    background-image: url('/assets/img/contacts/call-contact-input.svg');
+    background-position: 301px;
+    background-repeat: no-repeat;
+    background-size: 24px;
+}
+
+::placeholder {
+    color: #D1D1D1;
+    opacity: 1; /* Firefox */
+}
+
+.add-contact-btn {
+    width: 202px;
+    height: 51px;
+    border-radius: 10px;
+    padding: 18px 10px 18px 10px;
+    background-color: #2A3647;
+    color: white;
+    border: none !important;
+}
+
+

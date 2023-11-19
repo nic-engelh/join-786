@@ -1,10 +1,13 @@
 <div id="overlay-add-contact-mobile" class="overlay">
     <div id="add-contact-text-mobile" >
         <form action="" class="d-flex flex-column justify-content-center align-items-center g-16 grow-1">
-            <input type="text" name="fname" id="" required>
-            <input type="email" name="femail" id="" required>
-            <input type="number" name="fphone" id="" required>
-            <input type="button" value="Create contact">
+            <label class="visually-hidden" for="fname">Name:</label>
+            <input type="text" name="fname" id="frame-155" required class="contact-input contact-input-name" placeholder="Name">
+            <label class="visually-hidden" for="femail">Email:</label>
+            <input type="email" name="femail" id="frame-157" required class="contact-input contact-input-email" placeholder="Email">
+            <label class="visually-hidden" for="fphone">Phone:</label>
+            <input type="tel" name="fphone" id="frame-156" required class="contact-input contact-input-phone" placeholder="Phone">
+            <button type="submit" class="add-contact-btn">Submit this form</button>
         </form>
     </div >
     <div class="contact-bg d-flex align-items-center" id="frame-195">
