@@ -1,23 +1,24 @@
 body {
     margin: 0px;
     margin-top: 128px;
-    margin-left: 16px;
-    margin-right: 16px;
     background: #F6F7F8;
     font-family: 'Inter', sans-serif;
 }
 
 
 .privacy {
-    display: inline-flex;
+    margin-left: 16px;
+    margin-right: 16px;
+    margin-bottom: 120px;
+    display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: flex-start;
-    width: 428px;
-    height: 926px;
+    align-self: stretch;
+    flex-shrink: 0;
+    width: 450px;
 }
 
-h1 {
+h1  {
     font-size: 47px;
     font-style: normal;
     font-weight: 700;
@@ -33,4 +34,10 @@ p {
     font-size: 16px;
     font-style: normal;
     font-weight: 400;
+
+}
+.imgArrow{
+    display: flex;
+    align-items: center;
+    gap: 50px;
 }
