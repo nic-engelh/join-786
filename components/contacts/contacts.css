@@ -192,6 +192,9 @@
     position: absolute !important;
     top: 190px;
     left: 97px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 #add-contact-create-button-symbol {
