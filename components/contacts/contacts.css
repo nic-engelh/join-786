@@ -195,8 +195,17 @@
 }
 
 #add-contact-create-button-symbol {
+    height: 11.23px;
+    width: 15.49px;
+}
+
+#add-contact-create-button-symbol-box {
     height: 24px;
     width: 24px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
 }
 
 .visually-hidden {

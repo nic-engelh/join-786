@@ -7,11 +7,14 @@
                 <label class="visually-hidden" for="frame-157">Email:</label>
                 <input type="email" name="femail" id="frame-157" required class="contact-input contact-input-email" placeholder="Email" aria-invalid="true" aria-describedby="description" >
                 <label class="visually-hidden" for="frame-156">Phone:</label>
-                <input type="number" name="fphone" id="frame-156" required class="contact-input contact-input-phone" placeholder="Phone" aria-invalid="true" aria-describedby="description" >
+                <input type="tel" name="fphone" id="frame-156" required pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}" class="contact-input contact-input-phone" placeholder="Phone" aria-invalid="true" aria-describedby="description" >
             </div>
             <button type="submit" class="add-contact-btn" id="add-contact-create-button" class="d-flex flex-row justify-content-center">
                 <span>Create contact</span>
-                <img src="/assets/img/contacts/check.png" alt="check symbol" id="add-contact-create-button-symbol">
+                <div id="add-contact-create-button-symbol-box">
+                    <img src="/assets/img/contacts/check.png" alt="check symbol" id="add-contact-create-button-symbol">
+                </div>
+                
             </button>
         </form>
     </div >
