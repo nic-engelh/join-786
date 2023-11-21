@@ -34,10 +34,23 @@ async function setStorageData (key, value) {
     }
 }
 
+/**
+ * function handles response and changes the data into JSON format.
+ * 
+ * @param {response} response 
+ * @returns 
+ */
 function getResponse(response) {
     return response.json();
 }
 
+/**
+ * function handles the database writing information. Generates and returns the http request for the fetch call.
+ * 
+ * @param {string} action 
+ * @param {object} data 
+ * @returns 
+ */
 function writeServer(action, data) {
     return { method: action, body: JSON.stringify(data)};
 }
