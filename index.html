@@ -3,18 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Join Main Branch</title>
+    <title>Contacts</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="/components/templates/header/header.css">
     <link rel="stylesheet" href="/components/templates/footer/footer.css">
+    <link rel="stylesheet" href="/components/contacts/contacts.css">
     <script src="script.js"></script>
+    <script src="/services/queries.js"></script>
 </head>
 <body onload="includeHTML()">
-
+    <div w3-include-html="/components/contacts/addContacts.html">
+        <!-- Contacts form comes here -->
+    </div>
+    <!-- This is header and footer -->
+    <!--
     <div w3-include-html="/components/templates/header/header.html"></div>    
     <div w3-include-html="/components/templates/footer/footer.html"></div>    
-
-    
-    
+    -->
 </body>
 </html>

@@ -1,0 +1,51 @@
+<div id="overlay-add-contact-mobile" class="overlay">
+    <div id="add-contact-text-mobile" >
+        <form onsubmit="">
+            <div class="d-flex flex-column justify-content-center align-items-center g-16 grow-1">
+                <label class="visually-hidden" for="frame-155">Name:</label>
+                <input type="text" name="fname" id="frame-155" required class="contact-input contact-input-name" placeholder="Name" aria-invalid="true" aria-describedby="description">
+                <label class="visually-hidden" for="frame-157">Email:</label>
+                <input type="email" name="femail" id="frame-157" required class="contact-input contact-input-email" placeholder="Email" aria-invalid="true" aria-describedby="description" >
+                <label class="visually-hidden" for="frame-156">Phone:</label>
+                <input type="tel" name="fphone" id="frame-156" required pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}" class="contact-input contact-input-phone" placeholder="Phone" aria-invalid="true" aria-describedby="description" >
+            </div>
+            <button type="submit" class="add-contact-btn" id="add-contact-create-button" class="d-flex flex-row justify-content-center">
+                <span>Create contact</span>
+                <div id="add-contact-create-button-symbol-box">
+                    <img src="/assets/img/contacts/check.png" alt="check symbol" id="add-contact-create-button-symbol">
+                </div>
+                
+            </button>
+        </form>
+    </div >
+    <div class="contact-bg d-flex align-items-center" id="frame-195">
+        <div id="addcontact-top-close">
+            <svg width="32" height="33" viewBox="0 0 32 33" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <mask id="mask0_71720_5497" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="4" y="4" width="24" height="25">
+                <rect x="4" y="4.96582" width="24" height="24" fill="#D9D9D9"/>
+                </mask>
+                <g mask="url(#mask0_71720_5497)">
+                <path d="M15.9998 18.3659L11.0998 23.2659C10.9165 23.4492 10.6831 23.5409 10.3998 23.5409C10.1165 23.5409 9.88314 23.4492 9.6998 23.2659C9.51647 23.0825 9.4248 22.8492 9.4248 22.5659C9.4248 22.2825 9.51647 22.0492 9.6998 21.8659L14.5998 16.9659L9.6998 12.0659C9.51647 11.8825 9.4248 11.6492 9.4248 11.3659C9.4248 11.0825 9.51647 10.8492 9.6998 10.6659C9.88314 10.4825 10.1165 10.3909 10.3998 10.3909C10.6831 10.3909 10.9165 10.4825 11.0998 10.6659L15.9998 15.5659L20.8998 10.6659C21.0831 10.4825 21.3165 10.3909 21.5998 10.3909C21.8831 10.3909 22.1165 10.4825 22.2998 10.6659C22.4831 10.8492 22.5748 11.0825 22.5748 11.3659C22.5748 11.6492 22.4831 11.8825 22.2998 12.0659L17.3998 16.9659L22.2998 21.8659C22.4831 22.0492 22.5748 22.2825 22.5748 22.5659C22.5748 22.8492 22.4831 23.0825 22.2998 23.2659C22.1165 23.4492 21.8831 23.5409 21.5998 23.5409C21.3165 23.5409 21.0831 23.4492 20.8998 23.2659L15.9998 18.3659Z" fill="white"/>
+                </g>
+            </svg>
+        </div>
+        <div class="d-flex flex-column g-16" id="frame-206">
+            <div class="d-flex flex-column g-8" id="frame-205">
+                <span class="fw-7 fs-4 white">Add contact</span>
+                <span class="fw-4 fs-2 white">Tasks are better with a team!</span>
+            </div>
+            <div class="bw-3 w-9 bc-lightblue" id="addcontact-top-text-Vector">
+            </div>
+        </div>
+        <div id="group-13">
+            <div id="frame-79" class="d-flex justify-content-center align-items-center">
+                    <svg width="44" height="44" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M21.9993 21.9998C19.066 21.9998 16.5549 20.9554 14.466 18.8665C12.3771 16.7776 11.3327 14.2665 11.3327 11.3332C11.3327 8.39984 12.3771 5.88873 14.466 3.79984C16.5549 1.71095 19.066 0.666504 21.9993 0.666504C24.9327 0.666504 27.4438 1.71095 29.5327 3.79984C31.6216 5.88873 32.666 8.39984 32.666 11.3332C32.666 14.2665 31.6216 16.7776 29.5327 18.8665C27.4438 20.9554 24.9327 21.9998 21.9993 21.9998ZM37.9994 43.3332H5.99935C4.53268 43.3332 3.27713 42.811 2.23268 41.7665C1.18824 40.7221 0.666016 39.4665 0.666016 37.9998V35.8665C0.666016 34.3554 1.0549 32.9665 1.83268 31.6998C2.61046 30.4332 3.64379 29.4665 4.93268 28.7998C7.68824 27.4221 10.4882 26.3887 13.3327 25.6998C16.1771 25.0109 19.066 24.6665 21.9993 24.6665C24.9327 24.6665 27.8216 25.0109 30.666 25.6998C33.5105 26.3887 36.3105 27.4221 39.066 28.7998C40.3549 29.4665 41.3882 30.4332 42.166 31.6998C42.9438 32.9665 43.3327 34.3554 43.3327 35.8665V37.9998C43.3327 39.4665 42.8105 40.7221 41.766 41.7665C40.7216 42.811 39.466 43.3332 37.9994 43.3332ZM5.99935 37.9998H37.9994V35.8665C37.9994 35.3776 37.8771 34.9332 37.6327 34.5332C37.3882 34.1332 37.066 33.8221 36.666 33.5998C34.266 32.3998 31.8438 31.4998 29.3994 30.8998C26.9549 30.2998 24.4882 29.9998 21.9993 29.9998C19.5105 29.9998 17.0438 30.2998 14.5993 30.8998C12.1549 31.4998 9.73268 32.3998 7.33268 33.5998C6.93268 33.8221 6.61046 34.1332 6.36602 34.5332C6.12157 34.9332 5.99935 35.3776 5.99935 35.8665V37.9998ZM21.9993 16.6665C23.466 16.6665 24.7216 16.1443 25.766 15.0998C26.8105 14.0554 27.3327 12.7998 27.3327 11.3332C27.3327 9.8665 26.8105 8.61095 25.766 7.5665C24.7216 6.52206 23.466 5.99984 21.9993 5.99984C20.5327 5.99984 19.2771 6.52206 18.2327 7.5665C17.1882 8.61095 16.666 9.8665 16.666 11.3332C16.666 12.7998 17.1882 14.0554 18.2327 15.0998C19.2771 16.1443 20.5327 16.6665 21.9993 16.6665Z" fill="white"/>
+                    </svg>
+            </div>
+        </div>
+    </div>
+</div> 
+
+
+    
