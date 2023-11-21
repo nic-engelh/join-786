@@ -29,7 +29,7 @@ async function setStorageData (key, value) {
         return await fetch(STORAGE_URL, writeServer("POST", payload))
         .then(getResponse());
     }
-    catch(e) {
+    catch(err) {
         console.error("Error: Data could not be stored!");
     }
 }
