@@ -77,6 +77,10 @@
     gap: 16px;
 }
 
+.g-24 {
+    gap: 24px;
+}
+
 #frame-195 {
     padding: 66px 24px 66px 24px;
 }
@@ -197,6 +201,35 @@
     justify-content: center;
 }
 
+.edit-contact-save-btn {
+    width: 82px;
+    height: 51px;
+    border-radius: 10px;
+    background-color: #2A3647;
+    color: white;
+    border: none !important;
+    font-weight: 400;
+    font-size: 20px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.edit-contact-delete-btn {
+    width: 82px;
+    height: 51px;
+    border-radius: 10px;
+    border-width: 1px;
+    border-style: solid;
+    border-color: #2A3647;
+    background-color: white;
+    color: #2A3647;
+    font-weight: 400;
+    font-size: 20px;
+    text-align: center;
+}
+
 #add-contact-create-button-symbol {
     height: 11.23px;
     width: 15.49px;
@@ -209,6 +242,18 @@
     flex-direction: row;
     align-items: center;
     justify-content: center;
+}
+
+#frame-198 {
+    width: 201px;
+    height: 51px;
+    position: absolute;
+    top: 190px;
+    left: 97.5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
 }
 
 .visually-hidden {
