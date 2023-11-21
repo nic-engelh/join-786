@@ -25,6 +25,19 @@ async function getStorageData (key) {
  */
 async function setStorageData (key, value) {
     const payload = {key, value, token: STORAGE_TOKEN};
-    return await fetch(STORAGE_URL, {method: 'POST', body: JSON.stringify(payload)})
-    .then(res => res.json());
+    try {
+        return await fetch(STORAGE_URL, writeServer("POST", payload))
+        .then(getResponse());
+    }
+    catch(e) {
+        console.error("Error: Data could not be stored!");
+    }
+}
+
+function getResponse(response) {
+    return response.json();
+}
+
+function writeServer(action, data) {
+    return { method: action, body: JSON.stringify(data)};
 }
