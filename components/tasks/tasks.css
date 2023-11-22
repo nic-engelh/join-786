@@ -1,0 +1,94 @@
+body {
+  background-color: #f6f7f8;
+  font-size: 16px;
+  margin: 0 16px;
+}
+
+.add_task_form {
+  gap: 8px;
+}
+
+.add_task_h1 {
+  padding: 128px 0 8px 16px;
+  font-size: 47px;
+  margin: 0;
+}
+
+.add_task_required {
+    color: #FF8190;
+}
+
+.form_categories {
+  display: flex;
+  flex-direction: column;
+  /* align-self: stretch; */
+  padding: 8px 0;
+}
+
+.add_task_inputs {
+  display: flex;
+  padding: 12px 16px;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 10px;
+  border: 1px solid var(--Style, #d1d1d1);
+  background: #fff;
+  color: #d1d1d1;
+  font-size: 16px;
+  font-family: sans-serif;
+  font-weight: 400;
+}
+
+.add_task_priorities {
+    display: flex;
+    flex-direction: row;
+    gap: 16px;
+}
+
+.add_task_input_button {
+  display: flex;
+  flex-direction: row;
+  height: 41px;
+  padding: 18px 10px;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  flex: 1 0 0;
+  border-radius: 10px;
+  border: none;
+  background: var(--white, #fff);
+  box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.1);
+}
+
+#subtask_input {
+    background-image: url('/assets/img/addTask/plus_icon.png');
+    background-position: right 10px top;
+    background-position-y: center;
+    background-repeat: no-repeat;
+    
+}
+
+.create_task_finish {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  position: fixed;
+  padding: 16px;
+  bottom: 80px;
+  left: 0;
+  right: 0;
+}
+
+#create_task_button {
+  border-radius: 10px;
+  border: none;
+  background: #2a3647;
+  display: flex;
+  padding: 16px;
+  justify-content: center;
+  align-items: center;
+  gap: 4px;
+  font-size: 21px;
+  color: white;
+}
