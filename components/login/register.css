@@ -124,9 +124,8 @@ h1 {
 .logo img {
     height: 78px;
     width: 64px;
-    padding: 40px;
-    padding-bottom: 40px;
-    padding-left: 55px;
+    padding: 30px;
+    padding-bottom: 70px;
 }
 
 .linkPosition {
