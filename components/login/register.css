@@ -161,3 +161,6 @@ input {
     left: 30px;
     top: 35px;
 }
+.arrow:hover{
+    cursor: pointer;
+}

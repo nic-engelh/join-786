@@ -7,8 +7,8 @@ async function init() {
 
 function register() {
 
-     let name = document.getElementById('Names').value;
-     let email = document.getElementById('mails').value;
+     let name = document.getElementById('Name').value;
+     let email = document.getElementById('mail').value;
      let password = document.getElementById('password').value;
      let passwordConfirm = document.getElementById('passwordConfirm').value;
      let key = Math.floor((Math.random() * 1000000) + 1);
@@ -19,12 +19,18 @@ function register() {
      } else {
           if (checkPassword(password, passwordConfirm)) {
                users.push({ name: name, email: email, password: password })
-               window.location.href = '/components/login/login.html';
+               openLogin();
                // setStorageData(`${key}`, users)
           } else {
                window.alert("password is incorrect");
           }
      }
+}
+
+
+function openLogin() {
+     window.location.href = '/components/login/login.html';
+     popup()
 }
 
 
@@ -56,6 +62,6 @@ function signup() {//from login to register html
 }
 
 
-function popup(){
+function popup() {
      document.getElementById('popup').classList.remove('d-none');
 }
