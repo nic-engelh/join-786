@@ -27,14 +27,18 @@
             <form class="password-container" onsubmit="register(); return false;">
                 <input required class="name" minlength="4" placeholder="Name" type="text" id="Name">
                 <input required class="mail" minlength="7" placeholder="Email" type="email" id="mail">
-                <input required class="hide" minlength="7" placeholder="Password" type="password" id="password">
-                <input required class="hide" minlength="7" placeholder="Confirm Password" type="password" id="passwordConfirm">
-                <div required class="remember"> <input class="rememberBox" type="checkbox"> <b class="remember-text">I
-                        accept the <a class="acceptLink" href="/components/informations/privacy_policy.html">Privacy
-                            policy</a></b> </div>
-                            <div class="d-none" id="popup">
-                                <span>You Signed Up successfully</span>
-                            </div>
+                <input onclick="passwordVisibleRegister()" required class="hide" minlength="7" placeholder="Password"
+                    type="password" id="password">
+                <input onclick="passwordVisibleRegister()" required class="hide" minlength="7" placeholder="Confirm Password"
+                    type="password" id="passwordConfirm">
+                <div class="remember">
+                    <input required class="rememberBox" type="checkbox"> <b class="remember-text">I accept the <a
+                            class="acceptLink" href="/components/informations/privacy_policy.html">Privacy
+                            policy</a></b>
+                </div>
+                <div class="d-none" id="popup">
+                    <span>You Signed Up successfully</span>
+                </div>
                 <button class="login">Sign up</button>
             </form>
         </div>

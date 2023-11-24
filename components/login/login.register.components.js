@@ -5,11 +5,9 @@ let users = [
      }
 ];
 
-
 async function init() {
      // await getStorageData(key)
 }
-
 
 async function register() {
 
@@ -33,16 +31,13 @@ async function register() {
      }
 }
 
-
 function checkEmail(email) {//check if email is already in email
      return users.findIndex(users => users['email'] === email) > -1;
 }
 
-
 function checkPassword(password, passwordConfirm) {//check if both passwords are the same
      return password == passwordConfirm;
 }
-
 
 function popup() {
      let popupScreen = document.getElementById('popup');
@@ -52,19 +47,32 @@ function popup() {
      }, 2000);
 }
 
-
 function openLogin() {
      window.location.href = '/components/login/login.html';
 }
-
 
 function back() {//from register back to login html
      window.location.href = '/components/login/login.html';
 }
 
+function passwordVisibleRegister() {
+     let password = document.getElementById('password');
+     let passwordConfirm = document.getElementById('passwordConfirm');
+
+     if (password.type == 'password') {
+          password.type = 'text';
+          passwordConfirm.type = 'text';
+          password.style.backgroundImage = "url('/assets/img/—Pngtree—cartoon unlock icon_4438287.png')";
+          passwordConfirm.style.backgroundImage = "url('/assets/img/—Pngtree—cartoon unlock icon_4438287.png')";
+     } else {
+          password.type = 'password';
+          passwordConfirm.type = 'password';
+          password.style.backgroundImage = "url('/assets/img/lock.jpg')";
+          passwordConfirm.style.backgroundImage = "url('/assets/img/lock.jpg')";
+     }
+}
 
 //////////////////////////////////////////////////////////////////////////// LOG IN /////////////////////////////////////////////////////////////////////////////////////////
-
 
 function login() {
 
@@ -82,22 +90,30 @@ function login() {
      }
 }
 
-
 function checkEmailLogin(email) {//check if email is already in useer
 
      return users.findIndex(users => users['email'] == email) > -1;
 
 }
 
-
 function checkPasswordLogin(password) {//check if  password is correct
 
      return users.findIndex(users => users['password'] == password) > -1;
 }
 
-
 function signup() {//from login to register html
 
      window.location.href = '/components/login/register.html';
 
+}
+
+function passwordVisible() {//for log in and register password vissibility
+     let password = document.getElementById('password');
+     if (password.type == 'password') {
+          password.type = 'text';
+          password.style.backgroundImage = "url('/assets/img/—Pngtree—cartoon unlock icon_4438287.png')";
+     } else {
+          password.type = 'password';
+          password.style.backgroundImage = "url('/assets/img/lock.jpg')";
+     }
 }
