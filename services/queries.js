@@ -52,5 +52,5 @@ function getResponse(response) {
  * @returns 
  */
 function writeServer(action, data) {
-    return { method: action, body: JSON.stringify(data)};
+    return {method: action, body: JSON.stringify(data)};
 }
