@@ -1,12 +1,13 @@
-let users = [
-     {
-          'email': 'sefa_guer@hotmail.com',
-          'password': 'asdasdasd'
-     }
-];
+let users = [];
+
+let key = Math.floor((Math.random() * 1000000) + 1);
 
 async function init() {
-     // await getStorageData(key)
+     await loadusers()
+}
+
+async function loadusers(){
+     users= JSON.parse(await getStorageData (key));
 }
 
 async function register() {
@@ -15,7 +16,6 @@ async function register() {
      let email = document.getElementById('mail').value;
      let password = document.getElementById('password').value;
      let passwordConfirm = document.getElementById('passwordConfirm').value;
-     let key = Math.floor((Math.random() * 1000000) + 1);
 
      if (checkEmail(email)) {
           window.alert("Email is already in use");
@@ -23,7 +23,7 @@ async function register() {
      } else {
           if (checkPassword(password, passwordConfirm)) {
                users.push({ name: name, email: email, password: password });
-               // setStorageData(`${key}`, users);
+               setStorageData(`${key}`, JSON.stringify(users));
                await popup();
           } else {
                window.alert("password is incorrect");
@@ -31,7 +31,7 @@ async function register() {
      }
 }
 
-function checkEmail(email) {//check if email is already in email
+function checkEmail(email) {//check if email is already in use
      return users.findIndex(users => users['email'] === email) > -1;
 }
 
@@ -47,7 +47,7 @@ function popup() {
      }, 2000);
 }
 
-function openLogin() {
+function openLogin() {//opens login html
      window.location.href = '/components/login/login.html';
 }
 
@@ -55,7 +55,7 @@ function back() {//from register back to login html
      window.location.href = '/components/login/login.html';
 }
 
-function passwordVisibleRegister() {
+function passwordVisibleRegister() {//changes the lock img and the passwort vissibility
      let password = document.getElementById('password');
      let passwordConfirm = document.getElementById('passwordConfirm');
 
@@ -71,9 +71,7 @@ function passwordVisibleRegister() {
           passwordConfirm.style.backgroundImage = "url('/assets/img/lock.jpg')";
      }
 }
-
 //////////////////////////////////////////////////////////////////////////// LOG IN /////////////////////////////////////////////////////////////////////////////////////////
-
 function login() {
 
      let email = document.getElementById('mail').value;
@@ -90,24 +88,20 @@ function login() {
      }
 }
 
-function checkEmailLogin(email) {//check if email is already in useer
-
+function checkEmailLogin(email) {//check if email is already in user
      return users.findIndex(users => users['email'] == email) > -1;
 
 }
 
-function checkPasswordLogin(password) {//check if  password is correct
-
+function checkPasswordLogin(password) {//check if  password is user
      return users.findIndex(users => users['password'] == password) > -1;
 }
 
 function signup() {//from login to register html
-
      window.location.href = '/components/login/register.html';
-
 }
 
-function passwordVisible() {//for log in and register password vissibility
+function passwordVisible() {//changes the lock img and the passwort vissibility
      let password = document.getElementById('password');
      if (password.type == 'password') {
           password.type = 'text';
