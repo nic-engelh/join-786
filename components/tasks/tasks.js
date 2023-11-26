@@ -7,7 +7,7 @@ let tasks = [{
     'category': 'user Story',
     'user': 'herbert',
     'subtasks': 'add HTML',
-    'status': 'open'
+    'status': 'To do'
 }, {
     'id': 1,
     'title': 'add second Site',
@@ -19,7 +19,11 @@ let tasks = [{
     'subtasks': 'add CSS',
     'status': 'in progress'
 }];
+
+
 let prio = '';
+let subtasks = [''];
+
 
 function addTask() {
     let id = 'ZUFALLLSGENERATOR';
@@ -28,8 +32,7 @@ function addTask() {
     let date = document.getElementById('task_date');
     let category = document.getElementById('task_category');
     let user = document.getElementById('task_user');
-    let subtasks = document.getElementById('task_subtask');
-    let status = 'open';
+    let status = 'To do';
 
     tasks['id'].push(id.value);
     tasks['title'].push(title.value);
@@ -51,12 +54,37 @@ function resetTask() {
     document.getElementById('task_task_date').value = '';
     document.getElementById('task_category').value = '';
     document.getElementById('task_user').value = '';
-    document.getElementById('task_subtask').value = '';
+    let subtasks = [''];
 }
-
 
 function setPrio(i) {
     let priority = i;
     let prio = priority;
 }
 
+function addSubtask() {
+    let subtask = document.getElementById('task_subtask').value;
+    let newSubtask = document.getElementById('new_Subtask')
+    subtasks.push(subtask.value);
+
+    newSubtask.innerHTML += `
+        <li id="subtask${i}">
+        ${subtask.value} 
+        <div><img onclick="editSubtask(${i})" src="/assets/img/addTask/edit.png" alt="">Delete</div>
+        <img src="/assets/img/addTask/subtask_divide.png" alt=""> 
+        <div><img onclick="deleteSubtask(${i})" src="/assets/img/addTask/delete.png" alt="">Edit</div>
+        </li>
+    `;
+
+    document.getElementById('task_subtask').value = "";
+}
+
+
+function deleteSubtask(i) {
+    subtasks.splice(i, 1);
+}
+
+
+function editSubtask(i) {
+    document.getElementById("subtask${i}")
+}

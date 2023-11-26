@@ -1,95 +1,98 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Join Add Task</title>
-    <link rel="stylesheet" href="/style.css" />
-    <link rel="stylesheet" href="/components/tasks/tasks.css" />
-    <link rel="stylesheet" href="/components/templates/header/header.css" />
-    <link rel="stylesheet" href="/components/templates/footer/footer.css" />
-    <script src="/script.js"></script>
-    <script src="/components/tasks/tasks.js"></script>
-  </head>
-  <body onload="includeHTML()">
-    <div w3-include-html="/components/templates/header/header.html"></div>
-    <div w3-include-html="/components/templates/footer/footer.html"></div>
 
-    <h1 class="add_task_h1">Add Task</h1>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Join Add Task</title>
+  <link rel="stylesheet" href="/style.css" />
+  <link rel="stylesheet" href="/components/tasks/tasks.css" />
+  <link rel="stylesheet" href="/components/templates/header/header.css" />
+  <link rel="stylesheet" href="/components/templates/footer/footer.css" />
+  <script src="/script.js"></script>
+  <script src="/components/tasks/tasks.js"></script>
+</head>
 
-    <form id="add_task_form" action="" onsubmit="addTask()">
+<body onload="includeHTML()">
+  <div w3-include-html="/components/templates/header/header.html"></div>
+  <div w3-include-html="/components/templates/footer/footer.html"></div>
 
-      <div class="form_categories">
-        <span>Title<span class="add_task_required">*</span></span> 
-        <input
-          class="add_task_inputs" id="task_title" required type="text" placeholder="Enter a title"/>
-      </div>
+  <h1 class="add_task_h1">Add Task</h1>
 
+  <form id="add_task_form" action="" onsubmit="addTask()">
 
-      <div class="form_categories">
-        <span>Description</span>
-        <textarea
-          class="add_task_inputs" name="" id="task_description" cols="30" rows="3" placeholder="Enter a Description"></textarea>
-      </div>
-
-
-      <div class="form_categories">
-        <span>Prio</span>
-        <div class="add_task_priorities">
-            <button class="add_task_urgent_button add_task_input_button" onfocus="setPrio('urgent')">Urgent
-                <img src="/assets/img/addTask/prio_high.png" alt="">
-            </button>
-            <button class="add_task_medium_button add_task_input_button" onfocus="setPrio('medium')">Medium
-                <img src="/assets/img/addTask/prio_medium.png" alt="">
-            </button>
-            <button class="add_task_low_button add_task_input_button" onfocus="setPrio('low')">Low
-                <img src="/assets/img/addTask/prio_low.png" alt="">
-            </button>
-        </div>
+    <div class="form_categories">
+      <span>Title<span class="add_task_required">*</span></span>
+      <input class="add_task_inputs" id="task_title" required type="text" placeholder="Enter a title" />
     </div>
 
 
     <div class="form_categories">
-        <span>Due date<span class="add_task_required">*</span></span>
-        <input class="add_task_inputs" id="task_date" required type="date">
+      <span>Description</span>
+      <textarea class="add_task_inputs" name="" id="task_description" cols="30" rows="3"
+        placeholder="Enter a Description"></textarea>
     </div>
 
 
     <div class="form_categories">
-        <span>Category<span class="add_task_required">*</span></span>
-        <select required class="add_task_inputs" name="Category" id="task_category">
-            <option value="" disabled selected hidden>Select task Category</option>
-            <option value="1">Technical Task</option>
-            <option value="2">User Story</option>
-        </select>
+      <span>Prio</span>
+      <div class="add_task_priorities">
+        <button class="add_task_urgent_button add_task_input_button" onfocus="setPrio('urgent')">Urgent
+          <img src="/assets/img/addTask/prio_high.png" alt="">
+        </button>
+        <button class="add_task_medium_button add_task_input_button" onfocus="setPrio('medium')">Medium
+          <img src="/assets/img/addTask/prio_medium.png" alt="">
+        </button>
+        <button class="add_task_low_button add_task_input_button" onfocus="setPrio('low')">Low
+          <img src="/assets/img/addTask/prio_low.png" alt="">
+        </button>
+      </div>
     </div>
 
 
-      <div class="form_categories">
-        <span>Assigned to</span>
-        <select required class="add_task_inputs" name="User" id="task_user">
-          <option value="" disabled selected hidden>
-            Select contacts to assign
-          </option>
-          <option value="1">Robin</option>
-          <option value="2">Franzi</option>
-          <option value="3">Marcel</option>
-          <option value="4">Larissa</option>
-        </select>
-      </div>
+    <div class="form_categories">
+      <span>Due date<span class="add_task_required">*</span></span>
+      <input class="add_task_inputs" id="task_date" required type="date">
+    </div>
 
 
-      <div class="form_categories">
-        <span>Subtasks</span>
-        <input class="add_task_inputs" id="task_subtask" type="text" placeholder="Add new Subtask">
+    <div class="form_categories">
+      <span>Category<span class="add_task_required">*</span></span>
+      <select required class="add_task_inputs" name="Category" id="task_category">
+        <option value="" disabled selected hidden>Select task Category</option>
+        <option value="1">Technical Task</option>
+        <option value="2">User Story</option>
+      </select>
+    </div>
+
+
+    <div class="form_categories">
+      <span>Assigned to</span>
+      <select required class="add_task_inputs" name="User" id="task_user">
+        <option value="" disabled selected hidden>
+          Select contacts to assign
+        </option>
+        <option value="1">Robin</option>
+        <option value="2">Franzi</option>
+        <option value="3">Marcel</option>
+        <option value="4">Larissa</option>
+      </select>
+    </div>
+
+
+    <div class="form_categories">
+      <span>Subtasks</span>
+      <input class="add_task_inputs" id="task_subtask" type="text" placeholder="Add new Subtask">
+      <ul style="list-style-type:disc;" id="new_Subtask"></ul>
     </div>
 
 
     <div class="create_task_finish">
-        <span><span class="add_task_required">*</span>This field is required</span>
-        <input type="submit" id="create_task_button" value="Create Task ">
+      <span><span class="add_task_required">*</span>This field is required</span>
+      <input type="submit" id="create_task_button" value="Create Task ">
     </div>
 
-    </form>
-  </body>
+  </form>
+</body>
+
 </html>
