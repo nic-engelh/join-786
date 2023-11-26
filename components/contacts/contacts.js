@@ -9,9 +9,10 @@ function renderContactOverview () {
 }
 
 function addContactData () {
-    let name = document.getElementById('frame-155').value;
-    let email = document.getElementById('frame-157').value;
-    let phone = document.getElementById('frame-156').value;
+    // ToDo: Namen der IDs von Add und Edit Input Feldern ändern
+    let name = document.getElementById('add-contact-name').value;
+    let email = document.getElementById('add-contact-email').value;
+    let phone = document.getElementById('add-contact-phone').value;
     let id = generateContactID;
     userContacts.push({name: name, email: email, phone: phone , id: id});
     // Show Message - contact succesfully created
