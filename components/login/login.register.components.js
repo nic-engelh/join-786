@@ -1,13 +1,12 @@
-let users = [];
+let usersData={};
 
-let key = Math.floor((Math.random() * 1000000) + 1);
 
 async function init() {
      await loadusers()
 }
 
-async function loadusers(){
-     users= JSON.parse(await getStorageData (key));
+async function loadusers() {
+     users = JSON.parse(await getStorageData('users'));
 }
 
 async function register() {
@@ -16,14 +15,16 @@ async function register() {
      let email = document.getElementById('mail').value;
      let password = document.getElementById('password').value;
      let passwordConfirm = document.getElementById('passwordConfirm').value;
+     let key = Math.floor((Math.random() * 1000000) + 1);
 
      if (checkEmail(email)) {
           window.alert("Email is already in use");
 
      } else {
           if (checkPassword(password, passwordConfirm)) {
-               users.push({ name: name, email: email, password: password });
-               setStorageData(`${key}`, JSON.stringify(users));
+               usersData.push({ key: key, name: name, email: email, password: password });
+               USERS.push({key:key ,value:usersData});
+               setStorageData('users', JSON.stringify(users));
                await popup();
           } else {
                window.alert("password is incorrect");
@@ -32,7 +33,7 @@ async function register() {
 }
 
 function checkEmail(email) {//check if email is already in use
-     return users.findIndex(users => users['email'] === email) > -1;
+     return usersData.findIndex(usersData => usersData['email'] === email) > -1;
 }
 
 function checkPassword(password, passwordConfirm) {//check if both passwords are the same
@@ -80,8 +81,12 @@ function login() {
      if (checkEmailLogin(email)) {
           if (checkPasswordLogin(password)) {
                console.log('du bist eingeloggt')
+               let elements = users.find((user) => (user[`${email}`] && user[`${password}`]));
+               ACTIVEUSERKEY = users.find((elements) => users['key']);
+               console.log(ACTIVEUSERKEY)
           } else {
                window.alert("password is incorrect");
+
           }
      } else {
           window.alert("Email is incorrect");
