@@ -22,27 +22,27 @@
       <div class="form_categories">
         <span>Title<span class="add_task_required">*</span></span> 
         <input
-          class="add_task_inputs" required type="text" placeholder="Enter a title"/>
+          class="add_task_inputs" id="task_title" required type="text" placeholder="Enter a title"/>
       </div>
 
 
       <div class="form_categories">
         <span>Description</span>
         <textarea
-          class="add_task_inputs" name="" id="" cols="30" rows="3" placeholder="Enter a Description"></textarea>
+          class="add_task_inputs" name="" id="task_description" cols="30" rows="3" placeholder="Enter a Description"></textarea>
       </div>
 
 
       <div class="form_categories">
         <span>Prio</span>
         <div class="add_task_priorities">
-            <button class="add_task_urgent_button add_task_input_button" onclick="">Urgent
+            <button class="add_task_urgent_button add_task_input_button" onfocus="setPrio('urgent')">Urgent
                 <img src="/assets/img/addTask/prio_high.png" alt="">
             </button>
-            <button class="add_task_medium_button add_task_input_button" onclick="">Medium
+            <button class="add_task_medium_button add_task_input_button" onfocus="setPrio('medium')">Medium
                 <img src="/assets/img/addTask/prio_medium.png" alt="">
             </button>
-            <button class="add_task_low_button add_task_input_button" onclick="">Low
+            <button class="add_task_low_button add_task_input_button" onfocus="setPrio('low')">Low
                 <img src="/assets/img/addTask/prio_low.png" alt="">
             </button>
         </div>
@@ -51,13 +51,13 @@
 
     <div class="form_categories">
         <span>Due date<span class="add_task_required">*</span></span>
-        <input class="add_task_inputs" required type="date">
+        <input class="add_task_inputs" id="task_date" required type="date">
     </div>
 
 
     <div class="form_categories">
         <span>Category<span class="add_task_required">*</span></span>
-        <select required class="add_task_inputs" name="Category" id="addTaskCategory">
+        <select required class="add_task_inputs" name="Category" id="task_category">
             <option value="" disabled selected hidden>Select task Category</option>
             <option value="1">Technical Task</option>
             <option value="2">User Story</option>
@@ -67,7 +67,7 @@
 
       <div class="form_categories">
         <span>Assigned to</span>
-        <select required class="add_task_inputs" name="User" id="add_task_user_list">
+        <select required class="add_task_inputs" name="User" id="task_user">
           <option value="" disabled selected hidden>
             Select contacts to assign
           </option>
@@ -81,13 +81,13 @@
 
       <div class="form_categories">
         <span>Subtasks</span>
-        <input class="add_task_inputs" id="subtask_input" type="text" placeholder="Add new Subtask">
+        <input class="add_task_inputs" id="task_subtask" type="text" placeholder="Add new Subtask">
     </div>
 
 
     <div class="create_task_finish">
         <span><span class="add_task_required">*</span>This field is required</span>
-        <button id="create_task_button">Create Task <img src="/assets/img/addTask/check_icon.png" alt=""></button>
+        <input type="submit" id="create_task_button" value="Create Task ">
     </div>
 
     </form>

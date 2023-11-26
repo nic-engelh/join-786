@@ -6,6 +6,8 @@ body {
 
 .add_task_form {
   gap: 8px;
+  display: flex;
+  flex-direction: column;
 }
 
 .add_task_h1 {
@@ -15,7 +17,7 @@ body {
 }
 
 .add_task_required {
-    color: #FF8190;
+  color: #FF8190;
 }
 
 .form_categories {
@@ -40,9 +42,9 @@ body {
 }
 
 .add_task_priorities {
-    display: flex;
-    flex-direction: row;
-    gap: 16px;
+  display: flex;
+  flex-direction: row;
+  gap: 16px;
 }
 
 .add_task_input_button {
@@ -61,11 +63,11 @@ body {
 }
 
 #subtask_input {
-    background-image: url('/assets/img/addTask/plus_icon.png');
-    background-position: right 10px top;
-    background-position-y: center;
-    background-repeat: no-repeat;
-    
+  background-image: url('/assets/img/addTask/plus_icon.png');
+  background-position: right 10px top;
+  background-position-y: center;
+  background-repeat: no-repeat;
+
 }
 
 .create_task_finish {
@@ -73,11 +75,12 @@ body {
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  position: fixed;
+  position: sticky;
   padding: 16px;
   bottom: 80px;
   left: 0;
   right: 0;
+  background-color: #F6F7F8;
 }
 
 #create_task_button {
@@ -85,10 +88,14 @@ body {
   border: none;
   background: #2a3647;
   display: flex;
-  padding: 16px;
+  padding: 16px 32px 16px 16px;
   justify-content: center;
   align-items: center;
   gap: 4px;
   font-size: 21px;
   color: white;
+  background-image: url('/assets/img/addTask/check_icon.png');
+  background-position: right 10px top;
+  background-position-y: center;
+  background-repeat: no-repeat;
 }
