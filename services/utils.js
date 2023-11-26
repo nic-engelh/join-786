@@ -1,4 +1,6 @@
 /**
+ * function generates 10 char long string with random numbers and characters
+ * 
  * @param {number} [length=10]
  * @pram {string} [allowed='ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789'] 
  * @return {string}
