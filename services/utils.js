@@ -12,3 +12,15 @@ function randomString(length = 10, allowed = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefgh
     }
     return result
   }
+
+/**
+ * Functions seraches arrays variables (key) for any given value
+ * 
+ * @param {array} array 
+ * @param {string} variable 
+ * @param {any} value 
+ * @returns 
+ */
+  function findByVariable(array, variable, value) {
+    return array.find(item => item[variable] === value);
+  }
