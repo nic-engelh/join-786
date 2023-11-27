@@ -14,7 +14,7 @@ function randomString(length = 10, allowed = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefgh
   }
 
 /**
- * Functions seraches arrays variables (key) for any given value
+ * Function seraches arrays variables (key) for any given value
  * 
  * @param {array} array 
  * @param {string} variable 

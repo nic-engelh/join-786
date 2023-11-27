@@ -6,12 +6,12 @@ let activeContact = null;
 
 function getUserContacts(){
     // todo main user JSON name? @sefa
-    userContacts = Users[ACTIVE_USER][contacts];
+    userContacts = USERS[ACTIVE_USER][contacts];
     return true
 }
 
 function renderContacts () {
-    // todo render all contacts within the userContacts object
+    // render all contacts within the userContacts object
     // todo design html div for contacts 
     let container = document.getElementById('');
     container.innerHTML = clear();
@@ -20,13 +20,11 @@ function renderContacts () {
         let email = profile['email'];
         let key = profile['contactID'];
         let initials = generateInitials(name);
-
         container.innerHTML = createContactProfilHTML(name, email, initials, key);
     }
 }
 
 function addContactData () {
-    // ToDo: Namen der IDs von Add und Edit Input Feldern ändern
     let name = document.getElementById('add-contact-name').value;
     let email = document.getElementById('add-contact-email').value;
     let phone = document.getElementById('add-contact-phone').value;
@@ -42,22 +40,47 @@ function setActiveContact (contactID) {
     return true
 } 
 
-function editContactData () {
-    let contact = activeContact;
-    // show modal-edit-contact
-    // read contact data
+function loadEditContactData () {
+     // show modal-edit-contact
+    // read/find contact data
     // insert contact data into input fields
+    let name = document.getElementById('edit-contact-name');
+    let email = document.getElementById('edit-contact-email');
+    let phone = document.getElementById('edit-contact-phone');
+    let contactObject = findContact(activeContact);
+    name.value = contactObject.name;
+    email.value = contactObject.email;
+    phone.value = contactObject.phone;
+}
+
+function saveEditedContactData () {
+    let contactObject = findContact(activeContact);
     // wait for input or changes - user clicks edit button
     // read input/changes
     // save input/changes within the contacts array with the id/key
     // hide or move out the modal
     // show user sign with succesfull changes - user feedback
+    let nameEdited = document.getElementById('edit-contact-name').value;
+    let emailEdited = document.getElementById('edit-contact-email').value;
+    let phoneEdited = document.getElementById('edit-contact-phone').value;
+    deleteContact(activeContact);
+    userContacts.push({name: nameEdited, email: emailEdited, phone: phoneEdited , id: activeContact})
+    hideEditContactModal();
+}
 
-
+// search function returns found object
+function findContact (searchId) {
+    let result = findByVariable(userContacts, "id", searchId)
+    return result
 }
 
 function showEditContactModal () {
     // remove hide class form modal
+    // todo animations
+    return true
+}
+function hideEditContactModal () {
+    // add hide class form modal
     // todo animations
     return true
 }
@@ -82,7 +105,6 @@ function deleteContact (contactID) {
     }
     return true
 }
-
 
 function generateInitials (name) {
     // check string for the first char overall and first char after space
