@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="login.css">
     <script src="/services/variables.js"></script>
     <script src="/services/queries.js"></script>
-    <script src="login.register.components.js"></script>
+    <script src="login.components.js"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap"
@@ -27,8 +27,10 @@
             <div class="underLine"></div>
             <form class="password-container" onsubmit="login(); return false;">
                 <input required class="mail" minlength="7" placeholder="Email" type="email" id="mail">
-                <input required onclick="passwordVisible()" class="hide" minlength="7" placeholder="Password"  type="password" id="password">
-                <div class="remember"> <input class="rememberBox" type="checkbox"> <b class="remember-text">Remember me</b> </div>
+                <input required onclick="passwordVisible()" class="hide" minlength="7" placeholder="Password"
+                    type="password" id="password">
+                <div class="remember"> <input class="rememberBox" type="checkbox"> <b class="remember-text">Remember
+                        me</b> </div>
                 <button class="login">Log in</button>
                 <button class="guest" onclick="myFunction()">Guest Log in</button>
             </form>

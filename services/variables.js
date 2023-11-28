@@ -1,3 +1,3 @@
-let USERS = [{}];
+let USERS = {};
 
 let ACTIVEUSERKEY = null;
