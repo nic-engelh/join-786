@@ -8,6 +8,8 @@ body {
   gap: 8px;
   display: flex;
   flex-direction: column;
+  overflow-y: auto;
+  overflow-x: hidden;
 }
 
 .add_task_h1 {
@@ -81,6 +83,7 @@ body {
   left: 0;
   right: 0;
   background-color: #F6F7F8;
+  margin-bottom: 200px;
 }
 
 #create_task_button {
