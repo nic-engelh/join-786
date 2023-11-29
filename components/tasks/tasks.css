@@ -64,6 +64,18 @@ body {
   box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.1);
 }
 
+.add_task_urgent_button:active {
+ background-color: #FF3D00;
+}
+
+.add_task_medium_button:active {
+ background-color: #FFA800;
+}
+
+.add_task_low_button:active {
+ background-color: #7AE229;
+}
+
 #subtask_input {
   background-image: url('/assets/img/addTask/plus_icon.png');
   background-position: right 10px top;

@@ -39,14 +39,16 @@
       <span>Prio</span>
       <div class="add_task_priorities">
         <button class="add_task_urgent_button add_task_input_button" onfocus="setPrio('urgent')">Urgent
-          <img src="/assets/img/addTask/prio_high.png" alt="">
+          <img id="task_prio_img_urgent" src="/assets/img/addTask/prio_high.png" alt="">
         </button>
         <button class="add_task_medium_button add_task_input_button" onfocus="setPrio('medium')">Medium
-          <img src="/assets/img/addTask/prio_medium.png" alt="">
+          <img id="task_prio_img_medium" src="/assets/img/addTask/prio_medium.png" alt="">
         </button>
         <button class="add_task_low_button add_task_input_button" onfocus="setPrio('low')">Low
-          <img src="/assets/img/addTask/prio_low.png" alt="">
+          <img id="task_prio_img_low" src="/assets/img/addTask/prio_low.png" alt="">
         </button>
+
+        <input type="radio" class="add_task_low_button add_task_input_button">
       </div>
     </div>
 
