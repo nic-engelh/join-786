@@ -24,6 +24,7 @@ function login() {
 
     let email = document.getElementById('mail').value;
     let password = document.getElementById('password').value;
+    let message = document.getElementById('message');
 
     if (checkEmailLogin(email)) {
          if (checkPasswordLogin(password)) {
@@ -32,7 +33,7 @@ function login() {
               ACTIVEUSERKEY=key;
               console.log(ACTIVEUSERKEY)
          } else {
-              window.alert("password is incorrect");
+          message.classList.remove('d-none');
 
          }
     } else {

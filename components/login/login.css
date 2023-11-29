@@ -55,6 +55,7 @@ h1 {
 }
 
 .position {
+    position: relative;
     display: flex;
     align-items: center;
     flex-direction: column;
@@ -161,4 +162,15 @@ button {
 
 input {
     padding-left: 15px;
+}
+.d-none {
+    display: none !important;
+}
+.message{ 
+    position: absolute;
+    top: 265px;
+    font-size: 13px;
+    color: red;
+    font-weight: bold;
+ 
 }

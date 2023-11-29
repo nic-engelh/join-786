@@ -192,3 +192,11 @@ input {
 .d-none {
     display: none !important;
 }
+.notsame{
+    color: red;
+    font-size: 13px;
+    font-weight: bold;
+    position: absolute;
+    top: 425px;
+    left: 25px;
+}

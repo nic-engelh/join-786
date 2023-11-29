@@ -28,10 +28,12 @@ async function register() {
      let password = document.getElementById('password').value;
      let passwordConfirm = document.getElementById('passwordConfirm').value;
      let key = Math.floor((Math.random() * 1000000) + 1);
+     let notsame = document.getElementById('notsame');
 
 
      if (findUserByEmail(email)) {
-          window.alert("Email is already in use");
+          notsame.innerHTML = 'email is alredy in use';
+          notsame.classList.remove('d-none')
 
      } else {
           if (checkPassword(password, passwordConfirm)) {
@@ -43,7 +45,8 @@ async function register() {
                     await popup();
                }
           } else {
-               window.alert("password is incorrect");
+               notsame.innerHTML = 'password are not the same';
+               notsame.classList.remove('d-none');
           }
      }
 }
