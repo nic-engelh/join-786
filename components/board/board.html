@@ -11,7 +11,7 @@
     <script src="/script.js"></script>
     <script src="/components/board/board.js"></script>
   </head>
-  <body onload="includeHTML()">
+  <body onload="includeHTML() ,init()">
     <div w3-include-html="/components/templates/header/header.html"></div>
     <div w3-include-html="/components/templates/footer/footer.html"></div>
 
@@ -30,7 +30,8 @@
             <h3>To do</h3>
             <img src="/assets/img/board/board_add.png" alt="">
           </div>
-          <div class="board_card_placeholder">No tasks To do</div>
+
+          <div  ondrop="moveTo('todo')" ondragleave="removeHighlight('todo')" ondragover="allowDrop(event); highlight('todo')" id="todo" class="notTask">No tasks To do</div>
           <!-- Placeholder bis JS intergriert wird-->
         </div>
         <div class="board_progress board_sections">  
@@ -39,7 +40,7 @@
             <img src="/assets/img/board/board_add.png" alt="">
           </div>
 
-          <div class="board_card_placeholder">No tasks To do</div>
+          <div  ondrop="moveTo('inProgress')" ondragleave="removeHighlight('inProgress')" ondragover="allowDrop(event); highlight('inProgress')" id="inProgress" class="noTask">No tasks To do</div>
           <!-- Placeholder bis JS intergriert wird-->
         </div>
         <div class="board_feedback board_sections">
@@ -48,7 +49,7 @@
             <img src="/assets/img/board/board_add.png" alt="">
           </div>
 
-          <div class="board_card_placeholder">No tasks To do</div>
+          <div  ondrop="moveTo('feedback')" ondragleave="removeHighlight('feedback')" ondragover="allowDrop(event); highlight('feedback')" id="feedback" class="noTask">No tasks To do</div>
           <!-- Placeholder bis JS intergriert wird-->
         </div>
         <div class="board_done board_sections">
@@ -57,7 +58,7 @@
             <img src="/assets/img/board/board_add.png" alt="">
           </div>
 
-          <div class="board_card_placeholder">No tasks To do</div>
+          <div  ondrop="moveTo('done')" ondragleave="removeHighlight('done')" ondragover="allowDrop(event); highlight('done')" id="done" class="noTask">No tasks To do</div>
           <!-- Placeholder bis JS intergriert wird-->
         </div>
     </div>
