@@ -28,21 +28,30 @@ function renderContacts () {
 
 function renderContactsStructure () {
     // functions renders contacts abc-structure
+    // iterate abcSting
+    // for each CHAR load profile form userContacts
+    // for each CHAR insert the letter into container - group of profiles
+    // for each CHAR and if there is acorresponding profile within userContacts add a marker line beneath the letter for each group
+    // render profile for the iterated letter
+    // do it again for next CHAR in abcString
 }
 
-userContacts.sort((a,b) => {
-    let fa = a.initials.toLowerCase(),
-    fb = b.initials.toLowerCase();
-    fa=fa[1];
-    fb = fb[1];
-    if (fa < fb) {
-        return -1;
-    }
-    if (fa > fb) {
-        return 1;
-    }
-    return 0;
-});
+function sortUserContacts () {
+    userContacts.sort((a,b) => {
+        let fa = a.initials.toLowerCase(),
+        fb = b.initials.toLowerCase();
+        fa = fa[1];
+        fb = fb[1];
+        if (fa < fb) {
+            return -1;
+        }
+        if (fa > fb) {
+            return 1;
+        }
+        return 0;
+    });
+    return true
+}
 
 
 function addContactData () {
