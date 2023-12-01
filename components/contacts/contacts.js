@@ -12,12 +12,10 @@ function getUserContacts(){
     return true
 }
 
-function renderContacts () {
+function renderContacts (contacts, container) {
     // render all contacts within the userContacts object
     // todo design html div for contacts 
-    let container = document.getElementById('');
-    container.innerHTML = clear();
-    for (const profile of userContacts) {
+    for (const profile of contacts) {
         let name = profile['name'];
         let email = profile['email'];
         let key = profile['contactID'];
@@ -31,9 +29,22 @@ function renderContactsStructure () {
     // iterate abcSting
     // for each CHAR load profile form userContacts
     // for each CHAR insert the letter into container - group of profiles
-    // for each CHAR and if there is acorresponding profile within userContacts add a marker line beneath the letter for each group
+    // for each CHAR and if there is a corresponding profile within userContacts add a marker line beneath the letter for each group
     // render profile for the iterated letter
     // do it again for next CHAR in abcString
+    sortUserContacts();
+    let container = document.getElementById('');
+    container = clear();
+    for (let index = 0; index < abcString.length; index++) {
+        const char = abcString[index];
+        let results = filterByVariable(userContacts, "initials", char);
+        container.innerHTML = createCharHeaderHTML(char);
+        if (results) {
+            container.innerHTML = createLineHTML();
+            renderContacts(results, container);
+            continue;
+        }
+    }
 }
 
 function sortUserContacts () {

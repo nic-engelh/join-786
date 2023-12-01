@@ -25,6 +25,19 @@ function randomString(length = 10, allowed = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefgh
     return array.find(item => item[variable] === value);
   }
 
+
+  /**
+   * Functions filters arrays variables with "keys" for any given value. Returns array with results.
+   * 
+   * @param {array} array 
+   * @param {string} variable 
+   * @param {any} value 
+   * @returns 
+   */
+function filterByVariable(array, variable, value) {
+  return array.find(item => item[variable] == value);
+}
+
 /**
  * function generates random color code
  * 
