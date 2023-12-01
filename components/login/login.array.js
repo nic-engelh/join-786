@@ -1,24 +1,24 @@
 // JSON
-let USERS = [{
+let USERS = {
     "123abc": {
-        userdata: {
+        "userdata": {
             "email": "hallo@test.de",
             "password": "1234",
             "key": "123abc"
         },
-        task: [],
-        contacts: []
+        "task": [],
+        "contacts": []
     },
     "456def": {
-        userdata: {
+        "userdata": {
             "email": "bye@test.de",
             "password": "5678",
             "key": "456def"
         },
-        task: [],
-        contacts: []
+        "task": [],
+        "contacts": []
     }
-}]
+}
 
 
 function checkLoginData (inputEmail, inputPassword) {
@@ -41,9 +41,12 @@ function findByVariable (array, variable, value) {
 }
 
 function  checkLoginData (inputEmail, inputPassword) {
+    // USERS.values need to cast into an array
     resultPassword = findByVariable(USERS, "password", inputPassword);
     resultEmail = findByVariable(USERS,"email", inputEmail);
 
     console.log(resultEmail);
     console.log(resultPassword);
 }
+
+checkLoginData ("hallo@test.de", "1234"); 

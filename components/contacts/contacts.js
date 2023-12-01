@@ -2,6 +2,8 @@ const ACTIVE_USER = '738927';
 
 let userContacts = []; 
 
+const abcString = 'ABCDEFGHIJKLMNOPQRSTUVWXYZÄÖÜ'; 
+
 let activeContact = null;
 
 function getUserContacts(){
@@ -24,16 +26,37 @@ function renderContacts () {
     }
 }
 
+function renderContactsStructure () {
+    // functions renders contacts abc-structure
+}
+
+userContacts.sort((a,b) => {
+    let fa = a.initials.toLowerCase(),
+    fb = b.initials.toLowerCase();
+    fa=fa[1];
+    fb = fb[1];
+    if (fa < fb) {
+        return -1;
+    }
+    if (fa > fb) {
+        return 1;
+    }
+    return 0;
+});
+
+
 function addContactData () {
     let name = document.getElementById('add-contact-name').value;
     let email = document.getElementById('add-contact-email').value;
     let phone = document.getElementById('add-contact-phone').value;
     let id = generateContactID;
-    userContacts.push({name: name, email: email, phone: phone , id: id});
+    let initials = generateInitials(name);
+    userContacts.push({name: name, email: email, phone: phone , id: id, initials: initials});
     // Show Message - contact succesfully created
     window.location.href = ''; // link to contact view
     // or blend out add contact modal
 }
+
 
 function setActiveContact (contactID) {
     activeContact = contactID;
@@ -47,6 +70,8 @@ function loadEditContactData () {
     let name = document.getElementById('edit-contact-name');
     let email = document.getElementById('edit-contact-email');
     let phone = document.getElementById('edit-contact-phone');
+    let initials = generateInitials(name);
+    changeProfilBadge(initials);
     let contactObject = findContact(activeContact);
     name.value = contactObject.name;
     email.value = contactObject.email;
@@ -66,6 +91,7 @@ function saveEditedContactData () {
     deleteContact(activeContact);
     userContacts.push({name: nameEdited, email: emailEdited, phone: phoneEdited , id: activeContact})
     hideEditContactModal();
+    showSuccesInfo();
 }
 
 // search function returns found object
@@ -106,6 +132,12 @@ function deleteContact (contactID) {
     return true
 }
 
+function showSuccesInfo () {
+    // todo design "Contact succesfully changed"
+
+    return true
+}
+
 function generateInitials (name) {
     // check string for the first char overall and first char after space
     name = name.trim();
@@ -114,6 +146,13 @@ function generateInitials (name) {
     let secondLetter = name.charAt((space + 1));
     let initials = `${firstLetter}+${secondLetter}`;
     return initials.toUpperCase();
+}
+
+function changeProfilBadge(initials) {
+    let badge = document.getElementById('contact-user-symbol-badge');
+    let initialBox = document.getElementById('contact-user-symbol-initials');
+    initialBox.innerHTML = initials;
+    badge.style.backgroundColor = "#" + randomColor();
 }
 
 function clear () {

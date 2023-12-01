@@ -189,6 +189,17 @@ fw-bold {
     background-color: #D1D1D1;
 }
 
+#contact-user-symbol-badge {
+    width: 120px;
+    height: 120px;
+    border-radius: 70px;
+    border-width: 3px;
+    border-style: solid;
+    border-color: white;
+    box-shadow: 0px 0px 4px 0px rgba(0,0,0,0.1);
+    background-color: #D1D1D1;
+}
+
 #group-13 {
     position: absolute;
     top: 286px; 
@@ -439,6 +450,34 @@ fw-bold {
     width: 24px;
 }
 
+.alert {
+    width: 326px;
+    height: 74px;
+    border-radius: 20px;
+    border-style: none;
+    box-shadow: 0px 0px 4px 0px rgba(0,0,0,0.1);
+    background-color: #2A3647;
+    color: white;
+    position: absolute;
+    bottom: 0px;
+    left: 20%;
+}
+
+.slide-in {
+    animation-name: slide-in;
+    animation-duration: 2s;
+    animation-delay: 800ms;
+    animation-timing-function: ease-in;
+}
+@keyframes slide-in {
+    0% {transform: translateY(0px);
+    }
+    50% {transform: translateY(-300px);
+    }
+    100% {transform: translateY(0px);
+    }
+}
+
 .visually-hidden {
     position: absolute;
     overflow: hidden;
@@ -449,5 +488,6 @@ fw-bold {
     border: 0;
     padding: 0;
 }
+
 
 

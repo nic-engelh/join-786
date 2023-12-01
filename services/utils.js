@@ -14,7 +14,7 @@ function randomString(length = 10, allowed = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefgh
   }
 
 /**
- * Function seraches arrays variables (key) for any given value
+ * Function searches arrays variables with "keys" for any given value
  * 
  * @param {array} array 
  * @param {string} variable 
@@ -24,3 +24,12 @@ function randomString(length = 10, allowed = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefgh
   function findByVariable(array, variable, value) {
     return array.find(item => item[variable] === value);
   }
+
+/**
+ * function generates random color code
+ * 
+ * @returns 
+ */
+function randomColor (){
+  return Math.floor(Math.random()*16777215).toString(16);
+}
