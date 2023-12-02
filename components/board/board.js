@@ -2,11 +2,15 @@ let todos = [{
     'headline': 'UserStory',
     'title': 'Kochwelt Page',
     'description': 'page start decription',
-    'subtask': ' 1/2 Subtasks',
-    'persons': '3',
+    'subtask':  '1/2 Subtasks',
+    'persons':3,
     'category': 'todo',
+    'tasks':3,
+    'tasksdone':1,
     'id': 0,
 },];
+
+
 
 let currentDraggedElement;
 
@@ -37,7 +41,7 @@ function updateHTML() {
     document.getElementById('inProgress').innerHTML = '';
     if (progress.length == 0) {
         document.getElementById('inProgress').classList.add('noTask')
-        document.getElementById('inProgress').innerHTML = 'No tasks To do'
+        document.getElementById('inProgress').innerHTML = 'No tasks in progress'
 
     } else {
         document.getElementById('inProgress').classList.remove('noTask')
@@ -52,7 +56,7 @@ function updateHTML() {
     document.getElementById('feedback').innerHTML = '';
     if (feedback.length == 0) {
         document.getElementById('feedback').classList.add('noTask')
-        document.getElementById('feedback').innerHTML = 'No tasks To do'
+        document.getElementById('feedback').innerHTML = 'No tasks in feedback'
 
     } else {
         document.getElementById('feedback').classList.remove('noTask')
@@ -67,7 +71,7 @@ function updateHTML() {
     document.getElementById('done').innerHTML = '';
     if (done.length == 0) {
         document.getElementById('done').classList.add('noTask')
-        document.getElementById('done').innerHTML = 'No tasks To do'
+        document.getElementById('done').innerHTML = 'No tasks in done'
 
     } else {
         document.getElementById('done').classList.remove('noTask')
@@ -89,8 +93,13 @@ function generateTodoHTML(element) {
           <div class="userHeadline">${element['headline']}</div>
           <div class="title">${element['title']}</div>
           <div class="description">${element['description']}</div>
-          <div class="fillbar"><div class="diagramm">fillbar</div> <div class="subnumber">${element['subtask']}</div></div>
-          <div class="persons">${element['persons']}</div>
+           <div class="progressPosition">
+               <div class="w3-border">
+                 <div class="w3-grey" style="height:8px;width:0%"></div>
+              </div>
+              <div class="subnumber">${element['subtask']}</div></div>
+              <div class="persons">${element['persons']}</div>
+           </div>
        </div>
     </div>`;
 }
