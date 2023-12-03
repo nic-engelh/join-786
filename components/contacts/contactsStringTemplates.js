@@ -40,8 +40,8 @@ function createCharHeaderHTML (char) {
 }
 
 function createContactAddButtonHtml () {
-    /*html*/`
-        <div id="contact-list-button">
+  return  /*html*/`
+        <div id="contact-list-add-button">
             <img src="/assets/img/contacts/person_add.svg" alt="add person button">
         </div>
     `

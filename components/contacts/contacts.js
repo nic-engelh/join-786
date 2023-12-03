@@ -51,14 +51,14 @@ async function renderContactsStructure () {
     for (let index = 0; index < abcString.length; index++) {
         const char = abcString[index];
         let filteredContacts = filterContactsByInitials(char);
-        container.innerHTML += createCharHeaderHTML(char);
         if (filteredContacts.length > 0) {
+            container.innerHTML += createCharHeaderHTML(char);
             container.innerHTML += createLineHTML();
             renderContacts(filteredContacts);
             filteredContacts = null;
         }
-        container.innerHTML += createContactAddButtonHtml();
     }
+    container.innerHTML += createContactAddButtonHtml();
 }
 
 function sortUserContacts () {
