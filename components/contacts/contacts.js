@@ -1,4 +1,4 @@
-const ACTIVE_USER = '738927';
+let ACTIVE_USER = '738927';
 
 let userContacts = [ 
     {"name": "Benedikt Ziegler", "email": "benediktz@gmail.com", "contactID": "98765abc", "initials": "Z"},
@@ -57,6 +57,7 @@ async function renderContactsStructure () {
             renderContacts(filteredContacts);
             filteredContacts = null;
         }
+        container.innerHTML += createContactAddButtonHtml();
     }
 }
 

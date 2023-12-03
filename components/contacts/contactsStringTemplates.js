@@ -38,3 +38,11 @@ function createCharHeaderHTML (char) {
         <span class="contact-list-header-char-container">${char}</span>
     `
 }
+
+function createContactAddButtonHtml () {
+    /*html*/`
+        <div id="contact-list-button">
+            <img src="/assets/img/contacts/person_add.svg" alt="add person button">
+        </div>
+    `
+}
