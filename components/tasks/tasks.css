@@ -8,6 +8,8 @@ body {
   gap: 8px;
   display: flex;
   flex-direction: column;
+  overflow-y: auto;
+  overflow-x: hidden;
 }
 
 .add_task_h1 {
@@ -39,6 +41,11 @@ body {
   font-size: 16px;
   font-family: sans-serif;
   font-weight: 400;
+  cursor: pointer;
+}
+
+.add_task_inputs:focus-visible {
+  border-color: #29ABE2;
 }
 
 .add_task_priorities {
@@ -56,10 +63,26 @@ body {
   align-items: center;
   gap: 8px;
   flex: 1 0 0;
+  cursor: pointer;
   border-radius: 10px;
   border: none;
   background: var(--white, #fff);
   box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.1);
+}
+
+.urgent_button_active {
+ background-color: #FF3D00;
+ color: white;
+}
+
+.medium_button_active {
+ background-color: #FFA800;
+ color: white;
+}
+
+.low_button_active {
+ background-color: #7AE229;
+ color: white;
 }
 
 #subtask_input {
@@ -67,7 +90,10 @@ body {
   background-position: right 10px top;
   background-position-y: center;
   background-repeat: no-repeat;
+}
 
+#task_subtask_button {
+  width: 100%;
 }
 
 .create_task_finish {
@@ -76,26 +102,28 @@ body {
   align-items: center;
   justify-content: space-between;
   position: sticky;
-  padding: 16px;
   bottom: 80px;
   left: 0;
   right: 0;
   background-color: #F6F7F8;
+  margin-bottom: 200px;
+  padding: 16px 0;
 }
 
 #create_task_button {
+  cursor: pointer;
   border-radius: 10px;
   border: none;
   background: #2a3647;
   display: flex;
-  padding: 16px 32px 16px 16px;
+  padding: 16px;
   justify-content: center;
   align-items: center;
   gap: 4px;
   font-size: 21px;
   color: white;
-  background-image: url('/assets/img/addTask/check_icon.png');
+  /* background-image: url('/assets/img/addTask/check_icon.png');
   background-position: right 10px top;
   background-position-y: center;
-  background-repeat: no-repeat;
+  background-repeat: no-repeat; */
 }
