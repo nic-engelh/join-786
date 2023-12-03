@@ -1,6 +1,13 @@
 const ACTIVE_USER = '738927';
 
-let userContacts = []; 
+let userContacts = [ 
+    {"name": "Benedikt Ziegler", "email": "benediktz@gmail.com", "contactID": "98765abc", "initials": "Z"},
+    {"name": "Anton Mayer", "email": "antom@gmail.com", "contactID": "12345abc", "initials": "AM" },
+    {"name": "Helena Eissele", "email": "helenae@gmail.com", "contactID": "97345oiu", "initials": "HE" },
+    {"name": "Izak Abraham", "email": "izaka@gmail.com", "contactID": "12367oiu", "initials": "IA" },
+    {"name": "Anja Schulz", "email": "anjas@gmail.com", "contactID": "12345ghf", "initials": "AS" },
+    {"name": "David Eisenberg", "email": "davide@gmail.com", "contactID": "12345oiu", "initials": "DE" }
+]; 
 
 const abcString = 'ABCDEFGHIJKLMNOPQRSTUVWXYZÄÖÜ'; 
 
@@ -12,19 +19,24 @@ function getUserContacts(){
     return true
 }
 
-function renderContacts (contacts, container) {
+function renderContactList() {
+    renderContactsStructure();
+}
+
+function renderContacts (contacts) {
     // render all contacts within the userContacts object
     // todo design html div for contacts 
+    let container = document.getElementById("contact-list-mobile");
     for (const profile of contacts) {
         let name = profile['name'];
         let email = profile['email'];
-        let key = profile['contactID'];
+        let key = profile['contactId'];
         let initials = generateInitials(name);
-        container.innerHTML = createContactProfilHTML(name, email, initials, key);
+        container.innerHTML += createContactProfilHTML(name, email, initials, key);
     }
 }
 
-function renderContactsStructure () {
+async function renderContactsStructure () {
     // functions renders contacts abc-structure
     // iterate abcSting
     // for each CHAR load profile form userContacts
@@ -32,17 +44,18 @@ function renderContactsStructure () {
     // for each CHAR and if there is a corresponding profile within userContacts add a marker line beneath the letter for each group
     // render profile for the iterated letter
     // do it again for next CHAR in abcString
-    sortUserContacts();
-    let container = document.getElementById('');
-    container = clear();
+    //sortUserContacts();
+    const container = document.getElementById("contact-list-mobile");
+    if (container == null) {console.log("Element not found.");}
+    container.innerHTML = clear();
     for (let index = 0; index < abcString.length; index++) {
         const char = abcString[index];
-        let results = filterByVariable(userContacts, "initials", char);
-        container.innerHTML = createCharHeaderHTML(char);
-        if (results) {
-            container.innerHTML = createLineHTML();
-            renderContacts(results, container);
-            continue;
+        let filteredContacts = filterContactsByInitials(char);
+        container.innerHTML += createCharHeaderHTML(char);
+        if (filteredContacts.length > 0) {
+            container.innerHTML += createLineHTML();
+            renderContacts(filteredContacts);
+            filteredContacts = null;
         }
     }
 }
@@ -162,9 +175,9 @@ function generateInitials (name) {
     // check string for the first char overall and first char after space
     name = name.trim();
     let firstLetter = name.charAt(0);
-    let space = name.findIndex(" ");
-    let secondLetter = name.charAt((space + 1));
-    let initials = `${firstLetter}+${secondLetter}`;
+    let indexSpace = name.indexOf(' ');
+    let secondLetter = name.charAt((indexSpace + 1));
+    let initials = `${firstLetter}${secondLetter}`;
     return initials.toUpperCase();
 }
 
@@ -174,6 +187,18 @@ function changeProfilBadge(initials) {
     initialBox.innerHTML = initials;
     badge.style.backgroundColor = "#" + randomColor();
 }
+
+
+function filterContactsByInitials(initial) {
+    // Konvertiere den Input-Wert in Großbuchstaben, um die Groß-/Kleinschreibung zu ignorieren
+    let targetInitial = initial.toUpperCase();
+    // Verwende die filter-Methode, um die Objekte zu filtern
+    let filteredContacts = userContacts.filter(contact => {
+      // Überprüfe, ob das Initial des Kontakts den zweiten Buchstaben mit dem Zielinitial übereinstimmt
+      return contact.initials.length >= 2 && contact.initials[1].toUpperCase() === targetInitial;
+    });
+    return filteredContacts;
+  }
 
 function clear () {
     return ``;

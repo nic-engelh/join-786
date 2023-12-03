@@ -8,17 +8,22 @@
     <link rel="stylesheet" href="/components/templates/header/header.css">
     <link rel="stylesheet" href="/components/templates/footer/footer.css">
     <link rel="stylesheet" href="/components/contacts/contacts.css">
-    <script src="script.js"></script>
     <script src="/services/queries.js"></script>
+    <script src="/components/contacts/contacts.js"></script>
+    <script src="/services/utils.js"></script>
+    <script src="/components/contacts/contactsStringTemplates.js"></script>
 </head>
-<body onload="includeHTML()">
+<body onload="init()">
     <div w3-include-html="/components/templates/header/header.html"></div>
-    <div w3-include-html="/components/contacts/contactView.html">
-        <!-- Contacts form comes here -->
+    <div id="contact-list-background">
+        <div id="contact-list-mobile">
+        </div>
     </div>
     <div class="visually-hidden d-flex align-items-center justify-content-center slide-in" id="contact-alert">
         <span class="fw-4 fs-2">Contact succesfully edited</span>
     </div>
     <div w3-include-html="/components/templates/footer/footer.html"></div>
+    <script src="/components/contacts/contacts.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
