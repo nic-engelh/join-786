@@ -148,7 +148,7 @@ function transformSubtaskButton() {
 
     subtaskButton.innerHTML = `
     <div class="add_task_inputs">
-        <input id="subtask"  onkeyup="handleKeyUp(event)" id="subtask-input" class="subtask-input" placeholder="Add Subtask">
+        <input onkeyup="handleKeyUp(event)" id="subtask_input" class="subtask_input" placeholder="Add new Subtask">
         <div class="delete_and_check">
             <img onclick="revertBackToButton()" class="exit" id="exit" src="/assets/img/addTask/subtask_delete.png">
             <img src="/assets/img/addTask/subtask_divide.png">
@@ -157,34 +157,93 @@ function transformSubtaskButton() {
     </div>
     `;
 
-    subtaskButton.replaceWith(input);
-    document.getElementById('subtask-input').focus();
+    document.getElementById('subtask_input').focus();
 }
 
+function handleKeyUp(event) {
+    if (event.key === 'Enter' || event.keyCode === 13) {
+        addNewSubtaskToList();
+    }
+}
 
-function addSubtask() {
-    let subtask = document.getElementById('task_subtask').value;
-    let newSubtask = document.getElementById('new_Subtask')
-    subtasks.push(subtask.value);
+function addNewSubtaskToList() { 
+    let newSubtask = document.getElementById('subtask_input').value;
 
-    newSubtask.innerHTML += `
-        <li id="subtask${i}">
-        ${subtask.value} 
-        <div><img onclick="editSubtask(${i})" src="/assets/img/addTask/edit.png" alt="">Delete</div>
-        <img src="/assets/img/addTask/subtask_divide.png" alt=""> 
-        <div><img onclick="deleteSubtask(${i})" src="/assets/img/addTask/delete.png" alt="">Edit</div>
-        </li>
+    console.log(newSubtask);
+
+    if (newSubtask != '') {
+        subtasksArray.subtaskContent.push(newSubtask);
+        subtasksArray.subtaskStatus.push(0);
+        renderSubtaskContainer();
+        revertBackToButton();
+    } else {
+        document.getElementById('subtask_is_required').classList.remove('d-none');
+    }
+}
+
+function renderSubtaskContainer() { 
+    let subtaskContainer = document.getElementById('new_subtask_list');
+    subtaskContainer.innerHTML = '';
+    for (let i = 0; i < subtasksArray.subtaskContent.length; i++) {
+        const addedTask = subtasksArray.subtaskContent[i];
+        subtaskContainer.innerHTML +=
+            `<li id="subtask_list_item${i}" class="add_subtask_list">
+        <div style="display: flex; align-items: center; gap: 8px;">
+            <input readonly id="readonly_input${i}" value="${addedTask}"
+                class="input_edit_subtask"></input>
+            <div id="edit_and_delete${i}" class="edit_and_delete">
+                <img id="edit${i}" onclick="editSubtask(${i})" src="/assets/img/addTask/edit.png">
+                <img src="/assets/img/addTask/subtask_divide.png">
+                <img id="delete${i}" onclick="deleteSubtaskItem(${i})" class="delete" src="/assets/img/addTask/delete.png"
+            </div>
+        </div>
+    </li>`;
+    }
+}
+
+function editSubtask(i) { 
+    const editIcons = document.getElementById(`edit_and_delete${i}`);
+    editIcons.innerHTML = "";
+    editIcons.innerHTML = `
+        <img id="delete${i}" onclick="deleteSubtaskItem(${i})" class="delete" src="/assets/img/addTask/delete.png"
+        <img src="/assets/img/addTask/subtask_divide.png">
+        <img src="/assets/img/addTask/subtask_divide.png">
+        <img onclick="acceptChanges(${i})" src="/assets/img/addTask/subtask_check.png">
     `;
+    const changeBackground = document.getElementById('new_subtask_list')
+    changeBackground.classList.add('edit_subtask_list');
 
-    document.getElementById('task_subtask').value = "";
+    const listItem = document.getElementById(`subtask_list_item${i}`);
+    listItem.classList.add('editable_list_element');
+    listItem.classList.remove('addsubtask_list_element');
+
+    const input = document.getElementById(`readonly_input${i}`);
+    input.removeAttribute('readonly');
+    input.focus();
+    input.selectionStart = input.selectionEnd = input.value.length;
 }
 
-
-function deleteSubtask(i) {
-    subtasks.splice(i, 1);
+function acceptChanges(i) {
+    let replacingElement = document.getElementById(`readonly_input${i}`).value;
+    subtasksArray.subtaskContent.splice(i, 1, replacingElement);
+    document.getElementById('new_subtask_list').classList.remove('edit_subtask_list');
+    renderSubtaskContainer();
 }
 
-
-function editSubtask(i) {
-    document.getElementById("subtask${i}")
+function deleteSubtaskItem(i) {
+    subtasksArray.subtaskContent.splice(i, 1);
+    subtasksArray.subtaskStatus.splice(i, 1);
+    document.getElementById('new_subtask_list').classList.remove('edit_subtask_list');
+    renderSubtaskContainer();
 }
+
+function revertBackToButton() {
+    const subtaskButton = document.getElementById('subtask_button_input');
+
+    subtaskButton.innerHTML = `
+    <button class="add_task_inputs" id="task_subtask_button" onclick="transformSubtaskButton()" type="text">
+    <span>Add new Subtask</span>
+    <img src="/assets/img/addTask/add_subtask.png" alt=""></button>
+    `;
+}
+

@@ -25,6 +25,7 @@
     <div class="form_categories">
       <span>Title<span class="add_task_required">*</span></span>
       <input class="add_task_inputs" id="task_title" required type="text" placeholder="Enter a title" />
+      <span id="title_is_required" class="d-none">This field is required</span>
     </div>
 
 
@@ -54,6 +55,7 @@
     <div class="form_categories">
       <span>Due date<span class="add_task_required">*</span></span>
       <input class="add_task_inputs" id="task_date" required type="date">
+      <span id="date_is_required" class="d-none">This field is required</span>
     </div>
 
 
@@ -64,6 +66,7 @@
         <option value="1">Technical Task</option>
         <option value="2">User Story</option>
       </select>
+      <span id="category_is_required" class="d-none">This field is required</span>
     </div>
 
 
@@ -84,9 +87,10 @@
     <div class="form_categories">
       <span>Subtasks</span>
       <div id="subtask_button_input" >
-      <button class="add_task_inputs" id="task_subtask_button" onclick="transformSubtaskButton()" type="text"><span>Add new Subtask</span><img src="/assets/img/addTask/add_subtask.png" alt=""></button>
+        <button class="add_task_inputs" id="task_subtask_button" onclick="transformSubtaskButton()" type="text"><span>Add new Subtask</span><img src="/assets/img/addTask/add_subtask.png" alt=""></button>
       </div>
-      <ul class="d-none" style="list-style-type:disc;" id="new_Subtask"></ul>
+      <span id="subtask_is_required" class="d-none">This field is required</span>
+      <ul id="new_subtask_list" style="list-style-type:disc"></ul>
     </div>
 
 

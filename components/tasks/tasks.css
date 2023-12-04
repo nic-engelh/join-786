@@ -4,6 +4,10 @@ body {
   margin: 0 16px;
 }
 
+.d-none{
+  display: none;
+}
+
 .add_task_form {
   gap: 8px;
   display: flex;
@@ -20,6 +24,21 @@ body {
 
 .add_task_required {
   color: #FF8190;
+}
+
+#title_is_required{
+  color: red;
+  font-size: 12px;
+}
+
+#date_is_required{
+  color: red;
+  font-size: 12px;
+}
+
+#category_is_required{
+  color: red;
+  font-size: 12px;
 }
 
 .form_categories {
@@ -44,8 +63,9 @@ body {
   cursor: pointer;
 }
 
-.add_task_inputs:focus-visible {
+.add_task_inputs:focus {
   border-color: #29ABE2;
+  outline: #29ABE2;
 }
 
 .add_task_priorities {
@@ -68,6 +88,7 @@ body {
   border: none;
   background: var(--white, #fff);
   box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.1);
+  font-size: 16px;
 }
 
 .urgent_button_active {
@@ -85,15 +106,72 @@ body {
  color: white;
 }
 
-#subtask_input {
-  background-image: url('/assets/img/addTask/plus_icon.png');
-  background-position: right 10px top;
-  background-position-y: center;
-  background-repeat: no-repeat;
+.subtask_button_input {
+  display: flex;
+  justify-content: space-between;
+}
+
+.subtask_input {
+  border: none;
+  background-color: white;
+  width: auto;
+  color: #242323;
+  font-size: 16px;
+}
+
+.subtask_input:focus-visible {
+  border: none;
+  outline: #29ABE2;
 }
 
 #task_subtask_button {
   width: 100%;
+}
+
+#subtask_is_required{
+ color: red;
+ font-size: 12px;
+}
+
+.add_subtask_list {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+}
+
+.input_edit_subtask{
+  font-size: 19px;
+  border: unset;
+  outline: none;
+  background: none;
+  padding: 10px 60px 10px 0;
+}
+
+.edit_subtask_list {
+  border-bottom: 1px solid var(--Ligth-blue, #29ABE2);
+  background: var(--white, #FFF);
+}
+
+.delete_and_check {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+}
+
+.edit_and_delete {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+}
+
+.edit_and_delete img {
+  cursor: pointer;
+}
+
+ul {
+  margin-top: 8px;
+  padding-left: 20px;
 }
 
 .create_task_finish {
