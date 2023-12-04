@@ -17,9 +17,9 @@ function createContactProfilHTML (name, email, badgeInitials, contactID) {
 
 function createSuccessInfoHTML (text) {
     return  /*html*/`
-        <div class="alert d-flex align-items-center justify-content-center slide-in visually-hidden" id="contact-alert">
+        <dialog class="alert d-flex align-items-center justify-content-center slide-in visually-hidden" id="contact-alert">
             <span class="fw-4 fs-2">${text}</span>
-        </div>
+        </dialog>
     `
 }
 
@@ -41,8 +41,17 @@ function createCharHeaderHTML (char) {
 
 function createContactAddButtonHtml () {
   return  /*html*/`
-        <div id="contact-list-add-button">
+        <div id="contact-list-add-button" onclick="showAddContactModal()" >
             <img src="/assets/img/contacts/person_add.svg" alt="add person button">
         </div>
+    `
+}
+
+// Second Version without text variable
+function createSuccesAlertHTML () {
+    return /*html*/`
+    <div class="visually-hidden d-flex align-items-center justify-content-center slide-in" id="contact-alert">
+        <span class="fw-4 fs-2">Contact succesfully edited</span>
+    </div>
     `
 }

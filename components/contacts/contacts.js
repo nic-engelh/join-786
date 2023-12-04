@@ -1,12 +1,12 @@
 let ACTIVE_USER = '738927';
 
 let userContacts = [ 
-    {"name": "Benedikt Ziegler", "email": "benediktz@gmail.com", "contactID": "98765abc", "initials": "Z"},
-    {"name": "Anton Mayer", "email": "antom@gmail.com", "contactID": "12345abc", "initials": "AM" },
-    {"name": "Helena Eissele", "email": "helenae@gmail.com", "contactID": "97345oiu", "initials": "HE" },
-    {"name": "Izak Abraham", "email": "izaka@gmail.com", "contactID": "12367oiu", "initials": "IA" },
-    {"name": "Anja Schulz", "email": "anjas@gmail.com", "contactID": "12345ghf", "initials": "AS" },
-    {"name": "David Eisenberg", "email": "davide@gmail.com", "contactID": "12345oiu", "initials": "DE" }
+    {"name": "Benedikt Ziegler", "email": "benediktz@gmail.com", "contactId": "98765abc", "initials": "Z"},
+    {"name": "Anton Mayer", "email": "antom@gmail.com", "contactId": "12345abc", "initials": "AM" },
+    {"name": "Helena Eissele", "email": "helenae@gmail.com", "contactId": "97345oiu", "initials": "HE" },
+    {"name": "Izak Abraham", "email": "izaka@gmail.com", "contactId": "12367oiu", "initials": "IA" },
+    {"name": "Anja Schulz", "email": "anjas@gmail.com", "contactId": "12345ghf", "initials": "AS" },
+    {"name": "David Eisenberg", "email": "davide@gmail.com", "contactId": "12345oiu", "initials": "DE" }
 ]; 
 
 const abcString = 'ABCDEFGHIJKLMNOPQRSTUVWXYZÄÖÜ'; 
@@ -85,7 +85,7 @@ function addContactData () {
     let phone = document.getElementById('add-contact-phone').value;
     let id = generateContactID;
     let initials = generateInitials(name);
-    userContacts.push({name: name, email: email, phone: phone , id: id, initials: initials});
+    userContacts.push({name: name, email: email, phone: phone , contactId: id, initials: initials});
     // Show Message - contact succesfully created
     window.location.href = ''; // link to contact view
     // or blend out add contact modal
@@ -123,7 +123,7 @@ function saveEditedContactData () {
     let emailEdited = document.getElementById('edit-contact-email').value;
     let phoneEdited = document.getElementById('edit-contact-phone').value;
     deleteContact(activeContact);
-    userContacts.push({name: nameEdited, email: emailEdited, phone: phoneEdited , id: activeContact})
+    userContacts.push({name: nameEdited, email: emailEdited, phone: phoneEdited , contactId: activeContact})
     hideEditContactModal();
     showSuccesInfo();
 }
@@ -132,6 +132,23 @@ function saveEditedContactData () {
 function findContact (searchId) {
     let result = findByVariable(userContacts, "id", searchId)
     return result
+}
+
+function showAddContactModal () {
+    // activate template functon - insert modal
+    // remove hide class
+    // activate animation
+    const modal = document.getElementById("overlay-add-contact-mobile");
+    modal.showModal();
+    return true
+}
+
+function hideAddContactModal() {
+    //active animation
+    // add hide class
+    const modal = document.getElementById("overlay-add-contact-mobile");
+    modal.close();
+    return true
 }
 
 function showEditContactModal () {
@@ -168,7 +185,10 @@ function deleteContact (contactID) {
 
 function showSuccesInfo () {
     // todo design "Contact succesfully changed"
-
+    // changed div into dialog - NEED to approved it
+    let container = document.getElementById("contact-list-mobile");
+    let texts = ["Contact succesfully created", "Contact succesfully edited", "Contact succesfully deleted"]
+    container.innerHTML = createSuccessInfoHTML(texts[0]);
     return true
 }
 
