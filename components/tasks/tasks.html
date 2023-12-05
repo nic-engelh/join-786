@@ -20,7 +20,7 @@
 
   <h1 class="add_task_h1">Add Task</h1>
 
-  <div id="add_task_form" action="" onsubmit="addTask()">
+  <div id="add_task_form">
 
     <div class="form_categories">
       <span>Title<span class="add_task_required">*</span></span>
@@ -63,8 +63,8 @@
       <span>Category<span class="add_task_required">*</span></span>
       <select required class="add_task_inputs" name="Category" id="task_category">
         <option value="" disabled selected hidden>Select task Category</option>
-        <option value="1">Technical Task</option>
-        <option value="2">User Story</option>
+        <option value="Technical Task">Technical Task</option>
+        <option value="User Story">User Story</option>
       </select>
       <span id="category_is_required" class="d-none">This field is required</span>
     </div>
@@ -89,17 +89,19 @@
       <div id="subtask_button_input" >
         <button class="add_task_inputs" id="task_subtask_button" onclick="transformSubtaskButton()" type="text"><span>Add new Subtask</span><img src="/assets/img/addTask/add_subtask.png" alt=""></button>
       </div>
-      <span id="subtask_is_required" class="d-none">This field is required</span>
       <ul id="new_subtask_list" style="list-style-type:disc"></ul>
     </div>
 
 
     <div class="create_task_finish">
       <span><span class="add_task_required">*</span>This field is required</span>
-      <button id="create_task_button" value="Create Task " onclick="addTask()"><span>Create Task</span><img src="/assets/img/addTask/check_icon.png" alt=""></button>
+      <button id="create_task_button" value="Create Task " onclick="formValidation()"><span>Create Task</span><img src="/assets/img/addTask/check_icon.png" alt=""></button>
     </div>
-
   </div>
+  <dialog>
+    <span>Task added to board</span>
+    <img src="/assets/img/addTask/board_icon.png" alt="board icon">
+  </dialog>
 </body>
 
 </html>

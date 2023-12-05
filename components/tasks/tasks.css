@@ -128,11 +128,6 @@ body {
   width: 100%;
 }
 
-#subtask_is_required{
- color: red;
- font-size: 12px;
-}
-
 .add_subtask_list {
   display: flex;
   justify-content: space-between;
@@ -200,8 +195,15 @@ ul {
   gap: 4px;
   font-size: 21px;
   color: white;
-  /* background-image: url('/assets/img/addTask/check_icon.png');
-  background-position: right 10px top;
-  background-position-y: center;
-  background-repeat: no-repeat; */
+}
+
+dialog {
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+  border-radius: 20px;
+  background: #2A3647;
+  box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.15);
+  color: white;
+  border: none;
 }

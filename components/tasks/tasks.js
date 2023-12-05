@@ -1,25 +1,4 @@
-let tasks = [{
-    'id': 0,
-    'title': 'add Site',
-    'description': 'open',
-    'prio': 'urgent',
-    'date': '03.12.2023',
-    'category': 'user Story',
-    'user': 'herbert',
-    'subtasks': 'add HTML',
-    'status': 'To do'
-}, {
-    'id': 1,
-    'title': 'add second Site',
-    'description': 'open',
-    'prio': 'urgent',
-    'date': '07.12.2023',
-    'category': 'user Story',
-    'user': 'Hans',
-    'subtasks': 'add CSS',
-    'status': 'in progress'
-}];
-
+let tasks = [];
 
 let subtasksArray = {
     'subtaskContent': [],
@@ -28,7 +7,7 @@ let subtasksArray = {
 
 
 async function addTask() {
-    let id = 'ZUFALLLSGENERATOR';
+    let id = new Date().getTime();
     let title = document.getElementById('task_title');
     let description = document.getElementById('task_description');
     let user = document.getElementById('task_user');
@@ -38,32 +17,41 @@ async function addTask() {
     let subtasks = subtasksArray;
     let status = 'To do';
 
-    tasks['id'].push(id.value);
-    tasks['title'].push(title.value);
-    tasks['description'].push(description.value);
-    tasks['user'].push(user.value);
-    tasks['date'].push(date.value);
-    tasks['prio'].push(prio);
-    tasks['category'].push(category.value);
-    tasks['subtasks'].push(subtasks);
-    tasks['status'].push(status.value);
+    tasks.push ({
+        'id': id,
+        'title': title.value,
+        'description': description.value,
+        'prio': prio,
+        'date': date.value,
+        'category': category.value,
+        'user': user.value,
+        'subtasks': subtasks,
+        'status': status
+    })
 
     resetTask();
 }
 
 
 function resetTask() {
-    document.getElementById('title').value = '';
+    document.getElementById('task_title').value = '';
+    document.getElementById('task_title').style.border = '1px solid #d1d1d1';;
+    document.getElementById('title_is_required').classList.add('d-none');
     document.getElementById('task_description').value = '';
     document.getElementById('task_user').value = '';
-    document.getElementById('task_task_date').value = '';
-    document.getElementById('urgent_button').classList.remove('urgent');
-    document.getElementById('task_prio_img_urgent').src = '../img/urgent_no_bg.svg';
-    document.getElementById('medium_button').classList.remove('medium');
-    document.getElementById('task_prio_img_medium').src = '../img/medium_no_bg.svg';
-    document.getElementById('low_button').classList.remove('low');
-    document.getElementById('task_prio_img_low').src = '../img/low_no_bg.svg';
+    document.getElementById('task_date').value = '';
+    document.getElementById('task_date').style.border = '1px solid #d1d1d1';;
+    document.getElementById('date_is_required').classList.add('d-none');
+    document.getElementById('urgent_button').classList.remove('urgent_button_active');
+    document.getElementById('task_prio_img_urgent').src = '/assets/img/addTask/prio_high.png';
+    document.getElementById('medium_button').classList.remove('medium_button_active');
+    document.getElementById('task_prio_img_medium').src = '/assets/img/addTask/prio_medium.png';
+    document.getElementById('low_button').classList.remove('low_button_active');
+    document.getElementById('task_prio_img_low').src = '/assets/img/addTask/prio_low.png';
     document.getElementById('task_category').value = '';
+    document.getElementById('task_category').style.border = '1px solid #d1d1d1';;
+    document.getElementById('category_is_required').classList.add('d-none');
+    document.getElementById('new_subtask_list').innerHTML = '';
     subtasksArray = {
         'subtaskContent': [],
         'subtaskStatus': []
@@ -182,6 +170,7 @@ function addNewSubtaskToList() {
 }
 
 function renderSubtaskContainer() { 
+    // document.getElementById('subtask_is_required').classList.add('d-none');
     let subtaskContainer = document.getElementById('new_subtask_list');
     subtaskContainer.innerHTML = '';
     for (let i = 0; i < subtasksArray.subtaskContent.length; i++) {
@@ -247,3 +236,43 @@ function revertBackToButton() {
     `;
 }
 
+async function formValidation() {
+    let title = document.getElementById('task_title');
+    let date = document.getElementById('task_date');
+    let category = document.getElementById('task_category');
+
+    if (title.value == '') {
+        title.style.border = '1px solid red';
+        document.getElementById('title_is_required').classList.remove('d-none');
+    };
+    if (date.value == '') {
+        date.style.border = '1px solid red';
+        document.getElementById('date_is_required').classList.remove('d-none');
+    };
+    if (category.value == '') {
+        category.style.border = '1px solid red';
+        document.getElementById('category_is_required').classList.remove('d-none');
+    };
+
+    if (
+        title.value !== '' &&
+        date.value !== '' &&
+        category.value !== '' 
+    ) {
+        await addTask();
+        showSuccess();
+        openBoard();
+    }
+}
+
+function showSuccess() {
+    const dialog = document.querySelector("dialog")
+    dialog.style.display = 'flex';
+    dialog.showModal();
+}
+
+// function openBoard() {
+//     setTimeout(() => {
+//         window.location.replace("/components/board/board.html");
+//     }, "1000"); 
+// }

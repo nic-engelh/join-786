@@ -31,3 +31,7 @@
 .footer_category img {
   width: 24px;
 }
+
+a {
+  text-decoration: none;
+}
