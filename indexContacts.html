@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contacts</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="/components/templates/header/header.css">
+    <link rel="stylesheet" href="/components/templates/footer/footer.css">
+    <link rel="stylesheet" href="/components/contacts/contacts.css">
+    <script src="/services/queries.js"></script>
+    <script src="/components/contacts/contacts.js"></script>
+    <script src="/services/utils.js"></script>
+    <script src="/components/contacts/contactsStringTemplates.js"></script>
+</head>
+<body onload="init()">
+    <div w3-include-html="/components/templates/header/header.html"></div>
+    <div w3-include-html="/components/contacts/contactsOverview.html"></div>
+    <div w3-include-html="/components/contacts/addContacts.html"></div>
+    <div w3-include-html="/components/templates/footer/footer.html"></div>
+    <script src="/components/contacts/contacts.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
