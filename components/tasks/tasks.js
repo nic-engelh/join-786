@@ -5,7 +5,6 @@ let subtasksArray = {
     'subtaskStatus': []
 };
 
-
 async function addTask() {
     let id = new Date().getTime();
     let title = document.getElementById('task_title');
@@ -35,7 +34,7 @@ async function addTask() {
 
 function resetTask() {
     document.getElementById('task_title').value = '';
-    document.getElementById('task_title').style.border = '1px solid #d1d1d1';;
+    document.getElementById('task_title').style.border = '1px solid #d1d1d1';
     document.getElementById('title_is_required').classList.add('d-none');
     document.getElementById('task_description').value = '';
     document.getElementById('task_user').value = '';
