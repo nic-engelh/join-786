@@ -3,10 +3,6 @@
     width: 396px;
     border-radius: 30px;
     background-color: white;
-    position: fixed;
-    top: 10%;
-    left: 30%;
-    z-index: 100;
 }
 
 .contact-bg {
@@ -161,6 +157,10 @@ fw-bold {
 
 .g-24 {
     gap: 24px;
+}
+
+.pointer {
+    cursor: pointer;
 }
 
 #frame-195 {
@@ -488,9 +488,7 @@ fw-bold {
     }
 }
 
-
 #contact-list-background {
-    display: inline-flex;
     padding: 80px 14px;
     flex-direction: column;
     justify-content: flex-end;
@@ -653,30 +651,13 @@ fw-bold {
     border: 0;
     padding: 0;
 }
-/* This is a single-line comment */
+
 dialog {
-    inset-inline-start: unset;
-    inset-inline-end: unset;
-    width: inherit;
-    height: inherit;
-    background-color: unset;
-    color: unset;
-    margin: unset;
     border-width: unset;
     border-style: unset;
     border-color: unset;
     border-image: unset;
-    padding: unset;
-}
-
-
-dialog:-internal-dialog-in-top-layer {
-    position: unset;
-    inset-block-start: unset;
-    inset-block-end: unset;
-    max-width: inherit;
-    max-height: inherit;
-    user-select: inherit;
-    visibility: visible;
-    overflow: unset;
+    color: unset;
+    background-color: unset;
+    padding: 0;
 }

@@ -1,6 +1,6 @@
 function createContactProfilHTML (name, email, badgeInitials, contactID) {
     return /*html*/`
-        <div id="${contactID}" class="contact-list-profile-mobile" onclick="showProfileDetails(${contactID}); setActiveContact(${contactID})">
+        <div id="${contactID}" class="contact-list-profile-mobile" onclick="showProfileDetails('${contactID}'); setActiveContact('${contactID}')">
             <div class="contact-list-profile-badge-box" id="badge-${contactID}-box">
                     <div class="ellipse-profil-badge" id="badge-${contactID}">
                         <span id="badge-${contactID}-span">${badgeInitials}</span>
@@ -17,7 +17,7 @@ function createContactProfilHTML (name, email, badgeInitials, contactID) {
 
 function createSuccessInfoHTML (text) {
     return  /*html*/`
-        <dialog class="alert d-flex align-items-center justify-content-center slide-in visually-hidden" id="contact-alert">
+        <dialog class="alert d-flex align-items-center justify-content-center slide-in" id="contact-alert">
             <span class="fw-4 fs-2">${text}</span>
         </dialog>
     `

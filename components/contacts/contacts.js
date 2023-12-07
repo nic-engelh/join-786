@@ -83,12 +83,13 @@ function addContactData () {
     let name = document.getElementById('add-contact-name').value;
     let email = document.getElementById('add-contact-email').value;
     let phone = document.getElementById('add-contact-phone').value;
-    let id = generateContactID;
+    let id = generateContactID();
     let initials = generateInitials(name);
     userContacts.push({name: name, email: email, phone: phone , contactId: id, initials: initials});
+    hideAddContactModal();
+    //window.location.href = ''; // link to contact view
     // Show Message - contact succesfully created
-    window.location.href = ''; // link to contact view
-    // or blend out add contact modal
+    showSuccesInfo("0");
 }
 
 
@@ -125,7 +126,7 @@ function saveEditedContactData () {
     deleteContact(activeContact);
     userContacts.push({name: nameEdited, email: emailEdited, phone: phoneEdited , contactId: activeContact})
     hideEditContactModal();
-    showSuccesInfo();
+    showSuccesInfo("2");
 }
 
 // search function returns found object
@@ -183,12 +184,16 @@ function deleteContact (contactID) {
     return true
 }
 
-function showSuccesInfo () {
+function showSuccesInfo (number) {
     // todo design "Contact succesfully changed"
     // changed div into dialog - NEED to approved it
-    let container = document.getElementById("contact-list-mobile");
-    let texts = ["Contact succesfully created", "Contact succesfully edited", "Contact succesfully deleted"]
-    container.innerHTML = createSuccessInfoHTML(texts[0]);
+    let container = document.getElementById("body");
+    let texts = ["Contact succesfully created", "Contact succesfully edited", "Contact succesfully deleted"];
+    container.innerHTML = createSuccessInfoHTML(texts[number]);
+    const modal = document.getElementById("contact-alert");
+    modal.show();
+    setTimeout();
+    moda.close()
     return true
 }
 
