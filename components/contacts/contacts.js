@@ -187,14 +187,20 @@ function deleteContact (contactID) {
 function showSuccesInfo (number) {
     // todo design "Contact succesfully changed"
     // changed div into dialog - NEED to approved it
-    let container = document.getElementById("body");
     let texts = ["Contact succesfully created", "Contact succesfully edited", "Contact succesfully deleted"];
-    container.innerHTML = createSuccessInfoHTML(texts[number]);
-    const modal = document.getElementById("contact-alert");
-    modal.show();
-    setTimeout();
-    moda.close()
+    const dialog = document.createElement('dialog');
+    dialog.innerHTML = (createSuccessInfoHTML(texts[number]));
+    dialog.id = "contact-alert";
+    document.body.appendChild(dialog);
+    let modal = getModal();
+    modal.showModal();
+    setTimeout(function() {modal.close()}, 3000);
     return true
+}
+
+function getModal () {
+    const modal = document.getElementById("contact-alert");
+    return modal
 }
 
 function generateInitials (name) {

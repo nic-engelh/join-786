@@ -17,9 +17,9 @@ function createContactProfilHTML (name, email, badgeInitials, contactID) {
 
 function createSuccessInfoHTML (text) {
     return  /*html*/`
-        <dialog class="alert d-flex align-items-center justify-content-center slide-in" id="contact-alert">
-            <span class="fw-4 fs-2">${text}</span>
-        </dialog>
+            <div class="alert d-flex align-items-center justify-content-center" >
+                <span class="fw-4 fs-2">${text}</span>
+            </div>  
     `
 }
 
