@@ -32,7 +32,7 @@ async function register() {
 
 
      if (findUserByEmail(email)) {
-          notsame.innerHTML = 'email is alredy in use';
+          notsame.innerHTML = 'email is already in use';
           notsame.classList.remove('d-none')
 
      } else {
@@ -41,6 +41,7 @@ async function register() {
                USERS[key] = { value: usersData };
                if (setStorageData('users', JSON.stringify(USERS))) {
                     console.log('something went wrong by setting storage ');
+                    await popup();
                } else {
                     await popup();
                }

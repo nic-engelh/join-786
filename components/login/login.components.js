@@ -28,16 +28,15 @@ function login() {
 
     if (checkEmailLogin(email)) {
          if (checkPasswordLogin(password)) {
-              console.log('du bist eingeloggt')
               let key = findkey(email);
               ACTIVEUSERKEY=key;
-              console.log(ACTIVEUSERKEY)
          } else {
           message.classList.remove('d-none');
-
+          message.innerHTML='Email or password is Incorrect';
          }
     } else {
-         window.alert("Email is incorrect");
+        message.innerHTML='Email is Incorrect';
+        message.classList.remove('d-none');
     }
 }
 
