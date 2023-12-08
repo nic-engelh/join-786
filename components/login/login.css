@@ -14,11 +14,14 @@ body {
 }
 
 
+
+
+
 .mail {
     background-image: url(/assets/img/mail.jpg);
     background-repeat: no-repeat;
-    background-position: 330px;
-    width: 322px;
+    background-position: 90%;
+    width: 100%;
     height: 24px;
     padding: 12px 21px;
     border: 1px solid #d1d1d1;
@@ -31,17 +34,17 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 428px;
+    width: 100%;
     height: 926px;
 }
 
 .hide {
     background-image: url(/assets/img/lock.jpg);
     background-position: center;
-    background-size: 24px ,24px;
+    background-size: 24px, 24px;
     background-repeat: no-repeat;
-    background-position: 330px;
-    width: 322px;
+    background-position: 90%;
+    width: 100%;
     height: 24px;
     padding: 12px 21px;
     border: 1px solid #d1d1d1;
@@ -59,7 +62,7 @@ h1 {
     display: flex;
     align-items: center;
     flex-direction: column;
-    width: 396px;
+    width: 50%;
     height: 515px;
     border-radius: 30px;
     background-color: #ffff;
@@ -83,7 +86,7 @@ h1 {
 }
 
 .remember {
-    width: 327px;
+    width: 100%;
     height: 24px;
 }
 
@@ -92,7 +95,7 @@ h1 {
 }
 
 .guest {
-    width: 180px;
+    width: 200px;
     height: 51px;
     border-radius: 8px;
     border: 1px solid black;
@@ -111,6 +114,7 @@ h1 {
     font-size: 16px;
     font-weight: 700;
     color: #ffff;
+    margin-right: 38px;
 }
 
 .logo img {
@@ -137,8 +141,10 @@ h1 {
 }
 
 .signContainer {
-    padding-top: 40px;
+    position: absolute;
+    top: 20px;
     width: 292px;
+    right: 20px;
 }
 
 .linkPosition {
@@ -160,17 +166,93 @@ button {
     cursor: pointer;
 }
 
+.buttonPosition {
+    gap: 20px;
+}
+
 input {
     padding-left: 15px;
 }
+
 .d-none {
     display: none !important;
 }
-.message{ 
+
+.message {
     position: absolute;
     top: 265px;
     font-size: 13px;
     color: red;
     font-weight: bold;
- 
+
+}
+
+@media(max-width:930px) {
+    .buttonPosition {
+        display: flex;
+        flex-direction: column;
+    }
+    .guest {
+        width: 180px;
+        height: 51px;
+        border-radius: 8px;
+        border: 1px solid black;
+        background-color: #ffff;
+        font-size: 16px;
+        margin-top: -11px;
+        font-weight: 700;
+    }
+    .login {
+        width: 180px;
+        height: 51px;
+        border-radius: 8px;
+        border: 1px;
+        background-color: #2A3647;
+        font-size: 16px;
+        font-weight: 700;
+        color: #ffff;
+    }
+}
+
+@media(max-width:700px) {
+    .position {
+        width: 100%;
+        height: 515px;
+    }
+
+    .signContainer {
+        position: relative;
+        padding-top: 40px;
+        width: 292px;
+    }
+
+}
+
+@media(max-width:500px) {
+    .mobileVision {
+        width: 100%;
+    }
+
+    .position {
+        width: 100%;
+        height: 515px;
+    }
+
+    .mail {
+        width: 80%;
+    }
+
+    .hide {
+        width: 80%;
+    }
+
+    .remember {
+        width: 80%;
+    }
+
+    .signContainer {
+        position: relative;
+        padding-top: 40px;
+        width: 292px;
+    }
 }
