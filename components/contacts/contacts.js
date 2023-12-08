@@ -1,12 +1,12 @@
 let ACTIVE_USER = '738927';
 
 let userContacts = [ 
-    {"name": "Benedikt Ziegler", "email": "benediktz@gmail.com", "contactId": "98765abc", "initials": "Z"},
-    {"name": "Anton Mayer", "email": "antom@gmail.com", "contactId": "12345abc", "initials": "AM" },
-    {"name": "Helena Eissele", "email": "helenae@gmail.com", "contactId": "97345oiu", "initials": "HE" },
-    {"name": "Izak Abraham", "email": "izaka@gmail.com", "contactId": "12367oiu", "initials": "IA" },
-    {"name": "Anja Schulz", "email": "anjas@gmail.com", "contactId": "12345ghf", "initials": "AS" },
-    {"name": "David Eisenberg", "email": "davide@gmail.com", "contactId": "12345oiu", "initials": "DE" }
+    {"name": "Benedikt Ziegler", "email": "benediktz@gmail.com", "phone": "+1234567", "contactId": "98765abc", "initials": "Z"},
+    {"name": "Anton Mayer", "email": "antom@gmail.com","phone": "+1234567", "contactId": "12345abc", "initials": "AM" },
+    {"name": "Helena Eissele", "email": "helenae@gmail.com","phone": "+1234567", "contactId": "97345oiu", "initials": "HE" },
+    {"name": "Izak Abraham", "email": "izaka@gmail.com","phone": "+1234567", "contactId": "12367oiu", "initials": "IA" },
+    {"name": "Anja Schulz", "email": "anjas@gmail.com","phone": "+1234567", "contactId": "12345ghf", "initials": "AS" },
+    {"name": "David Eisenberg", "email": "davide@gmail.com","phone": "+1234567", "contactId": "12345oiu", "initials": "DE" }
 ]; 
 
 const abcString = 'ABCDEFGHIJKLMNOPQRSTUVWXYZÄÖÜ'; 
@@ -14,18 +14,17 @@ const abcString = 'ABCDEFGHIJKLMNOPQRSTUVWXYZÄÖÜ';
 let activeContact = null;
 
 function getUserContacts(){
-    // todo main user JSON name? @sefa
     userContacts = USERS[ACTIVE_USER][contacts];
     return true
 }
 
 function renderContactList() {
+    // getUserContacts();
     renderContactsStructure();
 }
 
 function renderContacts (contacts) {
     // render all contacts within the userContacts object
-    // todo design html div for contacts 
     let container = document.getElementById("contact-list-mobile");
     for (const profile of contacts) {
         let name = profile['name'];
@@ -61,6 +60,16 @@ async function renderContactsStructure () {
     container.innerHTML += createContactAddButtonHtml();
 }
 
+function renderContactProfil (contactId) {
+    let contactObject = findContact(contactId);
+    const profil = document.createElement("div");
+    let elementUsed = document.getElementById("contact-view-profil-main");
+    if (elementUsed){elementUsed.remove();}
+    profil.id = "contact-view-profil-main";
+    profil.innerHTML = createContactViewProfilHTML(contactObject.initials, contactObject.name, contactObject.email, contactObject.phone);
+    document.body.appendChild(profil);
+}   
+
 function sortUserContacts () {
     userContacts.sort((a,b) => {
         let fa = a.initials.toLowerCase(),
@@ -79,16 +88,15 @@ function sortUserContacts () {
 }
 
 
-function addContactData () {
+async function addContactData () {
     let name = document.getElementById('add-contact-name').value;
     let email = document.getElementById('add-contact-email').value;
     let phone = document.getElementById('add-contact-phone').value;
     let id = generateContactID();
     let initials = generateInitials(name);
     userContacts.push({name: name, email: email, phone: phone , contactId: id, initials: initials});
+    renderContactList();
     hideAddContactModal();
-    //window.location.href = ''; // link to contact view
-    // Show Message - contact succesfully created
     showSuccesInfo("0");
 }
 
@@ -131,7 +139,7 @@ function saveEditedContactData () {
 
 // search function returns found object
 function findContact (searchId) {
-    let result = findByVariable(userContacts, "id", searchId)
+    let result = findByVariable(userContacts, "contactId", searchId)
     return result
 }
 
@@ -141,7 +149,6 @@ function showAddContactModal () {
     // activate animation
     const modal = document.getElementById("overlay-add-contact-mobile");
     modal.showModal();
-    return true
 }
 
 function hideAddContactModal() {
@@ -149,7 +156,26 @@ function hideAddContactModal() {
     // add hide class
     const modal = document.getElementById("overlay-add-contact-mobile");
     modal.close();
-    return true
+}
+
+function showContactProfilOptions () {
+    // open options dialog with animation
+    let modalId = "contact-options-modal";
+    const modalExists = document.getElementById(modalId);
+    if (modalExists == undefined){
+        const modal = document.createElement("dialog");
+        modal.id = modalId;
+        modal.innerHTML = createContactOptionsHTML(activeContact);
+        document.body.appendChild(modal);
+        modal.show();
+        return true;
+    }
+    modalExists.show();
+}
+
+function hideContactProfilOptions() {
+    const modal = document.getElementById("contact-options-modal");
+    modal.close();
 }
 
 function showEditContactModal () {
@@ -168,38 +194,57 @@ function generateContactID () {
     return contactID 
 }
 
-function showProfilDetails () {
+function showProfilDetails (contactId) {
     // function shows selected contact details from overview 
-    window.location.href = '';
-
+    // window.location.assign = 'route.contactView.html';
+    // visual hide contacts lists
+    toggleHide("contact-list-background");
+    renderContactProfil(contactId);
 }
 
 function deleteContact (contactID) {
-    let entryIndex = userContacts.findIndex(contactID); 
+    let entryIndex = userContacts.findIndex(contact => contact["contactId"] === contactID);
     let response = userContacts.splice(entryIndex,1);
     if (response == undefined) {
         console.log("Error: deletion was unsuccesful.")
         return false
     }
+    removeChild("contact-view-profil-main");
+    renderContactList();
+    toggleHide("contact-list-background");
+    showSuccesInfo("2");
+}
+
+function removeChild(elementId) {
+    document.getElementById(elementId).remove();
     return true
+}
+
+function checkID (checkingId) {
+    return checkingId == activeContact;
 }
 
 function showSuccesInfo (number) {
-    // todo design "Contact succesfully changed"
-    // changed div into dialog - NEED to approved it
     let texts = ["Contact succesfully created", "Contact succesfully edited", "Contact succesfully deleted"];
-    const dialog = document.createElement('dialog');
-    dialog.innerHTML = (createSuccessInfoHTML(texts[number]));
-    dialog.id = "contact-alert";
-    document.body.appendChild(dialog);
-    let modal = getModal();
-    modal.showModal();
-    setTimeout(function() {modal.close()}, 3000);
-    return true
+    let modalId = "contact-alert";
+    let modalExists = document.getElementById(modalId);
+    // todo create only if element is not existing
+    if (modalExists == undefined) {
+        const dialog = document.createElement('dialog');
+        dialog.innerHTML = (createSuccessInfoHTML(texts[number]));
+        dialog.id = modalId;
+        document.body.appendChild(dialog);
+        const modal = getModal(modalId);
+        modal.showModal();
+        setTimeout(function() {modal.close()}, 2000);
+        return true;
+    }
+    modalExists.showModal();
+    setTimeout(function() {modalExists.close()}, 2000);
 }
 
-function getModal () {
-    const modal = document.getElementById("contact-alert");
+function getModal (elementId) {
+    const modal = document.getElementById(elementId);
     return modal
 }
 
@@ -232,6 +277,28 @@ function filterContactsByInitials(initial) {
     return filteredContacts;
   }
 
+function toggleHide (elementId) {
+    let element = document.getElementById(elementId);
+    element.classList.toggle("visually-hidden")
+    return true
+}
+
 function clear () {
     return ``;
 }
+
+
+/*
+var el = document.getElementById('id');
+
+// create named functions:
+function alertFirst() { alert('hello world'); };
+function alertSecond() { alert('hello world'); };
+
+// assign functions to the event listeners (recommended):
+el.addEventListener('click', alertFirst);
+el.addEventListener('click', alertSecond);
+
+// then you could remove either one of the functions using:
+el.removeEventListener('click', alertFirst); 
+*/

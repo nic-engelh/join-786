@@ -403,8 +403,8 @@ fw-bold {
     align-items: center;
     cursor: pointer;
     position: fixed;
-    top: 80%;
-    left: 80%;
+    bottom: 16%;
+    right: 3%;
 }
 
 #contact-view-top-section {
@@ -446,14 +446,18 @@ fw-bold {
     text-decoration: none !important;
 }
 
-#contact-options-modal {
+#contact-options-box {
     height: 100px;
     width: 116px;
     border-radius: 20px 20px 0px 20px;
     box-shadow: 0px 0px 4px 0px rgba(0,0,0,0.25);
     background-color: white;
     color: #2A3647;
+    position: fixed !important;
+    bottom: 13% !important;
+    right: 1% !important;
 }
+
 
 .symbol-frame {
     height: 24px;

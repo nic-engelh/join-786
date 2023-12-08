@@ -1,6 +1,6 @@
 function createContactProfilHTML (name, email, badgeInitials, contactID) {
     return /*html*/`
-        <div id="${contactID}" class="contact-list-profile-mobile" onclick="showProfileDetails('${contactID}'); setActiveContact('${contactID}')">
+        <div id="${contactID}" class="contact-list-profile-mobile pointer" onclick="showProfilDetails('${contactID}'); setActiveContact('${contactID}');">
             <div class="contact-list-profile-badge-box" id="badge-${contactID}-box">
                     <div class="ellipse-profil-badge" id="badge-${contactID}">
                         <span id="badge-${contactID}-span">${badgeInitials}</span>
@@ -41,7 +41,7 @@ function createCharHeaderHTML (char) {
 
 function createContactAddButtonHtml () {
   return  /*html*/`
-        <div id="contact-list-add-button" onclick="showAddContactModal()" >
+        <div id="contact-list-add-button" onclick="showAddContactModal();" >
             <img src="/assets/img/contacts/person_add.svg" alt="add person button">
         </div>
     `
@@ -53,5 +53,65 @@ function createSuccesAlertHTML () {
     <div class="visually-hidden d-flex align-items-center justify-content-center slide-in" id="contact-alert">
         <span class="fw-4 fs-2">Contact succesfully edited</span>
     </div>
+    `
+}
+
+
+function createContactViewProfilHTML (contactInitials, contactName, contactEmail, contactPhone) {
+    return /*html*/`
+            <section class="d-flex flex-row justify-content-space-between flex-start px-16" id="contact-view-top-section">
+            <div class="d-flex flex-column g-16" id="frame-207">
+                <div class="d-flex flex-column g-8" id="frame-173">
+                    <span class="fw-7 fs-4 black">Contacts</span>
+                    <span class="fw-4 fs-2 black">Better with a team!</span>
+                </div>
+                <div class="bw-3 w-9 bc-lightblue" id="addcontact-top-text-Vector"></div>
+            </div>
+            
+            <div id="contact-arrow-box">
+                <img src="/assets/img/contacts/arrow-left-line.svg" alt="Arrow left">
+            </div>
+        </section>
+        <section id="contact-view-middle-section" class="d-flex flex-column g-21 ms-16">
+                <div class="d-flex flex-row base-line g-20">
+                    <div id="frame-105" class="user-color d-flex justify-content-center align-items-center">
+                        <span class="" id="contact-view-symbol-initials">${contactInitials}</span>
+                    </div>
+                    <span id="frame-81">${contactName}</span>  
+                </div>
+                <span class="fs-2 fw-4">Contact Information</span>
+                <div id="frame-101" class="d-flex flex-column space-evenly flex-start g-15">
+                    <span class="fw-7 fs-1">Email</span>
+                    <a id="contact-profil-email" class="contact-view-email" href="mailto:${contactEmail}">${contactEmail}</a>
+                    <span class="fw-7 fs-1">Phone</span>
+                    <span id="contact-profil-phone">${contactPhone}</span>
+                </div>
+    </section>
+    <section id="contact-view-bottom-section" class="d-flex flex-end grow-1 px-16">
+        <div id="menu-contact-options" onclick="showContactProfilOptions();">
+            <img src="/assets/img/contacts/more_vert.svg" alt="Options">
+        </div>
+    </section>
+    `
+}
+
+function createContactOptionsHTML (activeContact) {
+    return /*html*/`
+        <div id="contact-options-box" class="d-flex justify-content-center flex-column align-items-center">
+    <div class="d-flex flex-column flex-start">
+        <div class="d-flex flex-row justify-content-center g-8  pointer" onclick="showEditContactModal(); hideContactProfilOptions();">
+            <div class="symbol-frame">
+                <img src="/assets/img/contacts/edit.svg" alt="Editieren">
+            </div>
+            <span class="fw-4 fs-1">Edit</span>
+        </div>
+        <div class="d-flex flex-row justify-content-center g-8 pointer" onclick="deleteContact('${activeContact}'); hideContactProfilOptions();">
+            <div class="symbol-frame">
+                <img src="/assets/img/contacts/delete.svg" alt="Löschen">
+            </div>
+            <span class="fw-4 fs-1">Delete</span>
+        </div>
+    </div>
+</div>
     `
 }
