@@ -15,10 +15,10 @@ function createContactProfilHTML (name, email, badgeInitials, contactID) {
     `
 }
 
-function createSuccessInfoHTML (text) {
+function createSuccessInfoHTML () {
     return  /*html*/`
             <div class="alert d-flex align-items-center justify-content-center" >
-                <span class="fw-4 fs-2">${text}</span>
+                <span id="succes-info-text" class="fw-4 fs-2"></span>
             </div>  
     `
 }
@@ -46,16 +46,6 @@ function createContactAddButtonHtml () {
         </div>
     `
 }
-
-// Second Version without text variable
-function createSuccesAlertHTML () {
-    return /*html*/`
-    <div class="visually-hidden d-flex align-items-center justify-content-center slide-in" id="contact-alert">
-        <span class="fw-4 fs-2">Contact succesfully edited</span>
-    </div>
-    `
-}
-
 
 function createContactViewProfilHTML (contactInitials, contactName, contactEmail, contactPhone) {
     return /*html*/`
@@ -99,13 +89,13 @@ function createContactOptionsHTML (activeContact) {
     return /*html*/`
         <div id="contact-options-box" class="d-flex justify-content-center flex-column align-items-center">
     <div class="d-flex flex-column flex-start">
-        <div class="d-flex flex-row justify-content-center g-8  pointer" onclick="showDialog('overlay-edit-contact-mobile'); hideDialog('contact-options-modal');">
+        <div id="contact-opitons-edit" class="d-flex flex-row justify-content-center g-8  pointer" onclick="showDialog('overlay-edit-contact-mobile'); hideDialog('contact-options-modal');">
             <div class="symbol-frame">
                 <img src="/assets/img/contacts/edit.svg" alt="Editieren">
             </div>
             <span class="fw-4 fs-1">Edit</span>
         </div>
-        <div class="d-flex flex-row justify-content-center g-8 pointer" onclick="deleteContact('${activeContact}'); hideDialog('contact-options-modal');">
+        <div id="contact-options-delete" class="d-flex flex-row justify-content-center g-8 pointer" onclick="deleteContact('${activeContact}'); hideDialog('contact-options-modal');">
             <div class="symbol-frame">
                 <img src="/assets/img/contacts/delete.svg" alt="Löschen">
             </div>

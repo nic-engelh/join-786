@@ -456,6 +456,7 @@ fw-bold {
     position: fixed !important;
     bottom: 13% !important;
     right: 1% !important;
+    z-index: 2;
 }
 
 
