@@ -88,7 +88,7 @@ function sortUserContacts () {
 }
 
 
-async function addContactData () {
+function addContactData () {
     let name = document.getElementById('add-contact-name').value;
     let email = document.getElementById('add-contact-email').value;
     let phone = document.getElementById('add-contact-phone').value;
@@ -97,7 +97,7 @@ async function addContactData () {
     userContacts.push({name: name, email: email, phone: phone , contactId: id, initials: initials});
     renderContactList();
     hideAddContactModal();
-    showSuccesInfo("0");
+    showSuccessInfo("0");
 }
 
 
@@ -173,6 +173,30 @@ function showContactProfilOptions () {
     modalExists.show();
 }
 
+function renderDialog (htmlString, modalId) {
+    const dialog = document.createElement('dialog');
+    dialog.innerHTML = (htmlString);
+    dialog.id = modalId;
+    document.body.appendChild(dialog);
+}
+
+
+function showSuccessInfo(number) {
+    const texts = ["Contact successfully created", "Contact successfully edited", "Contact successfully deleted"];
+    const modalId = "contact-alert";
+    let modal = document.getElementById(modalId);
+
+    if (!modal) {
+        modal = document.createElement('dialog');
+        modal.innerHTML = createSuccessInfoHTML(texts[number]);
+        modal.id = modalId;
+        document.body.appendChild(modal);
+    }
+
+    modal.showModal();
+    setTimeout(() => modal.close(), 2000);
+}
+
 function hideContactProfilOptions() {
     const modal = document.getElementById("contact-options-modal");
     modal.close();
@@ -220,28 +244,7 @@ function removeChild(elementId) {
     return true
 }
 
-function checkID (checkingId) {
-    return checkingId == activeContact;
-}
 
-function showSuccesInfo (number) {
-    let texts = ["Contact succesfully created", "Contact succesfully edited", "Contact succesfully deleted"];
-    let modalId = "contact-alert";
-    let modalExists = document.getElementById(modalId);
-    // todo create only if element is not existing
-    if (modalExists == undefined) {
-        const dialog = document.createElement('dialog');
-        dialog.innerHTML = (createSuccessInfoHTML(texts[number]));
-        dialog.id = modalId;
-        document.body.appendChild(dialog);
-        const modal = getModal(modalId);
-        modal.showModal();
-        setTimeout(function() {modal.close()}, 2000);
-        return true;
-    }
-    modalExists.showModal();
-    setTimeout(function() {modalExists.close()}, 2000);
-}
 
 function getModal (elementId) {
     const modal = document.getElementById(elementId);
