@@ -160,17 +160,13 @@ function hideAddContactModal() {
 
 function showContactProfilOptions () {
     // open options dialog with animation
-    let modalId = "contact-options-modal";
-    const modalExists = document.getElementById(modalId);
-    if (modalExists == undefined){
-        const modal = document.createElement("dialog");
-        modal.id = modalId;
-        modal.innerHTML = createContactOptionsHTML(activeContact);
-        document.body.appendChild(modal);
-        modal.show();
-        return true;
+    const modalId = "contact-options-modal";
+    const modal = document.getElementById(modalId);
+    const htmlString = createContactOptionsHTML(activeContact);
+    if (!modal){
+        renderDialog(htmlString, modalId);
     }
-    modalExists.show();
+    modal.show();
 }
 
 function renderDialog (htmlString, modalId) {
@@ -180,19 +176,14 @@ function renderDialog (htmlString, modalId) {
     document.body.appendChild(dialog);
 }
 
-
 function showSuccessInfo(number) {
     const texts = ["Contact successfully created", "Contact successfully edited", "Contact successfully deleted"];
     const modalId = "contact-alert";
+    const htmlString = createSuccessInfoHTML(texts[number]);
     let modal = document.getElementById(modalId);
-
     if (!modal) {
-        modal = document.createElement('dialog');
-        modal.innerHTML = createSuccessInfoHTML(texts[number]);
-        modal.id = modalId;
-        document.body.appendChild(modal);
+       renderDialog(htmlString, modalId);
     }
-
     modal.showModal();
     setTimeout(() => modal.close(), 2000);
 }
@@ -236,7 +227,7 @@ function deleteContact (contactID) {
     removeChild("contact-view-profil-main");
     renderContactList();
     toggleHide("contact-list-background");
-    showSuccesInfo("2");
+    showSuccessInfo("2");
 }
 
 function removeChild(elementId) {

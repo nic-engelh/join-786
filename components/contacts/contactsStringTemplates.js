@@ -41,7 +41,7 @@ function createCharHeaderHTML (char) {
 
 function createContactAddButtonHtml () {
   return  /*html*/`
-        <div id="contact-list-add-button" onclick="showAddContactModal();" >
+        <div id="contact-list-add-button" onclick="showDialog('overlay-add-contact-mobile');" >
             <img src="/assets/img/contacts/person_add.svg" alt="add person button">
         </div>
     `
@@ -99,13 +99,13 @@ function createContactOptionsHTML (activeContact) {
     return /*html*/`
         <div id="contact-options-box" class="d-flex justify-content-center flex-column align-items-center">
     <div class="d-flex flex-column flex-start">
-        <div class="d-flex flex-row justify-content-center g-8  pointer" onclick="showEditContactModal(); hideContactProfilOptions();">
+        <div class="d-flex flex-row justify-content-center g-8  pointer" onclick="showDialog('overlay-edit-contact-mobile'); hideDialog('contact-options-modal');">
             <div class="symbol-frame">
                 <img src="/assets/img/contacts/edit.svg" alt="Editieren">
             </div>
             <span class="fw-4 fs-1">Edit</span>
         </div>
-        <div class="d-flex flex-row justify-content-center g-8 pointer" onclick="deleteContact('${activeContact}'); hideContactProfilOptions();">
+        <div class="d-flex flex-row justify-content-center g-8 pointer" onclick="deleteContact('${activeContact}'); hideDialog('contact-options-modal');">
             <div class="symbol-frame">
                 <img src="/assets/img/contacts/delete.svg" alt="Löschen">
             </div>
