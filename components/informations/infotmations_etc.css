@@ -15,10 +15,10 @@ body {
     align-items: flex-start;
     align-self: stretch;
     flex-shrink: 0;
-    width: 450px;
+    width: 100%;
 }
 
-h1  {
+h1 {
     font-size: 47px;
     font-style: normal;
     font-weight: 700;
@@ -36,8 +36,19 @@ p {
     font-weight: 400;
 
 }
-.imgArrow{
+
+.imgArrow {
     display: flex;
     align-items: center;
     gap: 50px;
+}
+
+img {
+    cursor: pointer;
+}
+
+@media (max-width:500px) {
+    h2 {
+        font-size: 20px; 
+    }
 }

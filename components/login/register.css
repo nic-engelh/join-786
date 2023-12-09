@@ -6,7 +6,7 @@ body {
 }
 
 .mobileVision {
-    width: 428px;
+    width: 100%;
     height: 926px;
     display: flex;
     align-items: center;
@@ -23,8 +23,8 @@ body {
 .name {
     background-image: url(/assets/img/person.png);
     background-repeat: no-repeat;
-    background-position: 330px;
-    width: 322px;
+    background-position: 95%;
+    width: 100%;
     height: 25px;
     padding: 13px 21px;
     border: 1px solid #d1d1d1;
@@ -35,8 +35,8 @@ body {
 .mail {
     background-image: url(/assets/img/mail.jpg);
     background-repeat: no-repeat;
-    background-position: 330px;
-    width: 322px;
+    background-position: 95%;
+    width: 100%;
     height: 25px;
     padding: 13px 21px;
     border: 1px solid #d1d1d1;
@@ -56,8 +56,8 @@ body {
     background-position: center;
     background-size: 24px ,24px;
     background-repeat: no-repeat;
-    background-position: 330px;
-    width: 322px;
+    background-position: 95%;
+    width: 100%;
     height: 25px;
     padding: 13px 21px;
     border: 1px solid #d1d1d1;
@@ -78,7 +78,7 @@ h1 {
     display: flex;
     align-items: center;
     flex-direction: column;
-    width: 396px;
+    width: 50%;
     height: 531px;
     padding: 32px 0px;
     border-radius: 30px;
@@ -199,4 +199,25 @@ input {
     position: absolute;
     top: 425px;
     left: 25px;
+}
+
+@media(max-width:700px){
+    .mobileVision {
+        width: 100%;
+    }
+    .position {
+        width: 100%;
+    }
+}
+
+@media(max-width:370px){
+    .name {   
+        width: 90%;
+    }
+    .mail {
+        width: 90%;
+    }
+    .hide {
+        width: 90%;
+    }
 }
