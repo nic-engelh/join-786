@@ -58,13 +58,13 @@ function createContactViewProfilHTML (contactInitials, contactName, contactEmail
                 <div class="bw-3 w-9 bc-lightblue" id="addcontact-top-text-Vector"></div>
             </div>
             
-            <div id="contact-arrow-box">
+            <div id="contact-arrow-box" class="pointer" onclick="toggleHide('contact-list-background'); renderContactList()">
                 <img src="/assets/img/contacts/arrow-left-line.svg" alt="Arrow left">
             </div>
         </section>
         <section id="contact-view-middle-section" class="d-flex flex-column g-21 ms-16">
                 <div class="d-flex flex-row base-line g-20">
-                    <div id="frame-105" class="user-color d-flex justify-content-center align-items-center">
+                    <div id="frame-105" class="d-flex justify-content-center align-items-center">
                         <span class="" id="contact-view-symbol-initials">${contactInitials}</span>
                     </div>
                     <span id="frame-81">${contactName}</span>  
@@ -95,7 +95,7 @@ function createContactOptionsHTML (activeContact) {
             </div>
             <span class="fw-4 fs-1">Edit</span>
         </div>
-        <div id="contact-options-delete" class="d-flex flex-row justify-content-center g-8 pointer" onclick="deleteContact('${activeContact}'); hideDialog('contact-options-modal');">
+        <div id="contact-options-delete" class="d-flex flex-row justify-content-center g-8 pointer" onclick="deleteContact('${activeContact}', true); hideDialog('contact-options-modal');">
             <div class="symbol-frame">
                 <img src="/assets/img/contacts/delete.svg" alt="Löschen">
             </div>

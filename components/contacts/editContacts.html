@@ -11,7 +11,7 @@
                     <input type="tel" name="fphone" id="edit-contact-phone" required class="contact-input contact-input-phone" placeholder="Phone" aria-invalid="true" aria-describedby="description" >
                 </div>
                 <div id="frame-198">
-                    <button type="button" onclick="return false;" class="edit-contact-delete-btn pointer" id="edit-contact-delete-button" class="d-flex flex-row justify-content-center">
+                    <button type="button" onclick="deleteContact(activeContact, true); hideDialog('overlay-edit-contact-mobile');" class="edit-contact-delete-btn pointer" id="edit-contact-delete-button" class="d-flex flex-row justify-content-center">
                         <span>Delete</span>
                     </button>
                     <button type="submit" class="edit-contact-save-btn" id="edit-contact-save-button" class="d-flex flex-row justify-content-center">

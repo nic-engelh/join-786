@@ -1,12 +1,12 @@
 let ACTIVE_USER = '738927';
 
 let userContacts = [ 
-    {"name": "Benedikt Ziegler", "email": "benediktz@gmail.com", "phone": "+1234567", "contactId": "98765abc", "initials": "BZ"},
-    {"name": "Anton Mayer", "email": "antom@gmail.com","phone": "+1234567", "contactId": "12345abc", "initials": "AM" },
-    {"name": "Helena Eissele", "email": "helenae@gmail.com","phone": "+1234567", "contactId": "97345oiu", "initials": "HE" },
-    {"name": "Izak Abraham", "email": "izaka@gmail.com","phone": "+1234567", "contactId": "12367oiu", "initials": "IA" },
-    {"name": "Anja Schulz", "email": "anjas@gmail.com","phone": "+1234567", "contactId": "12345ghf", "initials": "AS" },
-    {"name": "David Eisenberg", "email": "davide@gmail.com","phone": "+1234567", "contactId": "12345oiu", "initials": "DE" }
+    {"name": "Benedikt Ziegler", "email": "benediktz@gmail.com", "phone": "+1234567", "contactId": "98765abc", "initials": "BZ", "color": "#812731"},
+    {"name": "Anton Mayer", "email": "antom@gmail.com","phone": "+1234567", "contactId": "12345abc", "initials": "AM", "color": "#3e59c2"},
+    {"name": "Helena Eissele", "email": "helenae@gmail.com","phone": "+1234567", "contactId": "97345oiu", "initials": "HE", "color": "#2b3430"},
+    {"name": "Izak Abraham", "email": "izaka@gmail.com","phone": "+1234567", "contactId": "12367oiu", "initials": "IA", "color": "#907ee1"},
+    {"name": "Anja Schulz", "email": "anjas@gmail.com","phone": "+1234567", "contactId": "12345ghf", "initials": "AS", "color": "#3e59c2"},
+    {"name": "David Eisenberg", "email": "davide@gmail.com","phone": "+1234567", "contactId": "12345oiu", "initials": "DE", "color": "#4f98ce"}
 ]; 
 
 const abcString = 'ABCDEFGHIJKLMNOPQRSTUVWXYZÄÖÜ'; 
@@ -30,12 +30,14 @@ function renderContacts (contacts) {
         let name = profile['name'];
         let email = profile['email'];
         let key = profile['contactId'];
+        let color = profile.color;
         let initials = generateInitials(name);
         container.innerHTML += createContactProfilHTML(name, email, initials, key);
+        setBadgeColor(color, `badge-${key}`);
     }
 }
 
-async function renderContactsStructure () {
+function renderContactsStructure () {
     // functions renders contacts abc-structure
     // iterate abcSting
     // for each CHAR load profile form userContacts
@@ -68,6 +70,7 @@ function renderContactProfil (contactId) {
     profil.id = "contact-view-profil-main";
     profil.innerHTML = createContactViewProfilHTML(contactObject.initials, contactObject.name, contactObject.email, contactObject.phone);
     document.body.appendChild(profil);
+    setBadgeColor(contactObject.color,"frame-105")
 }   
 
 function sortUserContacts () {
@@ -87,14 +90,13 @@ function sortUserContacts () {
     return true
 }
 
-
 function addContactData () {
     let name = document.getElementById('add-contact-name').value;
     let email = document.getElementById('add-contact-email').value;
     let phone = document.getElementById('add-contact-phone').value;
     let id = generateContactID();
     let initials = generateInitials(name);
-    userContacts.push({name: name, email: email, phone: phone , contactId: id, initials: initials});
+    userContacts.push({name: name, email: email, phone: phone , contactId: id, initials: initials, color: randomColor()});
     renderContactList();
     hideDialog('overlay-add-contact-mobile');
     showSuccessInfo("0");
@@ -130,13 +132,12 @@ function saveEditedContactData () {
     let nameEdited = document.getElementById('edit-contact-name').value;
     let emailEdited = document.getElementById('edit-contact-email').value;
     let phoneEdited = document.getElementById('edit-contact-phone').value;
-    userContacts.push({name: nameEdited, email: emailEdited, phone: phoneEdited , contactId: activeContact, initials: contactObject.initials});
+    userContacts.push({name: nameEdited, email: emailEdited, phone: phoneEdited , contactId: activeContact, initials: contactObject.initials, color: contactObject.color});
     hideDialog('overlay-edit-contact-mobile');
     deleteContact(activeContact, false);
     renderContactList();
     showSuccessInfo("2");
 }
-
 
 function hideDialog (elementId) {
     const modal = document.getElementById(elementId);
@@ -262,6 +263,11 @@ function filterContactsByInitials(initial) {
     });
     return filteredContacts;
   }
+
+  function setBadgeColor (color, elementId) {
+    let badge = document.getElementById(elementId);
+    badge.style.backgroundColor = (color);
+}
 
 function toggleHide (elementId) {
     let element = document.getElementById(elementId);
