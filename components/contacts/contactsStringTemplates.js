@@ -87,9 +87,9 @@ function createContactViewProfilHTML (contactInitials, contactName, contactEmail
 
 function createContactOptionsHTML (activeContact) {
     return /*html*/`
-        <div id="contact-options-box" class="d-flex justify-content-center flex-column align-items-center">
+    <div id="contact-options-box" class="d-flex justify-content-center flex-column align-items-center">
     <div class="d-flex flex-column flex-start">
-        <div id="contact-opitons-edit" class="d-flex flex-row justify-content-center g-8  pointer" onclick="showDialog('overlay-edit-contact-mobile'); hideDialog('contact-options-modal');">
+        <div id="contact-opitons-edit" class="d-flex flex-row justify-content-center g-8  pointer" onclick="showDialog('overlay-edit-contact-mobile'); hideDialog('contact-options-modal');loadEditContactData()";">
             <div class="symbol-frame">
                 <img src="/assets/img/contacts/edit.svg" alt="Editieren">
             </div>

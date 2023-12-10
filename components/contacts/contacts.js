@@ -1,7 +1,7 @@
 let ACTIVE_USER = '738927';
 
 let userContacts = [ 
-    {"name": "Benedikt Ziegler", "email": "benediktz@gmail.com", "phone": "+1234567", "contactId": "98765abc", "initials": "Z"},
+    {"name": "Benedikt Ziegler", "email": "benediktz@gmail.com", "phone": "+1234567", "contactId": "98765abc", "initials": "BZ"},
     {"name": "Anton Mayer", "email": "antom@gmail.com","phone": "+1234567", "contactId": "12345abc", "initials": "AM" },
     {"name": "Helena Eissele", "email": "helenae@gmail.com","phone": "+1234567", "contactId": "97345oiu", "initials": "HE" },
     {"name": "Izak Abraham", "email": "izaka@gmail.com","phone": "+1234567", "contactId": "12367oiu", "initials": "IA" },
@@ -106,15 +106,15 @@ function setActiveContact (contactID) {
 } 
 
 function loadEditContactData () {
+    let contactObject = findContact(activeContact);
      // show modal-edit-contact
     // read/find contact data
     // insert contact data into input fields
     let name = document.getElementById('edit-contact-name');
     let email = document.getElementById('edit-contact-email');
     let phone = document.getElementById('edit-contact-phone');
-    let initials = generateInitials(name);
+    let initials = generateInitials(contactObject.name);
     changeProfilBadge(initials);
-    let contactObject = findContact(activeContact);
     name.value = contactObject.name;
     email.value = contactObject.email;
     phone.value = contactObject.phone;
@@ -130,9 +130,10 @@ function saveEditedContactData () {
     let nameEdited = document.getElementById('edit-contact-name').value;
     let emailEdited = document.getElementById('edit-contact-email').value;
     let phoneEdited = document.getElementById('edit-contact-phone').value;
-    deleteContact(activeContact);
-    userContacts.push({name: nameEdited, email: emailEdited, phone: phoneEdited , contactId: activeContact});
-    hideDialog('overlay-add-contact-mobile');
+    userContacts.push({name: nameEdited, email: emailEdited, phone: phoneEdited , contactId: activeContact, initials: contactObject.initials});
+    hideDialog('overlay-edit-contact-mobile');
+    deleteContact(activeContact, false);
+    renderContactList();
     showSuccessInfo("2");
 }
 
@@ -162,6 +163,18 @@ function showContactProfilOptions () {
        modal = renderDialog(htmlString, modalId);
     }
     modal.show();
+    setTimeout(() => clickModal(), 500);
+}
+
+function clickModal() {
+    document.getElementById('contact-options-modal').addEventListener('click', (event) => {
+        if (document.getElementById('contact-options-modal').open) {
+            if (event.target.id !== 'contact-options-box'){
+                document.getElementById('contact-options-modal').close(); 
+            }
+        }
+    });
+
 }
 
 function renderDialog (htmlString, modalId) {
@@ -198,7 +211,7 @@ function showProfilDetails (contactId) {
     renderContactProfil(contactId);
 }
 
-function deleteContact (contactID) {
+function deleteContact (contactID, bool) {
     let entryIndex = userContacts.findIndex(contact => contact["contactId"] === contactID);
     let response = userContacts.splice(entryIndex,1);
     if (response == undefined) {
@@ -208,7 +221,7 @@ function deleteContact (contactID) {
     removeChild("contact-view-profil-main");
     renderContactList();
     toggleHide("contact-list-background");
-    showSuccessInfo("2");
+    if (bool){showSuccessInfo("2");}
 }
 
 function removeChild(elementId) {
@@ -259,31 +272,3 @@ function toggleHide (elementId) {
 function clear () {
     return ``;
 }
-
-
-/*
-var el = document.getElementById('id');
-
-// create named functions:
-function alertFirst() { alert('hello world'); };
-function alertSecond() { alert('hello world'); };
-
-// assign functions to the event listeners (recommended):
-el.addEventListener('click', alertFirst);
-el.addEventListener('click', alertSecond);
-
-// then you could remove either one of the functions using:
-el.removeEventListener('click', alertFirst); 
-*/
-
-
-const editButton = document.getElementById('contact-options-edit'); 
-const deleteButton = document.getElementById('contact-options-delete');
-const dialog = document.getElementById('contact-options-box');
-button.addEventListener('click', () => {dialog.show();});
-// here's the closing part:
-dialog.addEventListener('click', (event) => {
-    if (event.target.id !== 'contact-optioins-box') {
-        dialog.close();
-    }
-});
