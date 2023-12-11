@@ -1,7 +1,6 @@
 
-let loginTrys = 3;
-let timeout = 15000;
-
+let loginTrys = 2;
+let timeout = 15000
 /**
  * is the onload function 
  */
@@ -21,39 +20,49 @@ async function loadusers() {
 }
 
 /**
- * overall login function and timeout function by to many trys
+ * login and secuirity check function
  */
-function login() {
+async function login() {
 
      let email = document.getElementById('mail').value;
      let password = document.getElementById('password').value;
      let message = document.getElementById('message');
+     let key = findkey(email);
 
+     if (USERS[key].value.userData.timepassed) {
+          if (USERS[key].value.userData.timepassed.logintrys > -1) {
+               loginTrys = USERS[key].value.userData.timepassed.logintrys;
+          }
+     }
      if (loginTrys == 0) {
-          setTimeout(() => {
-               loginTrys = 3;
-               timeout *= 2;
-               message.innerHTML = `You can try now again`;
-          }, `${+timeout}`);
-          message.classList.remove('d-none');
-          message.innerHTML = `you have to wait ${+timeout / 1000} Seconds!`;
+        securitycheck(key,email,message)
      } else {
           if (checkEmailLogin(email)) {
                if (checkPasswordLogin(password)) {
-                    let key = findkey(email);
                     ACTIVEUSERKEY = key;
+                    console.log('eingeloggt')
                } else {
                     message.classList.remove('d-none');
                     message.innerHTML = 'Email or password is Incorrect';
-                    loginTrys -= 1;
+                    if (USERS[key].value.userData.timepassed) {
+                         keysettStrorage(key)
+                    } else {
+                         loginTrys -= 1
+                    }
                }
           } else {
                message.innerHTML = 'Email is Incorrect';
                message.classList.remove('d-none');
-               loginTrys -= 1;
+               if (USERS[key].value.userData.timepassed) {
+                    keysettStrorage(key)
+               } else {
+                    loginTrys -= 1
+               }
           }
      }
 }
+
+
 /**
  * //check if email is already in user
  * @param {string} email 
@@ -129,3 +138,11 @@ function findkey(email) {
           console.log('not found')
      }
 }
+/**
+ * sets storage with new data
+ * @param {number} key 
+ */
+async function keysettStrorage(key) {
+     await setStorageData('users', JSON.stringify(USERS[key].value.userData.timepassed.logintrys -= 1))
+}
+

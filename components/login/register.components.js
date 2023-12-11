@@ -22,7 +22,6 @@ async function loadusers() {
  * overall register function
  */
 async function register() {
-
      let name = document.getElementById('Name').value;
      let email = document.getElementById('mail').value;
      let password = document.getElementById('password').value;
@@ -37,7 +36,7 @@ async function register() {
 
      } else {
           if (checkPassword(password, passwordConfirm)) {
-               usersData = { 'userData': { key: key, name: name, email: email, password: password } };
+               usersData = { 'userData': { key: key, name: name, email: email, password: password, failedAttemped:true} };
                USERS[key] = { value: usersData };
                if (setStorageData('users', JSON.stringify(USERS))) {
                     console.log('something went wrong by setting storage ');
