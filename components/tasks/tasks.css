@@ -4,7 +4,7 @@ body {
   margin: 0 16px;
 }
 
-.d-none{
+.d-none {
   display: none;
 }
 
@@ -26,17 +26,17 @@ body {
   color: #FF8190;
 }
 
-#title_is_required{
+#title_is_required {
   color: red;
   font-size: 12px;
 }
 
-#date_is_required{
+#date_is_required {
   color: red;
   font-size: 12px;
 }
 
-#category_is_required{
+#category_is_required {
   color: red;
   font-size: 12px;
 }
@@ -68,6 +68,8 @@ body {
   outline: #29ABE2;
 }
 
+/* /////////////////Priorities///////////////// */
+
 .add_task_priorities {
   display: flex;
   flex-direction: row;
@@ -92,19 +94,90 @@ body {
 }
 
 .urgent_button_active {
- background-color: #FF3D00;
- color: white;
+  background-color: #FF3D00;
+  color: white;
 }
 
 .medium_button_active {
- background-color: #FFA800;
- color: white;
+  background-color: #FFA800;
+  color: white;
 }
 
 .low_button_active {
- background-color: #7AE229;
- color: white;
+  background-color: #7AE229;
+  color: white;
 }
+
+/* /////////////////Assigned to///////////////// */
+
+#tasks_contacts_container {
+  box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.1);
+  background-color: #ffffff;
+  margin-top: -26px;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#task_user {
+  z-index: 1;
+}
+
+#assigned_user {
+  width: 100%;
+  margin-top: 26px;
+  height: 170px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  overflow-y: auto;
+  padding: 0;
+}
+
+.assigned_initials {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 40px;
+  border:solid 2px white;
+  height: 40px;
+  width: 40px;
+  color: white;
+}
+
+.assigned_user_li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 7px 16px;
+  border-radius: 10px;
+}
+
+.assigned_user_li:hover {
+  cursor: pointer;
+}
+
+.assigned_user_li_toggled {
+  background: #2A3647;
+  color: white;
+}
+
+.task_contacts_name_initials {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.assigned_user_initials {
+  display: flex;
+  margin-top: 8px;
+  margin-bottom: 30px;
+}
+
+
+/* /////////////////  Subtask  ///////////////// */
 
 .subtask_button_input {
   display: flex;
@@ -135,7 +208,7 @@ body {
   gap: 8px;
 }
 
-.input_edit_subtask{
+.input_edit_subtask {
   font-size: 19px;
   border: unset;
   outline: none;
@@ -198,7 +271,6 @@ ul {
 }
 
 dialog {
-  justify-content: center;
   align-items: center;
   gap: 16px;
   border-radius: 20px;

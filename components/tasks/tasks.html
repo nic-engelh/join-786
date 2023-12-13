@@ -11,10 +11,11 @@
   <link rel="stylesheet" href="/components/templates/footer/footer.css" />
   <script src="/script.js"></script>
   <script src="/components/tasks/tasks.js"></script>
+  <script src="/services/utils.js"></script>
   <link rel="icon" href="/assets/img/favicon-join.png">
 </head>
 
-<body onload="includeHTML()">
+<body onload="includeHTML(); loadAssignableNames()">
   <div w3-include-html="/components/templates/header/header.html"></div>
   <div w3-include-html="/components/templates/footer/footer.html"></div>
 
@@ -72,15 +73,11 @@
 
     <div class="form_categories">
       <span>Assigned to</span>
-      <select required class="add_task_inputs" name="User" id="task_user">
-        <option value="" disabled selected hidden>
-          Select contacts to assign
-        </option>
-        <option value="1">Robin</option>
-        <option value="2">Franzi</option>
-        <option value="3">Marcel</option>
-        <option value="4">Larissa</option>
-      </select>
+      <input class="add_task_inputs" onclick="toggleSelect()" id="task_user" placeholder="Select contacts to assign">
+      <div id="tasks_contacts_container">
+        <ul id="assigned_user"></ul>
+      </div>
+      <div id="assigned_user_initials"></div>
     </div>
 
 
@@ -98,6 +95,8 @@
       <button id="create_task_button" value="Create Task " onclick="formValidation()"><span>Create Task</span><img src="/assets/img/addTask/check_icon.png" alt=""></button>
     </div>
   </div>
+
+  
   <dialog>
     <span>Task added to board</span>
     <img src="/assets/img/addTask/board_icon.png" alt="board icon">

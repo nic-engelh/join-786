@@ -1,32 +1,116 @@
-let tasks = [];
+let USERS = [
+    { "name": "Benedikt Ziegler", "email": "benediktz@gmail.com", "contactId": "98765abc", "initials": "BZ" },
+    { "name": "Anton Mayer", "email": "antom@gmail.com", "contactId": "12345abc", "initials": "AM" },
+    { "name": "Helena Eissele", "email": "helenae@gmail.com", "contactId": "97345oiu", "initials": "HE" },
+    { "name": "Izak Abraham", "email": "izaka@gmail.com", "contactId": "12367oiu", "initials": "IA" },
+    { "name": "Anja Schulz", "email": "anjas@gmail.com", "contactId": "12345ghf", "initials": "AS" },
+    { "name": "David Eisenberg", "email": "davide@gmail.com", "contactId": "12345oiu", "initials": "DE" }
+];
+let assignedToTask = [];
+let assignedInitial = [];
+
+
+function loadAssignableNames() {
+    const selectElement = document.getElementById("assigned_user");
+    for (let i = 0; i < USERS.length; i++) {
+        const initial = USERS[i]["initials"];
+        const name = USERS[i]["name"];
+        const randomColorMath = Math.floor(Math.random() * 16777215).toString(16);
+        let randomColor = "#" + randomColorMath;
+        selectElement.innerHTML += `
+            <li onclick="chooseContact(${i})" id="toggle_name${i}" class="assigned_user_li">
+                <div class="task_contacts_name_initials">
+                    <div id="initials_img${i}" class="assigned_initials" style="background-color:${randomColor};">${initial}</div>
+                    <span id="assigned_name_span">${name}</span>
+                </div>
+                <img class="checkbox" id="checkbox${i}" src="/assets/img/addTask/check_empty.png">
+            </li>`;
+    }
+}
+
+function toggleSelect() {
+    document.getElementById('tasks_contacts_container').classList.toggle('d-none');
+}
+
+function chooseContact(i) {
+    let li = document.getElementById(`toggle_name${i}`);
+    let checkbox = document.getElementById(`checkbox${i}`);
+
+    li.classList.toggle('assigned_user_li_toggled');
+
+    if (checkbox.src.endsWith('/assets/img/addTask/check_empty.png')) {
+        checkbox.src = '/assets/img/addTask/check_checked.png';
+    } else {
+        checkbox.src = '/assets/img/addTask/check_empty.png';
+    }
+    pushAssignedContact(i, li);
+}
+
+function pushAssignedContact(i, li) {
+    const name = USERS[i];
+    const index = assignedToTask.indexOf(name);
+
+    if (li.classList.contains('assigned_user_li_toggled')) {
+        assignedToTask.push(name);
+    } else { assignedToTask.splice(index, 1) }
+    showAssignedInitials(i);
+}
+
+function showAssignedInitials(i) {
+    const toBeAssigned = userContacts[i]['initials'];
+    const index = assignedInitial.indexOf(toBeAssigned);
+    let checkbox = document.getElementById(`checkbox${i}`);
+    let container = document.getElementById('assigned_user_initials');
+
+    if (checkbox.src.endsWith('checkbox-checked.png')) {
+        assignedInitial.push(toBeAssigned);
+    } else {
+        if (index !== -1) {
+            assignedInitial.splice(index, 1);
+        }
+    }
+    container.innerHTML = '';
+    for (let j = 0; j < assignedInitial.length; j++) {
+        const displayedInitial = assignedInitial[j];
+        container.innerHTML += `<span class="assigned-initials color${j + 1}">${displayedInitial}</span>`;
+    }
+}
+
+let tasks = {};
 
 let subtasksArray = {
     'subtaskContent': [],
     'subtaskStatus': []
 };
 
-async function addTask() {
-    let id = new Date().getTime();
-    let title = document.getElementById('task_title');
-    let description = document.getElementById('task_description');
-    let user = document.getElementById('task_user');
-    let date = document.getElementById('task_date');
+async function getTaskValue() {
+    let dateCreated = new Date().getTime();
+    let id = randomString();
+    let title = document.getElementById('task_title').value;
+    let description = document.getElementById('task_description').value;
+    let user = document.getElementById('task_user').value;
+    let date = document.getElementById('task_date').value;
     let prio = getPriority();
-    let category = document.getElementById('task_category');
+    let category = document.getElementById('task_category').value;
     let subtasks = subtasksArray;
     let status = 'To do';
 
-    tasks.push ({
-        'id': id,
-        'title': title.value,
-        'description': description.value,
-        'prio': prio,
-        'date': date.value,
-        'category': category.value,
-        'user': user.value,
-        'subtasks': subtasks,
-        'status': status
-    })
+    pushTask(dateCreated, id, title, description, user, date, prio, category, subtasks, status);
+}
+
+function pushTask(dateCreated, id, title, description, user, date, prio, category, subtasks, status) {
+    tasks[id] = {
+        dateCreated: dateCreated,
+        id: id,
+        title: title,
+        description: description,
+        prio: prio,
+        date: date,
+        category: category,
+        user: user,
+        subtasks: subtasks,
+        status: status
+    }
 
     resetTask();
 }
@@ -73,7 +157,7 @@ function getPriority() {
 }
 
 
-function urgentButton() { 
+function urgentButton() {
     let img = document.getElementById('task_prio_img_urgent');
     const urgentButton = document.getElementById('urgent_button');
 
@@ -130,7 +214,7 @@ function lowButton() {
 }
 
 
-function transformSubtaskButton() { 
+function transformSubtaskButton() {
     const subtaskButton = document.getElementById('subtask_button_input');
 
     subtaskButton.innerHTML = `
@@ -153,7 +237,7 @@ function handleKeyUp(event) {
     }
 }
 
-function addNewSubtaskToList() { 
+function addNewSubtaskToList() {
     let newSubtask = document.getElementById('subtask_input').value;
 
     console.log(newSubtask);
@@ -168,7 +252,7 @@ function addNewSubtaskToList() {
     }
 }
 
-function renderSubtaskContainer() { 
+function renderSubtaskContainer() {
     // document.getElementById('subtask_is_required').classList.add('d-none');
     let subtaskContainer = document.getElementById('new_subtask_list');
     subtaskContainer.innerHTML = '';
@@ -189,7 +273,7 @@ function renderSubtaskContainer() {
     }
 }
 
-function editSubtask(i) { 
+function editSubtask(i) {
     const editIcons = document.getElementById(`edit_and_delete${i}`);
     editIcons.innerHTML = "";
     editIcons.innerHTML = `
@@ -256,9 +340,9 @@ async function formValidation() {
     if (
         title.value !== '' &&
         date.value !== '' &&
-        category.value !== '' 
+        category.value !== ''
     ) {
-        await addTask();
+        await getTaskValue();
         showSuccess();
         openBoard();
     }
@@ -273,5 +357,5 @@ function showSuccess() {
 // function openBoard() {
 //     setTimeout(() => {
 //         window.location.replace("/components/board/board.html");
-//     }, "1000"); 
+//     }, "1000");
 // }

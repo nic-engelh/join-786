@@ -1,2 +1,2 @@
-// acitve User key
+// active User key
 // global USERS JSON
