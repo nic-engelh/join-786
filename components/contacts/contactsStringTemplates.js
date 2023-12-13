@@ -58,7 +58,7 @@ function createContactViewProfilHTML (contactInitials, contactName, contactEmail
                 <div class="bw-3 w-9 bc-lightblue" id="addcontact-top-text-Vector"></div>
             </div>
             
-            <div id="contact-arrow-box" class="pointer" onclick="toggleHide('contact-list-background'); renderContactList()">
+            <div id="contact-arrow-box" class="pointer" onclick="toggleHide('contact-list-background'); renderContactList(); removeElemente('contact-view-profil-main');">
                 <img src="/assets/img/contacts/arrow-left-line.svg" alt="Arrow left">
             </div>
         </section>

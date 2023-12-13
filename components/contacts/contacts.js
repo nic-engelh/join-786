@@ -70,7 +70,7 @@ function renderContactProfil (contactId) {
     profil.id = "contact-view-profil-main";
     profil.innerHTML = createContactViewProfilHTML(contactObject.initials, contactObject.name, contactObject.email, contactObject.phone);
     document.body.appendChild(profil);
-    setBadgeColor(contactObject.color,"frame-105")
+    setBadgeColor(contactObject.color,"frame-105");
 }   
 
 function sortUserContacts () {
@@ -219,13 +219,13 @@ function deleteContact (contactID, bool) {
         console.log("Error: deletion was unsuccesful.");
         return false
     }
-    removeChild("contact-view-profil-main");
+    removeElemente("contact-view-profil-main");
     renderContactList();
     toggleHide("contact-list-background");
-    if (bool){showSuccessInfo("2");}
+    if (bool){showSuccessInfo("1");}
 }
 
-function removeChild(elementId) {
+function removeElemente(elementId) {
     document.getElementById(elementId).remove();
     return true
 }
@@ -266,7 +266,9 @@ function filterContactsByInitials(initial) {
 
   function setBadgeColor (color, elementId) {
     let badge = document.getElementById(elementId);
-    badge.style.backgroundColor = (color);
+    setContactStyleColor (color, id);
+    badge.classList.add(color);
+    // to do: classlist.remove bei delete 
 }
 
 function toggleHide (elementId) {
@@ -278,3 +280,10 @@ function toggleHide (elementId) {
 function clear () {
     return ``;
 }
+
+ function setContactStyleColor (color, id) {
+    let style = document.createElement(id);
+    document.head.appendChild(style);
+    style.sheet.insertRule(`.${color} {backgroundcolor: #${color}}`);
+    return true
+ }
