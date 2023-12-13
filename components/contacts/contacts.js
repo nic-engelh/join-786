@@ -1,12 +1,12 @@
 let ACTIVE_USER = '738927';
 
 let userContacts = [ 
-    {"name": "Benedikt Ziegler", "email": "benediktz@gmail.com", "contactId": "98765abc", "initials": "Z"},
-    {"name": "Anton Mayer", "email": "antom@gmail.com", "contactId": "12345abc", "initials": "AM" },
-    {"name": "Helena Eissele", "email": "helenae@gmail.com", "contactId": "97345oiu", "initials": "HE" },
-    {"name": "Izak Abraham", "email": "izaka@gmail.com", "contactId": "12367oiu", "initials": "IA" },
-    {"name": "Anja Schulz", "email": "anjas@gmail.com", "contactId": "12345ghf", "initials": "AS" },
-    {"name": "David Eisenberg", "email": "davide@gmail.com", "contactId": "12345oiu", "initials": "DE" }
+    {"name": "Benedikt Ziegler", "email": "benediktz@gmail.com", "phone": "+1234567", "contactId": "98765abc", "initials": "BZ", "color": "#812731"},
+    {"name": "Anton Mayer", "email": "antom@gmail.com","phone": "+1234567", "contactId": "12345abc", "initials": "AM", "color": "#3e59c2"},
+    {"name": "Helena Eissele", "email": "helenae@gmail.com","phone": "+1234567", "contactId": "97345oiu", "initials": "HE", "color": "#2b3430"},
+    {"name": "Izak Abraham", "email": "izaka@gmail.com","phone": "+1234567", "contactId": "12367oiu", "initials": "IA", "color": "#907ee1"},
+    {"name": "Anja Schulz", "email": "anjas@gmail.com","phone": "+1234567", "contactId": "12345ghf", "initials": "AS", "color": "#3e59c2"},
+    {"name": "David Eisenberg", "email": "davide@gmail.com","phone": "+1234567", "contactId": "12345oiu", "initials": "DE", "color": "#4f98ce"}
 ]; 
 
 const abcString = 'ABCDEFGHIJKLMNOPQRSTUVWXYZÄÖÜ'; 
@@ -14,29 +14,30 @@ const abcString = 'ABCDEFGHIJKLMNOPQRSTUVWXYZÄÖÜ';
 let activeContact = null;
 
 function getUserContacts(){
-    // todo main user JSON name? @sefa
     userContacts = USERS[ACTIVE_USER][contacts];
     return true
 }
 
 function renderContactList() {
+    // getUserContacts();
     renderContactsStructure();
 }
 
 function renderContacts (contacts) {
     // render all contacts within the userContacts object
-    // todo design html div for contacts 
     let container = document.getElementById("contact-list-mobile");
     for (const profile of contacts) {
         let name = profile['name'];
         let email = profile['email'];
         let key = profile['contactId'];
+        let color = profile.color;
         let initials = generateInitials(name);
         container.innerHTML += createContactProfilHTML(name, email, initials, key);
+        setBadgeColor(color, `badge-${key}`);
     }
 }
 
-async function renderContactsStructure () {
+function renderContactsStructure () {
     // functions renders contacts abc-structure
     // iterate abcSting
     // for each CHAR load profile form userContacts
@@ -61,6 +62,17 @@ async function renderContactsStructure () {
     container.innerHTML += createContactAddButtonHtml();
 }
 
+function renderContactProfil (contactId) {
+    let contactObject = findContact(contactId);
+    const profil = document.createElement("div");
+    let elementUsed = document.getElementById("contact-view-profil-main");
+    if (elementUsed){elementUsed.remove();}
+    profil.id = "contact-view-profil-main";
+    profil.innerHTML = createContactViewProfilHTML(contactObject.initials, contactObject.name, contactObject.email, contactObject.phone);
+    document.body.appendChild(profil);
+    setBadgeColor(contactObject.color,"frame-105");
+}   
+
 function sortUserContacts () {
     userContacts.sort((a,b) => {
         let fa = a.initials.toLowerCase(),
@@ -78,19 +90,17 @@ function sortUserContacts () {
     return true
 }
 
-
 function addContactData () {
     let name = document.getElementById('add-contact-name').value;
     let email = document.getElementById('add-contact-email').value;
     let phone = document.getElementById('add-contact-phone').value;
-    let id = generateContactID;
+    let id = generateContactID();
     let initials = generateInitials(name);
-    userContacts.push({name: name, email: email, phone: phone , contactId: id, initials: initials});
-    // Show Message - contact succesfully created
-    window.location.href = ''; // link to contact view
-    // or blend out add contact modal
+    userContacts.push({name: name, email: email, phone: phone , contactId: id, initials: initials, color: randomColor()});
+    renderContactList();
+    hideDialog('overlay-add-contact-mobile');
+    showSuccessInfo("0");
 }
-
 
 function setActiveContact (contactID) {
     activeContact = contactID;
@@ -98,15 +108,15 @@ function setActiveContact (contactID) {
 } 
 
 function loadEditContactData () {
+    let contactObject = findContact(activeContact);
      // show modal-edit-contact
     // read/find contact data
     // insert contact data into input fields
     let name = document.getElementById('edit-contact-name');
     let email = document.getElementById('edit-contact-email');
     let phone = document.getElementById('edit-contact-phone');
-    let initials = generateInitials(name);
+    let initials = generateInitials(contactObject.name);
     changeProfilBadge(initials);
-    let contactObject = findContact(activeContact);
     name.value = contactObject.name;
     email.value = contactObject.email;
     phone.value = contactObject.phone;
@@ -122,44 +132,71 @@ function saveEditedContactData () {
     let nameEdited = document.getElementById('edit-contact-name').value;
     let emailEdited = document.getElementById('edit-contact-email').value;
     let phoneEdited = document.getElementById('edit-contact-phone').value;
-    deleteContact(activeContact);
-    userContacts.push({name: nameEdited, email: emailEdited, phone: phoneEdited , contactId: activeContact})
-    hideEditContactModal();
-    showSuccesInfo();
+    userContacts.push({name: nameEdited, email: emailEdited, phone: phoneEdited , contactId: activeContact, initials: contactObject.initials, color: contactObject.color});
+    hideDialog('overlay-edit-contact-mobile');
+    deleteContact(activeContact, false);
+    renderContactList();
+    showSuccessInfo("2");
+}
+
+function hideDialog (elementId) {
+    const modal = document.getElementById(elementId);
+    modal.close();
+}
+
+function showDialog (elementId) {
+    const modal = document.getElementById(elementId);
+    modal.showModal();
 }
 
 // search function returns found object
 function findContact (searchId) {
-    let result = findByVariable(userContacts, "id", searchId)
+    let result = findByVariable(userContacts, "contactId", searchId)
     return result
 }
 
-function showAddContactModal () {
-    // activate template functon - insert modal
-    // remove hide class
-    // activate animation
-    const modal = document.getElementById("overlay-add-contact-mobile");
+function showContactProfilOptions () {
+    // open options dialog with animation
+    const modalId = "contact-options-modal";
+    let modal = document.getElementById(modalId);
+    const htmlString = createContactOptionsHTML(activeContact);
+    if (!modal){
+       modal = renderDialog(htmlString, modalId);
+    }
+    modal.show();
+    setTimeout(() => clickModal(), 500);
+}
+
+function clickModal() {
+    document.getElementById('contact-options-modal').addEventListener('click', (event) => {
+        if (document.getElementById('contact-options-modal').open) {
+            if (event.target.id !== 'contact-options-box'){
+                document.getElementById('contact-options-modal').close(); 
+            }
+        }
+    });
+
+}
+
+function renderDialog (htmlString, modalId) {
+    const dialog = document.createElement('dialog');
+    dialog.innerHTML = (htmlString);
+    dialog.id = modalId;
+    document.body.appendChild(dialog);
+    return dialog
+}
+
+function showSuccessInfo(number) {
+    const texts = ["Contact successfully created", "Contact successfully edited", "Contact successfully deleted"];
+    const modalId = "contact-alert";
+    const htmlString = createSuccessInfoHTML();
+    let modal = document.getElementById(modalId);
+    if (!modal) {
+       modal = renderDialog(htmlString, modalId);
+    }
+    document.getElementById("succes-info-text").innerHTML = texts[number];
     modal.showModal();
-    return true
-}
-
-function hideAddContactModal() {
-    //active animation
-    // add hide class
-    const modal = document.getElementById("overlay-add-contact-mobile");
-    modal.close();
-    return true
-}
-
-function showEditContactModal () {
-    // remove hide class form modal
-    // todo animations
-    return true
-}
-function hideEditContactModal () {
-    // add hide class form modal
-    // todo animations
-    return true
+    setTimeout(() => modal.close(), 2000);
 }
 
 function generateContactID () {
@@ -167,29 +204,35 @@ function generateContactID () {
     return contactID 
 }
 
-function showProfilDetails () {
+function showProfilDetails (contactId) {
     // function shows selected contact details from overview 
-    window.location.href = '';
-
+    // window.location.assign = 'route.contactView.html';
+    // visual hide contacts lists
+    toggleHide("contact-list-background");
+    renderContactProfil(contactId);
 }
 
-function deleteContact (contactID) {
-    let entryIndex = userContacts.findIndex(contactID); 
+function deleteContact (contactID, bool) {
+    let entryIndex = userContacts.findIndex(contact => contact["contactId"] === contactID);
     let response = userContacts.splice(entryIndex,1);
     if (response == undefined) {
-        console.log("Error: deletion was unsuccesful.")
+        console.log("Error: deletion was unsuccesful.");
         return false
     }
+    removeElemente("contact-view-profil-main");
+    renderContactList();
+    toggleHide("contact-list-background");
+    if (bool){showSuccessInfo("1");}
+}
+
+function removeElemente(elementId) {
+    document.getElementById(elementId).remove();
     return true
 }
 
-function showSuccesInfo () {
-    // todo design "Contact succesfully changed"
-    // changed div into dialog - NEED to approved it
-    let container = document.getElementById("contact-list-mobile");
-    let texts = ["Contact succesfully created", "Contact succesfully edited", "Contact succesfully deleted"]
-    container.innerHTML = createSuccessInfoHTML(texts[0]);
-    return true
+function getModal (elementId) {
+    const modal = document.getElementById(elementId);
+    return modal
 }
 
 function generateInitials (name) {
@@ -221,6 +264,26 @@ function filterContactsByInitials(initial) {
     return filteredContacts;
   }
 
+  function setBadgeColor (color, elementId) {
+    let badge = document.getElementById(elementId);
+    setContactStyleColor (color, id);
+    badge.classList.add(color);
+    // to do: classlist.remove bei delete 
+}
+
+function toggleHide (elementId) {
+    let element = document.getElementById(elementId);
+    element.classList.toggle("visually-hidden")
+    return true
+}
+
 function clear () {
     return ``;
 }
+
+ function setContactStyleColor (color, id) {
+    let style = document.createElement(id);
+    document.head.appendChild(style);
+    style.sheet.insertRule(`.${color} {backgroundcolor: #${color}}`);
+    return true
+ }
