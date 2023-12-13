@@ -1,2 +1,3 @@
-// active User key
-// global USERS JSON
+let USERS = {};
+
+let ACTIVEUSERKEY = null;

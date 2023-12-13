@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Join360</title>
+    <script src="join360.js"></script>
+    <link rel="stylesheet" href="join360.css">
+    <link rel="stylesheet" href="/components/templates/header/header.css">
+    <link rel="stylesheet" href="/components/templates/footer/footer.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+</head>
+
+<body onload="includeHTML()">
+    <div id="mobileVersion">
+        <div w3-include-html="/components/templates/header/header.html"></div>
+        <div class="headline">
+            <h1>Join 360</h1>
+            <p class="slogan">Key Metrics at a Glance</p>
+            <div class="underLine"></div>
+        </div>
+        <div id="tasksMenu">
+            <div  class="ToDoPosition">
+                <div onclick="myfunction()" class="toDo">
+                    <img src="/assets/img/Group 7.png" alt="">
+                    <div class="numberPosition">
+                        <b>1</b>
+                        <p class="todoText">To-Do</p>
+                    </div>
+                </div>
+                <div onclick="myfunction()" class="toDoDone">
+                    <img src="/assets/img/Group 7 (1).png" alt="">
+                    <div class="numberPosition">
+                        <b>1</b>
+                        <p class="todoText">Done</p>
+                    </div>
+                </div>
+            </div>
+            <div class="UrgentDeadline">
+                <div onclick="myfunction()" class="urgent">
+                    <img class="image1" src="/assets/img/Ellipse 4.jpg" alt="">
+                    <!-- <img class="image2" src="/assets/img/Prio alta.jpg" alt="asdasd"> -->
+                    <div class="numberPosition">
+                        <b>1</b>
+                        <p class="todoText">Urgent</p>
+                    </div>
+                    <div class="partingLine"></div>
+                    <div class="Date">
+                        <h2>October 16, 2022</h2>
+                        <p class="dateText">Upcoming Deadline</p>
+                    </div>
+                </div>
+            </div>
+            <div onclick="myfunction()" class="TaskProgress">
+                <div class="AllTheTasks">
+                    <b class="numberOfTasks">5</b>
+                    <p>Task in Board</p>
+                </div>
+                <div class="AllTheTasks">
+                    <b class="numberOfTasks">2</b>
+                    <p>Task in Progress</p>
+                </div>
+                <div class="AllTheTasks">
+                    <b class="numberOfTasks">2</b>
+                    <p>Awaiting Feedback</p>
+                </div>
+
+            </div>
+            <div w3-include-html="/components/templates/footer/footer.html"></div>
+        </div>
+</body>
+
+</html>
