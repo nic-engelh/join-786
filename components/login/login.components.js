@@ -23,38 +23,41 @@ async function loadusers() {
  * login and secuirity check function
  */
 async function login() {
-
      let email = document.getElementById('mail').value;
      let password = document.getElementById('password').value;
      let message = document.getElementById('message');
-     let key = findkey(email);
 
-     if (USERS[key].value.userData.timepassed) {
-          if (USERS[key].value.userData.timepassed.logintrys > -1) {
-               loginTrys = USERS[key].value.userData.timepassed.logintrys;
-          }
+     if (findkey(email)) {
+          var key = findkey(email)
+          timeoutcheck(key)
      }
      if (loginTrys == 0) {
-        securitycheck(key,email,message)
+          securitycheck(key, email, message)
      } else {
           if (checkEmailLogin(email)) {
                if (checkPasswordLogin(password)) {
                     ACTIVEUSERKEY = key;
                     console.log('eingeloggt')
                } else {
-                    message.classList.remove('d-none');
-                    message.innerHTML = 'Email or password is Incorrect';
-                    if (USERS[key].value.userData.timepassed) {
-                         keysettStrorage(key)
+                    incorrect(message)
+                    if (USERS[key]) {
+                         if (user[key].value.userData.timepassed) {
+                              keysettStrorage(key)
+                         } else {
+                              loginTrys -= 1
+                         }
                     } else {
                          loginTrys -= 1
                     }
                }
           } else {
-               message.innerHTML = 'Email is Incorrect';
-               message.classList.remove('d-none');
-               if (USERS[key].value.userData.timepassed) {
-                    keysettStrorage(key)
+               incorrect(message)
+               if (USERS[key]) {
+                    if (user[key].value.userData.timepassed) {
+                         keysettStrorage(key)
+                    } else {
+                         loginTrys -= 1
+                    }
                } else {
                     loginTrys -= 1
                }
@@ -62,6 +65,26 @@ async function login() {
      }
 }
 
+/**
+ * div container message innder html
+ * @param {string} message 
+ */
+function incorrect(message) {
+     message.innerHTML = 'Email or password is Incorrect';
+     message.classList.remove('d-none');
+}
+
+/**
+ * setting login trys frim storage
+ * @param {number} key 
+ */
+function timeoutcheck(key) {
+     if (USERS[key].value.userData.timepassed) {
+          if (USERS[key].value.userData.timepassed.logintrys > -1) {
+               loginTrys = USERS[key].value.userData.timepassed.logintrys;
+          }
+     }
+}
 
 /**
  * //check if email is already in user
@@ -146,3 +169,9 @@ async function keysettStrorage(key) {
      await setStorageData('users', JSON.stringify(USERS[key].value.userData.timepassed.logintrys -= 1))
 }
 
+function guestlogin() {
+     usersData = { 'userData': { key: 0, name: 'Guest', email: 'GuestTest@hotmail.de', password: 'password', failedAttemped: true } };
+     USERS[0] = { value: usersData };
+     setStorageData('users', JSON.stringify(USERS))
+     window.location.href = '/components/login/register.html';
+}

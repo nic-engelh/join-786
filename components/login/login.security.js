@@ -7,14 +7,9 @@
  * @param {variable} message 
  */
 function securitycheck(key, email, message) {
-    if (USERS[key].value.userData.timepassed) {
-        if (USERS[key].value.userData.timepassed.time == null) {
-            settime(key, email)
-        } else {
-            var objectTime = USERS[key].value.userData.timepassed.time;
-        }
+    if (checkkey(key, email)) {
+        var objectTime = checkkey(key, email);
     }
-
     let timepassed = new Date().getTime() - objectTime;
     message.classList.remove('d-none');
     message.innerHTML = `you have to wait ${timeout / 1000} Seconds!`;
@@ -27,7 +22,27 @@ function securitycheck(key, email, message) {
         if (timeobject(email)) {
             settime(key, email);
         } else {
-            console.log('something went wrong')
+            message.innerHTML = `your email is wrong you have to wait ${timeout / 1000} seconds`;
+        }
+    }
+}
+
+
+/**
+ * secuirity checking things
+ * @param {number} key 
+ * @param {string} email 
+ * @returns 
+ */
+function checkkey(key, email) {
+    if (USERS[key]) {
+        if (USERS[key].value.userData.timepassed) {
+            if (USERS[key].value.userData.timepassed.time == null) {
+                settime(key, email)
+            } else {
+                var objectTime = USERS[key].value.userData.timepassed.time;
+                return objectTime
+            }
         }
     }
 }
