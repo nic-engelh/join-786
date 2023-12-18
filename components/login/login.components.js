@@ -171,7 +171,7 @@ async function keysettStrorage(key) {
 
 function guestlogin() {
      usersData = { 'userData': { key: 0, name: 'Guest', email: 'GuestTest@hotmail.de', password: 'password', failedAttemped: true } };
-     USERS[0] = { value: usersData };
+     USERS[0] = { usersData };
      setStorageData('users', JSON.stringify(USERS))
      window.location.href = '/components/login/register.html';
 }
