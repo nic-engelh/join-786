@@ -17,9 +17,14 @@ body {
 }
 
 .add_task_h1 {
+
   padding: 128px 0 8px 16px;
   font-size: 47px;
   margin: 0;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  background-color: #f6f7f8;
 }
 
 .add_task_required {
@@ -252,7 +257,7 @@ ul {
   left: 0;
   right: 0;
   background-color: #F6F7F8;
-  margin-bottom: 200px;
+  margin-bottom: 50px;
   padding: 16px 0;
 }
 
