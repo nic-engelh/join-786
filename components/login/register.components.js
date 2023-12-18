@@ -28,12 +28,9 @@ async function register() {
      let passwordConfirm = document.getElementById('passwordConfirm').value;
      let key = Math.floor((Math.random() * 1000000) + 1);
      let notsame = document.getElementById('notsame');
-
-
      if (findUserByEmail(email)) {
           notsame.innerHTML = 'email is already in use';
           notsame.classList.remove('d-none')
-
      } else {
           if (checkPassword(password, passwordConfirm)) {
                usersData = { 'userData': { key: key, name: name, email: email, password: password, failedAttemped:true} };
@@ -63,7 +60,7 @@ function findUserByEmail(email) {
      } else {
           let usersArray = Object.values(USERS);
           let foundUser = usersArray.find(user =>
-               user.value.userData.email === email)
+               user.userData.email === email)
           return foundUser;
      }
 

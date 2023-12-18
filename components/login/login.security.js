@@ -14,7 +14,7 @@ function securitycheck(key, email, message) {
     message.classList.remove('d-none');
     message.innerHTML = `you have to wait ${timeout / 1000} Seconds!`;
     if (timepassed > timeout) {
-        loginTrys = USERS[key].value.userData.timepassed.logintrys = 2;
+        loginTrys = USERS[key].userData.timepassed.logintrys = 2;
         TimeTrue(key, email);
         message.innerHTML = `you can try again `;
         timeout *= 2
@@ -36,11 +36,11 @@ function securitycheck(key, email, message) {
  */
 function checkkey(key, email) {
     if (USERS[key]) {
-        if (USERS[key].value.userData.timepassed) {
-            if (USERS[key].value.userData.timepassed.time == null) {
+        if (USERS[key].userData.timepassed) {
+            if (USERS[key].userData.timepassed.time == null) {
                 settime(key, email)
             } else {
-                var objectTime = USERS[key].value.userData.timepassed.time;
+                var objectTime = USERS[key].userData.timepassed.time;
                 return objectTime
             }
         }
@@ -56,10 +56,10 @@ function checkkey(key, email) {
 function timeobject(email) {
     let usersArray = Object.values(USERS);
     let foundUser = usersArray.find(user =>
-        user.value.userData.email == email)
+        user.userData.email == email)
 
     if (foundUser) {
-        let failedTime = foundUser.value.userData.failedAttemped == true;
+        let failedTime = foundUser.userData.failedAttemped == true;
         return failedTime;
     } else {
         console.log('not found')
@@ -75,13 +75,13 @@ async function settime(key, email) {
     let time = new Date().getTime();
     let usersArray = Object.values(USERS);
     let founduser = usersArray.find(user =>
-        user.value.userData.email == email)
+        user.userData.email == email)
     if (founduser) {
-        founduser.value.userData.failedAttemped = false;
+        founduser.userData.failedAttemped = false;
     }
 
     if (key) {
-        USERS[key].value.userData.timepassed = { 'time': time, 'logintrys': 0 };
+        USERS[key].userData.timepassed = { 'time': time, 'logintrys': 0 };
         await setStorageData('users', JSON.stringify(USERS))
     } else {
         console.log('not found')
@@ -97,10 +97,10 @@ async function settime(key, email) {
 async function TimeTrue(key, email) {
     let usersArray = Object.values(USERS);
     let finduser = usersArray.find(user =>
-        user.value.userData.email == email)
+        user.userData.email == email)
     if (finduser) {
-        USERS[key].value.userData.failedAttemped = true;
-        USERS[key].value.userData.timepassed.time = null;
+        USERS[key].userData.failedAttemped = true;
+        USERS[key].userData.timepassed.time = null;
         await setStorageData('users', JSON.stringify(USERS))
     }
 }
