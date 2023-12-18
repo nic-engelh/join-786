@@ -1,4 +1,4 @@
-let usersData = {};
+let userData = {};
 
 /**
  * is the onload function 
@@ -33,8 +33,8 @@ async function register() {
           notsame.classList.remove('d-none')
      } else {
           if (checkPassword(password, passwordConfirm)) {
-               usersData = { 'userData': { key: key, name: name, email: email, password: password, failedAttemped:true} };
-               USERS[key] = { usersData };
+               userData = { 'userData': { key: key, name: name, email: email, password: password, failedAttemped:true} };
+               USERS[key] = userData;
                if (setStorageData('users', JSON.stringify(USERS))) {
                     console.log('something went wrong by setting storage ');
                     await popup();
