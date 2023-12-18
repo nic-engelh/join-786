@@ -5,7 +5,7 @@ body {
 }
 
 .d-none {
-  display: none;
+  display: none!important;
 }
 
 .add_task_form {
@@ -56,7 +56,7 @@ body {
   border-radius: 10px;
   border: 1px solid var(--Style, #d1d1d1);
   background: #fff;
-  color: #d1d1d1;
+  color: #000000;
   font-size: 16px;
   font-family: sans-serif;
   font-weight: 400;
@@ -170,10 +170,10 @@ body {
   gap: 8px;
 }
 
-.assigned_user_initials {
+#assigned_user_initials {
   display: flex;
-  margin-top: 8px;
-  margin-bottom: 30px;
+  flex-direction: row;
+  margin: 8px 0;
 }
 
 
