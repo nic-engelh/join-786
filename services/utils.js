@@ -46,3 +46,32 @@ function filterByVariable(array, variable, value) {
 function randomColor (){
   return Math.floor(Math.random()*16777215).toString(16);
 }
+
+/**
+ * functions adds and removes the class visually hidden
+ * 
+ * @param {string} elementId 
+ * @returns 
+ */
+function toggleHide (elementId) {
+  let element = document.getElementById(elementId);
+  element.classList.toggle("visually-hidden")
+  return true
+}
+
+/**
+ * functions opens target section and closes the remaining sections
+ * 
+ * @param {string} sectionID 
+ */
+function openSection (sectionID) {
+  let sections = ["sectionAddTasks", "sectionBoard", "sectionJoin360", "contact-list-background"];
+  for (const section of sections) {
+    let element = document.getElementById(section);
+    if (element.classList.contains('visually-hidden')){
+      continue;
+    }
+    element.classList.add('visually-hidden');
+  }
+  toggleHide(sectionID);
+}

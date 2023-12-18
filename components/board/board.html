@@ -1,24 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Join Board</title>
-  <link rel="stylesheet" href="/style.css" />
-  <link rel="stylesheet" href="/components/board/board.css" />
-  <link rel="stylesheet" href="/components/templates/header/header.css" />
-  <link rel="stylesheet" href="/components/templates/footer/footer.css" />
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-  <script src="/script.js"></script>
-  <script src="/components/board/board.js"></script>
-</head>
-
-<body onload="includeHTML() ,init()">
-  <div w3-include-html="/components/templates/header/header.html"></div>
-  <div w3-include-html="/components/templates/footer/footer.html"></div>
-
+<section id="sectionBoard" class="visually-hidden">
   <div class="board_h1">
     <h1>Board</h1>
     <div onclick="placeholder()" class="board_h1_img"><img src="/assets/img/board/board-plus.png" alt="add Task"></div>
@@ -70,6 +51,5 @@
       <!-- Placeholder bis JS intergriert wird-->
     </div>
   </div>
-</body>
+</section>
 
-</html>

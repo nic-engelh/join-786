@@ -261,11 +261,7 @@ function filterContactsByInitials(initial) {
     // to do: classlist.remove bei delete 
 }
 
-function toggleHide (elementId) {
-    let element = document.getElementById(elementId);
-    element.classList.toggle("visually-hidden")
-    return true
-}
+
 
 function clear () {
     return ``;
