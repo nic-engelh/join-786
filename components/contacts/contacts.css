@@ -572,8 +572,6 @@ fw-bold {
     height: 42px;
     flex-shrink: 0;
     border-radius: 42px;
-    background-color: #FF7A00;
-    fill: #FF7A00;
     stroke-width: 2px;
     stroke: var(--white, #FFF);
     display: flex;

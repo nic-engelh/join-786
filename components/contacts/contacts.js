@@ -1,12 +1,12 @@
 let ACTIVE_USER = '738927';
 
 let userContacts = [ 
-    {"name": "Benedikt Ziegler", "email": "benediktz@gmail.com", "phone": "+1234567", "contactId": "98765abc", "initials": "BZ", "color": "#812731"},
-    {"name": "Anton Mayer", "email": "antom@gmail.com","phone": "+1234567", "contactId": "12345abc", "initials": "AM", "color": "#3e59c2"},
-    {"name": "Helena Eissele", "email": "helenae@gmail.com","phone": "+1234567", "contactId": "97345oiu", "initials": "HE", "color": "#2b3430"},
-    {"name": "Izak Abraham", "email": "izaka@gmail.com","phone": "+1234567", "contactId": "12367oiu", "initials": "IA", "color": "#907ee1"},
-    {"name": "Anja Schulz", "email": "anjas@gmail.com","phone": "+1234567", "contactId": "12345ghf", "initials": "AS", "color": "#3e59c2"},
-    {"name": "David Eisenberg", "email": "davide@gmail.com","phone": "+1234567", "contactId": "12345oiu", "initials": "DE", "color": "#4f98ce"}
+    {"name": "Benedikt Ziegler", "email": "benediktz@gmail.com", "phone": "+1234567", "contactId": "98765abc", "initials": "BZ", "color": "812731"},
+    {"name": "Anton Mayer", "email": "antom@gmail.com","phone": "+1234567", "contactId": "12345abc", "initials": "AM", "color": "3e59c2"},
+    {"name": "Helena Eissele", "email": "helenae@gmail.com","phone": "+1234567", "contactId": "97345oiu", "initials": "HE", "color": "2b3430"},
+    {"name": "Izak Abraham", "email": "izaka@gmail.com","phone": "+1234567", "contactId": "12367oiu", "initials": "IA", "color": "907ee1"},
+    {"name": "Anja Schulz", "email": "anjas@gmail.com","phone": "+1234567", "contactId": "12345ghf", "initials": "AS", "color": "3e59c2"},
+    {"name": "David Eisenberg", "email": "davide@gmail.com","phone": "+1234567", "contactId": "12345oiu", "initials": "DE", "color": "4f98ce"}
 ]; 
 
 const abcString = 'ABCDEFGHIJKLMNOPQRSTUVWXYZÄÖÜ'; 
@@ -249,7 +249,8 @@ function changeProfilBadge(initials) {
     let badge = document.getElementById('contact-user-symbol-badge');
     let initialBox = document.getElementById('contact-user-symbol-initials');
     initialBox.innerHTML = initials;
-    badge.style.backgroundColor = "#" + randomColor();
+    setBadgeColor(color, badge);
+    // TODO add setbadgecolor 
 }
 
 
@@ -266,8 +267,8 @@ function filterContactsByInitials(initial) {
 
   function setBadgeColor (color, elementId) {
     let badge = document.getElementById(elementId);
-    setContactStyleColor (color, id);
-    badge.classList.add(color);
+    setContactStyleColor (color, elementId);
+    badge.classList.add(`color${color}`);
     // to do: classlist.remove bei delete 
 }
 
@@ -281,9 +282,10 @@ function clear () {
     return ``;
 }
 
- function setContactStyleColor (color, id) {
-    let style = document.createElement(id);
-    document.head.appendChild(style);
-    style.sheet.insertRule(`.${color} {backgroundcolor: #${color}}`);
+ function setContactStyleColor (color) {
+    let styleSheet = window.document.styleSheets[0];    
+    let string = `.color${color} { background-color: #${color}; }`;
+    styleSheet.insertRule(string, styleSheet.cssRules.length);
     return true
  }
+
