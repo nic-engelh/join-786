@@ -41,7 +41,7 @@ async function login() {
                } else {
                     incorrect(message)
                     if (USERS[key]) {
-                         if (user[key].value.userData.timepassed) {
+                         if (user[key].userData.timepassed) {
                               keysettStrorage(key)
                          } else {
                               loginTrys -= 1
@@ -53,7 +53,7 @@ async function login() {
           } else {
                incorrect(message)
                if (USERS[key]) {
-                    if (user[key].value.userData.timepassed) {
+                    if (user[key].userData.timepassed) {
                          keysettStrorage(key)
                     } else {
                          loginTrys -= 1
@@ -79,9 +79,9 @@ function incorrect(message) {
  * @param {number} key 
  */
 function timeoutcheck(key) {
-     if (USERS[key].value.userData.timepassed) {
-          if (USERS[key].value.userData.timepassed.logintrys > -1) {
-               loginTrys = USERS[key].value.userData.timepassed.logintrys;
+     if (USERS[key].userData.timepassed) {
+          if (USERS[key].userData.timepassed.logintrys > -1) {
+               loginTrys = USERS[key].userData.timepassed.logintrys;
           }
      }
 }
@@ -98,11 +98,9 @@ function checkEmailLogin(email) {
      } else {
           let usersArray = Object.values(USERS);
           let foundUser = usersArray.find(user =>
-               user.value.userData.email === email)
+               user.userData.email === email)
           return foundUser;
      }
-
-
 }
 
 /**
@@ -113,11 +111,10 @@ function checkEmailLogin(email) {
 function checkPasswordLogin(password) {
      if (USERS.length == 0) {
           console.log('passwort ist falsch')
-
      } else {
           let usersArray = Object.values(USERS);
           let foundUser = usersArray.find(user =>
-               user.value.userData.password === password)
+               user.userData.password === password)
           return foundUser;
      }
 }
@@ -152,10 +149,10 @@ function passwordVisible() {
 function findkey(email) {
      let usersArray = Object.values(USERS);
      let foundUser = usersArray.find(user =>
-          user.value.userData.email == email)
+          user.userData.email == email)
 
      if (foundUser) {
-          let key = foundUser.value.userData.key;
+          let key = foundUser.userData.key;
           return key;
      } else {
           console.log('not found')
@@ -166,7 +163,7 @@ function findkey(email) {
  * @param {number} key 
  */
 async function keysettStrorage(key) {
-     await setStorageData('users', JSON.stringify(USERS[key].value.userData.timepassed.logintrys -= 1))
+     await setStorageData('users', JSON.stringify(USERS[key].userData.timepassed.logintrys -= 1))
 }
 
 function guestlogin() {
