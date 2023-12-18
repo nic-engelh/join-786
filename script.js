@@ -16,6 +16,7 @@ async function includeHTML() {
 async function init() {
 	await includeHTML();
 	await loadusers();
+	getUserContactsFromUSERS ()
 	renderContactList();
 	await loadAssignableNames();
 }

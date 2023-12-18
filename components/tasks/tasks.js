@@ -1,6 +1,5 @@
 
 // userContacts = USERS[ACTIVEUSERKEY][contacts]; 
-userContacts = USERS[0].contacts.contacts; 
 
 let assignedToTask = [];
 let assignedInitial = [];
@@ -11,6 +10,10 @@ let subtasksArray = {
     'subtaskContent': [],
     'subtaskStatus': []
 };
+
+function getUserContactsFromUSERS () {
+    userContacts = USERS["guest"].contacts; 
+}
 
 async function getTaskValue() {
     let dateCreated = new Date().getTime();
