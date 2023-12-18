@@ -2,11 +2,11 @@ let todos = [{
     'headline': 'UserStory',
     'title': 'Kochwelt Page',
     'description': 'page start decription',
-    'subtask':  '1/2 Subtasks',
-    'persons':3,
+    'subtask': '1/2 Subtasks',
+    'persons': 3,
     'category': 'todo',
-    'tasks':3,
-    'tasksdone':1,
+    'tasks': 3,
+    'tasksdone': 1,
     'id': 0,
 },];
 
@@ -18,74 +18,61 @@ function init() {
     updateHTML()
 }
 
+/**
+ * main code for tasks
+ */
 function updateHTML() {
-    //todo//
+    ///////////////////////todo//////////////////////
     let todo = todos.filter(t => t['category'] == 'todo');
-
     document.getElementById('todo').innerHTML = '';
     if (todo.length == 0) {
-        document.getElementById('todo').classList.add('noTask')
-        document.getElementById('todo').innerHTML = 'No tasks To do'
-
+        noTask('todo')
     } else {
-        document.getElementById('todo').classList.remove('noTask')
-        for (let index = 0; index < todo.length; index++) {
-            const element = todo[index];
-            document.getElementById('todo').innerHTML += generateTodoHTML(element);
-        }
+        task('todo')
+        forFunction(todo, 'todo')
     }
-
-    //in progress//
+    /////////////////in progress////////////////////
     let progress = todos.filter(t => t['category'] == 'inProgress');
-
     document.getElementById('inProgress').innerHTML = '';
     if (progress.length == 0) {
-        document.getElementById('inProgress').classList.add('noTask')
-        document.getElementById('inProgress').innerHTML = 'No tasks in progress'
-
+        noTask('inProgress')
     } else {
-        document.getElementById('inProgress').classList.remove('noTask')
-        for (let index = 0; index < progress.length; index++) {
-            const element = progress[index];
-            document.getElementById('inProgress').innerHTML += generateTodoHTML(element);
-        }
+        task('inProgress')
+        forFunction(progress, 'inProgress')
     }
-    //feedback//
+    /////////////////////feedback/////////////////////
     let feedback = todos.filter(t => t['category'] == 'feedback');
-
     document.getElementById('feedback').innerHTML = '';
     if (feedback.length == 0) {
-        document.getElementById('feedback').classList.add('noTask')
-        document.getElementById('feedback').innerHTML = 'No tasks in feedback'
-
+        noTask('feedback')
     } else {
-        document.getElementById('feedback').classList.remove('noTask')
-        for (let index = 0; index < feedback.length; index++) {
-            const element = feedback[index];
-            document.getElementById('feedback').innerHTML += generateTodoHTML(element);
-        }
+        task('feedback')
+        forFunction(feedback, 'feedback')
     }
-    //done//
+    /////////////done///////////////
     let done = todos.filter(t => t['category'] == 'done');
-
     document.getElementById('done').innerHTML = '';
     if (done.length == 0) {
-        document.getElementById('done').classList.add('noTask')
-        document.getElementById('done').innerHTML = 'No tasks in done'
-
+        noTask('done')
     } else {
-        document.getElementById('done').classList.remove('noTask')
-        for (let index = 0; index < done.length; index++) {
-            const element = done[index];
-            document.getElementById('done').innerHTML += generateTodoHTML(element);
-        }
+        task('done')
+        forFunction(done, 'done')
     }
 }
 
+/**which id will be dropped
+ * 
+ * @param {string} id 
+ */
 function startDragging(id) {
     currentDraggedElement = id;
 }
 
+/**
+ * html codes
+ * @param {string} element 
+ * @returns html code
+ */
 function generateTodoHTML(element) {
     return `
     <div class ="todo">
@@ -104,19 +91,64 @@ function generateTodoHTML(element) {
     </div>`;
 }
 
+/**allows to drop and element
+ * 
+ * @param {*} ev 
+ */
 function allowDrop(ev) {
     ev.preventDefault();
 }
 
+/**
+ * for drag and drop movement
+ * @param {string} category 
+ */
 function moveTo(category) {
     todos[currentDraggedElement]['category'] = category;
     updateHTML();
 }
 
+/**
+ * add a class
+ * @param {string} id 
+ */
 function highlight(id) {
     document.getElementById(id).classList.add('drag-area-highlight');
 }
 
+/**
+ * remove a class
+ * @param {string} id 
+ */
 function removeHighlight(id) {
     document.getElementById(id).classList.remove('drag-area-highlight');
+}
+
+/**
+ * for schleife for tasks
+ * @param {array} id 
+ * @param {string} name 
+ */
+function forFunction(id, name) {
+    for (let index = 0; index < id.length; index++) {
+        const element = id[index];
+        document.getElementById(`${name}`).innerHTML += generateTodoHTML(element);
+    }
+}
+
+/**
+ * remove and add class
+ * @param {string} id 
+ */
+function noTask(id) {
+    document.getElementById(`${id}`).classList.add('noTask')
+    document.getElementById(`${id}`).innerHTML = 'No tasks in done'
+}
+
+/**
+ * remove classes
+ * @param {string} id 
+ */
+function task(id) {
+    document.getElementById(`${id}`).classList.remove('noTask')
 }
