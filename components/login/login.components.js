@@ -179,7 +179,9 @@ function guestlogin() {
           {"name": "David Eisenberg", "email": "davide@gmail.com","phone": "+1234567", "contactId": "12345oiu", "initials": "DE", "color": "4f98ce"}
       ];
      userData = { key: 0, name: 'Guest', email: 'GuestTest@hotmail.de', password: 'password', failedAttemped: true };
+     // initalize entry with key guest and empty value as an object
      USERS["guest"] = {};
+     // add an object into guest object; bracket string is going to be the key
      USERS["guest"]["userData"] = userData ;
      USERS["guest"]["contacts"] = contacts ;
      setStorageData('users', JSON.stringify(USERS))
