@@ -215,7 +215,9 @@ function deleteContact (contactID, bool) {
 }
 
 function removeElemente(elementId) {
-    document.getElementById(elementId).remove();
+    let element = document.getElementById(elementId);
+    if (!element) { return false; }
+    element.remove();
     return true
 }
 
