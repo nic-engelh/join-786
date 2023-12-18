@@ -11,10 +11,6 @@ let subtasksArray = {
     'subtaskStatus': []
 };
 
-function getUserContactsFromUSERS () {
-    userContacts = USERS["guest"].contacts; 
-}
-
 async function getTaskValue() {
     let dateCreated = new Date().getTime();
     let id = randomString();

@@ -75,3 +75,11 @@ function openSection (sectionID) {
   }
   toggleHide(sectionID);
 }
+
+/**
+ * Functions loads / sets from USERS all important variables for further use
+ * 
+ */
+function setVariables () {
+  userContacts = USERS["guest"].contacts; 
+}
