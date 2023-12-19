@@ -1,4 +1,4 @@
-body {
+#sectionJoin360 {
     margin: 0px;
     background: #F6F7F8;
     font-family: 'Inter', sans-serif;
@@ -6,7 +6,7 @@ body {
     margin-bottom: 270px;
 }
 
-#mobileVersion {
+#j36_mobileVersion {
     width: 428px;
     height: 926px;
     background-color: #F6F7F8;
@@ -15,19 +15,19 @@ body {
 }
 
 
-.headline {
+.j36_headline {
     padding-top: 10px;
     width: 223px;
     height: 104px;
     gap: 16px;
 }
 
-.underLine {
+.j36_underLine {
     width: 90px;
     border-top: 3px solid #29ABE2;
 }
 
-.slogan {
+.j36_slogan {
     font-size: 20px;
     font-style: normal;
     font-weight: 400;
@@ -41,13 +41,13 @@ h1 {
     font-weight: 700;
 }
 
-#tasksMenu {
+#j36_tasksMenu {
     width: 396px;
     height: 384px;
     flex-shrink: 0;
 }
 
-.toDo {
+.j36_toDo {
     margin-top: 105px;
     display: flex;
     width: 148px;
@@ -66,12 +66,12 @@ h1 {
     text-align: center;
 }
 
-#toDo img {
+#j36_toDo img {
     width: 40px;
     height: 40px;
 }
 
-.todoText {
+.j36_todoText {
     color: #2A3647;
     font-family: Inter;
     font-size: 14px;
@@ -81,11 +81,11 @@ h1 {
     /* 16.8px */
 }
 
-.numberPosition {
+.j36_numberPosition {
     flex-direction: column;
 }
 
-.toDoDone {
+.j36_toDoDone {
     margin-top: 105px;
     display: flex;
     width: 70px;
@@ -104,13 +104,13 @@ h1 {
     text-align: center;
 }
 
-.ToDoPosition {
+.j36_ToDoPosition {
     display: flex;
     align-items: center;
     gap: 24px;
 }
 
-.UrgentDeadline {
+.j36_UrgentDeadline {
     margin-top: 30px;
     display: flex;
     width: 396px;
@@ -123,7 +123,7 @@ h1 {
     box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.10);
 }
 
-.urgent {
+.j36_urgent {
     display: flex;
     align-items: center;
     font-size: 47px;
@@ -134,7 +134,7 @@ h1 {
     gap: 18px;
 }
 
-.partingLine {
+.j36_partingLine {
     height: 68px;
     flex-shrink: 0;
     border-left: 2px solid #D1D1D1;
@@ -142,15 +142,15 @@ h1 {
     flex-shrink: 0;
 }
 
-.image1 {
+.j36_image1 {
     z-index: 0;
 }
 
-.image2 {
+.j36_image2 {
     z-index: 1;
 }
 
-.Date {
+.j36_Date {
     flex-direction: column;
     align-items: flex-start;
     gap: 8px;
@@ -163,7 +163,7 @@ h2 {
     font-weight: 700;
 }
 
-.dateText {
+.j36_dateText {
     color: #2A3647;
     font-family: Inter;
     font-size: 14px;
@@ -171,7 +171,7 @@ h2 {
     font-weight: 400;
 }
 
-.TaskProgress {
+.j36_TaskProgress {
     margin-top: 18px;
     display: flex;
     width: 396px;
@@ -182,7 +182,7 @@ h2 {
     flex-shrink: 0;
 }
 
-.AllTheTasks {
+.j36_AllTheTasks {
     display: flex;
     width: 116px;
     height: 66px;
@@ -205,7 +205,7 @@ h2 {
     line-height: 120%;
 }
 
-.numberOfTasks {
+.j36_numberOfTasks {
     color: #000;
     text-align: center;
     font-family: Inter;
@@ -214,15 +214,15 @@ h2 {
     font-weight: 600;
     line-height: 120%;
 }
-.toDo:hover{
+.j36_toDo:hover{
     cursor: pointer;
 }
-.toDoDone:hover{
+.j36_toDoDone:hover{
     cursor: pointer;
 }
-.urgent:hover{
+.j36_urgent:hover{
     cursor: pointer;
 }
-.AllTheTasks:hover{
+.j36_AllTheTasks:hover{
     cursor: pointer;
 }

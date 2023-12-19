@@ -1,12 +1,5 @@
-let userContacts = [ 
-    {"name": "Benedikt Ziegler", "email": "benediktz@gmail.com", "phone": "+1234567", "contactId": "98765abc", "initials": "BZ", "color": "#812731"},
-    {"name": "Anton Mayer", "email": "antom@gmail.com","phone": "+1234567", "contactId": "12345abc", "initials": "AM", "color": "#3e59c2"},
-    {"name": "Helena Eissele", "email": "helenae@gmail.com","phone": "+1234567", "contactId": "97345oiu", "initials": "HE", "color": "#2b3430"},
-    {"name": "Izak Abraham", "email": "izaka@gmail.com","phone": "+1234567", "contactId": "12367oiu", "initials": "IA", "color": "#907ee1"},
-    {"name": "Anja Schulz", "email": "anjas@gmail.com","phone": "+1234567", "contactId": "12345ghf", "initials": "AS", "color": "#3e59c2"},
-    {"name": "David Eisenberg", "email": "davide@gmail.com","phone": "+1234567", "contactId": "12345oiu", "initials": "DE", "color": "#4f98ce"}
-]; 
-// let userContactsClone = USERS.ACTIVEUSER.userContacts; 
+
+// userContacts = USERS[ACTIVEUSERKEY][contacts]; 
 
 let assignedToTask = [];
 let assignedInitial = [];
@@ -53,8 +46,8 @@ function pushTask(dateCreated, id, title, description, user, date, prio, categor
 
 function pushUSERS(){
     USERS.ACTIVEUSER.tasks = tasks
+    // USERS.Guest.tasks = tasks
 }
-
 
 function resetTask() {
     document.getElementById('task_title').value = '';
@@ -278,11 +271,11 @@ function loadAssignableNames() {
     for (let i = 0; i < userContacts.length; i++) {
         const initial = userContacts[i]["initials"];
         const name = userContacts[i]["name"];
-        let color = userContacts[i]["color"];
+        const color = userContacts[i]["color"];
         selectElement.innerHTML += `
             <li onclick="chooseContact(${i})" id="toggle_name${i}" class="assigned_user_li">
                 <div class="task_contacts_name_initials">
-                    <div id="initials_img${i}" class="assigned_initials" style="background-color:${color};">${initial}</div>
+                    <div id="initials_img${i}" class="assigned_initials" style="background-color:#${color};">${initial}</div>
                     <span id="assigned_name_span">${name}</span>
                 </div>
                 <img class="checkbox" id="checkbox${i}" src="/assets/img/addTask/check_empty.png">
@@ -338,7 +331,7 @@ function showAssignedInitials(i) {
     for (let j = 0; j < assignedInitial.length; j++) {
         const displayedInitial = assignedInitial[j];
         let color = userContacts[j]["color"];            
-        container.innerHTML += `<span id="assigned_initials${i}" class="assigned_initials" style="background-color:${color};">${displayedInitial}</span>`;
+        container.innerHTML += `<span id="assigned_initials${i}" class="assigned_initials" style="background-color:#${color};">${displayedInitial}</span>`;
     }
 }
 
