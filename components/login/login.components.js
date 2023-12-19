@@ -27,22 +27,22 @@ async function login() {
      let password = document.getElementById('password').value;
      let message = document.getElementById('message');
 
-     if (findkey(email)) {
-          var key = findkey(email)
-          timeoutcheck(key)
+     if (findKey(email)) {
+          var key = findKey(email)
+          timeOutCheck(key)
      }
      if (loginTrys == 0) {
-          securitycheck(key, email, message)
+          securityCheck(key, email, message)
      } else {
           if (checkEmailLogin(email)) {
                if (checkPasswordLogin(password)) {
                     ACTIVEUSERKEY = key;
                     console.log('eingeloggt')
                } else {
-                    incorrect(message)
+                    inCorrect(message)
                     if (USERS[key]) {
-                         if (user[key].userData.timepassed) {
-                              keysettStrorage(key)
+                         if (USERS[key].userData.timepassed) {
+                              keySettStrorage(key)
                          } else {
                               loginTrys -= 1
                          }
@@ -51,10 +51,10 @@ async function login() {
                     }
                }
           } else {
-               incorrect(message)
+               inCorrect(message)
                if (USERS[key]) {
                     if (user[key].userData.timepassed) {
-                         keysettStrorage(key)
+                         keySettStrorage(key)
                     } else {
                          loginTrys -= 1
                     }
@@ -69,7 +69,7 @@ async function login() {
  * div container message innder html
  * @param {string} message 
  */
-function incorrect(message) {
+function inCorrect(message) {
      message.innerHTML = 'Email or password is Incorrect';
      message.classList.remove('d-none');
 }
@@ -78,7 +78,7 @@ function incorrect(message) {
  * setting login trys frim storage
  * @param {number} key 
  */
-function timeoutcheck(key) {
+function timeOutCheck(key) {
      if (USERS[key].userData.timepassed) {
           if (USERS[key].userData.timepassed.logintrys > -1) {
                loginTrys = USERS[key].userData.timepassed.logintrys;
@@ -122,7 +122,7 @@ function checkPasswordLogin(password) {
 /**
  * from login to register html
  */
-function signup() {
+function signUp() {
      window.location.href = '/components/login/register.html';
 }
 
@@ -146,7 +146,7 @@ function passwordVisible() {
  * @param {string} email email from the person who trys to log in
  * @returns key
  */
-function findkey(email) {
+function findKey(email) {
      let usersArray = Object.values(USERS);
      let foundUser = usersArray.find(user =>
           user.userData.email == email)
@@ -162,11 +162,11 @@ function findkey(email) {
  * sets storage with new data
  * @param {number} key 
  */
-async function keysettStrorage(key) {
+async function keySettStrorage(key) {
      await setStorageData('users', JSON.stringify(USERS[key].userData.timepassed.logintrys -= 1))
 }
 
-function guestlogin() {
+function guestLogin() {
      contacts =[ 
           {"name": "Benedikt Ziegler", "email": "benediktz@gmail.com", "phone": "+1234567", "contactId": "98765abc", "initials": "BZ", "color": "812731"},
           {"name": "Anton Mayer", "email": "antom@gmail.com","phone": "+1234567", "contactId": "12345abc", "initials": "AM", "color": "3e59c2"},

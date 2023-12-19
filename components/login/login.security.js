@@ -6,23 +6,23 @@
  * @param {string} email 
  * @param {variable} message 
  */
-function securitycheck(key, email, message) {
-    if (checkkey(key, email)) {
-        var objectTime = checkkey(key, email);
+function securityCheck(key, email, message) {
+    if (checkKey(key, email)) {
+        var objectTime = checkKey(key, email);
     }
     let timepassed = new Date().getTime() - objectTime;
     message.classList.remove('d-none');
     message.innerHTML = `you have to wait ${timeout / 1000} Seconds!`;
     if (timepassed > timeout) {
         loginTrys = USERS[key].userData.timepassed.logintrys = 2;
-        TimeTrue(key, email);
+        timeTrue(key, email);
         message.innerHTML = `you can try again `;
         timeout *= 2
     } else {
-        if (timeobject(email)) {
-            settime(key, email);
+        if (timeObject(email)) {
+            setTime(key, email);
         } else {
-            message.innerHTML = `your email is wrong you have to wait ${timeout / 1000} seconds`;
+            message.innerHTML = `your email or Password is wrong you have to wait ${timeout / 1000} seconds`;
         }
     }
 }
@@ -34,11 +34,11 @@ function securitycheck(key, email, message) {
  * @param {string} email 
  * @returns 
  */
-function checkkey(key, email) {
+function checkKey(key, email) {
     if (USERS[key]) {
         if (USERS[key].userData.timepassed) {
             if (USERS[key].userData.timepassed.time == null) {
-                settime(key, email)
+                setTime(key, email)
             } else {
                 var objectTime = USERS[key].userData.timepassed.time;
                 return objectTime
@@ -53,7 +53,7 @@ function checkkey(key, email) {
  * @returns true or false
  */
 
-function timeobject(email) {
+function timeObject(email) {
     let usersArray = Object.values(USERS);
     let foundUser = usersArray.find(user =>
         user.userData.email == email)
@@ -71,7 +71,7 @@ function timeobject(email) {
  * @param {number} key 
  * @param {string} email 
  */
-async function settime(key, email) {
+async function setTime(key, email) {
     let time = new Date().getTime();
     let usersArray = Object.values(USERS);
     let founduser = usersArray.find(user =>
@@ -94,7 +94,7 @@ async function settime(key, email) {
  * @param {number} key 
  * @param {string} email 
  */
-async function TimeTrue(key, email) {
+async function timeTrue(key, email) {
     let usersArray = Object.values(USERS);
     let finduser = usersArray.find(user =>
         user.userData.email == email)
