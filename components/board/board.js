@@ -32,8 +32,12 @@ function updateHTML() {
     updateDone();
 }
 
+/**
+ * function filters all tasks with status todo
+ * 
+ */
 function updateToDo () {
-    let todo = todos.filter(t => t['status'].toLowerCase().replace(" ","") == 'todo');
+    let todo = todos.filter(t => t['status'].toLowerCase().replaceAll(" ","") == 'todo');
     document.getElementById('todo').innerHTML = '';
     if (todo.length == 0) {
         noTask('todo');
@@ -43,8 +47,13 @@ function updateToDo () {
     }
 }
 
+
+/**
+ * function filters all tasks with status "inprogress"
+ * 
+ */
 function updateInProgress () {
-    let progress = todos.filter(t => t['status'].toLowerCase().replace(" ","") == 'inProgress');
+    let progress = todos.filter(t => t['status'].toLowerCase().replaceAll(" ","") == 'inprogress');
     document.getElementById('inProgress').innerHTML = '';
     if (progress.length == 0) {
         noTask('inProgress');
@@ -54,8 +63,12 @@ function updateInProgress () {
     }
 }
 
+/**
+ * function filters all taks with status "feedback"
+ * 
+ */
 function updateFeedback () {
-    let feedback = todos.filter(t => t['status'].toLowerCase().replace(" ","") == 'feedback');
+    let feedback = todos.filter(t => t['status'].toLowerCase().replaceAll(" ","") == 'feedback');
     document.getElementById('feedback').innerHTML = '';
     if (feedback.length == 0) {
         noTask('feedback');
@@ -65,8 +78,12 @@ function updateFeedback () {
     }
 }
 
+/**
+ * function filters all tasks with status "done"
+ * 
+ */
 function updateDone () {
-    let done = todos.filter(t => t['status'].toLowerCase().replace(" ","") == 'done');
+    let done = todos.filter(t => t['status'].toLowerCase().replaceAll(" ","") == 'done');
     document.getElementById('done').innerHTML = '';
     if (done.length == 0) {
         noTask('done');
