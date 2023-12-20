@@ -6,27 +6,30 @@
 }
 
 #j36_mobileVersion {
-    width: 428px;
+
     background-color: #F6F7F8;
     margin-right: 16px;
     margin-left: 16px;
 }
 
-
 .j36_headline {
+    display: flex;
+    align-items: center;
     padding-top: 10px;
-    width: 223px;
+    width: 800px;
     height: 104px;
     gap: 16px;
 }
 
+
 .j36_underLine {
-    width: 90px;
+    transform: rotate(90deg);
+    width: 46px;
     border-top: 3px solid #29ABE2;
 }
 
 .j36_slogan {
-    font-size: 20px;
+    font-size: 27px;
     font-style: normal;
     font-weight: 400;
 }
@@ -34,27 +37,26 @@
 h1 {
     color: #000;
     font-family: Inter;
-    font-size: 47px;
+    font-size: 61px;
     font-style: normal;
     font-weight: 700;
 }
 
 #j36_tasksMenu {
-    width: 396px;
-    height: 384px;
-    flex-shrink: 0;
+    width: 50%;
+    gap: 28px;
 }
 
 .j36_toDo {
     margin-top: 105px;
     display: flex;
-    width: 148px;
+    width: 130px;
+    min-width: 130px;
     height: 34px;
-    padding: 38px 19px;
+    padding: 38px 58px;
     justify-content: center;
     align-items: center;
     gap: 10px;
-    flex-shrink: 0;
     border-radius: 20px;
     background: var(--white, #FFF);
     box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.10);
@@ -76,7 +78,6 @@ h1 {
     font-style: normal;
     font-weight: 400;
     line-height: 120%;
-    /* 16.8px */
 }
 
 .j36_numberPosition {
@@ -86,13 +87,13 @@ h1 {
 .j36_toDoDone {
     margin-top: 105px;
     display: flex;
-    width: 70px;
+    width: 130px;
+    min-width: 130px;
     height: 34px;
     padding: 38px 58px;
     justify-content: center;
     align-items: center;
     gap: 10px;
-    flex-shrink: 0;
     border-radius: 20px;
     background: var(--white, #FFF);
     box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.10);
@@ -111,11 +112,10 @@ h1 {
 .j36_UrgentDeadline {
     margin-top: 30px;
     display: flex;
-    width: 396px;
+    width: 520px;
     height: 110px;
     padding: 28px 0px;
     align-items: center;
-    flex-shrink: 0;
     border-radius: 20px;
     background: var(--white, #FFF);
     box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.10);
@@ -129,7 +129,7 @@ h1 {
     font-weight: 600;
     text-align: center;
     padding-left: 56px;
-    gap: 18px;
+    gap: 30px;
 }
 
 .j36_partingLine {
@@ -172,7 +172,7 @@ h2 {
 .j36_TaskProgress {
     margin-top: 18px;
     display: flex;
-    width: 396px;
+    width: 510px;
     height: 116px;
     justify-content: center;
     align-items: flex-start;
@@ -182,7 +182,7 @@ h2 {
 
 .j36_AllTheTasks {
     display: flex;
-    width: 116px;
+    width: 160px;
     height: 66px;
     padding: 25px 0px;
     flex-direction: column;
@@ -212,15 +212,99 @@ h2 {
     font-weight: 600;
     line-height: 120%;
 }
-.j36_toDo:hover{
+
+.j36_toDo:hover {
     cursor: pointer;
 }
-.j36_toDoDone:hover{
+
+.j36_toDoDone:hover {
     cursor: pointer;
 }
-.j36_urgent:hover{
+
+.j36_urgent:hover {
     cursor: pointer;
 }
-.j36_AllTheTasks:hover{
+
+.j36_AllTheTasks:hover {
     cursor: pointer;
+}
+
+@media(max-width:700px) {
+    .j36_headline {
+        display: flex;
+        align-items: self-start;
+        flex-direction: column;
+        padding-top: 10px;
+        width: 250px;
+        height: 104px;
+        gap: 0px;
+    }
+
+    .j36_underLine {
+        transform: rotate(180deg);
+        width: 90px;
+        border-top: 3px solid #29ABE2;
+        position: absolute;
+        top: 260px;
+
+    }
+
+    .j36_slogan {
+        margin-top: -10px;
+        font-size: 20px;
+    }
+
+    h1 {
+        color: #000;
+        font-family: Inter;
+        font-size: 47px;
+        font-style: normal;
+        font-weight: 700;
+    }
+}
+
+@media(max-width:550px) {
+
+    #j36_tasksMenu {
+        width: 100%;
+        flex-shrink: 0;
+    }
+
+    .j36_toDoDone {
+        width: 100%;
+        min-width: 0px !important;
+    }
+
+    .j36_toDo {
+        width: 100%;
+        min-width: 0px  !important;
+    }
+    .j36_ToDoPosition {
+        display: flex;
+        align-items: center;
+        gap: 24px;
+        width: 100%;
+    }
+    .j36_UrgentDeadline {
+        max-width: 60%;
+        min-width: 100%;
+    }
+    .j36_urgent {
+        padding-left: 20px;
+        gap: 10px;
+    }
+    .j36_todoText {
+        font-size: 15px;
+        text-align: center;
+        min-width: 50px;
+    }
+    .j36_TaskProgress {
+        width: 100%;
+    }
+    .j36_AllTheTasks {
+        width: 29%;
+        font-size: 15px;
+    }
+    
+    
 }
