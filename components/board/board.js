@@ -19,7 +19,7 @@ function placeholder() {
 }
 
 function init() {
-    updateHTML()
+    updateHTML();
 }
 
 /**
@@ -33,46 +33,46 @@ function updateHTML() {
 }
 
 function updateToDo () {
-    let todo = todos.filter(t => t['status'] == 'todo');
+    let todo = todos.filter(t => t['status'].toLowerCase().replace(" ","") == 'todo');
     document.getElementById('todo').innerHTML = '';
     if (todo.length == 0) {
-        noTask('todo')
+        noTask('todo');
     } else {
-        task('todo')
-        forFunction(todo, 'todo')
+        task('todo');
+        forFunction(todo, 'todo');
     }
 }
 
 function updateInProgress () {
-    let progress = todos.filter(t => t['status'] == 'inProgress');
+    let progress = todos.filter(t => t['status'].toLowerCase().replace(" ","") == 'inProgress');
     document.getElementById('inProgress').innerHTML = '';
     if (progress.length == 0) {
-        noTask('inProgress')
+        noTask('inProgress');
     } else {
-        task('inProgress')
-        forFunction(progress, 'inProgress')
+        task('inProgress');
+        forFunction(progress, 'inProgress');
     }
 }
 
 function updateFeedback () {
-    let feedback = todos.filter(t => t['status'] == 'feedback');
+    let feedback = todos.filter(t => t['status'].toLowerCase().replace(" ","") == 'feedback');
     document.getElementById('feedback').innerHTML = '';
     if (feedback.length == 0) {
-        noTask('feedback')
+        noTask('feedback');
     } else {
-        task('feedback')
-        forFunction(feedback, 'feedback')
+        task('feedback');
+        forFunction(feedback, 'feedback');
     }
 }
 
 function updateDone () {
-    let done = todos.filter(t => t['status'] == 'done');
+    let done = todos.filter(t => t['status'].toLowerCase().replace(" ","") == 'done');
     document.getElementById('done').innerHTML = '';
     if (done.length == 0) {
-        noTask('done')
+        noTask('done');
     } else {
-        task('done')
-        forFunction(done, 'done')
+        task('done');
+        forFunction(done, 'done');
     }
 }
 
