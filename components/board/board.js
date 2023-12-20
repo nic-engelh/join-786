@@ -4,61 +4,95 @@ let todos = [{
     'description': 'page start decription',
     'subtask': '1/2 Subtasks',
     'persons': 3,
-    'category': 'todo',
+    'status': 'todo',
     'tasks': 3,
     'tasksdone': 1,
     'id': 0,
 },];
 
-
+//let toDos = USERS[ACTIVEUSERKEY].tasks;
 
 let currentDraggedElement;
 
+function placeholder() {
+    return true;
+}
+
 function init() {
-    updateHTML()
+    updateHTML();
 }
 
 /**
  * main code for tasks
  */
 function updateHTML() {
-    ///////////////////////todo//////////////////////
-    let todo = todos.filter(t => t['category'] == 'todo');
+    updateToDo();
+    updateInProgress();
+    updateFeedback();
+    updateDone();
+}
+
+/**
+ * function filters all tasks with status todo
+ * 
+ */
+function updateToDo () {
+    let todo = todos.filter(t => t['status'].toLowerCase().replaceAll(" ","") == 'todo');
     document.getElementById('todo').innerHTML = '';
     if (todo.length == 0) {
-        noTask('todo')
+        noTask('todo');
     } else {
-        task('todo')
-        forFunction(todo, 'todo')
-    }
-    /////////////////in progress////////////////////
-    let progress = todos.filter(t => t['category'] == 'inProgress');
-    document.getElementById('inProgress').innerHTML = '';
-    if (progress.length == 0) {
-        noTask('inProgress')
-    } else {
-        task('inProgress')
-        forFunction(progress, 'inProgress')
-    }
-    /////////////////////feedback/////////////////////
-    let feedback = todos.filter(t => t['category'] == 'feedback');
-    document.getElementById('feedback').innerHTML = '';
-    if (feedback.length == 0) {
-        noTask('feedback')
-    } else {
-        task('feedback')
-        forFunction(feedback, 'feedback')
-    }
-    /////////////done///////////////
-    let done = todos.filter(t => t['category'] == 'done');
-    document.getElementById('done').innerHTML = '';
-    if (done.length == 0) {
-        noTask('done')
-    } else {
-        task('done')
-        forFunction(done, 'done')
+        task('todo');
+        forFunction(todo, 'todo');
     }
 }
+
+
+/**
+ * function filters all tasks with status "inprogress"
+ * 
+ */
+function updateInProgress () {
+    let progress = todos.filter(t => t['status'].toLowerCase().replaceAll(" ","") == 'inprogress');
+    document.getElementById('inProgress').innerHTML = '';
+    if (progress.length == 0) {
+        noTask('inProgress');
+    } else {
+        task('inProgress');
+        forFunction(progress, 'inProgress');
+    }
+}
+
+/**
+ * function filters all taks with status "feedback"
+ * 
+ */
+function updateFeedback () {
+    let feedback = todos.filter(t => t['status'].toLowerCase().replaceAll(" ","") == 'feedback');
+    document.getElementById('feedback').innerHTML = '';
+    if (feedback.length == 0) {
+        noTask('feedback');
+    } else {
+        task('feedback');
+        forFunction(feedback, 'feedback');
+    }
+}
+
+/**
+ * function filters all tasks with status "done"
+ * 
+ */
+function updateDone () {
+    let done = todos.filter(t => t['status'].toLowerCase().replaceAll(" ","") == 'done');
+    document.getElementById('done').innerHTML = '';
+    if (done.length == 0) {
+        noTask('done');
+    } else {
+        task('done');
+        forFunction(done, 'done');
+    }
+}
+
 
 /**which id will be dropped
  * 
@@ -103,8 +137,8 @@ function allowDrop(ev) {
  * for drag and drop movement
  * @param {string} category 
  */
-function moveTo(category) {
-    todos[currentDraggedElement]['category'] = category;
+function moveTo(status) {
+    todos[currentDraggedElement]['status'] = status;
     updateHTML();
 }
 
