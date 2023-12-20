@@ -1,12 +1,12 @@
 let todos = [{
-    'headline': 'UserStory',
+    'category': 'UserStory',
     'title': 'Kochwelt Page',
     'description': 'page start decription',
-    'subtask': '1/2 Subtasks',
-    'persons': 3,
-    'status': 'todo',
-    'tasks': 3,
-    'tasksdone': 1,
+    'subtask': '1/2 Subtasks', // delete / placeholder
+    'persons': 3, // ToDos.persons.length
+    'status': 'todo', 
+    'tasks': 3, // subtaks
+    'tasksdone': 1, // summe subtasks done
     'id': 0,
 },];
 

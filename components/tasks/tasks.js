@@ -1,5 +1,6 @@
 
-userContacts = USERS[ACTIVEUSERKEY].contacts; 
+// userContacts = USERS[ACTIVEUSERKEY].contacts; 
+// userContacts will be set in uitils.js with setVariables()
 
 
 let assignedToTask = [];
