@@ -82,6 +82,7 @@ function openSection (sectionID) {
  */
 function setVariables () {
   userContacts = USERS["guest"].contacts; 
+  ACTIVEUSERKEY = getLocalStorage("activeUser");
 }
 
 /**

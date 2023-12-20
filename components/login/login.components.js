@@ -37,6 +37,7 @@ async function login() {
           if (checkEmailLogin(email)) {
                if (checkPasswordLogin(password)) {
                     ACTIVEUSERKEY = key;
+                    setLocalStorage("activeUser", [ACTIVEUSERKEY]);
                     console.log('eingeloggt')
                } else {
                     inCorrect(message)
@@ -181,7 +182,8 @@ function guestLogin() {
      // add an object into guest object; bracket string is going to be the key
      USERS["guest"]["userData"] = userData ;
      USERS["guest"]["contacts"] = contacts ;
-     setStorageData('users', JSON.stringify(USERS))
+     setStorageData('users', JSON.stringify(USERS));
      ACTIVEUSERKEY = "guest";
+     setLocalStorage("activeUser", [ACTIVEUSERKEY]);
      window.location.href = '/index.html';
 }
