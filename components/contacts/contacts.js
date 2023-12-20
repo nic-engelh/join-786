@@ -2,11 +2,6 @@ const abcString = 'ABCDEFGHIJKLMNOPQRSTUVWXYZÄÖÜ';
 
 let activeContact = null;
 
-function getUserContacts(){
-    userContacts = USERS[ACTIVE_USER][contacts];
-    return true
-}
-
 function renderContactList() {
     // getUserContacts();
     renderContactsStructure();
