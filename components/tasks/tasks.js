@@ -1,5 +1,5 @@
 
-// userContacts = USERS[ACTIVEUSERKEY][contacts]; 
+userContacts = USERS[ACTIVEUSERKEY].contacts; 
 
 let assignedToTask = [];
 let assignedInitial = [];
@@ -39,14 +39,17 @@ function pushTask(dateCreated, id, title, description, user, date, prio, categor
         subtasks: subtasks,
         status: status
     }
-
     pushUSERS();
     resetTask();
 }
 
 function pushUSERS(){
-    USERS[ACTIVEUSER].tasks = tasks;
-    USERS[Guest].tasks = tasks;
+    if (!USERS[ACTIVEUSERKEY].tasks) {
+        // add tasks object to acitve user object
+        USERS[ACTIVEUSERKEY]["tasks"] = {};
+    }
+    USERS[ACTIVEUSERKEY].tasks = tasks;
+    USERS["guest"].tasks = tasks;
 }
 
 function resetTask() {

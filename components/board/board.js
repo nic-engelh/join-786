@@ -10,7 +10,7 @@ let todos = [{
     'id': 0,
 },];
 
-let toDos = USERS[ACTIVEUSERKEY].tasks;
+//let toDos = USERS[ACTIVEUSERKEY].tasks;
 
 let currentDraggedElement;
 
