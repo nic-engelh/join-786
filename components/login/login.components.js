@@ -182,6 +182,6 @@ function guestLogin() {
      USERS["guest"]["userData"] = userData ;
      USERS["guest"]["contacts"] = contacts ;
      setStorageData('users', JSON.stringify(USERS))
-     ACTIVEUSERKEY = "guest"
+     ACTIVEUSERKEY = "guest";
      window.location.href = '/index.html';
 }
