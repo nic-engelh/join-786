@@ -10,7 +10,7 @@ let todos = [{
     'id': 0,
 },];
 
-
+let toDos = USERS[ACTIVEUSERKEY].tasks;
 
 let currentDraggedElement;
 
@@ -22,7 +22,13 @@ function init() {
  * main code for tasks
  */
 function updateHTML() {
-    ///////////////////////todo//////////////////////
+    updateToDo();
+    updateInProgress();
+    updateFeedback();
+    updateDone();
+}
+
+function updateToDo () {
     let todo = todos.filter(t => t['category'] == 'todo');
     document.getElementById('todo').innerHTML = '';
     if (todo.length == 0) {
@@ -31,7 +37,9 @@ function updateHTML() {
         task('todo')
         forFunction(todo, 'todo')
     }
-    /////////////////in progress////////////////////
+}
+
+function updateInProgress () {
     let progress = todos.filter(t => t['category'] == 'inProgress');
     document.getElementById('inProgress').innerHTML = '';
     if (progress.length == 0) {
@@ -40,7 +48,9 @@ function updateHTML() {
         task('inProgress')
         forFunction(progress, 'inProgress')
     }
-    /////////////////////feedback/////////////////////
+}
+
+function updateFeedback () {
     let feedback = todos.filter(t => t['category'] == 'feedback');
     document.getElementById('feedback').innerHTML = '';
     if (feedback.length == 0) {
@@ -49,7 +59,9 @@ function updateHTML() {
         task('feedback')
         forFunction(feedback, 'feedback')
     }
-    /////////////done///////////////
+}
+
+function updateDone () {
     let done = todos.filter(t => t['category'] == 'done');
     document.getElementById('done').innerHTML = '';
     if (done.length == 0) {
@@ -59,6 +71,7 @@ function updateHTML() {
         forFunction(done, 'done')
     }
 }
+
 
 /**which id will be dropped
  * 
