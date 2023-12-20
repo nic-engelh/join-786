@@ -45,8 +45,8 @@ function pushTask(dateCreated, id, title, description, user, date, prio, categor
 }
 
 function pushUSERS(){
-    USERS.ACTIVEUSER.tasks = tasks
-    // USERS.Guest.tasks = tasks
+    USERS[ACTIVEUSER].tasks = tasks;
+    USERS[Guest].tasks = tasks;
 }
 
 function resetTask() {
