@@ -4,7 +4,7 @@ let todos = [{
     'description': 'page start decription',
     'subtask': '1/2 Subtasks',
     'persons': 3,
-    'category': 'todo',
+    'status': 'todo',
     'tasks': 3,
     'tasksdone': 1,
     'id': 0,
@@ -13,6 +13,10 @@ let todos = [{
 let toDos = USERS[ACTIVEUSERKEY].tasks;
 
 let currentDraggedElement;
+
+function placeholder() {
+    return true;
+}
 
 function init() {
     updateHTML()
@@ -29,7 +33,7 @@ function updateHTML() {
 }
 
 function updateToDo () {
-    let todo = todos.filter(t => t['category'] == 'todo');
+    let todo = todos.filter(t => t['status'] == 'todo');
     document.getElementById('todo').innerHTML = '';
     if (todo.length == 0) {
         noTask('todo')
@@ -40,7 +44,7 @@ function updateToDo () {
 }
 
 function updateInProgress () {
-    let progress = todos.filter(t => t['category'] == 'inProgress');
+    let progress = todos.filter(t => t['status'] == 'inProgress');
     document.getElementById('inProgress').innerHTML = '';
     if (progress.length == 0) {
         noTask('inProgress')
@@ -51,7 +55,7 @@ function updateInProgress () {
 }
 
 function updateFeedback () {
-    let feedback = todos.filter(t => t['category'] == 'feedback');
+    let feedback = todos.filter(t => t['status'] == 'feedback');
     document.getElementById('feedback').innerHTML = '';
     if (feedback.length == 0) {
         noTask('feedback')
@@ -62,7 +66,7 @@ function updateFeedback () {
 }
 
 function updateDone () {
-    let done = todos.filter(t => t['category'] == 'done');
+    let done = todos.filter(t => t['status'] == 'done');
     document.getElementById('done').innerHTML = '';
     if (done.length == 0) {
         noTask('done')
@@ -116,8 +120,8 @@ function allowDrop(ev) {
  * for drag and drop movement
  * @param {string} category 
  */
-function moveTo(category) {
-    todos[currentDraggedElement]['category'] = category;
+function moveTo(status) {
+    todos[currentDraggedElement]['status'] = status;
     updateHTML();
 }
 
