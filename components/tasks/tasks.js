@@ -1,6 +1,7 @@
 
 // userContacts = USERS[ACTIVEUSERKEY][contacts]; 
 
+
 let assignedToTask = [];
 let assignedInitial = [];
 
