@@ -239,6 +239,7 @@ function changeProfilBadge(initials) {
     // TODO add setbadgecolor 
 }
 
+
 function filterContactsByInitials(initial) {
     // Konvertiere den Input-Wert in Großbuchstaben, um die Groß-/Kleinschreibung zu ignorieren
     let targetInitial = initial.toUpperCase();
@@ -250,21 +251,13 @@ function filterContactsByInitials(initial) {
     return filteredContacts;
   }
 
-  function setBadgeColor (color, elementId) {
-    let badge = document.getElementById(elementId);
-    setContactStyleColor (color, elementId);
-    badge.classList.add(`color${color}`);
-    // to do: classlist.remove bei delete 
-}
+
+
+
 
 function clear () {
     return ``;
 }
 
- function setContactStyleColor (color) {
-    let styleSheet = window.document.styleSheets[0];    
-    let string = `.color${color} { background-color: #${color}; }`;
-    styleSheet.insertRule(string, styleSheet.cssRules.length);
-    return true
- }
+
 

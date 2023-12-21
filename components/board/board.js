@@ -148,8 +148,16 @@ function renderingBoardTasks(filteredTasks, elementId) {
         document.getElementById(`${elementId}`).innerHTML += generateTodoHTML(object);
         // TODO hier deine function für user kreise ( initials)
         // Zugriff mit object.user[1]
+        renderingBoardUserInitials(object.user);
     }
 }
+
+function renderingBoardUserInitials (assignedUser) {
+    let container = document.getElementById('boardAssignedUserInitialsContainer');
+    for (const user of assignedUser) {
+        container.innerHTML = generateUserInitialBadge(user);
+    }
+} 
 
 /**
  * remove and add class for information that no tasks are done 
@@ -195,8 +203,19 @@ function generateTodoHTML(elements) {
                  <div class="w3-grey" style="height:8px;width:0%"></div>
               </div>
               <div class="subnumber">${(elements['subtasks'])}</div></div>
-              <div class="boardAssignedUserInitials" style="background-color:#${(element['color'])};" id="boardAssignedUserInitials${i}">${(element['initials'])}</div>
+              <div id="boardAssignedUserInitialsContainer"> 
+              </div>
            </div>
        </div>
     </div>`;
+}
+
+
+
+function generateUserInitialBadge (elements) {
+    return /*html*/`
+        <div class="boardAssignedUserInitials" style="background-color:#${(elements['color'])};" 
+        id="boardAssignedUserInitials_${elements.id}">${(elements['initials'])}
+        </div>
+    `
 }
