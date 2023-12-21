@@ -105,7 +105,6 @@ function getLocalStorage(key) {
   return JSON.parse(localStorage.getItem(key));
 }
 
-
 /**
  * functions adds or removes class vom element whenever its already existing (remove) or not (add)
  * 

@@ -21,13 +21,13 @@ function placeholder() {
 }
 
 function init() {
-    updateHTML();
+    updateBoardHTML();
 }
 
 /**
  * main functions for updating the drag & drop fields for tasks objects
  */
-function updateHTML() {
+function updateBoardHTML() {
     updateToDoField();
     updateInProgressField();
     updateFeedbackField();
@@ -116,7 +116,7 @@ function allowDrop(ev) {
  */
 function moveTo(status) {
     toDos[currentDraggedElement]['status'] = status;
-    updateHTML();
+    updateBoardHTML();
 }
 
 /**
