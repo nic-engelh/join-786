@@ -23,15 +23,15 @@ function updateToDoField () {
     let targetValue = 'todo';
     let inputObject = userTasks;
     let targetKey = 'status';
-    let toDo = filterNestedObject(inputObject, targetValue, targetKey);
+    let toDoTasks = filterNestedObject(inputObject, targetValue, targetKey);
     //let toDo = userTasks.filter(t => (t['status'].toLowerCase().replaceAll(" ","")) == 'todo');
-    let size = Object.keys(toDo).length;
+    let size = Object.keys(toDoTasks).length;
     document.getElementById('todo').innerHTML = '';
     if (size == 0) {
         showNoTasksDone('todo');
     } else {
         showTask('todo');
-        renderingBoardTasks(Object.keys(toDo), 'todo');
+        renderingBoardTasks(toDoTasks, 'todo');
     }
 }
 
@@ -43,15 +43,15 @@ function updateInProgressField () {
     let targetValue = 'inprogress';
     let inputObject = userTasks;
     let targetKey = 'status';
-    let progress = filterNestedObject(inputObject, targetValue, targetKey);
+    let progressTasks = filterNestedObject(inputObject, targetValue, targetKey);
     //let progress = userTasks.filter(t => t['status'].toLowerCase().replaceAll(" ","") == 'inprogress');
-    let size = Object.keys(progress).length;
+    let size = Object.keys(progressTasks).length;
     document.getElementById('inProgress').innerHTML = '';
     if (size == 0) {
         showNoTasksDone('inProgress');
     } else {
         showTask('inProgress');
-        renderingBoardTasks(progress, 'inProgress');
+        renderingBoardTasks(progressTasks, 'inProgress');
     }
 }
 
@@ -63,15 +63,15 @@ function updateFeedbackField () {
     let targetValue = 'feedback';
     let inputObject = userTasks;
     let targetKey = 'status';
-    let feedback = filterNestedObject(inputObject, targetValue, targetKey);
+    let feedbackTasks = filterNestedObject(inputObject, targetValue, targetKey);
     //feedback = userTasks.filter(t => t['status'].toLowerCase().replaceAll(" ","") == 'feedback');
-    let size = Object.keys(feedback).length;
+    let size = Object.keys(feedbackTasks).length;
     document.getElementById('feedback').innerHTML = '';
     if (size == 0) {
         showNoTasksDone('feedback');
     } else {
         showTask('feedback');
-        renderingBoardTasks(feedback, 'feedback');
+        renderingBoardTasks(feedbackTasks, 'feedback');
     }
 }
 
@@ -83,15 +83,15 @@ function updateDoneField () {
     let targetValue = 'done';
     let inputObject = userTasks;
     let targetKey = 'status';
-    let done = filterNestedObject(inputObject, targetValue, targetKey);
+    let doneTasks = filterNestedObject(inputObject, targetValue, targetKey);
     // done = userTasks.filter(t => t['status'].toLowerCase().replaceAll(" ","") == 'done');
-    let size = Object.keys(feedback).length;
+    let size = Object.keys(doneTasks).length;
     document.getElementById('done').innerHTML = '';
     if (size == 0) {
         showNoTasksDone('done');
     } else {
         showTask('done');
-        renderingBoardTasks(Object.keys(done), 'done');
+        renderingBoardTasks(doneTasks, 'done');
     }
 }
 
@@ -178,16 +178,16 @@ function openCreateTaskModal(section, boardFieldStatus) {
 
 /**
  * html codes
- * @param {string} element 
+ * @param {object} element 
  * @returns html code
  */
-function generateTodoHTML(element) {
+function generateTodoHTML(elements) {
     return `
     <div class ="todo">
-       <div draggable="true" ondragstart="startDragging(${element['id']})" class="taskToDo">
-          <div class="userHeadline">${element['category']}</div>
-          <div class="title">${element['title']}</div>
-          <div class="description">${element['description']}</div>
+       <div draggable="true" ondragstart="startDragging(${elements['id']})" class="taskToDo">
+          <div class="userHeadline">${elements['category']}</div>
+          <div class="title">${elements['title']}</div>
+          <div class="description">${elements['description']}</div>
            <div class="progressPosition">
                <div class="w3-border">
                  <div class="w3-grey" style="height:8px;width:0%"></div>
