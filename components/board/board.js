@@ -145,6 +145,8 @@ function removeHighlight(id) {
 function renderingBoardTasks(filteredTasks, elementId) {
     for (const object of filteredTasks) {
         document.getElementById(`${elementId}`).innerHTML += generateTodoHTML(object);
+        // TODO hier deine function für user kreise ( initials)
+        // Zugriff mit object.user[1]
     }
 }
 
