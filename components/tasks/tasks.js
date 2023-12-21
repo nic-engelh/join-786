@@ -296,6 +296,18 @@ function toggleSelect() {
     document.getElementById('tasks_contacts_container').classList.toggle('d-none');
 }
 
+function hideContactSelect(event) {
+    let nameContainer = document.getElementById('tasks_contacts_container');
+    if (nameContainer) {
+        if (event.target.id !== "task_user" && event.target.id !== "assigned_user" && !event.target.classList.contains('assigned_user_li') && !event.target.classList.contains('assigned_user_li_toggled') && !event.target.classList.contains('checkbox') && !event.target.classList.contains('assigned_initials') && event.target.id !== "assigned_name_span") {
+            nameContainer.classList.add("d-none");
+        }
+    }
+}
+
+document.addEventListener("click", hideContactSelect);
+
+
 function chooseContact(i) {
     let li = document.getElementById(`toggle_name${i}`);
     let checkbox = document.getElementById(`checkbox${i}`);
