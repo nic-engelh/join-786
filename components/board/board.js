@@ -136,23 +136,6 @@ function removeHighlight(id) {
     document.getElementById(id).classList.remove('drag-area-highlight');
 }
 
-function loadAssignableNames() {
-    const selectElement = document.getElementById("assigned_user");
-    for (let i = 0; i < userContacts.length; i++) {
-        const initial = userContacts[i]["initials"];
-        const name = userContacts[i]["name"];
-        const color = userContacts[i]["color"];
-        selectElement.innerHTML += `
-            <li onclick="chooseContact(${i})" id="toggle_name${i}" class="assigned_user_li">
-                <div class="task_contacts_name_initials">
-                    <div id="initials_img${i}" class="assigned_initials" style="background-color:#${color};">${initial}</div>
-                    <span id="assigned_name_span">${name}</span>
-                </div>
-                <img class="checkbox" id="checkbox${i}" src="/assets/img/addTask/check_empty.png">
-            </li>`;
-    }
-}
-
 /**
  * for of loop for tasks to render board elements html
  * 
@@ -210,7 +193,7 @@ function generateTodoHTML(element) {
                  <div class="w3-grey" style="height:8px;width:0%"></div>
               </div>
               <div class="subnumber">${(element['subtasks'])}</div></div>
-              <div class="persons">${(element['user'])}</div>
+              <div class="boardAssignedUserInitials" style="background-color:#${(element['color'])};" id="boardAssignedUserInitials${i}">${(element['initials'])}</div>
            </div>
        </div>
     </div>`;
