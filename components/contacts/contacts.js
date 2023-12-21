@@ -251,13 +251,7 @@ function filterContactsByInitials(initial) {
     return filteredContacts;
   }
 
-
-
-
-
 function clear () {
     return ``;
 }
-
-
 

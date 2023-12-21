@@ -144,18 +144,19 @@ function removeHighlight(id) {
  * @param {string} elementId
  */
 function renderingBoardTasks(filteredTasks, elementId) {
-    for (const object of filteredTasks) {
-        document.getElementById(`${elementId}`).innerHTML += generateTodoHTML(object);
+    for (const key in filteredTasks) {
+        let value = filteredTasks[key];
+        document.getElementById(`${elementId}`).innerHTML += generateTodoHTML(value);
         // TODO hier deine function für user kreise ( initials)
         // Zugriff mit object.user[1]
-        renderingBoardUserInitials(object.user);
+        renderingBoardUserInitials(value.user);
     }
 }
 
 function renderingBoardUserInitials (assignedUser) {
     let container = document.getElementById('boardAssignedUserInitialsContainer');
     for (const user of assignedUser) {
-        container.innerHTML = generateUserInitialBadge(user);
+        container.innerHTML += generateUserInitialBadge(user);
     }
 } 
 
@@ -202,7 +203,7 @@ function generateTodoHTML(elements) {
                <div class="w3-border">
                  <div class="w3-grey" style="height:8px;width:0%"></div>
               </div>
-              <div class="subnumber">${(elements['subtasks'])}</div></div>
+              <div class="subnumber">${(elements['subtasks'].length)}</div></div>
               <div id="boardAssignedUserInitialsContainer"> 
               </div>
            </div>
@@ -210,12 +211,16 @@ function generateTodoHTML(elements) {
     </div>`;
 }
 
-
-
+/**
+ * functions generates colored badges for assigned users
+ * 
+ * @param {array} elements 
+ * @returns 
+ */
 function generateUserInitialBadge (elements) {
     return /*html*/`
-        <div class="boardAssignedUserInitials" style="background-color:#${(elements['color'])};" 
-        id="boardAssignedUserInitials_${elements.id}">${(elements['initials'])}
+        <div class="boardAssignedUserInitials" style="background-color:#${(elements.color)};" 
+        id="boardAssignedUserInitials_${elements.id}">${(elements.initials)}
         </div>
     `
 }
