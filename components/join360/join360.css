@@ -1,12 +1,11 @@
 #sectionJoin360 {
     margin: 0px;
     background: #F6F7F8;
-    font-family: 'Inter', sans-serif;
+    font-family: 'Inter';
     margin-top: 100px;
 }
 
 #j36_mobileVersion {
-
     background-color: #F6F7F8;
     margin-right: 16px;
     margin-left: 16px;
@@ -45,6 +44,26 @@ h1 {
 #j36_tasksMenu {
     width: 50%;
     gap: 28px;
+}
+
+.j36_morning-Text {
+    text-align: left;
+    flex-direction: column;
+    position: fixed;
+    left: 40%;
+    top: 300px;
+}
+
+.j36_person-Name {
+    font-size: 64px;
+    font-weight: 700;
+    color: #29ABE2;
+    margin-top: -20px;
+}
+
+.j36_morning {
+    font-size: 47px;
+    font-weight: 500;
 }
 
 .j36_toDo {
@@ -277,34 +296,65 @@ h2 {
 
     .j36_toDo {
         width: 100%;
-        min-width: 0px  !important;
+        min-width: 0px !important;
     }
+
     .j36_ToDoPosition {
         display: flex;
         align-items: center;
         gap: 24px;
         width: 100%;
     }
+
     .j36_UrgentDeadline {
         max-width: 60%;
         min-width: 100%;
     }
+
     .j36_urgent {
         padding-left: 20px;
         gap: 10px;
     }
+
     .j36_todoText {
         font-size: 15px;
         text-align: center;
         min-width: 50px;
     }
+
     .j36_TaskProgress {
         width: 100%;
     }
+
     .j36_AllTheTasks {
         width: 29%;
         font-size: 15px;
     }
+
+
+}
+
+@media(max-width:1400px) {
+    .j36_morning-Text {
+        left: 60%;
+    }
+}
+
+@media(max-width:1100px) {
+    .j36_morning-Text {
+        left: 60%;
+        top: 400px;
+    }
+    .j36_person-Name {
+        font-size: 44px;
+    }
     
-    
+    .j36_morning {
+        font-size: 27px;
+    }
+}
+@media(max-width:900px) {
+    .j36_morning-Text {
+        display: none;
+    }
 }
