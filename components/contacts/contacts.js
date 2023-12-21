@@ -239,7 +239,6 @@ function changeProfilBadge(initials) {
     // TODO add setbadgecolor 
 }
 
-
 function filterContactsByInitials(initial) {
     // Konvertiere den Input-Wert in Großbuchstaben, um die Groß-/Kleinschreibung zu ignorieren
     let targetInitial = initial.toUpperCase();
@@ -257,8 +256,6 @@ function filterContactsByInitials(initial) {
     badge.classList.add(`color${color}`);
     // to do: classlist.remove bei delete 
 }
-
-
 
 function clear () {
     return ``;
