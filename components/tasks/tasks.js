@@ -369,12 +369,12 @@ async function formValidation(status) {
     ) {
         await getTaskValue(status);
         showSuccess();
-        openBoard();
+        openSection("sectionBoard");
     }
 }
 
 function showSuccess() {
-    const dialog = document.querySelector("dialog")
+    const dialog = document.getElementById("succes_alert_addedTask");
     dialog.style.display = 'flex';
     dialog.showModal();
 }

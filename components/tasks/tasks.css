@@ -275,7 +275,7 @@ ul {
   color: white;
 }
 
-dialog {
+#succes_alert_addedTask {
   align-items: center;
   gap: 16px;
   border-radius: 20px;
