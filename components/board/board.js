@@ -10,8 +10,6 @@ let todos = [{
     'id': 0,
 },];
 
-
-
 //let toDos = USERS[ACTIVEUSERKEY].tasks;
 
 let currentDraggedElement;
@@ -25,20 +23,20 @@ function init() {
 }
 
 /**
- * main code for tasks
+ * main functions for updating the drag fields for tasks objects
  */
 function updateHTML() {
-    updateToDo();
-    updateInProgress();
-    updateFeedback();
-    updateDone();
+    updateToDoField();
+    updateInProgressField();
+    updateFeedbackField();
+    updateDoneField();
 }
 
 /**
- * function filters all tasks with status todo
+ * function filters all tasks with status todo from active user tasks object
  * 
  */
-function updateToDo () {
+function updateToDoField () {
     let todo = todos.filter(t => t['status'].toLowerCase().replaceAll(" ","") == 'todo');
     document.getElementById('todo').innerHTML = '';
     if (todo.length == 0) {
@@ -49,12 +47,11 @@ function updateToDo () {
     }
 }
 
-
 /**
- * function filters all tasks with status "inprogress"
+ * function filters all tasks with status "inprogress" from active user tasks object
  * 
  */
-function updateInProgress () {
+function updateInProgressField () {
     let progress = todos.filter(t => t['status'].toLowerCase().replaceAll(" ","") == 'inprogress');
     document.getElementById('inProgress').innerHTML = '';
     if (progress.length == 0) {
@@ -66,10 +63,10 @@ function updateInProgress () {
 }
 
 /**
- * function filters all taks with status "feedback"
+ * function filters all taks with status "feedback" from active user tasks object
  * 
  */
-function updateFeedback () {
+function updateFeedbackField () {
     let feedback = todos.filter(t => t['status'].toLowerCase().replaceAll(" ","") == 'feedback');
     document.getElementById('feedback').innerHTML = '';
     if (feedback.length == 0) {
@@ -81,10 +78,10 @@ function updateFeedback () {
 }
 
 /**
- * function filters all tasks with status "done"
+ * function filters all tasks with status "done" from active user tasks object
  * 
  */
-function updateDone () {
+function updateDoneField () {
     let done = todos.filter(t => t['status'].toLowerCase().replaceAll(" ","") == 'done');
     document.getElementById('done').innerHTML = '';
     if (done.length == 0) {
@@ -95,36 +92,12 @@ function updateDone () {
     }
 }
 
-
 /**which id will be dropped
  * 
  * @param {string} id 
  */
 function startDragging(id) {
     currentDraggedElement = id;
-}
-
-/**
- * html codes
- * @param {string} element 
- * @returns html code
- */
-function generateTodoHTML(element) {
-    return `
-    <div class ="todo">
-       <div draggable="true" ondragstart="startDragging(${element['id']})" class="taskToDo">
-          <div class="userHeadline">${element['category']}</div>
-          <div class="title">${element['title']}</div>
-          <div class="description">${element['description']}</div>
-           <div class="progressPosition">
-               <div class="w3-border">
-                 <div class="w3-grey" style="height:8px;width:0%"></div>
-              </div>
-              <div class="subnumber">${element['subtask']}</div></div>
-              <div class="persons">${element['persons']}</div>
-           </div>
-       </div>
-    </div>`;
 }
 
 /**allows to drop and element
@@ -179,8 +152,8 @@ function renderingBoardTasks(id, name) {
  * @param {string} id 
  */
 function showNoTasksDone(id) {
-    document.getElementById(`${id}`).classList.add('noTask')
-    document.getElementById(`${id}`).innerHTML = 'No tasks are done'
+    document.getElementById(`${id}`).classList.add('noTask');
+    document.getElementById(`${id}`).innerHTML = 'No tasks are done';
 }
 
 /**
@@ -189,5 +162,29 @@ function showNoTasksDone(id) {
  * @param {string} id 
  */
 function showTask(id) {
-    document.getElementById(`${id}`).classList.remove('noTask')
+    document.getElementById(`${id}`).classList.remove('noTask');
+}
+
+
+/**
+ * html codes
+ * @param {string} element 
+ * @returns html code
+ */
+function generateTodoHTML(element) {
+    return `
+    <div class ="todo">
+       <div draggable="true" ondragstart="startDragging(${element['id']})" class="taskToDo">
+          <div class="userHeadline">${element['category']}</div>
+          <div class="title">${element['title']}</div>
+          <div class="description">${element['description']}</div>
+           <div class="progressPosition">
+               <div class="w3-border">
+                 <div class="w3-grey" style="height:8px;width:0%"></div>
+              </div>
+              <div class="subnumber">${(element['subtasks'].length)}</div></div>
+              <div class="persons">${(element['user'].length)}</div>
+           </div>
+       </div>
+    </div>`;
 }
