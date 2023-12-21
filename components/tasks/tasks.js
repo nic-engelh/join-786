@@ -370,6 +370,7 @@ async function formValidation(status) {
         await getTaskValue(status);
         showSuccess();
         openSection("sectionBoard");
+        updateBoardHTML();
     }
 }
 
