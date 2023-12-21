@@ -4,7 +4,7 @@ let ACTIVEUSERKEY = null;
 
 let userContacts = []; 
 
-let toDos;
+let userTasks;
 
 
 /**
@@ -14,5 +14,5 @@ let toDos;
 function setVariables () {
     userContacts = USERS["guest"].contacts; 
     ACTIVEUSERKEY = getLocalStorage("activeUser");
-    toDos = USERS[ACTIVEUSERKEY].tasks;
+    userTasks = USERS[ACTIVEUSERKEY].tasks;
   }

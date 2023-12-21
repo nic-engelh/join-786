@@ -12,16 +12,12 @@ let todos = [{
 },];
 */
 
-
-
 let currentDraggedElement;
 
-function openCreateTaskModal(section, boardFieldStatus) {
-    openSection(section);
-    let element = document.getElementById("create_task_button");
-    element.setAttribute("onclick", `formValidation(${boardFieldStatus})`);
-    return true;
-}
+
+
+
+
 
 function init() {
     updateBoardHTML();
@@ -31,6 +27,7 @@ function init() {
  * main functions for updating the drag & drop fields for tasks objects
  */
 function updateBoardHTML() {
+    setVariables();
     updateToDoField();
     updateInProgressField();
     updateFeedbackField();
@@ -42,9 +39,16 @@ function updateBoardHTML() {
  * 
  */
 function updateToDoField () {
-    let toDo = toDos.filter(t => t['status'].toLowerCase().replaceAll(" ","") == 'todo');
+
+    let targetValue = 'todo';
+    let inputObject = userTasks;
+    let targetKey = 'status';
+
+    let toDo = filterNestedObject(inputObject, targetValue, targetKey);
+    //let toDo = userTasks.filter(t => (t['status'].toLowerCase().replaceAll(" ","")) == 'todo');
+    let size = Object.keys(toDo).length;
     document.getElementById('todo').innerHTML = '';
-    if (toDo.length == 0) {
+    if (size == 0) {
         showNoTasksDone('todo');
     } else {
         showTask('todo');
@@ -57,7 +61,7 @@ function updateToDoField () {
  * 
  */
 function updateInProgressField () {
-    let progress = toDos.filter(t => t['status'].toLowerCase().replaceAll(" ","") == 'inprogress');
+    let progress = userTasks.filter(t => t['status'].toLowerCase().replaceAll(" ","") == 'inprogress');
     document.getElementById('inProgress').innerHTML = '';
     if (progress.length == 0) {
         showNoTasksDone('inProgress');
@@ -72,7 +76,7 @@ function updateInProgressField () {
  * 
  */
 function updateFeedbackField () {
-    let feedback = toDos.filter(t => t['status'].toLowerCase().replaceAll(" ","") == 'feedback');
+    let feedback = userTasks.filter(t => t['status'].toLowerCase().replaceAll(" ","") == 'feedback');
     document.getElementById('feedback').innerHTML = '';
     if (feedback.length == 0) {
         showNoTasksDone('feedback');
@@ -87,7 +91,7 @@ function updateFeedbackField () {
  * 
  */
 function updateDoneField () {
-    let done = toDos.filter(t => t['status'].toLowerCase().replaceAll(" ","") == 'done');
+    let done = userTasks.filter(t => t['status'].toLowerCase().replaceAll(" ","") == 'done');
     document.getElementById('done').innerHTML = '';
     if (done.length == 0) {
         showNoTasksDone('done');
@@ -118,7 +122,7 @@ function allowDrop(ev) {
  * @param {string} category 
  */
 function moveTo(status) {
-    toDos[currentDraggedElement]['status'] = status;
+    userTasks[currentDraggedElement]['status'] = status;
     updateBoardHTML();
 }
 
@@ -170,6 +174,12 @@ function showTask(id) {
     document.getElementById(`${id}`).classList.remove('noTask');
 }
 
+function openCreateTaskModal(section, boardFieldStatus) {
+    openSection(section);
+    let element = document.getElementById("create_task_button");
+    element.setAttribute("onclick", `formValidation(${boardFieldStatus})`);
+    return true;
+}
 
 /**
  * html codes
