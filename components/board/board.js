@@ -16,7 +16,10 @@ let toDos = USERS[ACTIVEUSERKEY].tasks;
 
 let currentDraggedElement;
 
-function placeholder() {
+function openCreateTaskModal(section, boardFieldStatus) {
+    openSection(section);
+    let element = document.getElementById("create_task_button");
+    element.setAttribute("onclick", `formValidation(${boardFieldStatus})`);
     return true;
 }
 
