@@ -153,6 +153,11 @@ function renderingBoardTasks(filteredTasks, elementId) {
     }
 }
 
+/**
+ * funcitons renders assigned user badged by iterating through user array form filtered userTasks
+ * 
+ * @param {array} assignedUser 
+ */
 function renderingBoardUserInitials (assignedUser) {
     let container = document.getElementById('boardAssignedUserInitialsContainer');
     for (const user of assignedUser) {
@@ -219,8 +224,8 @@ function generateTodoHTML(elements) {
  */
 function generateUserInitialBadge (elements) {
     return /*html*/`
-        <div class="boardAssignedUserInitials" style="background-color:#${(elements.color)};" 
-        id="boardAssignedUserInitials_${elements.id}">${(elements.initials)}
+        <div class="boardAssignedUserInitials" style="background-color:#${(elements.color)};" id="boardAssignedUserInitials_${elements.id}">
+        ${(elements.initials)}
         </div>
     `
 }
