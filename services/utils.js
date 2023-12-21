@@ -103,3 +103,20 @@ function filterNestedObject(inputObject, targetValue, targetKey) {
  }
  return filteredObject;
 }
+
+
+function setBadgeColor (color, elementId) {
+  let badge = document.getElementById(elementId);
+  setContactStyleColor (color, elementId);
+  badge.classList.add(`color${color}`);
+  // to do: classlist.remove bei delete 
+}
+
+
+
+function setContactStyleColor (color) {
+  let styleSheet = window.document.styleSheets[0];    
+  let string = `.color${color} { background-color: #${color}; }`;
+  styleSheet.insertRule(string, styleSheet.cssRules.length);
+  return true
+}

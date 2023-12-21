@@ -24,7 +24,6 @@ function updateToDoField () {
     let inputObject = userTasks;
     let targetKey = 'status';
     let toDoTasks = filterNestedObject(inputObject, targetValue, targetKey);
-    //let toDo = userTasks.filter(t => (t['status'].toLowerCase().replaceAll(" ","")) == 'todo');
     let size = Object.keys(toDoTasks).length;
     document.getElementById('todo').innerHTML = '';
     if (size == 0) {
@@ -64,7 +63,6 @@ function updateFeedbackField () {
     let inputObject = userTasks;
     let targetKey = 'status';
     let feedbackTasks = filterNestedObject(inputObject, targetValue, targetKey);
-    //feedback = userTasks.filter(t => t['status'].toLowerCase().replaceAll(" ","") == 'feedback');
     let size = Object.keys(feedbackTasks).length;
     document.getElementById('feedback').innerHTML = '';
     if (size == 0) {
@@ -84,7 +82,6 @@ function updateDoneField () {
     let inputObject = userTasks;
     let targetKey = 'status';
     let doneTasks = filterNestedObject(inputObject, targetValue, targetKey);
-    // done = userTasks.filter(t => t['status'].toLowerCase().replaceAll(" ","") == 'done');
     let size = Object.keys(doneTasks).length;
     document.getElementById('done').innerHTML = '';
     if (size == 0) {
@@ -95,7 +92,8 @@ function updateDoneField () {
     }
 }
 
-/**which id will be dropped
+/**
+ * which id will be dropped
  * 
  * @param {string} id 
  */
@@ -103,7 +101,8 @@ function startDragging(id) {
     currentDraggedElement = id;
 }
 
-/**allows to drop and element
+/**
+ * allows to drop and element
  * 
  * @param {*} ev 
  */
@@ -113,6 +112,7 @@ function allowDrop(ev) {
 
 /**
  * for drag and drop movement
+ * 
  * @param {string} category 
  */
 function moveTo(status) {
@@ -130,6 +130,7 @@ function highlight(id) {
 
 /**
  * remove the class "drag-area-highlight"
+ * 
  * @param {string} id 
  */
 function removeHighlight(id) {
@@ -177,7 +178,8 @@ function openCreateTaskModal(section, boardFieldStatus) {
 }
 
 /**
- * html codes
+ * function generates html code for task cards within the board fields
+ * 
  * @param {object} element 
  * @returns html code
  */
@@ -192,8 +194,8 @@ function generateTodoHTML(elements) {
                <div class="w3-border">
                  <div class="w3-grey" style="height:8px;width:0%"></div>
               </div>
-              <div class="subnumber">${(element['subtasks'])}</div></div>
-              <div class="boardAssignedUserInitials" style="background-color:#${(element['color'])};" id="boardAssignedUserInitials${i}">${(element['initials'])}</div>
+              <div class="subnumber">${(elements['subtasks'])}</div></div>
+              <div class="persons">${(elements['user'])}</div>
            </div>
        </div>
     </div>`;
