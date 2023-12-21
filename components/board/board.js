@@ -1,3 +1,4 @@
+/* array was placeholder and test object
 let todos = [{
     'category': 'UserStory',
     'title': 'Kochwelt Page',
@@ -9,8 +10,9 @@ let todos = [{
     'tasksdone': 1, // summe subtasks done
     'id': 0,
 },];
+*/
 
-//let toDos = USERS[ACTIVEUSERKEY].tasks;
+let toDos = USERS[ACTIVEUSERKEY].tasks;
 
 let currentDraggedElement;
 
@@ -23,7 +25,7 @@ function init() {
 }
 
 /**
- * main functions for updating the drag fields for tasks objects
+ * main functions for updating the drag & drop fields for tasks objects
  */
 function updateHTML() {
     updateToDoField();
@@ -37,13 +39,13 @@ function updateHTML() {
  * 
  */
 function updateToDoField () {
-    let todo = todos.filter(t => t['status'].toLowerCase().replaceAll(" ","") == 'todo');
+    let toDo = toDos.filter(t => t['status'].toLowerCase().replaceAll(" ","") == 'todo');
     document.getElementById('todo').innerHTML = '';
-    if (todo.length == 0) {
+    if (toDo.length == 0) {
         showNoTasksDone('todo');
     } else {
         showTask('todo');
-        renderingBoardTasks(todo, 'todo');
+        renderingBoardTasks(toDo, 'todo');
     }
 }
 
@@ -52,7 +54,7 @@ function updateToDoField () {
  * 
  */
 function updateInProgressField () {
-    let progress = todos.filter(t => t['status'].toLowerCase().replaceAll(" ","") == 'inprogress');
+    let progress = toDos.filter(t => t['status'].toLowerCase().replaceAll(" ","") == 'inprogress');
     document.getElementById('inProgress').innerHTML = '';
     if (progress.length == 0) {
         showNoTasksDone('inProgress');
@@ -67,7 +69,7 @@ function updateInProgressField () {
  * 
  */
 function updateFeedbackField () {
-    let feedback = todos.filter(t => t['status'].toLowerCase().replaceAll(" ","") == 'feedback');
+    let feedback = toDos.filter(t => t['status'].toLowerCase().replaceAll(" ","") == 'feedback');
     document.getElementById('feedback').innerHTML = '';
     if (feedback.length == 0) {
         showNoTasksDone('feedback');
@@ -82,7 +84,7 @@ function updateFeedbackField () {
  * 
  */
 function updateDoneField () {
-    let done = todos.filter(t => t['status'].toLowerCase().replaceAll(" ","") == 'done');
+    let done = toDos.filter(t => t['status'].toLowerCase().replaceAll(" ","") == 'done');
     document.getElementById('done').innerHTML = '';
     if (done.length == 0) {
         showNoTasksDone('done');
@@ -113,7 +115,7 @@ function allowDrop(ev) {
  * @param {string} category 
  */
 function moveTo(status) {
-    todos[currentDraggedElement]['status'] = status;
+    toDos[currentDraggedElement]['status'] = status;
     updateHTML();
 }
 
