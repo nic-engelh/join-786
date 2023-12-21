@@ -56,6 +56,16 @@ function pushUSERS(){
     }
     USERS[ACTIVEUSERKEY].tasks = tasks;
     USERS["guest"].tasks = tasks;
+    setLocalStorage ("localUserTasks", tasks)
+    setLocalStorage ("localGuestTasks", tasks)
+    setTasksToJSON(userTasks, guestTasks)
+    setStorageData ("backEndUserTasks", backEndUserTasksJSON)
+    setStorageData ("backEndGuestTasks", backEndGuestTasksJSON)
+}
+
+function setTasksToJSON(userTasks, guestTasks) {
+    backEndGuestTasksJSON = JSON.stringify(guestTasks)
+    backEndUserTasksJSON = JSON.stringify(userTasks)
 }
 
 function resetTask() {
@@ -383,6 +393,8 @@ async function formValidation(status) {
         showSuccess();
         openSection("sectionBoard");
         updateBoardHTML();
+        getLocalStorage(localGuestTasks)
+        getLocalStorage(localUserTasks)
     }
 }
 
@@ -390,6 +402,7 @@ function showSuccess() {
     const dialog = document.getElementById("succes_alert_addedTask");
     dialog.style.display = 'flex';
     dialog.showModal();
+    setTimeout(() => dialog.close(), 1000);
 }
 
 // function openBoard() {
