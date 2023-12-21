@@ -1,23 +1,4 @@
-/* array was placeholder and test object
-let todos = [{
-    'category': 'UserStory',
-    'title': 'Kochwelt Page',
-    'description': 'page start decription',
-    'subtask': '1/2 Subtasks', // delete / placeholder
-    'persons': 3, // ToDos.persons.length
-    'status': 'todo', 
-    'tasks': 3, // subtaks
-    'tasksdone': 1, // summe subtasks done
-    'id': 0,
-},];
-*/
-
 let currentDraggedElement;
-
-
-
-
-
 
 function init() {
     updateBoardHTML();
@@ -39,11 +20,9 @@ function updateBoardHTML() {
  * 
  */
 function updateToDoField () {
-
     let targetValue = 'todo';
     let inputObject = userTasks;
     let targetKey = 'status';
-
     let toDo = filterNestedObject(inputObject, targetValue, targetKey);
     //let toDo = userTasks.filter(t => (t['status'].toLowerCase().replaceAll(" ","")) == 'todo');
     let size = Object.keys(toDo).length;
@@ -52,7 +31,7 @@ function updateToDoField () {
         showNoTasksDone('todo');
     } else {
         showTask('todo');
-        renderingBoardTasks(toDo, 'todo');
+        renderingBoardTasks(Object.keys(toDo), 'todo');
     }
 }
 
@@ -61,9 +40,14 @@ function updateToDoField () {
  * 
  */
 function updateInProgressField () {
-    let progress = userTasks.filter(t => t['status'].toLowerCase().replaceAll(" ","") == 'inprogress');
+    let targetValue = 'inprogress';
+    let inputObject = userTasks;
+    let targetKey = 'status';
+    let progress = filterNestedObject(inputObject, targetValue, targetKey);
+    //let progress = userTasks.filter(t => t['status'].toLowerCase().replaceAll(" ","") == 'inprogress');
+    let size = Object.keys(progress).length;
     document.getElementById('inProgress').innerHTML = '';
-    if (progress.length == 0) {
+    if (size == 0) {
         showNoTasksDone('inProgress');
     } else {
         showTask('inProgress');
@@ -76,9 +60,14 @@ function updateInProgressField () {
  * 
  */
 function updateFeedbackField () {
-    let feedback = userTasks.filter(t => t['status'].toLowerCase().replaceAll(" ","") == 'feedback');
+    let targetValue = 'feedback';
+    let inputObject = userTasks;
+    let targetKey = 'status';
+    let feedback = filterNestedObject(inputObject, targetValue, targetKey);
+    //feedback = userTasks.filter(t => t['status'].toLowerCase().replaceAll(" ","") == 'feedback');
+    let size = Object.keys(feedback).length;
     document.getElementById('feedback').innerHTML = '';
-    if (feedback.length == 0) {
+    if (size == 0) {
         showNoTasksDone('feedback');
     } else {
         showTask('feedback');
@@ -91,13 +80,18 @@ function updateFeedbackField () {
  * 
  */
 function updateDoneField () {
-    let done = userTasks.filter(t => t['status'].toLowerCase().replaceAll(" ","") == 'done');
+    let targetValue = 'done';
+    let inputObject = userTasks;
+    let targetKey = 'status';
+    let done = filterNestedObject(inputObject, targetValue, targetKey);
+    // done = userTasks.filter(t => t['status'].toLowerCase().replaceAll(" ","") == 'done');
+    let size = Object.keys(feedback).length;
     document.getElementById('done').innerHTML = '';
-    if (done.length == 0) {
+    if (size == 0) {
         showNoTasksDone('done');
     } else {
         showTask('done');
-        renderingBoardTasks(done, 'done');
+        renderingBoardTasks(Object.keys(done), 'done');
     }
 }
 
@@ -143,15 +137,14 @@ function removeHighlight(id) {
 }
 
 /**
- * for schleife for tasks to rendering board elements html
+ * for of loop for tasks to render board elements html
  * 
- * @param {array} id 
- * @param {string} name 
+ * @param {object} filteredTasks
+ * @param {string} elementId
  */
-function renderingBoardTasks(id, name) {
-    for (let index = 0; index < id.length; index++) {
-        const element = id[index];
-        document.getElementById(`${name}`).innerHTML += generateTodoHTML(element);
+function renderingBoardTasks(filteredTasks, elementId) {
+    for (const object of filteredTasks) {
+        document.getElementById(`${elementId}`).innerHTML += generateTodoHTML(object);
     }
 }
 
@@ -197,8 +190,8 @@ function generateTodoHTML(element) {
                <div class="w3-border">
                  <div class="w3-grey" style="height:8px;width:0%"></div>
               </div>
-              <div class="subnumber">${(element['subtasks'].length)}</div></div>
-              <div class="persons">${(element['user'].length)}</div>
+              <div class="subnumber">${(element['subtasks'])}</div></div>
+              <div class="persons">${(element['user'])}</div>
            </div>
        </div>
     </div>`;

@@ -54,3 +54,24 @@ function getResponse(response) {
 function writeServer(action, data) {
     return {method: action, body: JSON.stringify(data)};
 }
+
+
+/**
+ * function saves an array with a specific key into the local storage a JSON string
+ * 
+ * @param {string} key 
+ * @param {array} array 
+ */
+function setLocalStorage (key, array) {
+    localStorage.setItem(key, JSON.stringify(array));
+  }
+  
+  /**
+   * functions get the JSON string from the local storage with the specific key and returns it
+   * 
+   * @param {*} key 
+   * @returns 
+   */
+  function getLocalStorage(key) {
+    return JSON.parse(localStorage.getItem(key));
+  }
