@@ -12,7 +12,7 @@ let todos = [{
 },];
 */
 
-let toDos = USERS[ACTIVEUSERKEY].tasks;
+
 
 let currentDraggedElement;
 
