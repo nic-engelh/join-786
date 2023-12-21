@@ -16,6 +16,10 @@ async function getStorageData (key) {
     }); 
 }
 
+function setObjectToJSON(objectJSON, Object) {
+    objectJSON = JSON.stringify(Object)
+}
+
 /**
  * The function stores JSON data as a string into the backend storage with a specific token.
  * 

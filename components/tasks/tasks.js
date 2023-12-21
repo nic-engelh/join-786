@@ -393,8 +393,8 @@ async function formValidation(status) {
         showSuccess();
         openSection("sectionBoard");
         updateBoardHTML();
-        getLocalStorage(localGuestTasks)
-        getLocalStorage(localUserTasks)
+        getLocalStorage(localGuestTasks);
+        getLocalStorage(localUserTasks);
     }
 }
 
