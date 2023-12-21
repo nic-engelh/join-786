@@ -195,7 +195,7 @@ function generateTodoHTML(elements) {
                  <div class="w3-grey" style="height:8px;width:0%"></div>
               </div>
               <div class="subnumber">${(elements['subtasks'])}</div></div>
-              <div class="persons">${(elements['user'])}</div>
+              <div class="boardAssignedUserInitials" style="background-color:#${(element['color'])};" id="boardAssignedUserInitials${i}">${(element['initials'])}</div>
            </div>
        </div>
     </div>`;
