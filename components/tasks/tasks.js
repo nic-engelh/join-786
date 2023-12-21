@@ -13,7 +13,7 @@ let subtasksArray = {
     'subtaskStatus': []
 };
 
-async function getTaskValue() {
+async function getTaskValue(inputStatus) {
     let dateCreated = new Date().getTime();
     let id = randomString();
     let title = document.getElementById('task_title').value;
@@ -23,7 +23,11 @@ async function getTaskValue() {
     let prio = getPriority();
     let category = document.getElementById('task_category').value;
     let subtasks = subtasksArray;
-    let status = 'To do';
+    let status;
+    if (inputStatus) {
+        status = inputStatus;
+    };
+    status = 'To Do';
 
     pushTask(dateCreated, id, title, description, user, date, prio, category, subtasks, status);
 }
@@ -340,7 +344,7 @@ function showAssignedInitials(i) {
     }
 }
 
-async function formValidation() {
+async function formValidation(status) {
     let title = document.getElementById('task_title');
     let date = document.getElementById('task_date');
     let category = document.getElementById('task_category');
@@ -363,7 +367,7 @@ async function formValidation() {
         date.value !== '' &&
         category.value !== ''
     ) {
-        await getTaskValue();
+        await getTaskValue(status);
         showSuccess();
         openBoard();
     }
