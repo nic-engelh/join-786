@@ -8,6 +8,10 @@ body {
   display: none!important;
 }
 
+.d-flex{
+  display: flex;
+}
+
 .add_task_form {
   gap: 8px;
   display: flex;

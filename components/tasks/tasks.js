@@ -531,7 +531,8 @@ async function formValidation(status) {
  */
 function showSuccess() {
     const dialog = document.getElementById("succes_alert_addedTask");
-    dialog.style.display = 'flex';
+    dialog.classList.add('d-flex');
     dialog.showModal();
     setTimeout(() => dialog.close(), 1000);
+    dialog.classList.toggle('d-flex');
 }
