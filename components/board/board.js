@@ -196,6 +196,11 @@ function findBoardTask () {
     return true
 }
 
+/**
+ * function checks the Tasks subtasks array for completed subtasks
+ * 
+ * @returns Number of finished subtasks
+ */
 function checkUserSubtasksStatus () {
     let subTasksDone = 0;
     for (const task of userTasks.subtasks) {
@@ -207,11 +212,16 @@ function checkUserSubtasksStatus () {
     return subTasksDone
 }
 
+/**
+ * function renders progress bar according to finished subtasks for each board task card
+ * 
+ */
 function renderSubtasksProgress () {
-    let container = document.getElementById();
+    let container = document.getElementById('taskBoardCarProgressBar');
     let subTasksTotal = userTasks.subtasks.length;
     let subTasksDone = checkUserSubtasksStatus();
-    // todo chance style width = progressbar length
+    let progressbarWidth = (subTasksDone / subTasksTotal)*100;
+     // TODO chance style width = progressbar length
 }
 
 /**
@@ -221,7 +231,7 @@ function renderSubtasksProgress () {
  * @returns html code
  */
 function generateTodoHTML(task) {
-    // todo w3 schools verlinken searchbalken suchen.
+    // TODO CSS balken anpassen; Änderung der Width muss über funktion erfolgen
     return `
     <div class ="todo" id="taskBoardCard_${task.id})">
         <div draggable="true" ondragstart="startDragging('${task.id}')" class="taskToDo">
@@ -230,7 +240,7 @@ function generateTodoHTML(task) {
             <div class="description">${task.description}</div>
             <div class="progressPosition">
                 <div class="w3-light-grey w3-round">
-                    <div class="w3-container w3-round w3-blue" style="height:8px; width:1%"></div>
+                    <div id="taskBoardCarProgressBar" class="w3-container w3-round w3-blue" style="height:8px; width:1%"></div>
                 </div>
                 <div class="subnumber"> 0/${(task.subtasks.length)}</div>
             <div id="boardAssignedUserInitialsContainer" class="d-flex"></div>
