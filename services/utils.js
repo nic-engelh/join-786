@@ -105,6 +105,12 @@ function filterNestedObject(inputObject, targetValue, targetKey) {
 }
 
 
+/**
+ * function adds new created css rule in the class attribute of the given element
+ * 
+ * @param {string} color 
+ * @param {string} elementId 
+ */
 function setBadgeColor (color, elementId) {
   let badge = document.getElementById(elementId);
   setContactStyleColor (color, elementId);
@@ -113,7 +119,12 @@ function setBadgeColor (color, elementId) {
 }
 
 
-
+/**
+ * function creates a new rule in the first style sheet for the background color
+ * 
+ * @param {string} color 
+ * @returns 
+ */
 function setContactStyleColor (color) {
   let styleSheet = window.document.styleSheets[0];    
   let string = `.color${color} { background-color: #${color}; }`;

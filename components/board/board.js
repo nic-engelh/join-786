@@ -162,6 +162,7 @@ function renderingBoardUserInitials (assignedUser) {
     let container = document.getElementById('boardAssignedUserInitialsContainer');
     for (const user of assignedUser) {
         container.innerHTML += generateUserInitialBadge(user);
+        setBadgeColor (user.color, `boardAssignedUserInitials_${user.id}`);
     }
 } 
 
