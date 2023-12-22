@@ -23,10 +23,11 @@ function updateToDoWidget() {
     let targetValue = 'todo';
     let toDoTasks = getFilteredTasksByStatus(targetValue);
     let size = Object.keys(toDoTasks).length;
-    todo.innerHTML = generateToDoWidget(size);
+    updateBoardWidget(size)
+    todo.innerHTML = generateToDoWidgetHTML(size);
 }
 
-function generateToDoWidgetHTML (size) {
+function generateToDoWidgetHTML(size) {
     return /*html*/`
     <div onclick="openSection('sectionBoard')" class="j36_toDo">
         <img src="/assets/img/Group 7.png" alt="">
@@ -47,8 +48,9 @@ function updateInProgressWidget() {
     let targetValue = 'inprogress';
     let progressTasks = getFilteredTasksByStatus(targetValue);
     let size = Object.keys(progressTasks).length;
-    inprogress.innerHTML = 
-    `<b id="j36_progress" class="j36_numberOfTasks">${size}</b>
+    updateBoardWidget(size)
+    inprogress.innerHTML =
+        `<b id="j36_progress" class="j36_numberOfTasks">${size}</b>
     <p>Task in Progress</p>`;
 }
 
@@ -60,8 +62,9 @@ function updateFeedbackWidget() {
     let feedback = document.getElementById('j36_feedback');
     feedback.innerHTML = ``;
     let targetValue = 'feedback';
-    let feedbackTasks =  getFilteredTasksByStatus(targetValue);
+    let feedbackTasks = getFilteredTasksByStatus(targetValue);
     let size = Object.keys(feedbackTasks).length;
+    updateBoardWidget(size)
     feedback.innerHTML = `  <b class="j36_numberOfTasks">${size}</b>
     <p>Awaiting Feedback</p>`;
 }
@@ -73,15 +76,16 @@ function updateFeedbackWidget() {
 function updateDoneWidget() {
     let done = document.getElementById('j36_done');
     done.innerHTML = ``;
-    let doneTasks = getFilteredTasksByStatus ("done");
+    let doneTasks = getFilteredTasksByStatus("done");
     let size = Object.keys(doneTasks).length;
-    done.innerHTML = `  <img src="/assets/img/Group 7 (1).png" alt="">
+    updateBoardWidget(size)
+    done.innerHTML = `  
+    <img src="/assets/img/Group 7 (1).png" alt="">
     <div class="j36_numberPosition">
         <b>${size}</b>
         <p  class="j36_todoText">Done</p>
     </div>`;
 }
-
 
 /**
  * functions searches userTasks for objects with status as target value
@@ -89,26 +93,25 @@ function updateDoneWidget() {
  * @param {string} targetValue 
  * @returns filtered object with tasks with status targetValue
  */
-function getFilteredTasksByStatus (targetValue) {
+function getFilteredTasksByStatus(targetValue) {
     let inputObject = userTasks;
     let targetKey = 'status';
     let filteredObject = filterNestedObject(inputObject, targetValue, targetKey);
     return filteredObject;
 }
 
-
 function updateUrgentWidget() {
     let urgent = document.getElementById('j36_Urgent');
     urgent.innerHTML = ``;
     let targetValue = 'urgent';  //urgent
-    let urgentTasks = Object.keys( filterNestedObject(userTasks, targetValue, 'prio') );
+    let urgentTasks = Object.keys(filterNestedObject(userTasks, targetValue, 'prio'));
     let deadlineDate = urgentTasks[0].date; // urgentTasks[key].date
-    for (const task of urgentTasks ){
+    for (const task of urgentTasks) {
         let nextDate = task.date;
         if (nextDate < deadlineDate) {
             deadlineDate = nextDate;
         }
-     };
+    };
     urgent.innerHTML = generateUrgentWidgetHTML(size, deadlineDate);
 }
 
@@ -129,14 +132,12 @@ function generateUrgentWidgetHTML(size, deadlineDate) {
     `
 }
 
-
-// komplette task in board plus rechenen und returnen - @sefa deine Aufgabe
-// TODO konnte ich nocht nicht bearbeiten
-function updateBoardWidget() {
+function updateBoardWidget(number) {
     let board = document.getElementById('j36_board');
-    // size muss berechnet werden aus länge des key.userTasks
+    let size =+ number;
     board.innerHTML = ``;
-    board.innerHTML = `  <img src="/assets/img/Group 7 (1).png" alt="">
+    board.innerHTML = `  
+    <img src="/assets/img/Group 7 (1).png" alt="">
     <div class="j36_numberPosition">
         <b>${size}</b>
         <p  class="j36_todoText">Done</p>
