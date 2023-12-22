@@ -10,9 +10,10 @@
     <link rel="stylesheet" href="/components/templates/header/header.css">
     <link rel="stylesheet" href="/components/templates/footer/footer.css">
     <link rel="stylesheet" href="/style.css">
+    <script src="/services/variables.js"></script>
 </head>
 
-<body id="sectionJoin360" onload="includeHTML()">
+<body id="sectionJoin360">
     <div id="j36_mobileVersion">
         <div class="j36_headline">
             <h1>Join 360</h1>
@@ -25,14 +26,14 @@
                     <img src="/assets/img/Group 7.png" alt="">
                     <div class="j36_numberPosition">
                         <b>1</b>
-                        <p class="j36_todoText">To-Do</p>
+                        <p id="j36_todo" class="j36_todoText">To-Do</p>
                     </div>
                 </div>
                 <div onclick="myfunction()" class="j36_toDoDone">
                     <img src="/assets/img/Group 7 (1).png" alt="">
                     <div class="j36_numberPosition">
                         <b>1</b>
-                        <p class="j36_todoText">Done</p>
+                        <p id="j36_done" class="j36_todoText">Done</p>
                     </div>
                 </div>
             </div>
@@ -53,15 +54,15 @@
             </div>
             <div onclick="myfunction()" class="j36_TaskProgress">
                 <div class="j36_AllTheTasks">
-                    <b class="j36_numberOfTasks">5</b>
+                    <b id="j36_board" class="j36_numberOfTasks">5</b>
                     <p>Task in Board</p>
                 </div>
                 <div class="j36_AllTheTasks">
-                    <b class="j36_numberOfTasks">2</b>
+                    <b id="j36_progress" class="j36_numberOfTasks">2</b>
                     <p>Task in Progress</p>
                 </div>
                 <div class="j36_AllTheTasks">
-                    <b class="j36_numberOfTasks">2</b>
+                    <b id="j36_feedback" class="j36_numberOfTasks">2</b>
                     <p>Awaiting Feedback</p>
                 </div>
 
