@@ -204,8 +204,8 @@ function findBoardTask () {
  */
 function generateTodoHTML(task) {
     return `
-    <div class ="todo">
-       <div draggable="true" ondragstart="startDragging(${task.id})" class="taskToDo">
+    <div class ="todo" id="taskBoardCard_${task.id})">
+       <div draggable="true" ondragstart="startDragging('${task.id}')" class="taskToDo">
           <div class="userHeadline">${task.category}</div>
           <div class="title">${task.title}</div>
           <div class="description">${task.description}</div>
