@@ -72,22 +72,21 @@ function pushUSERS(){
     }
     USERS[ACTIVEUSERKEY].tasks = tasks;
     USERS["guest"].tasks = tasks;
-    setLocalStorage ("localUserTasks", tasks)
-    setLocalStorage ("localGuestTasks", tasks)
-    setTasksToJSON(userTasks, guestTasks)
-    setStorageData ("backEndUserTasks", backEndUserTasksJSON)
-    setStorageData ("backEndGuestTasks", backEndGuestTasksJSON)
+    setLocalStorage ("localUserTasks", tasks);
+    setLocalStorage ("localGuestTasks", tasks);
+    setStorageData ("USERS", USERS);
 }
 
 /**
- * This function is used to convert the objects to JSON
+ * This function gets data from local storage
  * 
- * @param {object} userTasks this is the object with the tasks from the active user
- * @param {object} guestTasks this is the object with the tasks from the guest user
+ * 
  */
-function setTasksToJSON(userTasks, guestTasks) {
-    backEndGuestTasksJSON = JSON.stringify(guestTasks)
-    backEndUserTasksJSON = JSON.stringify(userTasks)
+function getTasksFromStorage() { 
+    if (ACTIVEUSERKEY != 'guest') {
+        USERS[ACTIVEUSERKEY].tasks = getLocalStorage("localUserTasks");
+    }
+    USERS[guest].tasks = getLocalStorage("localGuestTasks");
 }
 
 /**
@@ -519,8 +518,6 @@ async function formValidation(status) {
         showSuccess();
         openSection("sectionBoard");
         updateBoardHTML();
-        getLocalStorage(localGuestTasks);
-        getLocalStorage(localUserTasks);
     }
 }
 
