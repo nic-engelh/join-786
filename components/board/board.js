@@ -196,6 +196,21 @@ function findBoardTask () {
     return true
 }
 
+function checkUserSubtasksStatus () {
+    let subTasksTotal = userTasks.subtasks.length;
+    let subTasksDone = 0;
+    for (const task of userTasks.subtasks) {
+        if (task[0] == 0) { 
+            continue;
+        } ;
+        subTasksDone++;
+    }
+}
+
+function renderSubtasksProgress () {
+    let container = document.getElementById();
+}
+
 /**
  * function generates html code for task cards within the board fields
  * 
