@@ -12,9 +12,9 @@ let localGuestTasks = [];
  * 
  */
 async function setVariables () {
-    userContacts = USERS[ACTIVEUSERKEY].contacts; 
     ACTIVEUSERKEY = getLocalStorage("activeUser");
     await getTasksFromStorage();
+    userContacts = USERS[ACTIVEUSERKEY].contacts; 
     userTasks = USERS[ACTIVEUSERKEY].tasks;
     guestTasks = USERS["guest"].tasks;
   }

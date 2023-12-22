@@ -28,7 +28,6 @@ function setObjectToJSON(objectJSON, Object) {
  * @returns 
  */
 async function setStorageData (key, value) {
-    value = JSON.stringify(value);
     const payload = {key, value, token: STORAGE_TOKEN};
     try {
         return await fetch(STORAGE_URL, writeServer("POST", payload))

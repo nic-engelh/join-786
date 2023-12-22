@@ -7,7 +7,7 @@ let timeout = 15000
 async function init() {
      // function that erases / deletes the localstorage
      setLocalStorage("localUserTasks"," ");
-     setLocalStorage("activeUser", "");
+     setLocalStorage("activeUser", " ");
      await loadusers();
 }
 
