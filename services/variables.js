@@ -3,17 +3,8 @@ let USERS = {};
 let ACTIVEUSERKEY = null;
 
 let userContacts = []; 
-
 let userTasks;
-
-let backEndUserTasks = [];
-let backEndUserTasksJSON;
-
-let backEndGuestTasks = [];
-let backEndGuestTasksJSON;
-
 let localUserTasks = [];
-
 let localGuestTasks = [];
 
 /**
