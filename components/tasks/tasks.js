@@ -13,6 +13,12 @@ let subtasksArray = {
     'subtaskStatus': []
 };
 
+
+/**
+ * This function is used to fetch all the data for the new task from inputs and functions
+ * 
+ * @param {string} inputStatus This variable sets the status
+ */
 async function getTaskValue(inputStatus) {
     let dateCreated = new Date().getTime();
     let id = randomString();
@@ -32,6 +38,11 @@ async function getTaskValue(inputStatus) {
     pushTask(dateCreated, id, title, description, user, date, prio, category, subtasks, status);
 }
 
+/**
+ * This function is used to push all the data for the new task in the tasks object
+ * 
+ * @param {object} tasks this is the object where the task is compiled
+ */
 function pushTask(dateCreated, id, title, description, user, date, prio, category, subtasks, status) {
     tasks[id] = {
         dateCreated: dateCreated,
@@ -49,9 +60,14 @@ function pushTask(dateCreated, id, title, description, user, date, prio, categor
     resetTask();
 }
 
+/**
+ * This function is used to push the object tasks to guest and active User
+ * 
+ * 
+ */
 function pushUSERS(){
     if (!USERS[ACTIVEUSERKEY].tasks) {
-        // add tasks object to acitve user object
+        // add tasks object to active user object
         USERS[ACTIVEUSERKEY]["tasks"] = {};
     }
     USERS[ACTIVEUSERKEY].tasks = tasks;
@@ -63,11 +79,22 @@ function pushUSERS(){
     setStorageData ("backEndGuestTasks", backEndGuestTasksJSON)
 }
 
+/**
+ * This function is used to convert the objects to JSON
+ * 
+ * @param {object} userTasks this is the object with the tasks from the active user
+ * @param {object} guestTasks this is the object with the tasks from the guest user
+ */
 function setTasksToJSON(userTasks, guestTasks) {
     backEndGuestTasksJSON = JSON.stringify(guestTasks)
     backEndUserTasksJSON = JSON.stringify(userTasks)
 }
 
+/**
+ * This function is used to reset the add task inputs, images, classes and divs
+ * 
+ * 
+ */
 function resetTask() {
     document.getElementById('task_title').value = '';
     document.getElementById('task_title').style.border = '1px solid #d1d1d1';
@@ -104,7 +131,11 @@ function resetTask() {
     };
 }
 
-
+/**
+ * This function is used to fetch the chosen priority
+ * 
+ *  
+ */
 function getPriority() {
     const urgentButton = document.getElementById('urgent_button');
     const mediumButton = document.getElementById('medium_button');
@@ -119,7 +150,11 @@ function getPriority() {
     }
 }
 
-
+/**
+ * This function is used to set the priority to urgent and set the urgent button active
+ * 
+ * 
+ */
 function urgentButton() {
     let img = document.getElementById('task_prio_img_urgent');
     const urgentButton = document.getElementById('urgent_button');
@@ -138,7 +173,11 @@ function urgentButton() {
     document.getElementById('low_button').classList.remove('low_button_active');
 }
 
-
+/**
+ * This function is used to set the priority to medium and set the medium button active
+ * 
+ * 
+ */
 function mediumButton() {
     let img = document.getElementById('task_prio_img_medium');
     const mediumButton = document.getElementById('medium_button');
@@ -157,7 +196,11 @@ function mediumButton() {
     document.getElementById('low_button').classList.remove('low_button_active');
 }
 
-
+/**
+ * This function is used to set the priority to low and set the low button active
+ * 
+ * 
+ */
 function lowButton() {
     let img = document.getElementById('task_prio_img_low');
     const lowButton = document.getElementById('low_button');
@@ -176,7 +219,11 @@ function lowButton() {
     document.getElementById('medium_button').classList.remove('medium_button_active');
 }
 
-
+/**
+ * This function is used to transform the addSubtask button into an input and focus it
+ * 
+ * 
+ */
 function transformSubtaskButton() {
     const subtaskButton = document.getElementById('subtask_button_input');
 
@@ -194,12 +241,22 @@ function transformSubtaskButton() {
     document.getElementById('subtask_input').focus();
 }
 
+/**
+ * This function is used as means to confirm your new subtask with an 'enter' command on the keyboard
+ * 
+ * 
+ */
 function handleKeyUp(event) {
     if (event.key === 'Enter' || event.keyCode === 13) {
         addNewSubtaskToList();
     }
 }
 
+/**
+ * This function pushes the new subtask to the subtasks arrays
+ * 
+ * 
+ */
 function addNewSubtaskToList() {
     let newSubtask = document.getElementById('subtask_input').value;
 
@@ -215,6 +272,11 @@ function addNewSubtaskToList() {
     }
 }
 
+/**
+ * This function renders the subtask container with the subtasks in the subtask arrays
+ * 
+ * 
+ */
 function renderSubtaskContainer() {
     let subtaskContainer = document.getElementById('new_subtask_list');
     subtaskContainer.innerHTML = '';
@@ -235,6 +297,11 @@ function renderSubtaskContainer() {
     }
 }
 
+/**
+ * This function is used to edit an existing subtask
+ * 
+ * 
+ */
 function editSubtask(i) {
     const editIcons = document.getElementById(`edit_and_delete${i}`);
     editIcons.innerHTML = "";
@@ -257,6 +324,11 @@ function editSubtask(i) {
     input.selectionStart = input.selectionEnd = input.value.length;
 }
 
+/**
+ * This function is used to confirm the changes to the subtask and close the edit input
+ * 
+ *  
+ */
 function acceptChanges(i) {
     let replacingElement = document.getElementById(`readonly_input${i}`).value;
     subtasksArray.subtaskContent.splice(i, 1, replacingElement);
@@ -264,6 +336,11 @@ function acceptChanges(i) {
     renderSubtaskContainer();
 }
 
+/**
+ * This function is used to delete a subtask
+ * 
+ * 
+ */
 function deleteSubtaskItem(i) {
     subtasksArray.subtaskContent.splice(i, 1);
     subtasksArray.subtaskStatus.splice(i, 1);
@@ -271,6 +348,11 @@ function deleteSubtaskItem(i) {
     renderSubtaskContainer();
 }
 
+/**
+ * This function is used to revert the subtask input into a button
+ * 
+ * 
+ */
 function revertBackToButton() {
     const subtaskButton = document.getElementById('subtask_button_input');
 
@@ -281,10 +363,20 @@ function revertBackToButton() {
     `;
 }
 
+/**
+ * This function is used to filter by variables
+ * 
+ * 
+ */
 function filterByVariable(array, variable, value) {
     return array.find(item => item[variable] == value);
   }
 
+/**
+ * This function loads the users that were chosen for the subtask
+ * 
+ * 
+ */
 function loadAssignableNames() {
     const selectElement = document.getElementById("assigned_user");
     for (let i = 0; i < userContacts.length; i++) {
@@ -302,10 +394,20 @@ function loadAssignableNames() {
     }
 }
 
+/**
+ * This function toggles the visibility of the tasks_contacts_container
+ * 
+ * 
+ */
 function toggleSelect() {
     document.getElementById('tasks_contacts_container').classList.toggle('d-none');
 }
 
+/**
+ * This function adds the event that hides the contact selection when clicking somewhere else than the contact selection
+ * 
+ * 
+ */
 function hideContactSelect(event) {
     let nameContainer = document.getElementById('tasks_contacts_container');
     if (nameContainer) {
@@ -315,9 +417,18 @@ function hideContactSelect(event) {
     }
 }
 
+/**
+ * This is an event when you click
+ * 
+ * 
+ */
 document.addEventListener("click", hideContactSelect);
 
-
+/**
+ * This function is used to assign a user and show it with css and images
+ * 
+ * 
+ */
 function chooseContact(i) {
     let li = document.getElementById(`toggle_name${i}`);
     let checkbox = document.getElementById(`checkbox${i}`);
@@ -333,6 +444,11 @@ function chooseContact(i) {
     pushAssignedContact(i, li);
 }
 
+/**
+ * This function is used to push the assigned user in userContacts
+ * 
+ * 
+ */
 async function pushAssignedContact(i, li) {
     const name = await userContacts[i];
     
@@ -344,6 +460,11 @@ async function pushAssignedContact(i, li) {
     showAssignedInitials(i);
 }
 
+/**
+ * This function shows the initials of the chosen user with his colors
+ * 
+ * 
+ */
 function showAssignedInitials(i) {
     const toBeAssigned = userContacts[i]['initials'];
     const index = assignedInitial.indexOf(toBeAssigned);
@@ -366,6 +487,11 @@ function showAssignedInitials(i) {
     }
 }
 
+/**
+ * This function validates if every required input was filled out and marks them if not
+ * 
+ * 
+ */
 async function formValidation(status) {
     let title = document.getElementById('task_title');
     let date = document.getElementById('task_date');
@@ -398,15 +524,14 @@ async function formValidation(status) {
     }
 }
 
+/**
+ * This function shows the succes of adding the task with a dialog
+ * 
+ * 
+ */
 function showSuccess() {
     const dialog = document.getElementById("succes_alert_addedTask");
     dialog.style.display = 'flex';
     dialog.showModal();
     setTimeout(() => dialog.close(), 1000);
 }
-
-// function openBoard() {
-//     setTimeout(() => {
-//         window.location.replace("/components/board/board.html");
-//     }, "1000");
-// }
