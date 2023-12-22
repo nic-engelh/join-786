@@ -214,7 +214,7 @@ function generateTodoHTML(task) {
                  <div class="w3-grey" style="height:8px;width:0%"></div>
               </div>
               <div class="subnumber">${(task.subtasks.length)}</div></div>
-              <div id="boardAssignedUserInitialsContainer"> 
+              <div id="boardAssignedUserInitialsContainer" class="d-flex" > 
               </div>
            </div>
        </div>
@@ -227,10 +227,10 @@ function generateTodoHTML(task) {
  * @param {array} elements 
  * @returns 
  */
-function generateUserInitialBadge (elements) {
+function generateUserInitialBadge (user) {
     return /*html*/`
-        <div class="boardAssignedUserInitials" id="boardAssignedUserInitials_${elements.id}">
-        ${(elements.initials)}
+        <div class="boardAssignedUserInitials" id="boardAssignedUserInitials_${user.contactId}">
+        ${(user.initials)}
         </div>
     `
     //style="background-color:#${(elements.color)};" 
