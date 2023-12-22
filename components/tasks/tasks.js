@@ -86,7 +86,7 @@ function getTasksFromStorage() {
     if (ACTIVEUSERKEY != 'guest') {
         USERS[ACTIVEUSERKEY].tasks = getLocalStorage("localUserTasks");
     }
-    USERS[guest].tasks = getLocalStorage("localGuestTasks");
+    USERS["guest"].tasks = getLocalStorage("localGuestTasks");
 }
 
 /**

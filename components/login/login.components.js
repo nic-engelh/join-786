@@ -5,7 +5,9 @@ let timeout = 15000
  * is the onload function 
  */
 async function init() {
-     await loadusers()
+     await loadusers();
+     // function that erases / deletes the localstorage
+     setLocalStorage("localUserTasks"," ");
 }
 
 /**
