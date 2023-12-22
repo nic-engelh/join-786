@@ -197,7 +197,6 @@ function findBoardTask () {
 }
 
 function checkUserSubtasksStatus () {
-    let subTasksTotal = userTasks.subtasks.length;
     let subTasksDone = 0;
     for (const task of userTasks.subtasks) {
         if (task[0] == 0) { 
@@ -205,34 +204,37 @@ function checkUserSubtasksStatus () {
         } ;
         subTasksDone++;
     }
+    return subTasksDone
 }
 
 function renderSubtasksProgress () {
     let container = document.getElementById();
+    let subTasksTotal = userTasks.subtasks.length;
+    let subTasksDone = checkUserSubtasksStatus();
+    // todo chance style width = progressbar length
 }
 
 /**
- * function generates html code for task cards within the board fields
+ * function generates html code for task cards within the board fields 
  * 
  * @param {object} element 
  * @returns html code
  */
 function generateTodoHTML(task) {
+    // todo w3 schools verlinken searchbalken suchen.
     return `
     <div class ="todo" id="taskBoardCard_${task.id})">
-       <div draggable="true" ondragstart="startDragging('${task.id}')" class="taskToDo">
-          <div class="userHeadline">${task.category}</div>
-          <div class="title">${task.title}</div>
-          <div class="description">${task.description}</div>
-           <div class="progressPosition">
-               <div class="w3-border">
-                 <div class="w3-grey" style="height:8px;width:0%"></div>
-              </div>
-              <div class="subnumber">${(task.subtasks.length)}</div></div>
-              <div id="boardAssignedUserInitialsContainer" class="d-flex" > 
-              </div>
-           </div>
-       </div>
+        <div draggable="true" ondragstart="startDragging('${task.id}')" class="taskToDo">
+            <div class="userHeadline">${task.category}</div>
+            <div class="title">${task.title}</div>
+            <div class="description">${task.description}</div>
+            <div class="progressPosition">
+                <div class="w3-light-grey w3-round">
+                    <div class="w3-container w3-round w3-blue" style="height:8px; width:1%"></div>
+                </div>
+                <div class="subnumber"> 0/${(task.subtasks.length)}</div>
+            <div id="boardAssignedUserInitialsContainer" class="d-flex"></div>
+        </div>
     </div>`;
 }
 
