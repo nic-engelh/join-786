@@ -147,8 +147,6 @@ function renderingBoardTasks(filteredTasks, elementId) {
     for (const key in filteredTasks) {
         let value = filteredTasks[key];
         document.getElementById(`${elementId}`).innerHTML += generateTodoHTML(value);
-        // TODO hier deine function für user kreise ( initials)
-        // Zugriff mit object.user[1]
         renderingBoardUserInitials(value.user);
     }
 }
@@ -162,7 +160,7 @@ function renderingBoardUserInitials (assignedUser) {
     let container = document.getElementById('boardAssignedUserInitialsContainer');
     for (const user of assignedUser) {
         container.innerHTML += generateUserInitialBadge(user);
-        setBadgeColor (user.color, `boardAssignedUserInitials_${user.id}`);
+        setBadgeColor(user.color, `boardAssignedUserInitials_${user.contactId}`);
     }
 } 
 
@@ -192,24 +190,30 @@ function openCreateTaskModal(section, boardFieldStatus) {
     return true;
 }
 
+
+function findBoardTask () {
+    // TODO use following funtion from utils: filterNestedObject(inputObject, targetValue, targetKey)
+    return true
+}
+
 /**
  * function generates html code for task cards within the board fields
  * 
  * @param {object} element 
  * @returns html code
  */
-function generateTodoHTML(elements) {
+function generateTodoHTML(task) {
     return `
     <div class ="todo">
-       <div draggable="true" ondragstart="startDragging(${elements['id']})" class="taskToDo">
-          <div class="userHeadline">${elements['category']}</div>
-          <div class="title">${elements['title']}</div>
-          <div class="description">${elements['description']}</div>
+       <div draggable="true" ondragstart="startDragging(${task.Id})" class="taskToDo">
+          <div class="userHeadline">${task.category}</div>
+          <div class="title">${task.title}</div>
+          <div class="description">${task.description}</div>
            <div class="progressPosition">
                <div class="w3-border">
                  <div class="w3-grey" style="height:8px;width:0%"></div>
               </div>
-              <div class="subnumber">${(elements['subtasks'].length)}</div></div>
+              <div class="subnumber">${(task.subtasks.length)}</div></div>
               <div id="boardAssignedUserInitialsContainer"> 
               </div>
            </div>
@@ -225,8 +229,9 @@ function generateTodoHTML(elements) {
  */
 function generateUserInitialBadge (elements) {
     return /*html*/`
-        <div class="boardAssignedUserInitials" style="background-color:#${(elements.color)};" id="boardAssignedUserInitials_${elements.id}">
+        <div class="boardAssignedUserInitials" id="boardAssignedUserInitials_${elements.id}">
         ${(elements.initials)}
         </div>
     `
+    //style="background-color:#${(elements.color)};" 
 }
