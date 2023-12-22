@@ -48,7 +48,6 @@ function updateInProgressWidget() {
     let progressTasks = getFilteredTasksByStatus(targetValue);
     let size = Object.keys(progressTasks).length;
     inprogress.innerHTML = 
-    
     `<b id="j36_progress" class="j36_numberOfTasks">${size}</b>
     <p>Task in Progress</p>`;
 }
@@ -98,7 +97,6 @@ function getFilteredTasksByStatus (targetValue) {
 }
 
 
-// TODO cleaning and refactoring
 function updateUrgentWidget() {
     let urgent = document.getElementById('j36_Urgent');
     urgent.innerHTML = ``;
@@ -132,7 +130,8 @@ function generateUrgentWidgetHTML(size, deadlineDate) {
 }
 
 
-// komplette task in board plus rechenen und returnen
+// komplette task in board plus rechenen und returnen - @sefa deine Aufgabe
+// TODO konnte ich nocht nicht bearbeiten
 function updateBoardWidget() {
     let board = document.getElementById('j36_board');
     // size muss berechnet werden aus länge des key.userTasks
