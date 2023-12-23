@@ -9,11 +9,12 @@ const STORAGE_TOKEN = 'LMBAS4F9WBPBDZFK8259KHJQX6G2KD62SQOU7VKS';
  */
 async function getStorageData (key) {
     const url = `${STORAGE_URL}?key=${key}&token=${STORAGE_TOKEN}`;
-    return fetch(url).then(res => res.json()).then(res => {
+    let package = fetch(url).then(res => res.json()).then(res => {
         if (res.data) { 
             return res.data.value;
         } throw `Could not find data with key "${key}".`;
     }); 
+    return JSON.parse(package)
 }
 
 function setObjectToJSON(objectJSON, Object) {
