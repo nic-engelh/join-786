@@ -33,7 +33,7 @@ async function register() {
           if (checkPassword(password, passwordConfirm)) {
                userData = { 'userData': { key: key, name: name, email: email, password: password, failedAttemped: true } };
                USERS[key] = userData;
-               if (!await getStorageData('users')) {
+               if (await getStorageData('users')) {
                     updateStorageData('users', USERS);    
                     await popup();
                }else{
