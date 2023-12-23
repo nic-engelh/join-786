@@ -19,7 +19,7 @@ async function updateBoardHTML() {
  * function filters all tasks with status todo from active user tasks object
  * 
  */
-function updateToDoField () {
+function updateToDoField() {
     let targetValue = 'todo';
     let inputObject = userTasks;
     let targetKey = 'status';
@@ -38,7 +38,7 @@ function updateToDoField () {
  * function filters all tasks with status "inprogress" from active user tasks object
  * 
  */
-function updateInProgressField () {
+function updateInProgressField() {
     let targetValue = 'inprogress';
     let inputObject = userTasks;
     let targetKey = 'status';
@@ -58,7 +58,7 @@ function updateInProgressField () {
  * function filters all taks with status "feedback" from active user tasks object
  * 
  */
-function updateFeedbackField () {
+function updateFeedbackField() {
     let targetValue = 'feedback';
     let inputObject = userTasks;
     let targetKey = 'status';
@@ -77,7 +77,7 @@ function updateFeedbackField () {
  * function filters all tasks with status "done" from active user tasks object
  * 
  */
-function updateDoneField () {
+function updateDoneField() {
     let targetValue = 'done';
     let inputObject = userTasks;
     let targetKey = 'status';
@@ -149,6 +149,7 @@ function renderingBoardTasks(filteredTasks, elementId) {
         let value = filteredTasks[key];
         document.getElementById(`${elementId}`).innerHTML += generateTodoHTML(value);
         renderingBoardUserInitials(value.user);
+        generatePriority(value)
     }
 }
 
@@ -157,13 +158,39 @@ function renderingBoardTasks(filteredTasks, elementId) {
  * 
  * @param {array} assignedUser 
  */
-function renderingBoardUserInitials (assignedUser) {
+function renderingBoardUserInitials(assignedUser) {
     let container = document.getElementById('boardAssignedUserInitialsContainer');
     for (const user of assignedUser) {
         container.innerHTML += generateUserInitialBadge(user);
         setBadgeColor(user.color, `boardAssignedUserInitials_${user.contactId}`);
     }
-} 
+}
+
+/**
+ * functions generates the priority image
+ * 
+ * @param {array} elements 
+ * @returns 
+ */
+function generatePriority(task) {
+    let imagePrio = document.getElementById('boardAssignedPriority')
+
+    if (task.prio == 'urgent') {
+        imagePrio.innerHTML = `
+        <img src="/assets/img/addTask/prio_high.png" alt="prio high">
+        `}
+
+    if (task.prio == 'medium') {
+        imagePrio.innerHTML = `
+        <img src="/assets/img/addTask/prio_medium.png" alt="prio medium">
+    `}
+
+    if (task.prio == 'low') {
+        imagePrio.innerHTML = `
+        <img src="/assets/img/addTask/prio_low.png" alt="prio low">
+    `}
+
+}
 
 /**
  * remove and add class for information that no tasks are done 
@@ -192,7 +219,7 @@ function openCreateTaskModal(section, boardFieldStatus) {
 }
 
 
-function findBoardTask () {
+function findBoardTask() {
     // TODO use following funtion from utils: filterNestedObject(inputObject, targetValue, targetKey)
     return true
 }
@@ -202,12 +229,12 @@ function findBoardTask () {
  * 
  * @returns Number of finished subtasks
  */
-function checkUserSubtasksStatus () {
+function checkUserSubtasksStatus() {
     let subTasksDone = 0;
     for (const task of userTasks.subtasks) {
-        if (task[0] == 0) { 
+        if (task[0] == 0) {
             continue;
-        } ;
+        };
         subTasksDone++;
     }
     return subTasksDone
@@ -217,12 +244,12 @@ function checkUserSubtasksStatus () {
  * function renders progress bar according to finished subtasks for each board task card
  * 
  */
-function renderSubtasksProgress () {
+function renderSubtasksProgress() {
     let container = document.getElementById('taskBoardCarProgressBar');
     let subTasksTotal = userTasks.subtasks.length;
     let subTasksDone = checkUserSubtasksStatus();
-    let progressbarWidth = (subTasksDone / subTasksTotal)*100;
-     // TODO chance style width = progressbar length
+    let progressbarWidth = (subTasksDone / subTasksTotal) * 100;
+    // TODO chance style width = progressbar length
 }
 
 /**
@@ -241,11 +268,14 @@ function generateTodoHTML(task) {
             <div class="description">${task.description}</div>
             <div class="progressPosition">
                 <div class="w3-light-grey w3-round">
-                    <div id="taskBoardCarProgressBar" class="w3-container w3-round w3-blue" style="height:8px; width:1%"></div>
-                </div>
+                    <div id="taskBoardCarProgressBar" class="w3-container w3-round w3-blue" style="height:8px; width:1%"></div></div>
                 <div class="subnumber"> 0/${(task.subtasks.length)}</div>
-            <div id="boardAssignedUserInitialsContainer" class="d-flex"></div>
-        </div>
+            </div>
+            <div class="boardAssignedUserAndPrio">
+                <div id="boardAssignedUserInitialsContainer" class="d-flex"></div>
+                <div id="boardAssignedPriority"></div>
+            </div>
+        
     </div>`;
 }
 
@@ -255,7 +285,7 @@ function generateTodoHTML(task) {
  * @param {array} elements 
  * @returns 
  */
-function generateUserInitialBadge (user) {
+function generateUserInitialBadge(user) {
     return /*html*/`
         <div class="boardAssignedUserInitials" id="boardAssignedUserInitials_${user.contactId}">
         ${(user.initials)}
