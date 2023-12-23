@@ -39,7 +39,7 @@ async function login() {
                if (checkPasswordLogin(password)) {
                     ACTIVEUSERKEY = key;
                     setLocalStorage("activeUser", ACTIVEUSERKEY);
-                    window.location.href = '/components/join360/dashBoard.html';
+                    window.location.href = '/index.html';
                } else {
                     inCorrect(message)
                     if (USERS[key]) {
