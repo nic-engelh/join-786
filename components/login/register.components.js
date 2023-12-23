@@ -35,10 +35,11 @@ async function register() {
                USERS[key] = userData;
                if (!await getStorageData('users')) {
                     setStorageData('users', USERS);      
+                    await popup();
                }else{
                     updateStorageData('users', USERS);    
+                    await popup();
                }
-               await popup();
           } else {
                notsame.innerHTML = 'password are not the same';
                notsame.classList.remove('d-none');
