@@ -8,7 +8,7 @@ function init() {
  * main functions for updating the drag & drop fields for tasks objects
  */
 async function updateBoardHTML() {
-    await setVariables();
+    // aktuelle tasks müssen abgerufen werden
     updateToDoField();
     updateInProgressField();
     updateFeedbackField();
@@ -118,6 +118,7 @@ function allowDrop(ev) {
 function moveTo(status) {
     userTasks[currentDraggedElement]['status'] = status;
     updateBoardHTML();
+    // tasks müssen upgedatet werden
 }
 
 /**

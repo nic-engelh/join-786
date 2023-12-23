@@ -78,18 +78,6 @@ function pushUSERS(){
 }
 
 /**
- * This function gets data from local storage
- * 
- * 
- */
-function getTasksFromLocalStorage() { 
-    if (ACTIVEUSERKEY != 'guest') {
-        USERS[ACTIVEUSERKEY].tasks = getLocalStorage("localUserTasks");
-    }
-    USERS["guest"].tasks = getLocalStorage("localGuestTasks");
-}
-
-/**
  * This function is used to reset the add task inputs, images, classes and divs
  * 
  * 
