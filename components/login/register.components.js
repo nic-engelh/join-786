@@ -12,7 +12,7 @@ async function init() {
  */
 async function loadusers() {
      if (!await getStorageData('users')) {
-          USERS = JSON.parse(await getStorageData('users'));
+          USERS =await getStorageData('users');
      }
 }
 
@@ -33,7 +33,7 @@ async function register() {
           if (checkPassword(password, passwordConfirm)) {
                userData = { 'userData': { key: key, name: name, email: email, password: password, failedAttemped: true } };
                USERS[key] = userData;
-               setStorageData('users', JSON.stringify(USERS))
+               setStorageData('users', USERS);
                await popup();
           } else {
                notsame.innerHTML = 'password are not the same';
