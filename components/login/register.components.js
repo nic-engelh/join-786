@@ -34,10 +34,10 @@ async function register() {
                userData = { 'userData': { key: key, name: name, email: email, password: password, failedAttemped: true } };
                USERS[key] = userData;
                if (!await getStorageData('users')) {
-                    setStorageData('users', USERS);      
+                    updateStorageData('users', USERS);    
                     await popup();
                }else{
-                    updateStorageData('users', USERS);    
+                    setStorageData('users', USERS);      
                     await popup();
                }
           } else {
