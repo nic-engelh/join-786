@@ -82,7 +82,7 @@ async function setTime(key, email) {
 
     if (key) {
         USERS[key].userData.timepassed = { 'time': time, 'logintrys': 0 };
-        await setStorageData('users', JSON.stringify(USERS))
+        await setStorageData('users', (USERS))
     } else {
         console.log('not found')
 
@@ -101,6 +101,6 @@ async function timeTrue(key, email) {
     if (finduser) {
         USERS[key].userData.failedAttemped = true;
         USERS[key].userData.timepassed.time = null;
-        await setStorageData('users', JSON.stringify(USERS))
+        await setStorageData('users', (USERS))
     }
 }

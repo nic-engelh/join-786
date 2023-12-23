@@ -6,7 +6,7 @@ let timeout = 15000
  */
 async function init() {
      // function that erases / deletes the localstorage
-     setLocalStorage("localUserTasks"," ");
+     setLocalStorage("localUserTasks", " ");
      setLocalStorage("activeUser", " ");
      await loadusers();
 }
@@ -15,10 +15,8 @@ async function init() {
  * loads the user object array from the backend
  */
 async function loadusers() {
-     if (USERS.length == 0) {
-          console.log('empty')
-     } else {
-          USERS = await getStorageData('users');
+     if (!await getStorageData('users')) {          
+      USERS = await getStorageData('users');
      }
 }
 
@@ -113,14 +111,11 @@ function checkEmailLogin(email) {
  * @returns  the person with the password 
  */
 function checkPasswordLogin(password) {
-     if (USERS.length == 0) {
-          console.log('passwort ist falsch')
-     } else {
-          let usersArray = Object.values(USERS);
-          let foundUser = usersArray.find(user =>
-               user.userData.password === password)
-          return foundUser;
-     }
+     let usersArray = Object.values(USERS);
+     let foundUser = usersArray.find(user =>
+          user.userData.password === password)
+     return foundUser;
+
 }
 
 /**
@@ -171,20 +166,20 @@ async function keySettStrorage(key) {
 }
 
 function guestLogin() {
-     contacts =[ 
-          {"name": "Benedikt Ziegler", "email": "benediktz@gmail.com", "phone": "+1234567", "contactId": "98765abc", "initials": "BZ", "color": "812731"},
-          {"name": "Anton Mayer", "email": "antom@gmail.com","phone": "+1234567", "contactId": "12345abc", "initials": "AM", "color": "3e59c2"},
-          {"name": "Helena Eissele", "email": "helenae@gmail.com","phone": "+1234567", "contactId": "97345oiu", "initials": "HE", "color": "2b3430"},
-          {"name": "Izak Abraham", "email": "izaka@gmail.com","phone": "+1234567", "contactId": "12367oiu", "initials": "IA", "color": "907ee1"},
-          {"name": "Anja Schulz", "email": "anjas@gmail.com","phone": "+1234567", "contactId": "12345ghf", "initials": "AS", "color": "3e59c2"},
-          {"name": "David Eisenberg", "email": "davide@gmail.com","phone": "+1234567", "contactId": "12345oiu", "initials": "DE", "color": "4f98ce"}
-      ];
+     contacts = [
+          { "name": "Benedikt Ziegler", "email": "benediktz@gmail.com", "phone": "+1234567", "contactId": "98765abc", "initials": "BZ", "color": "812731" },
+          { "name": "Anton Mayer", "email": "antom@gmail.com", "phone": "+1234567", "contactId": "12345abc", "initials": "AM", "color": "3e59c2" },
+          { "name": "Helena Eissele", "email": "helenae@gmail.com", "phone": "+1234567", "contactId": "97345oiu", "initials": "HE", "color": "2b3430" },
+          { "name": "Izak Abraham", "email": "izaka@gmail.com", "phone": "+1234567", "contactId": "12367oiu", "initials": "IA", "color": "907ee1" },
+          { "name": "Anja Schulz", "email": "anjas@gmail.com", "phone": "+1234567", "contactId": "12345ghf", "initials": "AS", "color": "3e59c2" },
+          { "name": "David Eisenberg", "email": "davide@gmail.com", "phone": "+1234567", "contactId": "12345oiu", "initials": "DE", "color": "4f98ce" }
+     ];
      userData = { key: 0, name: 'Guest', email: 'GuestTest@hotmail.de', password: 'password', failedAttemped: true };
      // initalize entry with key guest and empty value as an object
      USERS["guest"] = {};
      // add an object into guest object; bracket string is going to be the key
-     USERS["guest"]["userData"] = userData ;
-     USERS["guest"]["contacts"] = contacts ;
+     USERS["guest"]["userData"] = userData;
+     USERS["guest"]["contacts"] = contacts;
      setStorageData('users', USERS);
      ACTIVEUSERKEY = "guest";
      setLocalStorage("activeUser", ACTIVEUSERKEY);

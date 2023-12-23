@@ -11,9 +11,7 @@ async function init() {
  * loads the user object array from the backend
  */
 async function loadusers() {
-     if (USERS.length == 0) {
-          console.log('empty')
-     } else {
+     if (!await getStorageData('users')) {
           USERS = JSON.parse(await getStorageData('users'));
      }
 }
@@ -33,14 +31,10 @@ async function register() {
           notsame.classList.remove('d-none')
      } else {
           if (checkPassword(password, passwordConfirm)) {
-               userData = { 'userData': { key: key, name: name, email: email, password: password, failedAttemped:true} };
+               userData = { 'userData': { key: key, name: name, email: email, password: password, failedAttemped: true } };
                USERS[key] = userData;
-               if (setStorageData('users', JSON.stringify(USERS))) {
-                    console.log('something went wrong by setting storage ');
-                    await popup();
-               } else {
-                    await popup();
-               }
+               setStorageData('users', JSON.stringify(USERS))
+               await popup();
           } else {
                notsame.innerHTML = 'password are not the same';
                notsame.classList.remove('d-none');
