@@ -12,13 +12,14 @@ body {
   display: flex;
 }
 
-.add_task_form {
+#add_task_form {
   gap: 8px;
   display: flex;
   flex-direction: column;
   overflow-y: auto;
   overflow-x: hidden;
   padding-bottom: 80px;
+  z-index: 3;
 }
 
 .add_task_h1 {
@@ -132,7 +133,7 @@ body {
 }
 
 #task_user {
-  z-index: 1;
+  z-index: 2;
 }
 
 #assigned_user {
@@ -263,6 +264,7 @@ ul {
   right: 0;
   background-color: #F6F7F8;
   padding: 16px 0;
+  z-index: 2;
 }
 
 #create_task_button {
