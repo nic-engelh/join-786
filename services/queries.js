@@ -18,6 +18,8 @@ async function getStorageData (key) {
     return JSON.parse(package)
 }
 
+
+
 function setObjectToJSON(objectJSON, Object) {
     objectJSON = JSON.stringify(Object)
 }
@@ -33,7 +35,7 @@ async function setStorageData (key, value) {
     const payload = {key, value, token: STORAGE_TOKEN};
     try {
         return await fetch(STORAGE_URL, writeServer("POST", payload))
-        .then(getResponse());
+        .then(getResponse);
     }
     catch(err) {
         console.error(`${err.message}`);

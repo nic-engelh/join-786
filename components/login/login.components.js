@@ -18,7 +18,7 @@ async function loadusers() {
      if (USERS.length == 0) {
           console.log('empty')
      } else {
-          USERS = JSON.parse(await getStorageData('users'));
+          USERS = await getStorageData('users');
      }
 }
 
