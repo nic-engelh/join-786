@@ -372,7 +372,7 @@ function filterByVariable(array, variable, value) {
   }
 
 /**
- * This function loads the users that were chosen for the subtask
+ * This function loads the users
  * 
  * 
  */
