@@ -165,7 +165,7 @@ async function keySettStrorage(key) {
      await updateStorageData('users', (USERS[key].userData.timepassed.logintrys -= 1));
 }
 
-function guestLogin() {
+async function guestLogin() {
      contacts = [
           { "name": "Benedikt Ziegler", "email": "benediktz@gmail.com", "phone": "+1234567", "contactId": "98765abc", "initials": "BZ", "color": "812731" },
           { "name": "Anton Mayer", "email": "antom@gmail.com", "phone": "+1234567", "contactId": "12345abc", "initials": "AM", "color": "3e59c2" },
@@ -180,8 +180,8 @@ function guestLogin() {
      // add an object into guest object; bracket string is going to be the key
      USERS["guest"]["userData"] = userData;
      USERS["guest"]["contacts"] = contacts;
-     updateStorageData('users', USERS);
+   await  updateStorageData('users', USERS);
      ACTIVEUSERKEY = "guest";
-     setLocalStorage("activeUser", ACTIVEUSERKEY);
+    await setLocalStorage("activeUser", ACTIVEUSERKEY);
      window.location.href = '/index.html';
 }
