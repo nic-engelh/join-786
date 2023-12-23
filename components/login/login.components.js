@@ -15,7 +15,7 @@ async function init() {
  * loads the user object array from the backend
  */
 async function loadusers() {
-     if (!await getStorageData('users')) {
+     if (await getStorageData('users')) {
           USERS = await getStorageData('users');
      }
 }
