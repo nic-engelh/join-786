@@ -36,8 +36,6 @@ async function getTasksFromLocalStorage() {
   if (ACTIVEUSERKEY != 'guest') {
       USERS[ACTIVEUSERKEY].tasks = getLocalStorage("localUserTasks");
   }
-
-
   localGuestTasks = await getLocalStorage("localGuestTasks");
   Object.assign(USERS["guest"].tasks, localGuestTasks);
 }

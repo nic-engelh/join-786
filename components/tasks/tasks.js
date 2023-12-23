@@ -74,7 +74,7 @@ function pushUSERS(){
     USERS["guest"].tasks = tasks;
     setLocalStorage ("localUserTasks", tasks);
     setLocalStorage ("localGuestTasks", tasks);
-    setStorageData ("users", USERS);
+    updateStorageData("users", USERS);
 }
 
 /**
