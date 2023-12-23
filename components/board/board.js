@@ -7,8 +7,8 @@ function init() {
 /**
  * main functions for updating the drag & drop fields for tasks objects
  */
-function updateBoardHTML() {
-    setVariables();
+async function updateBoardHTML() {
+    await setVariables();
     updateToDoField();
     updateInProgressField();
     updateFeedbackField();

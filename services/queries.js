@@ -34,7 +34,7 @@ async function setStorageData (key, value) {
         .then(getResponse());
     }
     catch(err) {
-        console.error("Error: Data could not be stored!");
+        console.error(`${err.message}`);
     }
 }
 
