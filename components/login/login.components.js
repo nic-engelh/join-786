@@ -182,6 +182,6 @@ async function guestLogin() {
      USERS["guest"]["contacts"] = contacts;
    await  updateStorageData('users', USERS);
      ACTIVEUSERKEY = "guest";
-    await setLocalStorage("activeUser", ACTIVEUSERKEY);
+   await setLocalStorage("activeUser", ACTIVEUSERKEY);
      window.location.href = '/index.html';
 }
