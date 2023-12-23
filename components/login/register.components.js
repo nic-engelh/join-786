@@ -11,7 +11,7 @@ async function init() {
  * loads the user object array from the backend
  */
 async function loadusers() {
-     if (!await getStorageData('users')) {
+     if (await getStorageData('users')) {
           USERS = await getStorageData('users');
      }
 }
@@ -54,7 +54,7 @@ function findUserByEmail(email) {
      } else {
           let usersArray = Object.values(USERS);
           let foundUser = usersArray.find(user =>
-               user.userData.email === email)
+               user.userData.email == email)
           return foundUser;
      }
 
