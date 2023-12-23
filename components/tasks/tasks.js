@@ -82,7 +82,7 @@ function pushUSERS(){
  * 
  * 
  */
-function getTasksFromStorage() { 
+function getTasksFromLocalStorage() { 
     if (ACTIVEUSERKEY != 'guest') {
         USERS[ACTIVEUSERKEY].tasks = getLocalStorage("localUserTasks");
     }
