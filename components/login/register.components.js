@@ -33,7 +33,11 @@ async function register() {
           if (checkPassword(password, passwordConfirm)) {
                userData = { 'userData': { key: key, name: name, email: email, password: password, failedAttemped: true } };
                USERS[key] = userData;
-               setStorageData('users', USERS);
+               if (!await getStorageData('users')) {
+                    setStorageData('users', USERS);      
+               }else{
+                    updateStorageData('users', USERS);    
+               }
                await popup();
           } else {
                notsame.innerHTML = 'password are not the same';

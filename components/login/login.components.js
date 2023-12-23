@@ -162,7 +162,7 @@ function findKey(email) {
  * @param {number} key 
  */
 async function keySettStrorage(key) {
-     await setStorageData('users', (USERS[key].userData.timepassed.logintrys -= 1));
+     await updateStorageData('users', (USERS[key].userData.timepassed.logintrys -= 1));
 }
 
 function guestLogin() {
@@ -180,7 +180,7 @@ function guestLogin() {
      // add an object into guest object; bracket string is going to be the key
      USERS["guest"]["userData"] = userData;
      USERS["guest"]["contacts"] = contacts;
-     setStorageData('users', USERS);
+     updateStorageData('users', USERS);
      ACTIVEUSERKEY = "guest";
      setLocalStorage("activeUser", ACTIVEUSERKEY);
      window.location.href = '/index.html';
