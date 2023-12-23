@@ -11,6 +11,8 @@ function updateDashBoardHTML() {
     updateInProgressWidget();
     updateFeedbackWidget();
     updateDoneWidget();
+    updateNameWidget();
+    updateUrgentWidget()
 }
 
 /**
@@ -24,19 +26,9 @@ function updateToDoWidget() {
     let toDoTasks = getFilteredTasksByStatus(targetValue);
     let size = Object.keys(toDoTasks).length;
     updateBoardWidget(size)
-    todo.innerHTML = generateToDoWidgetHTML(size);
+    todo.innerHTML =`<b>${size}</b>`;
 }
 
-function generateToDoWidgetHTML(size) {
-    return /*html*/`
-    <div onclick="openSection('sectionBoard')" class="j36_toDo">
-        <img src="/assets/img/Group 7.png" alt="">
-        <div class="j36_numberPosition">
-            <b>${size}</b>
-            <p id="j36_todo" class="j36_todoText">To-Do</p>
-    </div>
-    `;
-}
 
 /**
  * function filters all tasks with status "inprogress" from active user tasks object
@@ -49,9 +41,7 @@ function updateInProgressWidget() {
     let progressTasks = getFilteredTasksByStatus(targetValue);
     let size = Object.keys(progressTasks).length;
     updateBoardWidget(size)
-    inprogress.innerHTML =
-        `<b id="j36_progress" class="j36_numberOfTasks">${size}</b>
-    <p>Task in Progress</p>`;
+    inprogress.innerHTML =`<b>${size}</b>`;
 }
 
 /**
@@ -65,8 +55,7 @@ function updateFeedbackWidget() {
     let feedbackTasks = getFilteredTasksByStatus(targetValue);
     let size = Object.keys(feedbackTasks).length;
     updateBoardWidget(size)
-    feedback.innerHTML = `  <b class="j36_numberOfTasks">${size}</b>
-    <p>Awaiting Feedback</p>`;
+    feedback.innerHTML =`<b>${size}</b>`;
 }
 
 /**
@@ -79,12 +68,18 @@ function updateDoneWidget() {
     let doneTasks = getFilteredTasksByStatus("done");
     let size = Object.keys(doneTasks).length;
     updateBoardWidget(size)
-    done.innerHTML = `  
-    <img src="/assets/img/Group 7 (1).png" alt="">
-    <div class="j36_numberPosition">
-        <b>${size}</b>
-        <p  class="j36_todoText">Done</p>
-    </div>`;
+    done.innerHTML = `<b>${size}</b>`;
+}
+
+/**
+ * update task in board 
+ * @param {number} number 
+ */
+function updateBoardWidget(number) {
+    let board = document.getElementById('j36_board');
+    let size =+ number;
+    board.innerHTML = ``;
+    board.innerHTML = `<b>${size}</b>`;
 }
 
 /**
@@ -103,9 +98,9 @@ function getFilteredTasksByStatus(targetValue) {
 function updateUrgentWidget() {
     let urgent = document.getElementById('j36_Urgent');
     urgent.innerHTML = ``;
-    let targetValue = 'urgent';  //urgent
+    let targetValue = 'urgent';
     let urgentTasks = Object.keys(filterNestedObject(userTasks, targetValue, 'prio'));
-    let deadlineDate = urgentTasks[0].date; // urgentTasks[key].date
+    let deadlineDate = urgentTasks[0].date;
     for (const task of urgentTasks) {
         let nextDate = task.date;
         if (nextDate < deadlineDate) {
@@ -117,7 +112,7 @@ function updateUrgentWidget() {
 
 function generateUrgentWidgetHTML(size, deadlineDate) {
     return /*html*/` 
-        <div onclick="myfunction()" class="j36_urgent">
+        <div class="j36_urgent">
         <img class="j36_image1" src="/assets/img/Ellipse 4.jpg" alt="">
         <img class="j36_image2" src="/assets/img/Prio alta.jpg" alt="asdasd">
         <div class="j36_numberPosition">
@@ -132,16 +127,14 @@ function generateUrgentWidgetHTML(size, deadlineDate) {
     `
 }
 
-function updateBoardWidget(number) {
-    let board = document.getElementById('j36_board');
-    let size =+ number;
-    board.innerHTML = ``;
-    board.innerHTML = `  
-    <img src="/assets/img/Group 7 (1).png" alt="">
-    <div class="j36_numberPosition">
-        <b>${size}</b>
-        <p  class="j36_todoText">Done</p>
-    </div>`;
+
+function updateNameWidget() {//die funktion soll den namen raus suchen
+    let name = document.getElementById('j36_person-Name');
+    name.innerHTML = ``;
+    let doneTasks = getFilteredTasksByStatus("done");///hier muss in den namen der person rausgesucht werden
+    let size = Object.keys(doneTasks).length;
+    done.innerHTML = `  
+    <h2 id="j36_person-Name" class="j36_person-Name">${name}</h2>`;
 }
 
 function myfunction() {

@@ -18,5 +18,6 @@ async function init() {
 	await loadusers();
 	getVariables();
 	await loadAssignableNames();
+	updateDashBoardHTML()
 }
 
