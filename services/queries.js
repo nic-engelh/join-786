@@ -83,3 +83,17 @@ function setLocalStorage (key, array) {
   function getLocalStorage(key) {
     return JSON.parse(localStorage.getItem(key));
   }
+
+
+  function updateStorageData (key, object) {
+    // get storage data
+    // save it into a buffer variable
+    // add whatever needs to be added into the buffer
+    // set storage anew with updated buffer
+    let oldObject = getStorageData ("users");
+    let newObject = USERS;
+    Object.assign(oldObject , newObject);
+    let updatedObject = oldObject;
+    setStorageData("users", updatedObject);
+  }
+
