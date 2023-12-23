@@ -15,8 +15,8 @@ async function init() {
  * loads the user object array from the backend
  */
 async function loadusers() {
-     if (!await getStorageData('users')) {          
-      USERS = await getStorageData('users');
+     if (!await getStorageData('users')) {
+          USERS = await getStorageData('users');
      }
 }
 
@@ -39,7 +39,7 @@ async function login() {
                if (checkPasswordLogin(password)) {
                     ACTIVEUSERKEY = key;
                     setLocalStorage("activeUser", ACTIVEUSERKEY);
-                    console.log('eingeloggt')
+                    window.location.href = '/components/join360/dashBoard.html';
                } else {
                     inCorrect(message)
                     if (USERS[key]) {
