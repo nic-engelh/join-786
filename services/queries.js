@@ -85,14 +85,14 @@ function setLocalStorage (key, array) {
   }
 
 
-  function updateStorageData (key, object) {
+  function updateStorageData(key, object) {
     // get storage data
     // save it into a buffer variable
     // add whatever needs to be added into the buffer
     // set storage anew with updated buffer
-    let oldObject = getStorageData("users");
-    let newObject = USERS;
+    let oldObject = getStorageData(key);
+    let newObject = object;
     let updatedObject = Object.assign(oldObject , newObject);
-    setStorageData("users", updatedObject);
+    setStorageData(key, updatedObject);
   }
 
