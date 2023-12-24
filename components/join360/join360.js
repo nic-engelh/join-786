@@ -100,7 +100,7 @@ function updateUrgentWidget() {
     urgentWidget.innerHTML = clear();    
     urgentTasks = Object.keys(filterNestedObject(userTasks, 'urgent', 'prio'));
     size = Object.keys(urgentTasks).length;
-    deadlineDate = 'None';
+    deadlineDate = 'No';
     if (size > 0) {
         deadlineDate = urgentTasks[0].date;//guten morgen robin meine vermutung warum der code nicht läuft ist weil in urgent gerade nichts drinnen ist und deshalb wen er versucht auf das datum zuzugreifen gibt es einen fehler deshalb baue ich jetzt eine if abfrage als vorschlag ein 
         for (const task of urgentTasks) {
@@ -137,7 +137,7 @@ function updateNameWidget() {//die funktion soll den namen raus suchen
     let name = USERS[ACTIVEUSERKEY].userData.name;
     // String has shortened for forename
     nameWidget.innerHTML = `  
-    <h2 id="j36_person-Name" class="j36_person-Name">${name}</h2>`;
+    <h2 id="j36_person-Name" class="j36_person-Name">dear ${name}</h2>`;
 }
 
 function myfunction() {
