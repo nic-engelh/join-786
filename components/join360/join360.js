@@ -6,13 +6,12 @@ function init() {
  * main functions for updating the drag & drop fields for tasks objects
  */
 function updateDashBoard() {
-    setVariables();
     updateToDoWidget();
     updateInProgressWidget();
     updateFeedbackWidget();
     updateDoneWidget();
     updateNameWidget();
-    updateUrgentWidget()
+    updateUrgentWidget();
 }
 
 /**
