@@ -95,6 +95,7 @@ function getFilteredTasksByStatus(targetValue) {
 }
 
 function updateUrgentWidget() {
+    // TODO task.date is a string - string can not substracted by a string. Variable.date must be cast into a date-variable in order to be mathmatically used
     let deadlineDate, nextDate, urgentWidget, size;
     urgentWidget = document.getElementById('j36_Urgent');
     urgentWidget.innerHTML = clear();    
@@ -102,10 +103,10 @@ function updateUrgentWidget() {
     size = Object.keys(urgentTasks).length;
     deadlineDate = 'No';
     if (size > 0) {
-        deadlineDate = urgentTasks[0].date;//guten morgen robin meine vermutung warum der code nicht läuft ist weil in urgent gerade nichts drinnen ist und deshalb wen er versucht auf das datum zuzugreifen gibt es einen fehler deshalb baue ich jetzt eine if abfrage als vorschlag ein 
+        deadlineDate = urgentTasks[0].date;
         for (const task of urgentTasks) {
-            nextDate = task.date;//guten morgen nochmal die if abfrage funktioniert wir haben aber ein kleines problem jedes mal wen wir in board etwas verschieben müssen wir die funktionen hier aufrufen ansonsten updated es die zahlen nicht sondern nur wen man reloaded und das wollen wir ja nicht
-            if (nextDate < deadlineDate) {
+            nextDate = task.date;
+            if (nextDate < deadlineDate) { // Error - need to be casts into date-variables --> const d = new Date(task.date)
                 deadlineDate = nextDate;
             }
         };
