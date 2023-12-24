@@ -96,18 +96,19 @@ function getFilteredTasksByStatus(targetValue) {
 }
 
 function updateUrgentWidget() {
-    let urgent = document.getElementById('j36_Urgent');
-    urgent.innerHTML = ``;
+    let urgentWidget = document.getElementById('j36_Urgent');
+    urgentWidget.innerHTML = clear();
     let targetValue = 'urgent';
+    let deadlineDate, nextDate;
     let urgentTasks = Object.keys(filterNestedObject(userTasks, targetValue, 'prio'));
-    let size = Object.keys(urgent).length;
+    let size = Object.keys(urgentTasks).length;
     if (urgentTasks == 0) {
-        let deadlineDate =  'No';
-        urgent.innerHTML = generateUrgentWidgetHTML(size, deadlineDate)
+        deadlineDate =  'No';
+        urgentWidget.innerHTML = generateUrgentWidgetHTML(size, deadlineDate)
     } else {
-        let deadlineDate = urgentTasks[0].date;//guten morgen robin meine vermutung warum der code nicht läuft ist weil in urgent gerade nichts drinnen ist und deshalb wen er versucht auf das datum zuzugreifen gibt es einen fehler deshalb baue ich jetzt eine if abfrage als vorschlag ein 
+        deadlineDate = urgentTasks[0].date;//guten morgen robin meine vermutung warum der code nicht läuft ist weil in urgent gerade nichts drinnen ist und deshalb wen er versucht auf das datum zuzugreifen gibt es einen fehler deshalb baue ich jetzt eine if abfrage als vorschlag ein 
         for (const task of urgentTasks) {
-            let nextDate = task.date;//guten morgen nochmal die if abfrage funktioniert wir haben aber ein kleines problem jedes mal wen wir in board etwas verschieben müssen wir die funktionen hier aufrufen ansonsten updated es die zahlen nicht sondern nur wen man reloaded und das wollen wir ja nicht
+            nextDate = task.date;//guten morgen nochmal die if abfrage funktioniert wir haben aber ein kleines problem jedes mal wen wir in board etwas verschieben müssen wir die funktionen hier aufrufen ansonsten updated es die zahlen nicht sondern nur wen man reloaded und das wollen wir ja nicht
             if (nextDate < deadlineDate) {
                 deadlineDate = nextDate;
             }
