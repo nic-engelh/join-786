@@ -1,11 +1,11 @@
 function init() {
-    updateDashBoardHTML();
+    updateDashBoard();
 }
 
 /**
  * main functions for updating the drag & drop fields for tasks objects
  */
-function updateDashBoardHTML() {
+function updateDashBoard() {
     setVariables();
     updateToDoWidget();
     updateInProgressWidget();
@@ -21,7 +21,7 @@ function updateDashBoardHTML() {
  */
 function updateToDoWidget() {
     let todo = document.getElementById('j36_todo');
-    todo.innerHTML = ``;
+    todo.innerHTML = clear();
     let targetValue = 'todo';
     let toDoTasks = getFilteredTasksByStatus(targetValue);
     let size = Object.keys(toDoTasks).length;
@@ -50,7 +50,7 @@ function updateInProgressWidget() {
  */
 function updateFeedbackWidget() {
     let feedback = document.getElementById('j36_feedback');
-    feedback.innerHTML = ``;
+    feedback.innerHTML = clear();
     let targetValue = 'feedback';
     let feedbackTasks = getFilteredTasksByStatus(targetValue);
     let size = Object.keys(feedbackTasks).length;
@@ -64,7 +64,7 @@ function updateFeedbackWidget() {
  */
 function updateDoneWidget() {
     let done = document.getElementById('j36_done');
-    done.innerHTML = ``;
+    done.innerHTML = clear();
     let doneTasks = getFilteredTasksByStatus("done");
     let size = Object.keys(doneTasks).length;
     updateBoardWidget(size)
@@ -78,7 +78,7 @@ function updateDoneWidget() {
 function updateBoardWidget(number) {
     let board = document.getElementById('j36_board');
     let size = + number;
-    board.innerHTML = ``;
+    board.innerHTML = clear();
     board.innerHTML = `<b>${size}</b>`;
 }
 
@@ -103,8 +103,7 @@ function updateUrgentWidget() {
     let urgentTasks = Object.keys(filterNestedObject(userTasks, targetValue, 'prio'));
     let size = Object.keys(urgentTasks).length;
     if (urgentTasks == 0) {
-        deadlineDate =  'No';
-        urgentWidget.innerHTML = generateUrgentWidgetHTML(size, deadlineDate)
+        deadlineDate =  'None';
     } else {
         deadlineDate = urgentTasks[0].date;//guten morgen robin meine vermutung warum der code nicht läuft ist weil in urgent gerade nichts drinnen ist und deshalb wen er versucht auf das datum zuzugreifen gibt es einen fehler deshalb baue ich jetzt eine if abfrage als vorschlag ein 
         for (const task of urgentTasks) {
@@ -113,8 +112,8 @@ function updateUrgentWidget() {
                 deadlineDate = nextDate;
             }
         };
-        urgent.innerHTML = generateUrgentWidgetHTML(size, deadlineDate);
     }
+    urgentWidget.innerHTML = generateUrgentWidgetHTML(size, deadlineDate);
 
 }
 
@@ -137,11 +136,11 @@ function generateUrgentWidgetHTML(size, deadlineDate) {
 
 
 function updateNameWidget() {//die funktion soll den namen raus suchen
-    let name = document.getElementById('j36_person-Name');
-    name.innerHTML = ``;
-    let doneTasks = getFilteredTasksByStatus("done");///hier muss in den namen der person rausgesucht werden
-    let size = Object.keys(doneTasks).length;
-    done.innerHTML = `  
+    let nameWdidget = document.getElementById('j36_person-Name');
+    nameWdidget.innerHTML = clear();
+    let name = USERS[ACTIVEUSERKEY].userData.name;
+    // String has shortened for forename
+    nameWidget.innerHTML = `  
     <h2 id="j36_person-Name" class="j36_person-Name">${name}</h2>`;
 }
 

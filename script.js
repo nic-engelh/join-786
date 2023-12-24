@@ -18,6 +18,6 @@ async function init() {
 	await loadusers();
 	await getVariables();
 	await loadAssignableNames();
-	await updateDashBoardHTML();
+	updateDashBoard();
 }
 

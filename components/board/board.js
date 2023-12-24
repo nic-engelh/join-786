@@ -8,11 +8,12 @@ function init() {
  * main functions for updating the drag & drop fields for tasks objects
  */
 async function updateBoardHTML() {
-    // aktuelle tasks müssen abgerufen werden
+    // TODO aktuelle tasks/variables müssen abgerufen und geupdated werden
     updateToDoField();
     updateInProgressField();
     updateFeedbackField();
     updateDoneField();
+    updateDashBoard();
 }
 
 /**
