@@ -101,7 +101,13 @@ h3 {
   display: flex;
   flex-direction: row;
   gap: 16px;
+  /* -ms-overflow-style: none;
+  scrollbar-width: none;  */
 }
+
+/* .boardTaskScrolling::-webkit-scrollbar {
+  display: none;      placeholder till js drag functionality
+} */
 
 .board_card {
   display: flex;
