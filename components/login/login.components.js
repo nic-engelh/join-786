@@ -176,11 +176,12 @@ async function guestLogin() {
      ];
      userData = { key: 0, name: 'Guest', email: 'GuestTest@hotmail.de', password: 'password', failedAttemped: true };
      // initalize entry with key guest and empty value as an object
-     USERS["guest"] = {};
-     // add an object into guest object; bracket string is going to be the key
-     USERS["guest"]["userData"] = userData;
-     USERS["guest"]["contacts"] = contacts;
      await  updateStorageData('users', USERS);
+     if (!USERS["guest"]) {
+          USERS["guest"] = {};
+          USERS["guest"]["userData"] = userData;
+          USERS["guest"]["contacts"] = contacts;
+     }     
      ACTIVEUSERKEY = "guest";
      await setLocalStorage("activeUser", ACTIVEUSERKEY);
      window.location.href = '/index.html';
