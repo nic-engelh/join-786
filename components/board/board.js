@@ -234,7 +234,7 @@ function findBoardTask() {
 function checkUserSubtasksStatus(taskId) {
     let subTasksDone = 0;
     let userSubTasks = USERS[ACTIVEUSERKEY].tasks[taskId].subtasks;
-    if (userSubTasks) {
+    if (userSubTasks == null) {
         for (const subtask of userSubTasks) {
             if (subtask[0].length == 0) {
                 continue;
