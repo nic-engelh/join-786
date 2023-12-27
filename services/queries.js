@@ -14,7 +14,6 @@ async function getStorageData (key) {
             return res.data.value;
         } throw `Could not find data with key "${key}".`;
     }); 
-    console.log(typeof(package))
     return JSON.parse(package)
 }
 
