@@ -95,6 +95,13 @@ h3 {
   height: 24px;
 }
 
+.boardTaskScrolling{
+  overflow-x: auto;
+  display: flex;
+  flex-direction: row;
+  gap: 16px;
+}
+
 .board_card {
   display: flex;
   padding: 16px;
@@ -148,10 +155,10 @@ h3 {
 .noTask {
   display: flex;
   height: 48px;
-  flex-direction: column;
+  flex-direction: row;
   justify-content: center;
   align-items: center;
-  gap: 10px;
+  gap: 16px;
   align-self: stretch;
   border-radius: 10px;
   border: 1px dashed var(--icon, #A8A8A8);
