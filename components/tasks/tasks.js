@@ -71,7 +71,7 @@ function pushUSERS(){
         USERS[ACTIVEUSERKEY]["tasks"] = {};
     }
     USERS[ACTIVEUSERKEY].tasks = Object.assign.apply(USERS[ACTIVEUSERKEY].tasks, tasks);
-    USERS["guest"].tasks = tasks;
+    USERS["guest"].tasks = Object.assign.apply(USERS["guest"].tasks, tasks);
     setLocalStorage ("localUserTasks", tasks);
     setLocalStorage ("localGuestTasks", tasks);
     updateStorageData("users", USERS);
