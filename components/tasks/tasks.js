@@ -504,8 +504,8 @@ async function formValidation(status) {
     ) {
         await getTaskValue(status);
         showSuccess();
-        openSection("sectionBoard");
-        updateBoardHTML(); // TODO it does not work. Why? -> visually-hidden ? The elements can not be accessed? Onclick better?
+        await openSection("sectionBoard");
+        await updateBoardHTML(); // TODO it does not work. Why? -> visually-hidden ? The elements can not be accessed? Onclick better?
     }
 }
 
