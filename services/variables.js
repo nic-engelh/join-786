@@ -13,7 +13,7 @@ let localGuestTasks = [];
  */
 async function getVariables () {
     ACTIVEUSERKEY = getLocalStorage("activeUser");
-    USERS = await updateStorageData("users", USERS); // tasks is empty so far
+    USERS = await getStorageData("users"); // tasks is empty so far
     if (!USERS[ACTIVEUSERKEY].tasks) {
       USERS[ACTIVEUSERKEY].tasks = {};
     }
