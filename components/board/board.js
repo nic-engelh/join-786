@@ -22,7 +22,7 @@ async function updateBoardHTML() {
  */
 function updateToDoField() {
     let targetValue = 'todo';
-    let inputObject = userTasks;
+    let inputObject = USERS[ACTIVUSERKEY].tasks;
     let targetKey = 'status';
     let toDoTasks = filterNestedObject(inputObject, targetValue, targetKey);
     let size = Object.keys(toDoTasks).length;
