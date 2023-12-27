@@ -234,11 +234,13 @@ function findBoardTask() {
 function checkUserSubtasksStatus(taskId) {
     let subTasksDone = 0;
     let userSubTasks = USERS[ACTIVEUSERKEY].tasks[taskId].subtasks;
-    for (const subtask of userSubTasks) {
-        if (subtask[0].length == 0) {
-            continue;
-        };
-        subTasksDone++;
+    if (userSubTasks) {
+        for (const subtask of userSubTasks) {
+            if (subtask[0].length == 0) {
+                continue;
+            };
+            subTasksDone++;
+        }
     }
     return subTasksDone
 }
@@ -270,7 +272,7 @@ function generateTodoHTML(task) {
             <div class="userHeadline">${task.category}</div>
             <div class="title">${task.title}</div>
             <div class="description">${task.description}</div>
-            <div class="progressPosition">
+            <div class="progressPosition"> 
                 <div class="w3-light-grey w3-round">
                     <div id="taskBoardCarProgressBar" class="w3-container w3-round w3-blue" style="height:8px; width:1%"></div></div>
                 <div class="subnumber"> 0/${(task.subtasks.length)}</div>
