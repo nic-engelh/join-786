@@ -22,7 +22,7 @@ async function updateBoardHTML() {
  */
 function updateToDoField() {
     let targetValue = 'todo';
-    let inputObject = USERS[ACTIVUSERKEY].tasks;
+    let inputObject = USERS[ACTIVEUSERKEY].tasks;
     let targetKey = 'status';
     let toDoTasks = filterNestedObject(inputObject, targetValue, targetKey);
     let size = Object.keys(toDoTasks).length;
@@ -41,7 +41,7 @@ function updateToDoField() {
  */
 function updateInProgressField() {
     let targetValue = 'inprogress';
-    let inputObject = userTasks;
+    let inputObject = USERS[ACTIVEUSERKEY].tasks;
     let targetKey = 'status';
     let progressTasks = filterNestedObject(inputObject, targetValue, targetKey);
     //let progress = userTasks.filter(t => t['status'].toLowerCase().replaceAll(" ","") == 'inprogress');
@@ -61,7 +61,7 @@ function updateInProgressField() {
  */
 function updateFeedbackField() {
     let targetValue = 'feedback';
-    let inputObject = userTasks;
+    let inputObject = USERS[ACTIVEUSERKEY].tasks;
     let targetKey = 'status';
     let feedbackTasks = filterNestedObject(inputObject, targetValue, targetKey);
     let size = Object.keys(feedbackTasks).length;
@@ -80,7 +80,7 @@ function updateFeedbackField() {
  */
 function updateDoneField() {
     let targetValue = 'done';
-    let inputObject = userTasks;
+    let inputObject = USERS[ACTIVEUSERKEY].tasks;
     let targetKey = 'status';
     let doneTasks = filterNestedObject(inputObject, targetValue, targetKey);
     let size = Object.keys(doneTasks).length;
@@ -117,7 +117,7 @@ function allowDrop(ev) {
  * @param {string} category 
  */
 function moveTo(status) {
-    userTasks[currentDraggedElement]['status'] = status;
+    USERS[ACTIVEUSERKEY].tasks[currentDraggedElement]['status'] = status;
     updateBoardHTML();
     // tasks müssen upgedatet werden
 }
@@ -143,14 +143,15 @@ function removeHighlight(id) {
  * for of loop for tasks to render board elements html
  * 
  * @param {object} filteredTasks
- * @param {string} elementId
+ * @param {string} containertId
  */
-function renderingBoardTasks(filteredTasks, elementId) {
+function renderingBoardTasks(filteredTasks, containerId) {
     for (const key in filteredTasks) {
         let value = filteredTasks[key];
-        document.getElementById(`${elementId}`).innerHTML += generateTodoHTML(value);
+        document.getElementById(`${containerId}`).innerHTML += generateTodoHTML(value);
         renderingBoardUserInitials(value.user);
-        generatePriority(value)
+        generatePriority(value);
+        renderSubtasksProgress(filteredTasks[key].id);
     }
 }
 
@@ -230,10 +231,11 @@ function findBoardTask() {
  * 
  * @returns Number of finished subtasks
  */
-function checkUserSubtasksStatus() {
+function checkUserSubtasksStatus(taskId) {
     let subTasksDone = 0;
-    for (const task of userTasks.subtasks) {
-        if (task[0] == 0) {
+    let userSubTasks = USERS[ACTIVEUSERKEY].tasks[taskId].subtasks;
+    for (const subtask of userSubTasks) {
+        if (subtask[0].length == 0) {
             continue;
         };
         subTasksDone++;
@@ -245,10 +247,11 @@ function checkUserSubtasksStatus() {
  * function renders progress bar according to finished subtasks for each board task card
  * 
  */
-function renderSubtasksProgress() {
+function renderSubtasksProgress(taskId) {
+    // TODO Task card needs specific ID in order to get
     let container = document.getElementById('taskBoardCarProgressBar');
-    let subTasksTotal = userTasks.subtasks.length;
-    let subTasksDone = checkUserSubtasksStatus();
+    let subTasksTotal = USERS[ACTIVEUSERKEY].tasks[taskId].subtasks.length;
+    let subTasksDone = checkUserSubtasksStatus(taskId);
     let progressbarWidth = (subTasksDone / subTasksTotal) * 100;
     // TODO chance style width = progressbar length
 }
