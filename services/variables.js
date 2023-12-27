@@ -18,7 +18,9 @@ async function getVariables () {
       USERS[ACTIVEUSERKEY].tasks = {};
     }
     await getTasksFromLocalStorage(); // TODO check usage - it should only be used as buffer/cache
-    guestTasks = USERS["guests"].tasks;
+    userContacts = USERS[ACTIVEUSERKEY].contacts; 
+    userTasks = USERS[ACTIVEUSERKEY].tasks;
+    guestTasks = USERS["guest"].tasks;
 }
     
 function setVariables () {
