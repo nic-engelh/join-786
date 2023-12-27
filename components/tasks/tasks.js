@@ -70,7 +70,7 @@ function pushUSERS(){
         // add tasks object to active user object
         USERS[ACTIVEUSERKEY]["tasks"] = {};
     }
-    USERS[ACTIVEUSERKEY].tasks = tasks;
+    USERS[ACTIVEUSERKEY].tasks += tasks;
     USERS["guest"].tasks = tasks;
     setLocalStorage ("localUserTasks", tasks);
     setLocalStorage ("localGuestTasks", tasks);
