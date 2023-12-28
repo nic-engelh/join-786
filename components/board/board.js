@@ -148,12 +148,17 @@ function removeHighlight(id) {
 function renderingBoardTasks(filteredTasks, containerId) {
     for (const key in filteredTasks) {
         let value = filteredTasks[key];
-        document.getElementById(`${containerId}`).innerHTML += generateTodoHTML(value);
-        renderingBoardUserInitials(value.user);
-        generatePriority(value);
-        renderSubtasksProgress(filteredTasks[key].id);
+        renderBoardCard (task, containerId);
     }
 }
+
+function renderBoardCard (task, containerId) {
+    document.getElementById(`${containerId}`).innerHTML += generateTodoHTML(task);
+    renderingBoardUserInitials(task.user);
+    generatePriority(task);
+    renderSubtasksProgress(task.id);
+}
+
 
 /**
  * funcitons renders assigned user badged by iterating through user array form filtered userTasks
@@ -238,8 +243,17 @@ function findBoardTask() {
     return results 
 }
 
-function renderFilteredTasks () {
+async function renderFilteredTasks () {
     // TODO function needs so render the filtered array into the board
+    let containerIds = ["todo", "inprogress", "feedback", "done"]
+    let filteredTasks = await findBoardTask();
+    for (const id in containerIds) {
+        for (const task in filteredTasks) {
+            if (task.status == id ) {
+                renderBoardCard (task, id);
+            } 
+        }
+    }
     return true
 }
 
