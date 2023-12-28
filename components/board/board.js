@@ -229,8 +229,8 @@ function openCreateTaskModal(section, boardFieldStatus) {
 function findBoardTask() {
     // TODO use following funtion from utils: filterNestedObject(inputObject, targetValue, targetKey)
     // TODO Result - only the task which was found shall be shown at the board
-    let container = document.getElementById();
-    let searchInput = container.value;
+    let container = document.getElementById("board_search_inputfield");
+    let searchInput = container.value.toLowerCase();
 
     let tasks = Object.keys(USERS[ACTIVEUSERKEY].tasks);
     let results;
