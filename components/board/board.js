@@ -238,6 +238,12 @@ function findBoardTask() {
     return results 
 }
 
+function renderFilteredTasks () {
+    // TODO function needs so render the filtered array into the board
+    return true
+}
+
+
 /**
  * function checks the Tasks subtasks array for completed subtasks
  * 
