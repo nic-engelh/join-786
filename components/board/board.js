@@ -223,7 +223,19 @@ function openCreateTaskModal(section, boardFieldStatus) {
 
 function findBoardTask() {
     // TODO use following funtion from utils: filterNestedObject(inputObject, targetValue, targetKey)
-    return true
+    // TODO Result - only the task which was found shall be shown at the board
+    let container = document.getElementById();
+    let searchInput = container.value;
+
+    let tasks = Object.keys(USERS[ACTIVEUSERKEY].tasks);
+    let results;
+    for (const task in tasks) {
+        if (task.title.includes(searchInput)) {
+            console.log("Der Suchstring wurde im Hauptstring gefunden.");
+            results.push(task);
+        } 
+    }
+    return results 
 }
 
 /**
