@@ -299,7 +299,7 @@ function renderSubtasksProgress(taskId) {
 function generateTodoHTML(task) {
     // TODO CSS balken anpassen; Änderung der Width muss über funktion erfolgen
     return `
-    <div class ="todo" id="taskBoardCard_${task.id})">
+    <div class ="todo" id="taskBoardCard_${task.id})" onclick="getTaskBoardModalValue(${task.id})">
         <div draggable="true" ondragstart="startDragging('${task.id}')" class="taskToDo">
             <div class="userHeadline">${task.category}</div>
             <div class="title">${task.title}</div>
