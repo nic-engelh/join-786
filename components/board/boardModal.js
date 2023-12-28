@@ -1,5 +1,13 @@
+
+function showBoardModal() {
+    const dialog = document.getElementById("board_modal");
+    dialog.classList.toggle('visually-hidden');
+    dialog.classList.add('d-flex');
+    dialog.showModal();
+}
+
 async function getTaskBoardModalValue(id) {
-    chosenTask = USERS[ACTIVEUSERKEY].tasks[id]
+    chosenTask = USERS[ACTIVEUSERKEY].tasks.id
 
     let title = chosenTask["title"];
     let description = chosenTask["description"];
@@ -9,6 +17,7 @@ async function getTaskBoardModalValue(id) {
     let category = chosenTask["category"];
     let subtasks = chosenTask["subtasks"];
     let status = chosenTask["status"];
+    showBoardModal()
     loadBoardModal(id, title, description, date, category)
     loadBoardModal(prio)
     loadBoardModalAssignedUsers(user)
@@ -20,7 +29,6 @@ async function loadBoardModal(id, title, description, date, category) {
     document.getElementById("board_modal_title").innerHTML = title;
     document.getElementById("board_modal_description").innerHTML = description;
     document.getElementById("board_modal_date").innerHTML = date;
-    document.getElementById("board_modal_subtasks").innerHTML = subtasks;
 }
 
 async function loadBoardModalPrio(prio) {
@@ -40,8 +48,6 @@ async function loadBoardModalPrio(prio) {
         prioSpan.innerHTML = "Low";
         prioImg.innerHTML = `<img src="/assets/img/board/prio_low.png" alt="Prio Low">`;
     }
-
-
 }
 
 async function loadBoardModalSubtasks(subtasks, status) {
@@ -51,7 +57,7 @@ async function loadBoardModalSubtasks(subtasks, status) {
             subtaskContainer.innerHTML += `
             <div class="task_card_subtask">
             <img id="board_modal_subtask_status" src="/assets/img/board/check_empty.png" alt="checkbox empty">
-            <span>${subtasks[subtaskContent]}</span>
+            <span>${subtasks[i][subtaskContent]}</span>
           </div>`;
         }
     }
@@ -71,12 +77,12 @@ async function loadBoardModalSubtasksStatus(subtasks, status) {
  * 
  * 
  */
-function loadBoardModalAssignedUsers() {
+function loadBoardModalAssignedUsers(user) {
     const selectElement = document.getElementById("board_modal_assigned_user");
-    for (let i = 0; i < userContacts.length; i++) {
-        const initial = userContacts[i]["initials"];
-        const name = userContacts[i]["name"];
-        const color = userContacts[i]["color"];
+    for (let i = 0; i < user.length; i++) {
+        const initial = user[i]["initials"];
+        const name = user[i]["name"];
+        const color = user[i]["color"];
         selectElement.innerHTML += `
             <li class="assigned_user_li">
                 <div class="task_contacts_name_initials">
@@ -103,4 +109,5 @@ function boardModalEditTask() {
  */
 function closeBoardModal() {
     openSection("sectionBoard");
+    updateBoardHTML()
 }
