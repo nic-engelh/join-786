@@ -292,7 +292,7 @@ h3 {
 
 /* //////////////////////////////////////// board-modal /////////////////////////////////////////////////// */
 
-h2 {
+.board_modal_h2 {
   font-size: 36px;
   font-weight: 700;
   margin: 0;
@@ -329,7 +329,7 @@ h2 {
 }
 
 
-.task_card_head svg:hover {
+.task_card_head img:hover {
   cursor: pointer;
 }
 
