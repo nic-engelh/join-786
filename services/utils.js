@@ -88,6 +88,14 @@ function toggleClass (id, cssClass) {
 }
 
 
+/**
+ * Function filters a given inputObject (Object of Objects) for the targetValue by a given targetKey and it returns an filtered object of objects
+ * 
+ * @param {object} inputObject 
+ * @param {string} targetValue 
+ * @param {string} targetKey 
+ * @returns Object
+ */
 function filterNestedObject(inputObject, targetValue, targetKey) {
  // Ergebnis-Objekt erstellen
  const filteredObject = {};
