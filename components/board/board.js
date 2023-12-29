@@ -305,7 +305,6 @@ function renderSubtasksProgress(taskId) {
  * @returns html code
  */
 function generateTodoHTML(task) {
-    let user = task.user;
     // TODO CSS balken anpassen; Änderung der Width muss über funktion erfolgen
     return `
     <div class ="todo" id="taskBoardCard_${task.id})" onclick="getTaskBoardModalValue('${task.id}')">
