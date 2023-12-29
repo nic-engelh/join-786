@@ -7,8 +7,7 @@ function showBoardModal() {
 }
 
 async function getTaskBoardModalValue(id) {
-    chosenTask = USERS[ACTIVEUSERKEY].tasks.id
-
+    chosenTask = USERS[ACTIVEUSERKEY].tasks[id];
     let title = chosenTask["title"];
     let description = chosenTask["description"];
     let user = chosenTask["user"];
