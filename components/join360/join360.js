@@ -107,7 +107,7 @@ function updateUrgentWidget() {
     size = Object.keys(urgentTaskIds).length;
     deadlineDate = 'No';
     if (size > 0) {
-        deadlineDate = checkUrgentDates(urgentTasksIds);
+        deadlineDate = checkUrgentDates(urgentTaskIds);
     }
     urgentWidget.innerHTML = generateUrgentWidgetHTML(size, deadlineDate);
 }
