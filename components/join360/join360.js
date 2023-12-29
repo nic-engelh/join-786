@@ -107,17 +107,28 @@ function updateUrgentWidget() {
     size = Object.keys(urgentTasks).length;
     deadlineDate = 'No';
     if (size > 0) {
-        deadlineDate = new Date(urgentTasks[0].date);
-        for (const task of urgentTasks) {
-            nextDate = new Date(task.date);
-            if (nextDate < deadlineDate) { 
-                deadlineDate = nextDate;
-            }
-        };
-        deadlineDate = deadlineDate.toDateString();
+        deadlineDate = checkUrgentDates(urgentTasks);
     }
     urgentWidget.innerHTML = generateUrgentWidgetHTML(size, deadlineDate);
 }
+
+/**
+ * functions compares dates. It will return the nearest urgent date as string.
+ * 
+ * @param {array} urgentTasks 
+ * @returns {string} deadline
+ */
+function checkUrgentDates(urgentTasks) {
+    deadlineDate = new Date(urgentTasks[0].date);
+    for (const task of urgentTasks) {
+        nextDate = new Date(task.date);
+        if (nextDate < deadlineDate) { 
+            deadlineDate = nextDate;
+        }
+    };
+    deadlineDate = deadlineDate.toDateString();
+    return deadlineDate;
+} 
 
 function generateUrgentWidgetHTML(size, deadlineDate) {
     return /*html*/` 
