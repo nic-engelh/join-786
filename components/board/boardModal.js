@@ -16,11 +16,11 @@ async function getTaskBoardModalValue(id) {
     let category = chosenTask["category"];
     let subtasks = chosenTask["subtasks"];
     let status = chosenTask["status"];
-    showBoardModal()
-    loadBoardModal(id, title, description, date, category)
-    loadBoardModal(prio)
-    loadBoardModalAssignedUsers(user)
-    loadBoardModalSubtasks(subtasks, status)
+    showBoardModal();
+    loadBoardModal(id, title, description, date, category);
+    loadBoardModal(prio);
+    loadBoardModalAssignedUsers(user);
+    loadBoardModalSubtasks(subtasks, status);
 }
 
 async function loadBoardModal(id, title, description, date, category) {
@@ -107,6 +107,28 @@ function boardModalEditTask() {
  * 
  */
 function closeBoardModal() {
-    openSection("sectionBoard");
+    const dialog = document.getElementById("board_modal");
+    dialog.classList.toggle('visually-hidden');
+    dialog.classList.remove('d-flex');
+    dialog.close();
     updateBoardHTML()
 }
+
+/**
+ * This function adds the event that hides the board_modal when clicking somewhere else
+ * 
+ * 
+ */
+function eventCloseBoardModal(event) {
+
+    const dialog = document.getElementById("board_modal");
+        if (!event.target.contains(dialog)) return;
+        closeBoardModal()
+}
+
+/**
+ * This is an event when you click
+ * 
+ * 
+ */
+document.addEventListener("click", eventCloseBoardModal);
