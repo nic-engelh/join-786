@@ -176,11 +176,12 @@ async function guestLogin() {
      ];
      userData = { key: 0, name: 'Guest', email: 'GuestTest@hotmail.de', password: 'password', failedAttemped: true };
      // initalize entry with key guest and empty value as an object
-     await  updateStorageData('users', USERS);
+     USERS = await  getStorageData('users', USERS);
      if (!("guests" in USERS)) {
           USERS["guest"] = {};
           USERS["guest"]["userData"] = userData;
           USERS["guest"]["contacts"] = contacts;
+          await  updateStorageData('users', USERS);
      }     
      ACTIVEUSERKEY = "guest";
      await setLocalStorage("activeUser", ACTIVEUSERKEY);
