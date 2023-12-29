@@ -94,8 +94,12 @@ function getFilteredTasksByStatus(targetValue) {
     return filteredObject;
 }
 
+
+/**
+ * function changes the urgent widget data. It searches for the number of tasks which are urgent and the next upcoming dead line date.
+ * 
+ */
 function updateUrgentWidget() {
-    // TODO task.date is a string - string can not substracted by a string. Variable.date must be cast into a date-variable in order to be mathmatically used
     let deadlineDate, nextDate, urgentWidget, size;
     urgentWidget = document.getElementById('j36_Urgent');
     urgentWidget.innerHTML = clear();    
@@ -103,13 +107,14 @@ function updateUrgentWidget() {
     size = Object.keys(urgentTasks).length;
     deadlineDate = 'No';
     if (size > 0) {
-        deadlineDate = urgentTasks[0].date;
+        deadlineDate = new Date(urgentTasks[0].date);
         for (const task of urgentTasks) {
-            nextDate = task.date;
-            if (nextDate < deadlineDate) { // Error - need to be casts into date-variables --> const d = new Date(task.date)
+            nextDate = new Date(task.date);
+            if (nextDate < deadlineDate) { 
                 deadlineDate = nextDate;
             }
         };
+        deadlineDate = deadlineDate.toDateString();
     }
     urgentWidget.innerHTML = generateUrgentWidgetHTML(size, deadlineDate);
 }
