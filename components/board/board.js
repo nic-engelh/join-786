@@ -152,6 +152,13 @@ function renderingBoardTasks(filteredTasks, containerId) {
     }
 }
 
+
+/**
+ * function renders the html of a board task card with a given task object and the ID of the html container
+ * 
+ * @param {object} task 
+ * @param {string} containerId 
+ */
 function renderBoardCard (task, containerId) {
     document.getElementById(`${containerId}`).innerHTML += generateTodoHTML(task);
     renderingBoardUserInitials(task.user);
