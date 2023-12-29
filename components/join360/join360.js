@@ -103,11 +103,11 @@ function updateUrgentWidget() {
     let deadlineDate, nextDate, urgentWidget, size;
     urgentWidget = document.getElementById('j36_Urgent');
     urgentWidget.innerHTML = clear();    
-    urgentTasks = Object.keys(filterNestedObject(userTasks, 'urgent', 'prio'));
-    size = Object.keys(urgentTasks).length;
+    urgentTaskIds = Object.keys(filterNestedObject(userTasks, 'urgent', 'prio'));
+    size = Object.keys(urgentTaskIds).length;
     deadlineDate = 'No';
     if (size > 0) {
-        deadlineDate = checkUrgentDates(urgentTasks);
+        deadlineDate = checkUrgentDates(urgentTasksIds);
     }
     urgentWidget.innerHTML = generateUrgentWidgetHTML(size, deadlineDate);
 }
@@ -118,10 +118,10 @@ function updateUrgentWidget() {
  * @param {array} urgentTasks 
  * @returns {string} deadline 
  */
-function checkUrgentDates(urgentTasks) {
-    deadlineDate = new Date(urgentTasks[0].date);
-    for (const task of urgentTasks) {
-        nextDate = new Date(task.date);
+function checkUrgentDates(urgentTaskIds) {
+    deadlineDate = new Date(USERS[ACTIVEUSERKEY].tasks[urgentTaskIds[0]].Date); 
+    for (const taskId of urgentTaskIds) {
+        nextDate = new Date(USERS[ACTIVEUSERKEY].tasks[taskId].date) ;
         if (nextDate < deadlineDate) { 
             deadlineDate = nextDate;
         }
