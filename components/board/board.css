@@ -137,14 +137,14 @@ h3 {
   flex-shrink: 0;
 }
 
-#boardAssignedUserInitialsContainer {
+.boardAssignedUserInitialsContainer {
   display: flex;
   justify-content: center;
   align-items: center;
 
 }
 
-#boardAssignedUserInitialsContainer div:nth-child(n+2) {
+.boardAssignedUserInitialsContainer div:nth-child(n+2) {
   margin-left: -10px;
 }
 
@@ -396,4 +396,11 @@ h3 {
 
 #board_modal:focus-visible {
   outline: none;
+}
+
+#board_modal_task {
+  padding: 20px;
+  background-color: white;
+  border-radius: 15px;
+  z-index: 3;
 }

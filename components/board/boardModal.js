@@ -100,7 +100,14 @@ function loadBoardModalAssignedUsers(user) {
  * 
  */
 function boardModalEditTask() {
-    placeholder
+    const dialog = document.getElementById("board_modal");
+    const dialogTask = document.getElementById("board_modal_task");
+    dialog.classList.toggle('visually-hidden');
+    dialog.classList.remove('d-flex');
+    dialog.close();
+    dialogTask.classList.toggle('visually-hidden');
+    dialogTask.classList.add('d-flex');
+    dialogTask.showModal();
 }
 
 /**

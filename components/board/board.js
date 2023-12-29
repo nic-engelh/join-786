@@ -318,7 +318,7 @@ function generateTodoHTML(task) {
                 <div class="subnumber"> 0/${(task.subtasks.length)}</div>
             </div>
             <div class="boardAssignedUserAndPrio">
-                <div id="boardAssignedUserInitialsContainer_${task.id}" class="d-flex"></div>
+                <div id="boardAssignedUserInitialsContainer_${task.id}" class="d-flex boardAssignedUserInitialsContainer"></div>
                 <div id="boardAssignedPriority_${task.id}"></div>
             </div>
         
