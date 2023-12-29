@@ -188,7 +188,7 @@ function renderingBoardUserInitials(assignedUser, id) {
  * @returns 
  */
 function generatePriority(task) {
-    let imagePrio = document.getElementById('boardAssignedPriority')
+    let imagePrio = document.getElementById(`boardAssignedPriority_${task.id}`)
 
     if (task.prio == 'urgent') {
         imagePrio.innerHTML = `
@@ -306,7 +306,6 @@ function renderSubtasksProgress(taskId) {
  */
 function generateTodoHTML(task) {
     let user = task.user;
-    let userAsString = JSON.stringify(user)
     // TODO CSS balken anpassen; Änderung der Width muss über funktion erfolgen
     return `
     <div class ="todo" id="taskBoardCard_${task.id})" onclick="getTaskBoardModalValue('${task.id}')">
@@ -321,7 +320,7 @@ function generateTodoHTML(task) {
             </div>
             <div class="boardAssignedUserAndPrio">
                 <div id="boardAssignedUserInitialsContainer_${task.id}" class="d-flex"></div>
-                <div id="boardAssignedPriority"></div>
+                <div id="boardAssignedPriority_${task.id}"></div>
             </div>
         
     </div>`;
