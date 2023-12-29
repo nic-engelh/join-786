@@ -119,7 +119,7 @@ function updateUrgentWidget() {
  * @returns {string} deadline 
  */
 function checkUrgentDates(urgentTaskIds) {
-    deadlineDate = new Date(USERS[ACTIVEUSERKEY].tasks[urgentTaskIds[0]].Date); 
+    deadlineDate = new Date(USERS[ACTIVEUSERKEY].tasks[urgentTaskIds[0]].date); 
     for (const taskId of urgentTaskIds) {
         nextDate = new Date(USERS[ACTIVEUSERKEY].tasks[taskId].date) ;
         if (nextDate < deadlineDate) { 
