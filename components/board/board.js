@@ -147,7 +147,7 @@ function removeHighlight(id) {
  */
 function renderingBoardTasks(filteredTasks, containerId) {
     for (const key in filteredTasks) {
-        let value = filteredTasks[key];
+        let task = filteredTasks[key];
         renderBoardCard (task, containerId);
     }
 }
