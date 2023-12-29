@@ -161,7 +161,7 @@ function renderingBoardTasks(filteredTasks, containerId) {
  */
 function renderBoardCard (task, containerId) {
     document.getElementById(`${containerId}`).innerHTML += generateTodoHTML(task);
-    renderingBoardUserInitials(task.user);
+    renderingBoardUserInitials(task.user, task.id);
     generatePriority(task);
     renderSubtasksProgress(task.id);
 }
@@ -172,8 +172,9 @@ function renderBoardCard (task, containerId) {
  * 
  * @param {array} assignedUser 
  */
-function renderingBoardUserInitials(assignedUser) {
-    let container = document.getElementById('boardAssignedUserInitialsContainer');
+function renderingBoardUserInitials(assignedUser, id) {
+
+    let container = document.getElementById(`boardAssignedUserInitialsContainer_${id}`);
     for (const user of assignedUser) {
         container.innerHTML += generateUserInitialBadge(user);
         setBadgeColor(user.color, `boardAssignedUserInitials_${user.contactId}`);
@@ -304,6 +305,8 @@ function renderSubtasksProgress(taskId) {
  * @returns html code
  */
 function generateTodoHTML(task) {
+    let user = task.user;
+    let userAsString = JSON.stringify(user)
     // TODO CSS balken anpassen; Änderung der Width muss über funktion erfolgen
     return `
     <div class ="todo" id="taskBoardCard_${task.id})" onclick="getTaskBoardModalValue('${task.id}')">
@@ -317,7 +320,7 @@ function generateTodoHTML(task) {
                 <div class="subnumber"> 0/${(task.subtasks.length)}</div>
             </div>
             <div class="boardAssignedUserAndPrio">
-                <div id="boardAssignedUserInitialsContainer" class="d-flex"></div>
+                <div id="boardAssignedUserInitialsContainer_${task.id}" class="d-flex"></div>
                 <div id="boardAssignedPriority"></div>
             </div>
         
