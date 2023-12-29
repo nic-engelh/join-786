@@ -113,10 +113,10 @@ function updateUrgentWidget() {
 }
 
 /**
- * functions compares dates. It will return the nearest urgent date as string.
+ * functions compares dates. It will return the nearest urgent date as string. Format: "Fri Dec 29 2023"
  * 
  * @param {array} urgentTasks 
- * @returns {string} deadline
+ * @returns {string} deadline 
  */
 function checkUrgentDates(urgentTasks) {
     deadlineDate = new Date(urgentTasks[0].date);
