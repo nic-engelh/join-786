@@ -369,12 +369,13 @@ h3 {
 }
 
 .task_card_subtask {
+  display: flex;
   padding: 6px 16px;
   gap: 16px;
 }
 
-.task_card_subtask input {
-  margin-right: 16px;
+.task_card_subtask img {
+  cursor: pointer;
 }
 
 .task_card_buttons {

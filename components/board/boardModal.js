@@ -14,13 +14,13 @@ async function getTaskBoardModalValue(id) {
     let date = chosenTask["date"];
     let prio = chosenTask["prio"];
     let category = chosenTask["category"];
-    let subtasks = chosenTask["subtasks"];
+    let subtasks = chosenTask["subtasks"].subtaskContent;
     let status = chosenTask["status"];
     showBoardModal();
     loadBoardModal(id, title, description, date, category);
     loadBoardModalPrio(prio);
     loadBoardModalAssignedUsers(user);
-    loadBoardModalSubtasks(subtasks, status);
+    loadBoardModalSubtasks(subtasks, status, id);
 }
 
 async function loadBoardModal(id, title, description, date, category) {
@@ -49,14 +49,15 @@ async function loadBoardModalPrio(prio) {
     }
 }
 
-async function loadBoardModalSubtasks(subtasks, status) {
+async function loadBoardModalSubtasks(subtasks, status, id) {
     const subtaskContainer = document.getElementById("board_modal_subtasks")
     if (subtasks != "undefined") {
         for (let i = 0; i < subtasks.length; i++) {
+            subtaskContainer.innerHTML = "";
             subtaskContainer.innerHTML += `
             <div class="task_card_subtask">
-            <img id="board_modal_subtask_status" src="/assets/img/board/check_empty.png" alt="checkbox empty">
-            <span>${subtasks[i][subtaskContent]}</span>
+            <img id="board_modal_subtask_status_${id}" src="/assets/img/board/check_empty.png" alt="checkbox empty">
+            <span>${subtasks}</span>
           </div>`;
         }
     }
