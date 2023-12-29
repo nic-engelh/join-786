@@ -18,7 +18,7 @@ async function getTaskBoardModalValue(id) {
     let status = chosenTask["status"];
     showBoardModal();
     loadBoardModal(id, title, description, date, category);
-    loadBoardModal(prio);
+    loadBoardModalPrio(prio);
     loadBoardModalAssignedUsers(user);
     loadBoardModalSubtasks(subtasks, status);
 }
@@ -82,6 +82,7 @@ function loadBoardModalAssignedUsers(user) {
         const initial = user[i]["initials"];
         const name = user[i]["name"];
         const color = user[i]["color"];
+        selectElement.innerHTML = "";
         selectElement.innerHTML += `
             <li class="assigned_user_li">
                 <div class="task_contacts_name_initials">

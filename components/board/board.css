@@ -346,6 +346,12 @@ h3 {
   padding-left: 10px;
 }
 
+.board_modal_prio_td{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
 .task_assigned_contact {
   display: flex;
   flex-direction: row;
