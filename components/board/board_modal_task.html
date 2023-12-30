@@ -1,6 +1,8 @@
 <dialog id="board_modal_task" class="visually-hidden">
   
-    <div id="add_task_form">
+    <div id="edit_task_form">
+
+      <img class="board_modal_task_close" src="/assets/img/board/modal_close.png" alt="close Popup" onclick="closeBoardModalTask()">
 
       <div class="form_categories">
         <span>Title<span class="add_task_required">*</span></span>
@@ -67,10 +69,10 @@
         </div>
         <ul id="new_subtask_list" style="list-style-type:disc"></ul>
       </div>
-    </div>
-  
-      <div class="create_task_finish">
-        <button id="create_task_button" value="Create Task " onclick="formValidation()"><span>Create Task</span><img src="/assets/img/addTask/check_icon.png" alt=""></button>
+
+      <div class="edit_task_finish">
+        <button id="create_task_button" value="Create Task " onclick="formValidation()"><span>OK</span><img src="/assets/img/addTask/check_icon.png" alt=""></button>
       </div>
-  
+
+    </div>
 </dialog>

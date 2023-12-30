@@ -402,5 +402,19 @@ h3 {
   padding: 20px;
   background-color: white;
   border-radius: 15px;
-  z-index: 3;
+}
+
+#edit_task_form {
+  gap: 8px;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.board_modal_task_close{
+  height: 24px;
+  width: 24px;
+  padding: 4px;
+  cursor: pointer;
 }

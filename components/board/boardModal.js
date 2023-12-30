@@ -121,15 +121,38 @@ function closeBoardModal() {
 }
 
 /**
+ * This function closes the modal
+ * 
+ * 
+ */
+function closeBoardModalTask() {
+    const dialog = document.getElementById("board_modal_task");
+    dialog.classList.toggle('visually-hidden');
+    dialog.classList.remove('d-flex');
+    dialog.close();
+    updateBoardHTML()
+}
+
+/**
  * This function adds the event that hides the board_modal when clicking somewhere else
  * 
  * 
  */
 function eventCloseBoardModal(event) {
-
     const dialog = document.getElementById("board_modal");
         if (!event.target.contains(dialog)) return;
         closeBoardModal()
+}
+
+/**
+ * This function adds the event that hides the board_modal_task when clicking somewhere else
+ * 
+ * 
+ */
+function eventCloseBoardModalTask(event) {
+    const dialogTask = document.getElementById("board_modal_task");
+        if (!event.target.contains(dialogTask)) return;
+        closeBoardModalTask()
 }
 
 /**
@@ -138,3 +161,4 @@ function eventCloseBoardModal(event) {
  * 
  */
 document.addEventListener("click", eventCloseBoardModal);
+document.addEventListener("click", eventCloseBoardModalTask);
