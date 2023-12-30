@@ -171,6 +171,11 @@ function openBoardModalEditTask(id) {
     modalTaskAddSubtasks(id)
 }
 
+/**
+ * This function fills the edit task modal with title, description, date and category
+ * 
+ * 
+ */
 function modalTaskFillValues(id) {
     let chosenTask = USERS[ACTIVEUSERKEY].tasks[id];
     document.getElementById('modal_task_title').value = chosenTask["title"];
@@ -179,6 +184,11 @@ function modalTaskFillValues(id) {
     document.getElementById('modal_task_category').value = chosenTask["category"];
 }
 
+/**
+ * This function fills the edit task modal with the assigned users
+ * 
+ * 
+ */
 function modalTaskAddContacts(id){
     let chosenTaskUser = USERS[ACTIVEUSERKEY].tasks[id].user;
     const container = document.getElementById("modal_task_assigned_user");
@@ -190,10 +200,20 @@ function modalTaskAddContacts(id){
     }
 }
 
+/**
+ * This function fills the edit task modal with the priority
+ * 
+ * 
+ */
 function modalTaskAddPrio(){
     placeholder
 }
 
+/**
+ * This function fills the edit task modal with the subtasks
+ * 
+ * 
+ */
 function modalTaskAddSubtasks(id){
     let subtasks = USERS[ACTIVEUSERKEY].tasks[id].subtasks;
     let subtaskContainer = document.getElementById('modal_subtask_list');
