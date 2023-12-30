@@ -50,14 +50,14 @@ async function loadBoardModalPrio(prio) {
 }
 
 async function loadBoardModalSubtasks(subtasks, status, id) {
-    const subtaskContainer = document.getElementById("board_modal_subtasks")
+    const subtaskContainer = document.getElementById("board_modal_subtasks");
+    subtaskContainer.innerHTML = "";
     if (subtasks != "undefined") {
         for (let i = 0; i < subtasks.length; i++) {
-            subtaskContainer.innerHTML = "";
             subtaskContainer.innerHTML += `
             <div class="task_card_subtask">
             <img id="board_modal_subtask_status_${id}" src="/assets/img/board/check_empty.png" alt="checkbox empty">
-            <span>${subtasks}</span>
+            <span>${subtasks[i]}</span>
           </div>`;
         }
     }
