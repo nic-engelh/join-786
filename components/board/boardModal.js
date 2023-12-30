@@ -84,11 +84,11 @@ async function loadBoardModalSubtasksStatus(subtasks, status) {
  */
 function loadBoardModalAssignedUsers(user) {
     const selectElement = document.getElementById("board_modal_assigned_user");
+    selectElement.innerHTML = "";
     for (let i = 0; i < user.length; i++) {
         const initial = user[i]["initials"];
         const name = user[i]["name"];
         const color = user[i]["color"];
-        selectElement.innerHTML = "";
         selectElement.innerHTML += `
             <li class="assigned_user_li">
                 <div class="task_contacts_name_initials">
