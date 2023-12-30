@@ -168,6 +168,7 @@ function openBoardModalEditTask(id) {
     dialogTask.showModal();
     modalTaskFillValues(id);
     modalTaskAddContacts(id);
+    modalTaskAddSubtasks(id)
 }
 
 function modalTaskFillValues(id) {
@@ -190,5 +191,26 @@ function modalTaskAddContacts(id){
 }
 
 function modalTaskAddPrio(){
+    placeholder
+}
 
+function modalTaskAddSubtasks(id){
+    let subtasks = USERS[ACTIVEUSERKEY].tasks[id].subtasks;
+    let subtaskContainer = document.getElementById('modal_subtask_list');
+    subtaskContainer.innerHTML = '';
+    for (let i = 0; i < subtasks.subtaskContent.length; i++) {
+        const addedTask = subtasks.subtaskContent[i];
+        subtaskContainer.innerHTML +=
+            `<li id="subtask_list_item${i}" class="add_subtask_list">
+        <div style="display: flex; align-items: center; gap: 8px;">
+            <input readonly id="readonly_input${i}" value="${addedTask}"
+                class="input_edit_subtask"></input>
+            <div id="edit_and_delete${i}" class="edit_and_delete">
+                <img id="edit${i}" onclick="editSubtask(${i})" src="/assets/img/addTask/edit.png">
+                <img src="/assets/img/addTask/subtask_divide.png">
+                <img id="delete${i}" onclick="deleteSubtaskItem(${i})" class="delete" src="/assets/img/addTask/delete.png"
+            </div>
+        </div>
+    </li>`;
+    }
 }
