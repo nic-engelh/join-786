@@ -166,4 +166,21 @@ function openBoardModalEditTask(id) {
     dialogTask.classList.toggle('visually-hidden');
     dialogTask.classList.add('d-flex');
     dialogTask.showModal();
+    modalTaskFillValues(id)
+}
+
+function modalTaskFillValues(id) {
+    let chosenTask = USERS[ACTIVEUSERKEY].tasks[id];
+    document.getElementById('modal_task_title').value = chosenTask["title"];
+    document.getElementById('modal_task_description').value = chosenTask["description"];
+    document.getElementById('modal_task_date').value = chosenTask["date"];
+    document.getElementById('modal_task_category').value = chosenTask["category"];
+}
+
+function modalTaskAddContacts(){
+
+}
+
+function modalTaskAddPrio(){
+
 }

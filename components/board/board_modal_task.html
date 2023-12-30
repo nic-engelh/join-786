@@ -6,14 +6,14 @@
 
       <div class="form_categories">
         <span>Title<span class="add_task_required">*</span></span>
-        <input class="add_task_inputs" id="task_title" required type="text" placeholder="Enter a title" />
+        <input class="add_task_inputs" id="modal_task_title" required type="text" placeholder="Enter a title" />
         <span id="title_is_required" class="d-none">This field is required</span>
       </div>
   
   
       <div class="form_categories">
         <span>Description</span>
-        <textarea class="add_task_inputs" name="" id="task_description" cols="30" rows="3"
+        <textarea class="add_task_inputs" name="" id="modal_task_description" cols="30" rows="3"
           placeholder="Enter a Description"></textarea>
       </div>
   
@@ -36,14 +36,14 @@
   
       <div class="form_categories">
         <span>Due date<span class="add_task_required">*</span></span>
-        <input class="add_task_inputs" id="task_date" required type="date">
+        <input class="add_task_inputs" id="modal_task_date" required type="date">
         <span id="date_is_required" class="d-none">This field is required</span>
       </div>
   
   
       <div class="form_categories">
         <span>Category<span class="add_task_required">*</span></span>
-        <select required class="add_task_inputs" name="Category" id="task_category">
+        <select required class="add_task_inputs" name="Category" id="modal_task_category">
           <option value="" disabled selected hidden>Select task Category</option>
           <option value="Technical Task">Technical Task</option>
           <option value="User Story">User Story</option>
@@ -54,7 +54,7 @@
   
       <div class="form_categories">
         <span>Assigned to</span>
-        <input class="add_task_inputs" onclick="toggleSelect()" id="task_user" placeholder="Select contacts to assign">
+        <input class="add_task_inputs" onclick="toggleSelect()" id="modal_task_user" placeholder="Select contacts to assign">
         <div id="tasks_contacts_container" class="d-none">
           <ul id="assigned_user"></ul>
         </div>
@@ -67,7 +67,7 @@
         <div id="subtask_button_input" >
           <button class="add_task_inputs" id="task_subtask_button" onclick="transformSubtaskButton()" type="text"><span>Add new Subtask</span><img src="/assets/img/addTask/add_subtask.png" alt=""></button>
         </div>
-        <ul id="new_subtask_list" style="list-style-type:disc"></ul>
+        <ul id="modal_new_subtask_list" style="list-style-type:disc"></ul>
       </div>
 
       <div class="edit_task_finish">
