@@ -273,7 +273,7 @@ async function renderFilteredTasks () {
  */
 function checkUserSubtasksStatus(taskId) {
     let subTasksDone = 0;
-    let userSubTasks = USERS[ACTIVEUSERKEY].tasks[taskId].subtasks;
+    let userSubTasks = USERS[ACTIVEUSERKEY].tasks[taskId].subtasks.subtaskContent;
     if (userSubTasks == null) {
         for (const subtask of userSubTasks) {
             if (subtask[0].length == 0) {
@@ -292,7 +292,7 @@ function checkUserSubtasksStatus(taskId) {
 function renderSubtasksProgress(taskId) {
     // TODO Task card needs specific ID in order to get
     let container = document.getElementById('taskBoardCarProgressBar');
-    let subTasksTotal = USERS[ACTIVEUSERKEY].tasks[taskId].subtasks.length;
+    let subTasksTotal = USERS[ACTIVEUSERKEY].tasks[taskId].subtasks.subtaskContent.length;
     let subTasksDone = checkUserSubtasksStatus(taskId);
     let progressbarWidth = (subTasksDone / subTasksTotal) * 100;
     // TODO chance style width = progressbar length
@@ -315,7 +315,7 @@ function generateTodoHTML(task) {
             <div class="progressPosition"> 
                 <div class="w3-light-grey w3-round">
                     <div id="taskBoardCarProgressBar" class="w3-container w3-round w3-blue" style="height:8px; width:1%"></div></div>
-                <div class="subnumber"> 0/${(task.subtasks.length)}</div>
+                <div class="subnumber"> 0/${(task.subtasks.subtaskContent.length)}</div>
             </div>
             <div class="boardAssignedUserAndPrio">
                 <div id="boardAssignedUserInitialsContainer_${task.id}" class="d-flex boardAssignedUserInitialsContainer"></div>
