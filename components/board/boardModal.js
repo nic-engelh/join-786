@@ -100,11 +100,8 @@ function loadBoardModalAssignedUsers(user) {
  * 
  */
 function boardModalEditTask() {
-    const dialog = document.getElementById("board_modal");
     const dialogTask = document.getElementById("board_modal_task");
-    dialog.classList.toggle('visually-hidden');
-    dialog.classList.remove('d-flex');
-    dialog.close();
+    closeBoardModal()
     dialogTask.classList.toggle('visually-hidden');
     dialogTask.classList.add('d-flex');
     dialogTask.showModal();
