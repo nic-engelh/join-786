@@ -1,7 +1,7 @@
 
 function showBoardModal() {
     const dialog = document.getElementById("board_modal");
-    dialog.classList.toggle('visually-hidden');
+    dialog.classList.remove('visually-hidden');
     dialog.classList.add('d-flex');
     dialog.showModal();
 }
@@ -28,6 +28,11 @@ async function loadBoardModal(id, title, description, date, category) {
     document.getElementById("board_modal_title").innerHTML = title;
     document.getElementById("board_modal_description").innerHTML = description;
     document.getElementById("board_modal_date").innerHTML = date;
+    document.getElementById("board_modal_edit_task_button").innerHTML =`
+        <div onclick="openBoardModalEditTask('${id}')">
+            <img src="/assets/img/board/edit.png" alt="edit">
+                <span class="task_category_font">Edit</span>
+        </div>`;
 }
 
 async function loadBoardModalPrio(prio) {
@@ -95,26 +100,13 @@ function loadBoardModalAssignedUsers(user) {
 }
 
 /**
- * This function opens the editor for the Task
- * 
- * 
- */
-function boardModalEditTask() {
-    const dialogTask = document.getElementById("board_modal_task");
-    closeBoardModal()
-    dialogTask.classList.toggle('visually-hidden');
-    dialogTask.classList.add('d-flex');
-    dialogTask.showModal();
-}
-
-/**
  * This function closes the modal
  * 
  * 
  */
 function closeBoardModal() {
     const dialog = document.getElementById("board_modal");
-    dialog.classList.toggle('visually-hidden');
+    dialog.classList.add('visually-hidden');
     dialog.classList.remove('d-flex');
     dialog.close();
     updateBoardHTML()
@@ -127,7 +119,7 @@ function closeBoardModal() {
  */
 function closeBoardModalTask() {
     const dialog = document.getElementById("board_modal_task");
-    dialog.classList.toggle('visually-hidden');
+    dialog.classList.add('visually-hidden');
     dialog.classList.remove('d-flex');
     dialog.close();
     updateBoardHTML()
@@ -140,8 +132,8 @@ function closeBoardModalTask() {
  */
 function eventCloseBoardModal(event) {
     const dialog = document.getElementById("board_modal");
-        if (!event.target.contains(dialog)) return;
-        closeBoardModal()
+    if (!event.target.contains(dialog)) return;
+    closeBoardModal()
 }
 
 /**
@@ -151,8 +143,8 @@ function eventCloseBoardModal(event) {
  */
 function eventCloseBoardModalTask(event) {
     const dialogTask = document.getElementById("board_modal_task");
-        if (!event.target.contains(dialogTask)) return;
-        closeBoardModalTask()
+    if (!event.target.contains(dialogTask)) return;
+    closeBoardModalTask()
 }
 
 /**
@@ -162,3 +154,16 @@ function eventCloseBoardModalTask(event) {
  */
 document.addEventListener("click", eventCloseBoardModal);
 document.addEventListener("click", eventCloseBoardModalTask);
+
+/**
+ * This function opens the editor for the Task
+ * 
+ * 
+ */
+function openBoardModalEditTask(id) {
+    const dialogTask = document.getElementById("board_modal_task");
+    closeBoardModal()
+    dialogTask.classList.toggle('visually-hidden');
+    dialogTask.classList.add('d-flex');
+    dialogTask.showModal();
+}
