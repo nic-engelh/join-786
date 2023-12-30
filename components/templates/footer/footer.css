@@ -1,4 +1,5 @@
 #footer {
+  z-index: 1000;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -21,11 +22,6 @@
   height: 76px;
 }
 
-.footer_category:hover {
-  cursor: pointer;
-  border-radius: 8px;
-  background-color: #091931;
-}
 
 .footer_category img {
   width: 24px;
@@ -33,4 +29,129 @@
 
 a {
   text-decoration: none;
+}
+
+.footerImg {
+  visibility: hidden;
+  position: absolute;
+}
+
+@media(max-width:1000px) {
+  .footer_category:hover {
+    cursor: pointer;
+    border-radius: 8px;
+    background-color: #091931;
+    width: 80px;
+  }
+}
+
+@media(min-width:1000px) {
+  .footerImg {
+    visibility: visible;
+    width: 100.034px;
+    height: 121.966px;
+    position: absolute;
+    top: 64px;
+  }
+
+  #footer {
+    height: 100%;
+    width: 262px;
+    flex-direction: column;
+    align-items: center;
+    justify-content: unset;
+    font-size: 16px;
+  }
+
+  .footer_category {
+    display: block;
+
+  }
+
+  .footerContacts {
+    padding-top: 7px;
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    width: 100%;
+    top: 500px;
+
+  }
+
+  .footerContacts img {
+    width: 30px;
+    height: 30px;
+  }
+
+  .footerContacts:hover {
+    background-color: #091931;
+    cursor: pointer;
+    height: 50px;
+  }
+
+  .footerBoard {
+    padding-top: 7px;
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    width: 100%;
+    position: absolute;
+    top: 430px;
+    padding-right: 17px;
+  }
+
+  .footerBoard img {
+    width: 30px;
+    height: 30px;
+  }
+
+  .footerBoard:hover {
+    background-color: #091931;
+    cursor: pointer;
+    height: 50px;
+  }
+
+  .footerTasks {
+    padding-top: 7px;
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    width: 100%;
+    position: absolute;
+    top: 360px;
+    padding-left: 17px;
+  }
+
+  .footerTasks img {
+    width: 30px;
+    height: 30px;
+  }
+
+  .footerTasks:hover {
+    background-color: #091931;
+    cursor: pointer;
+    height: 50px;
+  }
+
+  .footerSummary {
+    padding-top: 7px;
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    width: 100%;
+    position: absolute;
+    top: 290px;
+    padding-left: 17px;
+  }
+
+  .footerSummary img {
+    width: 30px;
+    height: 30px;
+  }
+
+  .footerSummary:hover {
+    background-color: #091931;
+    cursor: pointer;
+    height: 50px;
+  }
 }

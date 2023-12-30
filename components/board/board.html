@@ -1,7 +1,7 @@
 
 <section id="sectionBoard" class="visually-hidden">
   <div class="board_h1">
-    <h1>Board</h1>
+    <h1 class="board_fontH1">Board</h1>
     <div onclick="openCreateTaskModal('sectionAddTasks', 'todo')" class="board_h1_img"><img src="/assets/img/board/board-plus.png" alt="add Task"></div>
   </div>
 
@@ -12,7 +12,7 @@
 
     <div class="board_todo board_sections">
       <div class="board_h3">
-        <h3>To do</h3>
+        <h3 class="boardH3Responsive">To do</h3>
         <img onclick="openCreateTaskModal('sectionAddTasks', 'todo')" src="/assets/img/board/board_add.png" alt="">
       </div>
 
@@ -22,7 +22,7 @@
     </div>
     <div class="board_progress board_sections">
       <div class="board_h3">
-        <h3>In progress</h3>
+        <h3  class="boardH3Responsive">In progress</h3>
         <img onclick="openCreateTaskModal('sectionAddTasks', 'inProgress')" src="/assets/img/board/board_add.png" alt="">
       </div>
 
@@ -32,7 +32,7 @@
     </div>
     <div class="board_feedback board_sections">
       <div class="board_h3">
-        <h3>Await feedback</h3>
+        <h3  class="boardH3Responsive">Await feedback</h3>
         <img onclick="openCreateTaskModal('sectionAddTasks', 'feedback')" src="/assets/img/board/board_add.png" alt="">
       </div>
 
@@ -42,8 +42,8 @@
     </div>
     <div class="board_done board_sections">
       <div class="board_h3">
-        <h3>Done</h3>
-        <img onclick="openCreateTaskModal('sectionAddTasks', 'done')" src="/assets/img/board/board_add.png" alt="">
+        <h3  class="boardH3Responsive">Done</h3>
+        <img class="board_done_img" onclick="openCreateTaskModal('sectionAddTasks', 'done')" src="/assets/img/board/board_add.png" alt="">
       </div>
 
       <div ondrop="moveTo('done')" ondragleave="removeHighlight('done')"
