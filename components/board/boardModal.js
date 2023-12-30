@@ -228,9 +228,61 @@ function modalTaskAddSubtasks(id){
             <div id="edit_and_delete${i}" class="edit_and_delete">
                 <img id="edit${i}" onclick="editSubtask(${i})" src="/assets/img/addTask/edit.png">
                 <img src="/assets/img/addTask/subtask_divide.png">
-                <img id="delete${i}" onclick="deleteSubtaskItem(${i})" class="delete" src="/assets/img/addTask/delete.png"
+                <img id="delete${i}" onclick="modalDeleteSubtaskItem(${i, id})" class="delete" src="/assets/img/addTask/delete.png"
             </div>
         </div>
     </li>`;
     }
+}
+
+/**
+ * This function is used to delete a subtask
+ * 
+ * 
+ */
+function modalDeleteSubtaskItem(i, id) {
+    let subtask = USERS[ACTIVEUSERKEY].tasks[id].subtasks;
+    subtask.subtaskContent.splice(i, 1);
+    subtask.subtaskStatus.splice(i, 1);
+    document.getElementById('new_subtask_list').classList.remove('edit_subtask_list');
+    modalTaskAddSubtasks(id);
+}
+
+/**
+ * This function is used to edit an existing subtask
+ * 
+ * 
+ */
+function editSubtask(i) {
+    const editIcons = document.getElementById(`edit_and_delete${i}`);
+    editIcons.innerHTML = "";
+    editIcons.innerHTML = `
+        <img id="delete${i}" onclick="deleteSubtaskItem(${i})" class="delete" src="/assets/img/addTask/delete.png"
+        <img src="/assets/img/addTask/subtask_divide.png">
+        <img src="/assets/img/addTask/subtask_divide.png">
+        <img onclick="acceptChanges(${i})" src="/assets/img/addTask/subtask_check.png">
+    `;
+    const changeBackground = document.getElementById('new_subtask_list')
+    changeBackground.classList.add('edit_subtask_list');
+
+    const listItem = document.getElementById(`subtask_list_item${i}`);
+    listItem.classList.add('editable_list_element');
+    listItem.classList.remove('addsubtask_list_element');
+
+    const input = document.getElementById(`readonly_input${i}`);
+    input.removeAttribute('readonly');
+    input.focus();
+    input.selectionStart = input.selectionEnd = input.value.length;
+}
+
+/**
+ * This function is used to confirm the changes to the subtask and close the edit input
+ * 
+ *  
+ */
+function acceptChanges(i) {
+    let replacingElement = document.getElementById(`readonly_input${i}`).value;
+    subtasksArray.subtaskContent.splice(i, 1, replacingElement);
+    document.getElementById('new_subtask_list').classList.remove('edit_subtask_list');
+    renderSubtaskContainer();
 }
