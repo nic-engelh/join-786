@@ -166,7 +166,8 @@ function openBoardModalEditTask(id) {
     dialogTask.classList.toggle('visually-hidden');
     dialogTask.classList.add('d-flex');
     dialogTask.showModal();
-    modalTaskFillValues(id)
+    modalTaskFillValues(id);
+    modalTaskAddContacts(id);
 }
 
 function modalTaskFillValues(id) {
@@ -177,8 +178,15 @@ function modalTaskFillValues(id) {
     document.getElementById('modal_task_category').value = chosenTask["category"];
 }
 
-function modalTaskAddContacts(){
-
+function modalTaskAddContacts(id){
+    let chosenTaskUser = USERS[ACTIVEUSERKEY].tasks[id].user;
+    const container = document.getElementById("modal_task_assigned_user");
+    container.innerHTML = "";
+    for (let j = 0; j < chosenTaskUser.length; j++) {
+        let displayedInitial = chosenTaskUser[j].initials;
+        let color = chosenTaskUser[j].color;            
+        container.innerHTML += `<span id="assigned_initials${j}" class="assigned_initials" style="background-color:#${color};">${displayedInitial}</span>`;
+    }
 }
 
 function modalTaskAddPrio(){
