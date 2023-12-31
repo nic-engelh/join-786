@@ -258,7 +258,7 @@ ul {
   align-items: center;
   justify-content: space-between;
   position: fixed;
-  bottom: 80px;
+  bottom: 0px;
   left: 0;
   right: 0;
   background-color: #F6F7F8;

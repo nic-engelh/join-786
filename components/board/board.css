@@ -464,7 +464,7 @@ h3 {
   }
 
   .board_input {
-    position: fixed;
+    position: absolute;
     top: 160px;
     right: 200px;
     width: 312px;

@@ -141,7 +141,7 @@ function generateUrgentWidgetHTML(size, deadlineDate) {
         </div>
         <div class="j36_partingLine"></div>
         <div class="j36_Date">
-            <h2>${deadlineDate}</h2>  
+            <h2 class="j_36UserDate">${deadlineDate}</h2>  
             <p class="j36_dateText">Upcoming Deadline</p>
         </div>
     `
