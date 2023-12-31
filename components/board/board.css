@@ -458,13 +458,13 @@ h3 {
 
   .board_section {
     display: flex;
-    gap: 150px;
+    gap: 190px;
     margin: 0px;
     overflow-x: scroll;
   }
 
   .board_input {
-    position: absolute;
+    position: fixed;
     top: 160px;
     right: 200px;
     width: 312px;
