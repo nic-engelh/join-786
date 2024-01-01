@@ -91,19 +91,21 @@ async function loadBoardModalSubtasksStatus(subtasks, status) {
  * 
  * 
  */
-function loadBoardModalAssignedUsers(user) {
-    const selectElement = document.getElementById("board_modal_assigned_user");
+function loadBoardModalAssignedUsers() {
+    const selectElement = document.getElementById("modal_assigned_user");
+    let user = USERS[ACTIVEUSERKEY].contacts
     selectElement.innerHTML = "";
     for (let i = 0; i < user.length; i++) {
         const initial = user[i]["initials"];
         const name = user[i]["name"];
         const color = user[i]["color"];
         selectElement.innerHTML += `
-            <li class="assigned_user_li">
+            <li onclick="chooseContactModal(${i})" id="toggle_name_modal${i}" class="assigned_user_li">
                 <div class="task_contacts_name_initials">
-                    <div id="initials_img${i}" class="assigned_initials" style="background-color:#${color};">${initial}</div>
+                    <div id="modal_initials_img${i}" class="assigned_initials" style="background-color:#${color};">${initial}</div>
                     <span id="assigned_name_span">${name}</span>
                 </div>
+                <img class="checkbox" id="checkboxModal${i}" src="/assets/img/addTask/check_empty.png">
             </li>`;
     }
 }
@@ -191,6 +193,99 @@ function modalTaskFillValues(id) {
     document.getElementById('modal_task_description').value = chosenTask["description"];
     document.getElementById('modal_task_date').value = chosenTask["date"];
     document.getElementById('modal_task_category').value = chosenTask["category"];
+}
+
+/**
+ * This function toggles the visibility of the tasks_contacts_container
+ * 
+ * 
+ */
+function toggleSelectModal() {
+    document.getElementById('modal_tasks_contacts_container').classList.toggle('d-none');
+}
+
+/**
+ * This function adds the event that hides the contact selection when clicking somewhere else than the contact selection
+ * 
+ * 
+ */
+function hideContactSelect(event) {
+    let nameContainer = document.getElementById('modal_tasks_contacts_container');
+    if (nameContainer) {
+        if (event.target.id !== "modal_task_user" && event.target.id !== "modal_assigned_user" && !event.target.classList.contains('assigned_user_li') && !event.target.classList.contains('assigned_user_li_toggled') && !event.target.classList.contains('checkbox') && !event.target.classList.contains('assigned_initials') && event.target.id !== "assigned_name_span") {
+            nameContainer.classList.add("d-none");
+        }
+    }
+}
+
+/**
+ * This is an event when you click
+ * 
+ * 
+ */
+document.addEventListener("click", hideContactSelect);
+
+/**
+ * This function is used to assign a user and show it with css and images
+ * 
+ * 
+ */
+function chooseContactModal(i) {
+    let li = document.getElementById(`toggle_name_modal${i}`);
+    let checkbox = document.getElementById(`checkboxModal${i}`);
+
+    li.classList.toggle('assigned_user_li_toggled');
+
+    if (checkbox.src.endsWith('/assets/img/addTask/check_empty.png')) {
+        checkbox.src = '/assets/img/addTask/check_checked.png';
+    } else {
+        checkbox.src = '/assets/img/addTask/check_empty.png';
+    }
+
+    pushAssignedContactModal(i, li);
+}
+
+/**
+ * This function is used to push the assigned user in userContacts
+ * 
+ * 
+ */
+async function pushAssignedContactModal(i, li) {
+    const name = await userContacts[i];
+    
+    const index = await assignedToTask.indexOf(name);
+
+    if (li.classList.contains('assigned_user_li_toggled')) {
+        assignedToTask.push(name);
+    } else { assignedToTask.splice(index, 1) }
+    showAssignedInitials(i);
+}
+
+/**
+ * This function shows the initials of the chosen user with his colors
+ * 
+ * 
+ */
+function showAssignedInitials(i) {
+    const toBeAssigned = userContacts[i]['initials'];
+    const index = assignedInitial.indexOf(toBeAssigned);
+    let checkbox = document.getElementById(`checkboxModal${i}`);
+    let container = document.getElementById('assigned_user_initials');
+
+    if (checkbox.src.endsWith('check_checked.png')) {
+        assignedInitial.push(toBeAssigned);
+    } else {
+        if (index !== -1) {
+            assignedInitial.splice(index, 1);
+        }
+    }
+
+    container.innerHTML = '';
+    for (let j = 0; j < assignedInitial.length; j++) {
+        const displayedInitial = assignedInitial[j];
+        let color = userContacts[j]["color"];            
+        container.innerHTML += `<span id="assigned_initials${i}" class="assigned_initials" style="background-color:#${color};">${displayedInitial}</span>`;
+    }
 }
 
 /**
