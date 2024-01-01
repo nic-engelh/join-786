@@ -1,4 +1,6 @@
 
+let ID = "";
+
 function showBoardModal() {
     const dialog = document.getElementById("board_modal");
     dialog.classList.remove('visually-hidden');
@@ -16,6 +18,7 @@ async function getTaskBoardModalValue(id) {
     let category = chosenTask["category"];
     let subtasks = chosenTask["subtasks"].subtaskContent;
     let status = chosenTask["status"];
+    ID = id
     showBoardModal();
     loadBoardModal(id, title, description, date, category);
     loadBoardModalPrio(prio);
@@ -33,6 +36,12 @@ async function loadBoardModal(id, title, description, date, category) {
             <img src="/assets/img/board/edit.png" alt="edit">
                 <span class="task_category_font">Edit</span>
         </div>`;
+    document.getElementById("subtask_button_input_modal").innerHTML =`
+    <button class="add_task_inputs" id="task_subtask_button_modal" onclick="transformSubtaskButtonModal('${id}')" type="text"><span>Add new Subtask</span><img src="/assets/img/addTask/add_subtask.png" alt=""></button>
+    `;
+    document.getElementById("modal_edit_task_finish").innerHTML =`
+    <button id="create_task_button" value="Create Task " onclick="formValidationModal('${id}')"><span>OK</span><img src="/assets/img/addTask/check_icon.png" alt=""></button>
+    `;
 }
 
 async function loadBoardModalPrio(prio) {
@@ -209,6 +218,68 @@ function modalTaskAddPrio(){
     placeholder
 }
 
+function transformSubtaskButtonModal(id) {
+    const subtaskButton = document.getElementById('subtask_button_input_modal');
+
+    subtaskButton.innerHTML = `
+    <div class="add_task_inputs">
+        <input onkeyup="handleKeyUp(event)" id="subtask_input_modal" class="subtask_input" placeholder="Add new Subtask">
+        <div class="delete_and_check">
+            <img onclick="revertBackToButtonModal('${id}')" class="exit" id="exit" src="/assets/img/addTask/subtask_delete.png">
+            <img src="/assets/img/addTask/subtask_divide.png">
+            <img onclick="addNewSubtaskToListModal('${id}')" class="tick" id="tick" src="/assets/img/addTask/subtask_check.png">
+        </div>
+    </div>
+    `;
+
+    document.getElementById('subtask_input_modal').focus();
+}
+
+/**
+ * This function is used to revert the subtask input into a button
+ * 
+ * 
+ */
+function revertBackToButtonModal(id) {
+    const subtaskButton = document.getElementById('subtask_button_input_modal');
+
+    subtaskButton.innerHTML = `
+    <button class="add_task_inputs" id="task_subtask_button_modal" onclick="transformSubtaskButtonModal('${id}')" type="text">
+    <span>Add new Subtask</span><img src="/assets/img/addTask/add_subtask.png" alt="">
+    </button>
+    `;
+}
+
+/**
+ * This function is used as means to confirm your new subtask with an 'enter' command on the keyboard
+ * 
+ * 
+ */
+function handleKeyUp(event) {
+    if (event.key === 'Enter' || event.keyCode === 13) {
+        addNewSubtaskToListModal(ID);
+    }
+}
+
+/**
+ * This function pushes the new subtask to the subtasks arrays
+ * 
+ * 
+ */
+function addNewSubtaskToListModal(id) {
+    let newSubtask = document.getElementById('subtask_input_modal').value;
+    let subtasks = USERS[ACTIVEUSERKEY].tasks[id].subtasks;
+
+    if (newSubtask != '') {
+        subtasks.subtaskContent.push(newSubtask);
+        subtasks.subtaskStatus.push(0);
+        modalTaskAddSubtasks(id);
+        revertBackToButton();
+    } else {
+        document.getElementById('subtask_is_required').classList.remove('d-none');
+    }
+}
+
 /**
  * This function fills the edit task modal with the subtasks
  * 
@@ -223,12 +294,12 @@ function modalTaskAddSubtasks(id){
         subtaskContainer.innerHTML +=
             `<li id="subtask_list_item${i}" class="add_subtask_list">
         <div style="display: flex; align-items: center; gap: 8px;">
-            <input readonly id="readonly_input${i}" value="${addedTask}"
+            <input readonly id="readonlyInputModal${i}" value="${addedTask}"
                 class="input_edit_subtask"></input>
-            <div id="edit_and_delete${i}" class="edit_and_delete">
-                <img id="edit${i}" onclick="editSubtask(${i})" src="/assets/img/addTask/edit.png">
+            <div id="editAndDeleteModal${i}" class="edit_and_delete">
+                <img id="editModalSubtask${i}" onclick="editModalSubtask(${i}, '${id}')" src="/assets/img/addTask/edit.png">
                 <img src="/assets/img/addTask/subtask_divide.png">
-                <img id="delete${i}" onclick="modalDeleteSubtaskItem(${i, id})" class="delete" src="/assets/img/addTask/delete.png"
+                <img id="deleteModalSubtask${i}" onclick="modalDeleteSubtask(${i}, '${id}')" class="delete" src="/assets/img/addTask/delete.png"
             </div>
         </div>
     </li>`;
@@ -240,7 +311,7 @@ function modalTaskAddSubtasks(id){
  * 
  * 
  */
-function modalDeleteSubtaskItem(i, id) {
+function modalDeleteSubtask(i, id) {
     let subtask = USERS[ACTIVEUSERKEY].tasks[id].subtasks;
     subtask.subtaskContent.splice(i, 1);
     subtask.subtaskStatus.splice(i, 1);
@@ -253,14 +324,14 @@ function modalDeleteSubtaskItem(i, id) {
  * 
  * 
  */
-function editSubtask(i) {
-    const editIcons = document.getElementById(`edit_and_delete${i}`);
+function editModalSubtask(i, id) {
+    const editIcons = document.getElementById(`editAndDeleteModal${i}`);
     editIcons.innerHTML = "";
     editIcons.innerHTML = `
         <img id="delete${i}" onclick="deleteSubtaskItem(${i})" class="delete" src="/assets/img/addTask/delete.png"
         <img src="/assets/img/addTask/subtask_divide.png">
         <img src="/assets/img/addTask/subtask_divide.png">
-        <img onclick="acceptChanges(${i})" src="/assets/img/addTask/subtask_check.png">
+        <img onclick="acceptChangesModal(${i}, '${id}')" src="/assets/img/addTask/subtask_check.png">
     `;
     const changeBackground = document.getElementById('new_subtask_list')
     changeBackground.classList.add('edit_subtask_list');
@@ -269,7 +340,7 @@ function editSubtask(i) {
     listItem.classList.add('editable_list_element');
     listItem.classList.remove('addsubtask_list_element');
 
-    const input = document.getElementById(`readonly_input${i}`);
+    const input = document.getElementById(`readonlyInputModal${i}`);
     input.removeAttribute('readonly');
     input.focus();
     input.selectionStart = input.selectionEnd = input.value.length;
@@ -280,9 +351,10 @@ function editSubtask(i) {
  * 
  *  
  */
-function acceptChanges(i) {
-    let replacingElement = document.getElementById(`readonly_input${i}`).value;
-    subtasksArray.subtaskContent.splice(i, 1, replacingElement);
+function acceptChangesModal(i, id) {
+    let subtask = USERS[ACTIVEUSERKEY].tasks[id].subtasks;
+    let replacingElement = document.getElementById(`readonlyInputModal${i}`).value;
+    subtask.subtaskContent.splice(i, 1, replacingElement);
     document.getElementById('new_subtask_list').classList.remove('edit_subtask_list');
-    renderSubtaskContainer();
+    modalTaskAddSubtasks(id);
 }

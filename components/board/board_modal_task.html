@@ -64,15 +64,11 @@
   
       <div class="form_categories">
         <span>Subtasks</span>
-        <div id="subtask_button_input" >
-          <button class="add_task_inputs" id="task_subtask_button" onclick="transformSubtaskButton()" type="text"><span>Add new Subtask</span><img src="/assets/img/addTask/add_subtask.png" alt=""></button>
-        </div>
+        <div id="subtask_button_input_modal"></div>
         <ul id="modal_subtask_list" style="list-style-type:disc"></ul>
       </div>
 
-      <div class="edit_task_finish">
-        <button id="create_task_button" value="Create Task " onclick="formValidation()"><span>OK</span><img src="/assets/img/addTask/check_icon.png" alt=""></button>
-      </div>
+      <div class="edit_task_finish" id="modal_edit_task_finish"></div>
 
     </div>
 </dialog>
