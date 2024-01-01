@@ -52,7 +52,7 @@ h1 {
     text-align: left;
     flex-direction: column;
     position: fixed;
-    left: 60%;
+    left: 40%;
     top: 300px;
 }
 
@@ -250,6 +250,12 @@ h1 {
     cursor: pointer;
 }
 
+@media(max-width:2000px) {
+    .j36_morning-Text {
+        left: 60%;
+    }
+}
+
 @media(max-width:700px) {
     .j36_headline {
         display: flex;
@@ -332,6 +338,7 @@ h1 {
         width: 29%;
         font-size: 15px;
     }
+
     .j_36UserDate {
         font-size: 15px;
         font-weight: bold;

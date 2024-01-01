@@ -442,25 +442,47 @@ h3 {
   margin: 0;
 }
 
+@media(max-width:2000px) {
+  .board_section {
+    justify-content: space-around;
+    margin-left: 300px !important;
+  }
 
-@media(max-width:1600px){
+  .board_h1 {
+    margin-left: 290px !important;
+  }
+}
+
+@media(max-width:1600px) {
   .boardH3Responsive {
     font-weight: bold;
-    font-size: 18px !important;
     text-align: center;
   }
 }
+
+@media(max-width:1000px) {
+  .board_section {
+    margin-left: 0px !important;
+  }
+
+  .board_h1 {
+    margin-left: 0px !important;
+  }
+}
+
 @media(min-width:1000px) {
   #sectionBoard {
-    margin-left: 262px;
     margin-right: 64px;
+  }
+
+  .board_h1 {
+    margin-left: 390px;
   }
 
   .board_section {
     display: flex;
-    gap: 190px;
+    justify-content: space-between;
     margin: 0px;
-    overflow-x: scroll;
   }
 
   .board_input {
@@ -476,7 +498,7 @@ h3 {
   }
 
   .boardH3Responsive {
-   padding-right: 20px;
+    padding-right: 20px;
     font-weight: bold;
     font-size: 20px;
     width: 170px;
@@ -486,7 +508,6 @@ h3 {
     display: none;
 
   }
-
 
   .boardTaskScrolling {
     display: block;
