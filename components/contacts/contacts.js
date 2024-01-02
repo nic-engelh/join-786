@@ -81,6 +81,7 @@ function addContactData () {
     let id = generateContactID();
     let initials = generateInitials(name);
     userContacts.push({name: name, email: email, phone: phone , contactId: id, initials: initials, color: randomColor()});
+    USERS[ACTIVEUSERKEY].contacts = userContacts;
     renderContactList();
     hideDialog('overlay-add-contact-mobile');
     showSuccessInfo("0");
@@ -119,6 +120,7 @@ function saveEditedContactData () {
     userContacts.push({name: nameEdited, email: emailEdited, phone: phoneEdited , contactId: activeContact, initials: contactObject.initials, color: contactObject.color});
     hideDialog('overlay-edit-contact-mobile');
     deleteContact(activeContact, false);
+    USERS[ACTIVEUSERKEY].contacts = userContacts;
     renderContactList();
     showSuccessInfo("2");
 }
@@ -203,6 +205,7 @@ function deleteContact (contactID, bool) {
         console.log("Error: deletion was unsuccesful.");
         return false
     }
+    USERS[ACTIVEUSERKEY].contacts = userContacts;
     removeElemente("contact-view-profil-main");
     renderContactList();
     toggleHide("contact-list-background");
