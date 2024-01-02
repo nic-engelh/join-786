@@ -504,3 +504,19 @@ ul {
     margin-left: 0px;
   }
 }
+@media(max-width:370px) {
+  #create_task_button{
+    height: 50px;
+    width: 100px;
+    font-size: 15px;
+  }
+  .add_task_priorities{
+    width: 100px;
+  }
+  #urgent_button{
+    width: 90px;
+  }
+  #medium_button{
+    width: 90px;
+  }
+}
