@@ -20,7 +20,7 @@ async function getVariables () {
     }
     await getTasksFromLocalStorage();
     if ( !("contacts" in USERS[ACTIVEUSERKEY]) ) {
-      USERS[ACTIVEUSERKEY].contacts = {};
+      USERS[ACTIVEUSERKEY].contacts = [];
     } 
     userContacts = USERS[ACTIVEUSERKEY].contacts; 
     userTasks = USERS[ACTIVEUSERKEY].tasks;
