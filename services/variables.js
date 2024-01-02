@@ -13,7 +13,8 @@ let localGuestTasks = [];
  */
 async function getVariables () {
     ACTIVEUSERKEY = getLocalStorage("activeUser");
-    USERS = await getStorageData("users", USERS); 
+    let buffer = await getStorageData("users", USERS);
+    Object.assign(USERS, buffer);
     if ( !("tasks" in USERS[ACTIVEUSERKEY]) ) {
       USERS[ACTIVEUSERKEY].tasks = {};
     }
@@ -33,9 +34,9 @@ function setVariables () {
  * 
  */ 
 async function getTasksFromLocalStorage() { 
-  if (ACTIVEUSERKEY != 'guest') {
-      USERS[ACTIVEUSERKEY].tasks = getLocalStorage("localUserTasks");
-  }
   localGuestTasks = await getLocalStorage("localGuestTasks");
+  if (localGuestTasks.length == 0) {
+    return false;
+  }
   Object.assign(USERS["guest"].tasks, localGuestTasks);
 }
