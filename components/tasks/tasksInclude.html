@@ -17,7 +17,7 @@
     </div>
 
 
-    <div class="form_categories">
+    <div class="form_categories_text">
       <span>Prio</span>
       <div class="add_task_priorities">
         <button class="add_task_urgent_button add_task_input_button" id="urgent_button" onclick="urgentButton()">Urgent
@@ -31,16 +31,16 @@
         </button>
       </div>
     </div>
+    <div class="tasks_line"></div>
 
-
-    <div class="form_categories">
+    <div class="form_categories_date">
       <span>Due date<span class="add_task_required">*</span></span>
       <input class="add_task_inputs" id="task_date" required type="date">
       <span id="date_is_required" class="d-none">This field is required</span>
     </div>
 
 
-    <div class="form_categories">
+    <div class="form_categories_category">
       <span>Category<span class="add_task_required">*</span></span>
       <select required class="add_task_inputs" name="Category" id="task_category">
         <option value="" disabled selected hidden>Select task Category</option>
@@ -51,33 +51,36 @@
     </div>
 
 
-    <div class="form_categories">
+    <div class="form_categories_assigned">
       <span>Assigned to</span>
       <input class="add_task_inputs" onclick="toggleSelect()" id="task_user" placeholder="Select contacts to assign">
       <div id="tasks_contacts_container" class="d-none">
         <ul id="assigned_user"></ul>
       </div>
-      <div id="assigned_user_initials" ></div>
+      <div id="assigned_user_initials"></div>
     </div>
 
 
-    <div class="form_categories">
+    <div class="form_categories_subtask">
       <span>Subtasks</span>
-      <div id="subtask_button_input" >
-        <button class="add_task_inputs" id="task_subtask_button" onclick="transformSubtaskButton()" type="text"><span>Add new Subtask</span><img src="/assets/img/addTask/add_subtask.png" alt=""></button>
+      <div id="subtask_button_input">
+        <button class="add_task_inputs" id="task_subtask_button" onclick="transformSubtaskButton()"
+          type="text"><span>Add new Subtask</span><img src="/assets/img/addTask/add_subtask.png" alt=""></button>
       </div>
       <ul id="new_subtask_list" style="list-style-type:disc"></ul>
     </div>
   </div>
 
-    <div class="create_task_finish">
-      <span><span class="add_task_required">*</span>This field is required</span>
-      <button id="create_task_button" value="Create Task " onclick="formValidation('To Do'); updateBoardHTML()"><span>Create Task</span><img src="/assets/img/addTask/check_icon.png" alt=""></button>
-    </div>
+  <div class="create_task_finish">
+    <span><span class="add_task_required">*</span>This field is required</span>
+    <button id="create_task_button" value="Create Task "
+      onclick="formValidation('To Do'); updateBoardHTML()"><span>Create Task</span><img
+        src="/assets/img/addTask/check_icon.png" alt=""></button>
+  </div>
 
-  
+
   <dialog id="succes_alert_addedTask">
     <span>Task added to board</span>
     <img src="/assets/img/addTask/board_icon.png" alt="board icon">
   </dialog>
-  </section>
+</section>

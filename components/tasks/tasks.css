@@ -5,10 +5,10 @@ body {
 }
 
 .d-none {
-  display: none!important;
+  display: none !important;
 }
 
-.d-flex{
+.d-flex {
   display: flex;
 }
 
@@ -57,6 +57,35 @@ body {
   /* align-self: stretch; */
   padding: 8px 0;
 }
+
+.form_categories_assigned {
+  display: flex;
+  flex-direction: column;
+  /* align-self: stretch; */
+  padding: 8px 0;
+}
+
+.form_categories_category {
+  display: flex;
+  flex-direction: column;
+  /* align-self: stretch; */
+  padding: 8px 0;
+}
+
+.form_categories_subtask {
+  display: flex;
+  flex-direction: column;
+  /* align-self: stretch; */
+  padding: 8px 0;
+}
+
+.form_categories_date {
+  display: flex;
+  flex-direction: column;
+  /* align-self: stretch; */
+  padding: 8px 0;
+}
+
 
 .add_task_inputs {
   display: flex;
@@ -151,7 +180,7 @@ body {
   justify-content: center;
   align-items: center;
   border-radius: 40px;
-  border:solid 2px white;
+  border: solid 2px white;
   height: 40px;
   width: 40px;
   color: white;
@@ -292,10 +321,186 @@ ul {
 }
 
 @media(min-width:1000px) {
-  #sectionAddTasks{
-    margin-left: 262px;
+  #sectionAddTasks {
+    margin-left: 350px;
   }
+
   .create_task_finish {
     bottom: 0px !important;
+  }
+
+  .form_categories {
+    width: 500px;
+  }
+
+  .form_categories_date {
+    width: 500px;
+    position: absolute;
+    left: 55%;
+  }
+
+  .form_categories_assigned {
+    width: 500px;
+  }
+
+  .form_categories_subtask {
+    width: 500px;
+    position: absolute;
+    left: 55%;
+    top: 520px;
+  }
+
+  .form_categories_category {
+    width: 500px;
+    position: absolute;
+    left: 55%;
+    top: 420px;
+  }
+
+  .form_categories_text {
+    position: absolute;
+    top: 330px;
+    left: 55%;
+  }
+
+  .add_task_low_button {
+    width: 260px;
+  }
+
+  .tasks_line {
+    border: 1px solid #D1D1D1;
+    width: 1px;
+    height: 370px;
+    position: absolute;
+    left: 50%;
+    top: 230px;
+
+  }
+
+}
+
+@media(max-width:1700px) {
+  .tasks_line {
+    left: 55%;
+  }
+
+  .form_categories_text {
+    left: 60%;
+  }
+
+  .form_categories_category {
+    left: 60%;
+  }
+
+  .form_categories_subtask {
+    left: 60%;
+  }
+
+  .form_categories_date {
+    left: 60%;
+  }
+}
+
+@media(max-width:1550px) {
+  .tasks_line {
+    left: 58%;
+  }
+}
+
+@media(max-width:1470px) {
+  .tasks_line {
+    left: 58%;
+  }
+
+  .form_categories_text {
+    left: 65%;
+    width: 350px;
+  }
+
+  .form_categories_category {
+    left: 65%;
+    width: 350px;
+  }
+
+  .form_categories_subtask {
+    left: 65%;
+    width: 350px;
+  }
+
+  .form_categories_date {
+    left: 65%;
+    width: 350px;
+  }
+
+  #medium_button {
+    width: 350px;
+  }
+
+  #urgent_button {
+    width: 150px;
+  }
+  .form_categories {
+    width: 350px;
+  }
+  .add_task_inputs{
+    width: 350px;
+  }
+}
+@media(max-width:1210px) {
+  .tasks_line {
+    left: 62%;
+  }
+  #sectionAddTasks {
+    margin-left: 280px;
+  }
+}
+
+@media(max-width:1020px) {
+  .tasks_line {
+    left: 63%;
+  }
+}
+
+@media(max-width:1000px) {
+  .tasks_line {
+    left: 58%;
+    display: none;
+  }
+
+  .form_categories_text {
+    left: 65%;
+    width: 100%;
+  }
+
+  .form_categories_category {
+    left: 65%;
+    width: 100%;
+  }
+
+  .form_categories_subtask {
+    left: 65%;
+    width: 100%;
+  }
+
+  .form_categories_date {
+    left: 65%;
+    width: 100%;
+  }
+
+  #medium_button {
+    width: 350px;
+  }
+
+  #urgent_button {
+    width: 150px;
+  }
+  .form_categories {
+    width: 100%;
+  }
+  .add_task_inputs{
+    width: 100%;
+  }
+  #sectionAddTasks {
+    margin-left: 0px;
   }
 }
