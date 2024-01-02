@@ -258,7 +258,7 @@ ul {
   align-items: center;
   justify-content: space-between;
   position: fixed;
-  bottom: 0px;
+  bottom: 65px;
   left: 0;
   right: 0;
   background-color: #F6F7F8;
@@ -294,5 +294,8 @@ ul {
 @media(min-width:1000px) {
   #sectionAddTasks{
     margin-left: 262px;
+  }
+  .create_task_finish {
+    bottom: 0px !important;
   }
 }
