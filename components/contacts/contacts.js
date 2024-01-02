@@ -101,7 +101,8 @@ function loadEditContactData () {
     let email = document.getElementById('edit-contact-email');
     let phone = document.getElementById('edit-contact-phone');
     let initials = generateInitials(contactObject.name);
-    changeProfilBadge(initials);
+    let color = contactObject.color;
+    changeProfilBadge(initials, color);
     name.value = contactObject.name;
     email.value = contactObject.email;
     phone.value = contactObject.phone;
@@ -234,7 +235,7 @@ function generateInitials (name) {
     return initials.toUpperCase();
 }
 
-function changeProfilBadge(initials) {
+function changeProfilBadge(initials, color) {
     let badge = document.getElementById('contact-user-symbol-badge');
     let initialBox = document.getElementById('contact-user-symbol-initials');
     initialBox.innerHTML = initials;
