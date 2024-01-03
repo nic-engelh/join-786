@@ -369,7 +369,7 @@ ul {
 
   .tasks_line {
     border: 1px solid #D1D1D1;
-    width: 1px;
+    width: 0px;
     height: 370px;
     position: absolute;
     left: 50%;
@@ -407,6 +407,12 @@ ul {
   }
 }
 
+@media(max-width:1270px) {
+  .tasks_line {
+    left: 63% !important;
+  }
+}
+
 @media(max-width:1470px) {
   .tasks_line {
     left: 58%;
@@ -429,9 +435,11 @@ ul {
 
   .form_categories_date {
     left: 65%;
-    width: 350px;
+    width: 350px !important;
   }
-
+  .form_categories_date input {
+    width: 320px !important;
+  }
   #medium_button {
     width: 350px;
   }
@@ -453,6 +461,15 @@ ul {
   #sectionAddTasks {
     margin-left: 280px;
   }
+  .add_task_inputs{
+    width: 290px !important;
+  }
+  .form_categories_date input {
+    width: 260px !important;
+  }
+  .add_task_priorities{
+    width: 250px;
+  }
 }
 
 @media(max-width:1020px) {
@@ -471,6 +488,14 @@ ul {
     left: 65%;
     width: 100%;
   }
+  .add_task_inputs{
+    width: 100% !important;
+  }
+
+  .form_categories_assigned {
+    width: 96%;
+  }
+
 
   .form_categories_category {
     left: 65%;
@@ -481,10 +506,11 @@ ul {
     left: 65%;
     width: 100%;
   }
-
-  .form_categories_date {
-    left: 65%;
-    width: 100%;
+  .form_categories_date{
+    width: 100% !important;
+  }
+  .form_categories_date input {
+    width: 96% !important;
   }
 
   #medium_button {
@@ -495,13 +521,16 @@ ul {
     width: 150px;
   }
   .form_categories {
-    width: 100%;
+    width: 96%;
   }
   .add_task_inputs{
     width: 100%;
   }
   #sectionAddTasks {
     margin-left: 0px;
+  }
+  .add_task_priorities{
+    width: 100%;
   }
 }
 @media(max-width:370px) {

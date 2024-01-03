@@ -81,6 +81,7 @@ a {
   .footerContacts img {
     width: 30px;
     height: 30px;
+    padding-right: 10px;
   }
 
   .footerContacts:hover {
@@ -95,14 +96,18 @@ a {
     justify-content: center;
     position: absolute;
     width: 100%;
-    position: absolute;
     top: 430px;
-    padding-right: 17px;
+  }
+  .footer_board{
+    padding-right: 30px;
+    margin-left:-20px;
   }
 
   .footerBoard img {
     width: 30px;
     height: 30px;
+    padding-right: 24px;
+
   }
 
   .footerBoard:hover {
@@ -117,9 +122,7 @@ a {
     justify-content: center;
     position: absolute;
     width: 100%;
-    position: absolute;
     top: 360px;
-    padding-left: 17px;
   }
 
   .footerTasks img {
@@ -139,9 +142,7 @@ a {
     justify-content: center;
     position: absolute;
     width: 100%;
-    position: absolute;
     top: 290px;
-    padding-left: 17px;
   }
 
   .footerSummary img {
