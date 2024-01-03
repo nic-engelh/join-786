@@ -453,3 +453,14 @@ function acceptChangesModal(i, id) {
     document.getElementById('new_subtask_list').classList.remove('edit_subtask_list');
     modalTaskAddSubtasks(id);
 }
+
+function boardModalDeleteTask() {
+    if (!(ID in USERS[ACTIVEUSERKEY].tasks)) {
+        console.log("Error, key can't be found")
+        return false;
+    };
+    delete USERS[ACTIVEUSERKEY].tasks[ID];
+    ID = null;
+    closeBoardModal();
+    // setStorageData("user", USERS);
+}
