@@ -454,7 +454,7 @@ function acceptChangesModal(i, id) {
     modalTaskAddSubtasks(id);
 }
 
-function boardModalDeleteTask() {
+async function boardModalDeleteTask() {
     if (!(ID in USERS[ACTIVEUSERKEY].tasks)) {
         console.log("Error, key can't be found")
         return false;
@@ -462,5 +462,7 @@ function boardModalDeleteTask() {
     delete USERS[ACTIVEUSERKEY].tasks[ID];
     ID = null;
     closeBoardModal();
-    // setStorageData("user", USERS);
+    await setStorageData("user", USERS);
+    // show modal task deleted
+    // TODO set local user storage
 }
