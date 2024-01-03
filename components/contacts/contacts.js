@@ -174,7 +174,7 @@ function renderDialog (htmlString, modalId) {
 }
 
 function showSuccessInfo(number) {
-    const texts = ["Contact successfully created", "Contact successfully edited", "Contact successfully deleted", "Task succesfully deleted"];
+    const texts = ["Contact successfully created", "Contact successfully edited", "Contact successfully deleted", "Task succesfully deleted", , "Task successfully edited"];
     const modalId = "contact-alert";
     const htmlString = createSuccessInfoHTML();
     let modal = document.getElementById(modalId);
