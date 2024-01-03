@@ -463,7 +463,7 @@ async function boardModalDeleteTask() {
     ID = null;
     closeBoardModal();
     await setStorageData("user", USERS);
-    showSuccessInfo(4); 
+    showSuccessInfo("4"); 
     // show modal task deleted
     // TODO set local user storage
 }
