@@ -258,7 +258,7 @@ async function pushAssignedContactModal(i, li) {
     if (li.classList.contains('assigned_user_li_toggled')) {
         assignedToTask.push(name);
     } else { assignedToTask.splice(index, 1) }
-    showAssignedInitials(i);
+    showAssignedInitialsModal(i);
 }
 
 /**
@@ -266,7 +266,7 @@ async function pushAssignedContactModal(i, li) {
  * 
  * 
  */
-function showAssignedInitials(i) {
+function showAssignedInitialsModal(i) {
     const toBeAssigned = userContacts[i]['initials'];
     const index = assignedInitial.indexOf(toBeAssigned);
     let checkbox = document.getElementById(`checkboxModal${i}`);
