@@ -233,27 +233,42 @@ function openCreateTaskModal(section, boardFieldStatus) {
     return true;
 }
 
+
+/**
+ * 
+ * @returns {Array of objects} results
+ */
 function findBoardTask() {
     // TODO use following funtion from utils: filterNestedObject(inputObject, targetValue, targetKey)
     // TODO Result - only the task which was found shall be shown at the board
     let container = document.getElementById("board_search_inputfield");
     let searchInput = container.value.toLowerCase();
-    let tasks = Object.keys(USERS[ACTIVEUSERKEY].tasks);
-    let results;
-    for (const task in tasks) {
-        if (task.title.includes(searchInput)) {
-            results.push(task);
+    //let tasks = Object.keys(USERS[ACTIVEUSERKEY].tasks);
+    const tasks = new Map(Object.entries(USERS[ACTIVEUSERKEY].tasks));
+    let results = [];
+    for (const [key, value] of tasks.entries()) {
+        if (value.title.includes(searchInput)) {
+            results.push(value);
         } 
     }
     return results 
 }
 
+
+/**
+ * functions goes throught a {array of objects} filteredTasks and activates a render function a board card
+ * 
+ * @returns 
+ */
 async function renderFilteredTasks () {
     // TODO function needs so render the filtered array into the board
     let containerIds = ["todo", "inprogress", "feedback", "done"]
     let filteredTasks = await findBoardTask();
-    for (const id in containerIds) {
-        for (const task in filteredTasks) {
+    for (const id of containerIds) {
+        if (document.getElementById(id)) {
+            document.getElementById(id).innerHTML  = clear();
+        }
+        for (const task of filteredTasks) {
             if (task.status == id ) {
                 renderBoardCard (task, id);
             } 
