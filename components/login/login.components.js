@@ -177,7 +177,7 @@ async function guestLogin() {
      userData = { key: 0, name: 'Guest', email: 'GuestTest@hotmail.de', password: 'password', failedAttemped: true };
      // initalize entry with key guest and empty value as an object
      USERS = await  getStorageData('users', USERS);
-     if (!("guests" in USERS)) {
+     if (!("guest" in USERS)) {
           USERS["guest"] = {};
           USERS["guest"]["userData"] = userData;
           USERS["guest"]["contacts"] = contacts;

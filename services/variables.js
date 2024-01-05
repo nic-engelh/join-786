@@ -38,7 +38,7 @@ function setVariables () {
  */ 
 async function getTasksFromLocalStorage() { 
   localGuestTasks = await getLocalStorage("localGuestTasks");
-  if (localGuestTasks.length == 0) {
+  if (localGuestTasks == null ) {
     return false;
   }
   Object.assign(USERS["guest"].tasks, localGuestTasks);
