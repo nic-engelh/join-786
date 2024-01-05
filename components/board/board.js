@@ -265,7 +265,7 @@ function findBoardTask() {
  */
 async function renderFilteredTasks () {
     // TODO function needs so render the filtered array into the board
-    let containerIds = ["todo", "inprogress", "feedback", "done"]
+    let containerIds = ["todo", "inProgress", "feedback", "done"]
     let filteredTasks = await findBoardTask();
     for (const id of containerIds) {
         if (document.getElementById(id)) {
