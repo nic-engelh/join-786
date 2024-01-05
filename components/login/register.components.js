@@ -4,16 +4,7 @@ let userData = {};
  * is the onload function 
  */
 async function init() {
-     await loadusers()
-}
-
-/**
- * loads the user object array from the backend
- */
-async function loadusers() {
-     if (await getStorageData('users')) {
-          USERS = await getStorageData('users');
-     }
+     await loadUsers()
 }
 
 /**
