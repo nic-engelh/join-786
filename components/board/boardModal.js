@@ -577,3 +577,69 @@ async function boardModalDeleteTask() {
     // show modal task deleted
     // TODO set local user storage
 }
+
+async function formValidationModal(id) {
+    let title = document.getElementById('modal_task_title');
+    let date = document.getElementById('modal_task_date');
+    let category = document.getElementById('modal_task_category');
+
+    if (title.value == '') {
+        title.style.border = '1px solid red';
+        document.getElementById('title_is_required').classList.remove('d-none');
+    };
+    if (date.value == '') {
+        date.style.border = '1px solid red';
+        document.getElementById('date_is_required').classList.remove('d-none');
+    };
+    if (category.value == '') {
+        category.style.border = '1px solid red';
+        document.getElementById('category_is_required').classList.remove('d-none');
+    };
+
+    if (
+        title.value !== '' &&
+        date.value !== '' &&
+        category.value !== ''
+    ) {
+        await getTaskValueModal();
+        closeBoardModalTask()
+        await updateBoardHTML(); // TODO it does not work. Why? -> visually-hidden ? The elements can not be accessed? Onclick better?
+    }
+}
+
+/**
+ * This function is used to fetch all the data for the new task from inputs and functions
+ * 
+ * @param {string} inputStatus This variable sets the status
+ */
+async function getTaskValueModal(inputStatus) {
+    let id = ID;
+    let title = document.getElementById('modal_task_title').value;
+    let description = document.getElementById('modal_task_description').value;
+    let user = assignedToTask;
+    let date = document.getElementById('modal_task_date').value;
+    let prio = getPriorityModal();
+    let category = document.getElementById('modal_task_category').value;
+    let subtasks = USERS[ACTIVEUSERKEY].tasks[id].subtasks;
+
+    pushTaskModal(id, title, description, user, date, prio, category, subtasks);
+}
+
+/**
+ * This function is used to push all the data for the new task in the tasks object
+ * 
+ * @param {object} tasks this is the object where the task is compiled
+ */
+function pushTaskModal(id, title, description, user, date, prio, category, subtasks) {
+    tasks[id] = {
+        id: id,
+        title: title,
+        description: description,
+        prio: prio,
+        date: date,
+        category: category,
+        user: user,
+        subtasks: subtasks,
+    }
+    pushUSERS();
+}
