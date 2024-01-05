@@ -166,6 +166,12 @@ function eventCloseBoardModalTask(event) {
 document.addEventListener("click", eventCloseBoardModal);
 document.addEventListener("click", eventCloseBoardModalTask);
 
+
+
+///////////////////////////////////edit Task Modal///////////////////////////////////////////////////
+
+
+
 /**
  * This function opens the editor for the Task
  * 
@@ -178,8 +184,9 @@ function openBoardModalEditTask(id) {
     dialogTask.classList.add('d-flex');
     dialogTask.showModal();
     modalTaskFillValues(id);
+    modalTaskAddPrio(id);
     modalTaskAddContacts(id);
-    modalTaskAddSubtasks(id)
+    modalTaskAddSubtasks(id);
 }
 
 /**
@@ -309,9 +316,112 @@ function modalTaskAddContacts(id){
  * 
  * 
  */
-function modalTaskAddPrio(){
-    placeholder
+function modalTaskAddPrio(id) {
+    let prio = USERS[ACTIVEUSERKEY].tasks[id].prio;
+    const urgentButton = document.getElementById('urgent_button_modal');
+    const mediumButton = document.getElementById('medium_button_modal');
+    const lowButton = document.getElementById('low_button_modal');
+
+    if(prio == 'urgent') {
+        urgentButton.classList.add('urgent_button_active');
+        document.getElementById('task_prio_img_urgent_modal').src = '/assets/img/addTask/high_nocolor.png';
+    } else if (prio == 'medium') {
+        mediumButton.classList.add('medium_button_active');
+        document.getElementById('task_prio_img_medium_modal').src = '/assets/img/addTask/medium_nocolor.png';
+    } else if (prio =='low') {
+        lowButton.classList.add('low_button_active');
+        document.getElementById('task_prio_img_low_modal').src = '/assets/img/addTask/low_nocolor.png';
+    }
 }
+
+/**
+ * This function is used to fetch the chosen priority
+ * 
+ *  
+ */
+function getPriorityModal() {
+    const urgentButton = document.getElementById('urgent_button_modal');
+    const mediumButton = document.getElementById('medium_button_modal');
+    const lowButton = document.getElementById('low_button_modal');
+
+    if (urgentButton.classList.contains('urgent_button_active')) {
+        return 'urgent';
+    } else if (mediumButton.classList.contains('medium_button_active')) {
+        return 'medium';
+    } else if (lowButton.classList.contains('low_button_active')) {
+        return 'low';
+    }
+}
+
+/**
+ * This function is used to set the priority to urgent and set the urgent button active
+ * 
+ * 
+ */
+function urgentButtonModal() {
+    let img = document.getElementById('task_prio_img_urgent_modal');
+    const urgentButton = document.getElementById('urgent_button_modal');
+
+    if (!urgentButton.classList.contains('urgent_button_active')) {
+        urgentButton.classList.add('urgent_button_active');
+        img.src = '/assets/img/addTask/high_nocolor.png';
+    } else {
+        urgentButton.classList.remove('urgent_button_active');
+        img.src = '/assets/img/addTask/prio_high.png';
+    }
+
+    document.getElementById('task_prio_img_medium_modal').src = '/assets/img/addTask/prio_medium.png';
+    document.getElementById('task_prio_img_low_modal').src = '/assets/img/addTask/prio_low.png';
+    document.getElementById('medium_button_modal').classList.remove('medium_button_active');
+    document.getElementById('low_button_modal').classList.remove('low_button_active');
+}
+
+/**
+ * This function is used to set the priority to medium and set the medium button active
+ * 
+ * 
+ */
+function mediumButtonModal() {
+    let img = document.getElementById('task_prio_img_medium_modal');
+    const mediumButton = document.getElementById('medium_button_modal');
+
+    if (!mediumButton.classList.contains('medium_button_active')) {
+        mediumButton.classList.add('medium_button_active');
+        img.src = '/assets/img/addTask/medium_nocolor.png';
+    } else {
+        mediumButton.classList.remove('medium_button_active');
+        img.src = '/assets/img/addTask/prio_medium.png';
+    }
+
+    document.getElementById('task_prio_img_urgent_modal').src = '/assets/img/addTask/prio_high.png';
+    document.getElementById('task_prio_img_low_modal').src = '/assets/img/addTask/prio_low.png';
+    document.getElementById('urgent_button_modal').classList.remove('urgent_button_active');
+    document.getElementById('low_button_modal').classList.remove('low_button_active');
+}
+
+/**
+ * This function is used to set the priority to low and set the low button active
+ * 
+ * 
+ */
+function lowButtonModal() {
+    let img = document.getElementById('task_prio_img_low_modal');
+    const lowButton = document.getElementById('low_button_modal');
+
+    if (!lowButton.classList.contains('low_button_active')) {
+        lowButton.classList.add('low_button_active');
+        img.src = '/assets/img/addTask/low_nocolor.png';
+    } else {
+        lowButton.classList.remove('low_button_active')
+        img.src = '/assets/img/addTask/prio_low.png';
+    }
+
+    document.getElementById('task_prio_img_urgent_modal').src = '/assets/img/addTask/prio_high.png';
+    document.getElementById('task_prio_img_medium_modal').src = '/assets/img/addTask/prio_medium.png';
+    document.getElementById('urgent_button_modal').classList.remove('urgent_button_active');
+    document.getElementById('medium_button_modal').classList.remove('medium_button_active');
+}
+
 
 function transformSubtaskButtonModal(id) {
     const subtaskButton = document.getElementById('subtask_button_input_modal');
