@@ -17,8 +17,6 @@ async function getStorageData (key) {
     return JSON.parse(package)
 }
 
-
-
 function setObjectToJSON(objectJSON, Object) {
     objectJSON = JSON.stringify(Object)
 }
@@ -62,7 +60,6 @@ function writeServer(action, data) {
     return {method: action, body: JSON.stringify(data)};
 }
 
-
 /**
  * function saves an array with a specific key into the local storage a JSON string
  * 
@@ -82,7 +79,6 @@ function setLocalStorage (key, array) {
   function getLocalStorage(key) {
     return JSON.parse(localStorage.getItem(key));
   }
-
 
   function updateStorageData(key, object) {
     // get storage data
