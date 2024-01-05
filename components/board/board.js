@@ -233,6 +233,9 @@ function openCreateTaskModal(section, boardFieldStatus) {
     return true;
 }
 
+// TODO eventlistener der abfrage, wenn seachbar leer ist - soll board refreshed werden in ursprünglichen zustand
+
+
 
 /**
  * 
@@ -244,7 +247,7 @@ function findBoardTask() {
     let container = document.getElementById("board_search_inputfield");
     let searchInput = container.value.toLowerCase();
     //let tasks = Object.keys(USERS[ACTIVEUSERKEY].tasks);
-    const tasks = new Map(Object.entries(USERS[ACTIVEUSERKEY].tasks));
+    let tasks = new Map(Object.entries(USERS[ACTIVEUSERKEY].tasks));
     let results = [];
     for (const [key, value] of tasks.entries()) {
         if (value.title.includes(searchInput)) {
