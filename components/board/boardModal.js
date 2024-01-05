@@ -277,7 +277,7 @@ function showAssignedInitialsModal(i) {
     const toBeAssigned = userContacts[i]['initials'];
     const index = assignedInitial.indexOf(toBeAssigned);
     let checkbox = document.getElementById(`checkboxModal${i}`);
-    let container = document.getElementById('assigned_user_initials');
+    let container = document.getElementById('modal_task_assigned_user');
 
     if (checkbox.src.endsWith('check_checked.png')) {
         assignedInitial.push(toBeAssigned);
