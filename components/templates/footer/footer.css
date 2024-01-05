@@ -69,16 +69,20 @@ a {
   }
 
   .footerContacts {
-    padding-top: 7px;
+    padding-top: 17px;
     display: flex;
     justify-content: center;
     position: absolute;
     width: 100%;
+    box-sizing: border-box;
     top: 500px;
 
   }
 
   .footerContacts img {
+    position: absolute;
+    top: 8px;
+    left: 60px;
     width: 30px;
     height: 30px;
     padding-right: 10px;
@@ -91,19 +95,25 @@ a {
   }
 
   .footerBoard {
-    padding-top: 7px;
+    padding-top: 18px;
     display: flex;
     justify-content: center;
+    box-sizing: border-box;
+    padding-left: 20px;
     position: absolute;
     width: 100%;
     top: 430px;
   }
-  .footer_board{
+
+  .footer_board {
     padding-right: 30px;
-    margin-left:-20px;
+    margin-left: -20px;
   }
 
   .footerBoard img {
+    position: absolute;
+    top: 8px;
+    left: 60px;
     width: 30px;
     height: 30px;
     padding-right: 24px;
@@ -117,15 +127,19 @@ a {
   }
 
   .footerTasks {
-    padding-top: 7px;
+    padding-top: 18px;
     display: flex;
     justify-content: center;
+    box-sizing: border-box;
     position: absolute;
     width: 100%;
     top: 360px;
   }
 
   .footerTasks img {
+    position: absolute;
+    top: 8px;
+    left: 60px;
     width: 30px;
     height: 30px;
   }
@@ -137,7 +151,8 @@ a {
   }
 
   .footerSummary {
-    padding-top: 7px;
+    padding-top: 16px;
+    box-sizing: border-box;
     display: flex;
     justify-content: center;
     position: absolute;
@@ -146,6 +161,9 @@ a {
   }
 
   .footerSummary img {
+    position: absolute;
+    top: 8px;
+    left: 60px;
     width: 30px;
     height: 30px;
   }
