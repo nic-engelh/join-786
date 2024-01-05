@@ -264,7 +264,7 @@ h1 {
         padding-top: 10px;
         width: 250px;
         height: 104px;
-        gap: 0px;
+        gap: 20px;
     }
 
     .j36_underLine {
@@ -272,8 +272,7 @@ h1 {
         width: 90px;
         border-top: 3px solid #29ABE2;
         position: absolute;
-        top: 260px;
-
+        top: 220px;
     }
 
     .j36_slogan {
