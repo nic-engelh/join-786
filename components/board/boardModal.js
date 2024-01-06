@@ -226,7 +226,7 @@ function hideContactSelect(event) {
 }
 
 /**
- * This function loads the users
+ * This function loads all users in the edit Task modal 
  * 
  * 
  */

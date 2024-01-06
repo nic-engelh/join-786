@@ -367,10 +367,12 @@ function filterByVariable(array, variable, value) {
  */
 function loadAssignableNames() {
     const selectElement = document.getElementById("assigned_user");
-    for (let i = 0; i < userContacts.length; i++) {
-        const initial = userContacts[i]["initials"];
-        const name = userContacts[i]["name"];
-        const color = userContacts[i]["color"];
+    selectElement.innerHTML = "";
+    let user = USERS[ACTIVEUSERKEY].contacts
+    for (let i = 0; i < user.length; i++) {
+        const initial = user[i]["initials"];
+        const name = user[i]["name"];
+        const color = user[i]["color"];
         selectElement.innerHTML += `
             <li onclick="chooseContact(${i})" id="toggle_name${i}" class="assigned_user_li">
                 <div class="task_contacts_name_initials">
@@ -389,6 +391,7 @@ function loadAssignableNames() {
  */
 function toggleSelect() {
     document.getElementById('tasks_contacts_container').classList.toggle('d-none');
+    loadAssignableNames()
 }
 
 /**
