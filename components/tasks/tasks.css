@@ -309,6 +309,24 @@ ul {
   color: white;
 }
 
+#reset_task_button {
+  display: flex;
+  padding: 16px;
+  justify-content: center;
+  align-items: center;
+  gap: 4px;
+  border-radius: 10px;
+  border: 1px solid var(--Version-2-main-color, #2A3647);
+  background: #F6F7F8;
+  font-size: 20px;
+}
+
+.create_task_finish_buttons {
+  display: flex;
+  flex-direction: row;
+  gap: 16px;
+}
+
 #succes_alert_addedTask {
   align-items: center;
   gap: 16px;
@@ -374,7 +392,6 @@ ul {
     position: absolute;
     left: 50%;
     top: 230px;
-
   }
 
 }
@@ -437,9 +454,11 @@ ul {
     left: 65%;
     width: 350px !important;
   }
+
   .form_categories_date input {
     width: 320px !important;
   }
+
   #medium_button {
     width: 350px;
   }
@@ -447,27 +466,34 @@ ul {
   #urgent_button {
     width: 150px;
   }
+
   .form_categories {
     width: 350px;
   }
-  .add_task_inputs{
+
+  .add_task_inputs {
     width: 350px;
   }
 }
+
 @media(max-width:1210px) {
   .tasks_line {
     left: 62%;
   }
+
   #sectionAddTasks {
     margin-left: 280px;
   }
-  .add_task_inputs{
+
+  .add_task_inputs {
     width: 290px !important;
   }
+
   .form_categories_date input {
     width: 260px !important;
   }
-  .add_task_priorities{
+
+  .add_task_priorities {
     width: 250px;
   }
 }
@@ -488,7 +514,8 @@ ul {
     left: 65%;
     width: 100%;
   }
-  .add_task_inputs{
+
+  .add_task_inputs {
     width: 100% !important;
   }
 
@@ -506,9 +533,11 @@ ul {
     left: 65%;
     width: 100%;
   }
-  .form_categories_date{
+
+  .form_categories_date {
     width: 100% !important;
   }
+
   .form_categories_date input {
     width: 96% !important;
   }
@@ -520,32 +549,40 @@ ul {
   #urgent_button {
     width: 150px;
   }
+
   .form_categories {
     width: 96%;
   }
-  .add_task_inputs{
+
+  .add_task_inputs {
     width: 100%;
   }
+
   #sectionAddTasks {
     margin-left: 0px;
   }
-  .add_task_priorities{
+
+  .add_task_priorities {
     width: 100%;
   }
 }
+
 @media(max-width:370px) {
-  #create_task_button{
+  #create_task_button {
     height: 50px;
     width: 100px;
     font-size: 15px;
   }
-  .add_task_priorities{
+
+  .add_task_priorities {
     width: 100px;
   }
-  #urgent_button{
+
+  #urgent_button {
     width: 90px;
   }
-  #medium_button{
+
+  #medium_button {
     width: 90px;
   }
 }
