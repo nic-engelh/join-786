@@ -97,7 +97,6 @@ h3 {
 }
 
 .boardTaskScrolling {
-  overflow-x: auto;
   display: flex;
   flex-direction: row;
   gap: 16px;
@@ -460,18 +459,32 @@ h3 {
 @media(max-width:2000px) {
   .board_section {
     justify-content: space-around;
-    margin-left: 300px !important;
+    margin-left: 120px !important;
   }
 
   .board_h1 {
     margin-left: 290px !important;
   }
 }
+@media(max-width:1700px) {
+  .board_section {
+    margin-left: 190px !important;
+  }
+}
 
+@media(max-width:1500px) {
+  .board_section {
+    margin-left: 240px !important;
+  }
+}
+@media(max-width:1480px) {
+  .board_section {
+    margin-left: 290px !important;
+  }
+}
 @media(max-width:1600px) {
   .boardH3Responsive {
     font-weight: bold;
-    text-align: center;
   }
 }
 
@@ -485,7 +498,7 @@ h3 {
   }
 }
 
-@media(min-width:1000px) {
+@media(min-width:1350px) {
   #sectionBoard {
     margin-right: 64px;
   }
@@ -521,13 +534,11 @@ h3 {
 
   .board_done_img {
     display: none;
-
   }
 
   .boardTaskScrolling {
     display: block;
     flex-direction: column !important;
-    overflow-y: auto;
   }
 
   .todo {
