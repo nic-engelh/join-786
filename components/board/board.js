@@ -250,7 +250,8 @@ function findBoardTask() {
     let tasks = new Map(Object.entries(USERS[ACTIVEUSERKEY].tasks));
     let results = [];
     for (const [key, value] of tasks.entries()) {
-        if (value.title.includes(searchInput)) {
+        let title = value.title.toLowerCase();
+        if (title.search(searchInput) >= 0 && title.length > 0) {
             results.push(value);
         } 
     }
@@ -272,7 +273,8 @@ async function renderFilteredTasks () {
             document.getElementById(id).innerHTML  = clear();
         }
         for (const task of filteredTasks) {
-            if (task.status == id ) {
+            let taskStatus = task.status.toLowerCase().replaceAll(" ", "");
+            if (taskStatus == id.toLowerCase() ) {
                 renderBoardCard (task, id);
             } 
         }
