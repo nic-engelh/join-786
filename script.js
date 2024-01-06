@@ -15,7 +15,6 @@ async function includeHTML() {
 
 async function init() {
 	await includeHTML();
-	await loadusers();
 	await getVariables();
 	await loadAssignableNames();
 	updateDashBoard();

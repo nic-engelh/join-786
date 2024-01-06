@@ -8,13 +8,13 @@ async function init() {
      // function that erases / deletes the localstorage
      setLocalStorage("localUserTasks", " ");
      setLocalStorage("activeUser", " ");
-     await loadusers();
+     await loadUsers();
 }
 
 /**
- * loads the user object array from the backend
+ * function loads the user object from the backend
  */
-async function loadusers() {
+async function loadUsers() {
      try {
           USERS = await getStorageData('users');
      } catch (error) {

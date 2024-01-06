@@ -4,7 +4,7 @@ let userData = {};
  * is the onload function 
  */
 async function init() {
-     await loadUsers()
+     await loadUsers();
 }
 
 /**
