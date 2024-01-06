@@ -102,11 +102,14 @@ function filterNestedObject(inputObject, targetValue, targetKey) {
  // Durch das Eingabeobjekt iterieren
  for (const key in inputObject) {
    if (inputObject.hasOwnProperty(key)) {
-     // Überprüfen, ob das Zielwert im aktuellen Objekt vorhanden ist
-     if (((inputObject[key][targetKey]).toLowerCase().replaceAll(" ","")) === targetValue){
-       // Wenn ja, füge das aktuelle Objekt zum gefilterten Objekt hinzu
-       filteredObject[key] = inputObject[key];
-     }
+    let checkValue = inputObject[key][targetKey];
+    checkValue  = checkValue.toLowerCase();
+    checkValue  = checkValue.replaceAll(" ","");
+      // Überprüfen, ob das Zielwert im aktuellen Objekt vorhanden ist
+      if (checkValue  === targetValue){
+        // Wenn ja, füge das aktuelle Objekt zum gefilterten Objekt hinzu
+        filteredObject[key] = inputObject[key];
+      }
    }
  }
  return filteredObject;
