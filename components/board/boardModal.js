@@ -91,9 +91,9 @@ async function loadBoardModalSubtasksStatus(subtasks, status) {
  * 
  * 
  */
-function loadBoardModalAssignedUsers() {
-    const selectElement = document.getElementById("modal_assigned_user");
-    let user = USERS[ACTIVEUSERKEY].contacts
+function loadBoardModalAssignedUsers(user) {
+    const selectElement = document.getElementById("board_modal_assigned_user");
+
     selectElement.innerHTML = "";
     for (let i = 0; i < user.length; i++) {
         const initial = user[i]["initials"];
@@ -105,7 +105,6 @@ function loadBoardModalAssignedUsers() {
                     <div id="modal_initials_img${i}" class="assigned_initials" style="background-color:#${color};">${initial}</div>
                     <span id="assigned_name_span">${name}</span>
                 </div>
-                <img class="checkbox" id="checkboxModal${i}" src="/assets/img/addTask/check_empty.png">
             </li>`;
     }
 }
@@ -186,6 +185,7 @@ function openBoardModalEditTask(id) {
     modalTaskFillValues(id);
     modalTaskAddPrio(id);
     modalTaskAddContacts(id);
+    editTaskLoadUsers();
     modalTaskAddSubtasks(id);
 }
 
@@ -222,6 +222,30 @@ function hideContactSelect(event) {
         if (event.target.id !== "modal_task_user" && event.target.id !== "modal_assigned_user" && !event.target.classList.contains('assigned_user_li') && !event.target.classList.contains('assigned_user_li_toggled') && !event.target.classList.contains('checkbox') && !event.target.classList.contains('assigned_initials') && event.target.id !== "assigned_name_span") {
             nameContainer.classList.add("d-none");
         }
+    }
+}
+
+/**
+ * This function loads the users
+ * 
+ * 
+ */
+function editTaskLoadUsers() {
+    const selectElement = document.getElementById("modal_assigned_user");
+    let user = USERS[ACTIVEUSERKEY].contacts
+    selectElement.innerHTML = "";
+    for (let i = 0; i < user.length; i++) {
+        const initial = user[i]["initials"];
+        const name = user[i]["name"];
+        const color = user[i]["color"];
+        selectElement.innerHTML += `
+            <li onclick="chooseContactModal(${i})" id="toggle_name_modal${i}" class="assigned_user_li">
+                <div class="task_contacts_name_initials">
+                    <div id="modal_initials_img${i}" class="assigned_initials" style="background-color:#${color};">${initial}</div>
+                    <span id="assigned_name_span">${name}</span>
+                </div>
+                <img class="checkbox" id="checkboxModal${i}" src="/assets/img/addTask/check_empty.png">
+            </li>`;
     }
 }
 
