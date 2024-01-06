@@ -233,9 +233,18 @@ function openCreateTaskModal(section, boardFieldStatus) {
     return true;
 }
 
-// TODO eventlistener der abfrage, wenn seachbar leer ist - soll board refreshed werden in ursprünglichen zustand
+/***
+ * Eventlistener watches for search bar inputs
+ * 
+ */
 document.getElementById("board_search_inputfield").addEventListener("onchange", resetFindBoardTask);
 
+/**
+ * function reloads the board if search bar is empty 
+ * 
+ * @returns {boolean}
+ *
+ */
 function resetFindBoardTask () {
     let searchValue =   document.getElementById("board_search_inputfield").value;
     if (searchValue.lenth == 0) {
@@ -244,7 +253,6 @@ function resetFindBoardTask () {
     }
     return false
 }
-
 
 /**
  * 
@@ -266,7 +274,6 @@ function findBoardTask() {
     }
     return results 
 }
-
 
 /**
  * functions goes throught a {array of objects} filteredTasks and activates a render function a board card
