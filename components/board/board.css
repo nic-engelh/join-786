@@ -466,6 +466,7 @@ h3 {
     margin-left: 290px !important;
   }
 }
+
 @media(max-width:1700px) {
   .board_section {
     margin-left: 190px !important;
@@ -477,11 +478,13 @@ h3 {
     margin-left: 240px !important;
   }
 }
+
 @media(max-width:1480px) {
   .board_section {
     margin-left: 290px !important;
   }
 }
+
 @media(max-width:1600px) {
   .boardH3Responsive {
     font-weight: bold;
@@ -537,8 +540,9 @@ h3 {
   }
 
   .boardTaskScrolling {
-    display: block;
+    display: flex;
     flex-direction: column !important;
+    align-items: center;
   }
 
   .todo {
