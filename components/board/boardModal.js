@@ -621,8 +621,10 @@ async function getTaskValueModal(inputStatus) {
     let prio = getPriorityModal();
     let category = document.getElementById('modal_task_category').value;
     let subtasks = USERS[ACTIVEUSERKEY].tasks[id].subtasks;
+    let status = USERS[ACTIVEUSERKEY].tasks[id].status;
+    let dateCreated = USERS[ACTIVEUSERKEY].tasks[id].dateCreated;
 
-    pushTaskModal(id, title, description, user, date, prio, category, subtasks);
+    pushTaskModal(id, title, description, user, date, prio, category, subtasks, status, dateCreated);
 }
 
 /**
@@ -630,7 +632,7 @@ async function getTaskValueModal(inputStatus) {
  * 
  * @param {object} tasks this is the object where the task is compiled
  */
-function pushTaskModal(id, title, description, user, date, prio, category, subtasks) {
+function pushTaskModal(id, title, description, user, date, prio, category, subtasks, status, dateCreated) {
     tasks[id] = {
         id: id,
         title: title,
@@ -640,6 +642,8 @@ function pushTaskModal(id, title, description, user, date, prio, category, subta
         category: category,
         user: user,
         subtasks: subtasks,
+        status: status,
+        dateCreated: dateCreated
     }
     pushUSERS();
 }
