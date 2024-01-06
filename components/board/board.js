@@ -234,7 +234,16 @@ function openCreateTaskModal(section, boardFieldStatus) {
 }
 
 // TODO eventlistener der abfrage, wenn seachbar leer ist - soll board refreshed werden in ursprünglichen zustand
+document.getElementById("board_search_inputfield").addEventListener("onchange", resetFindBoardTask);
 
+function resetFindBoardTask () {
+    let searchValue =   document.getElementById("board_search_inputfield").value;
+    if (searchValue.lenth == 0) {
+        updateBoardHTML();
+        return true
+    }
+    return false
+}
 
 
 /**
