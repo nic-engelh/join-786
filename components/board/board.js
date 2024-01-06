@@ -2,6 +2,7 @@ let currentDraggedElement;
 
 function init() {
     updateBoardHTML();
+    searchFieldEventListener();
 }
 
 /**
@@ -14,6 +15,7 @@ async function updateBoardHTML() {
     updateFeedbackField();
     updateDoneField();
     updateDashBoard();
+    searchFieldEventListener();
 }
 
 /**
@@ -234,10 +236,14 @@ function openCreateTaskModal(section, boardFieldStatus) {
 }
 
 /***
- * Eventlistener watches for search bar inputs
+ * function add Eventlistener to watch for search bar inputs
  * 
  */
-document.getElementById("board_search_inputfield").addEventListener("onchange", resetFindBoardTask);
+function searchFieldEventListener () {
+    document.getElementById("board_search_inputfield").addEventListener("onchange", resetFindBoardTask);
+}
+
+
 
 /**
  * function reloads the board if search bar is empty 
