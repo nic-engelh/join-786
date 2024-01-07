@@ -319,6 +319,7 @@ ul {
   border: 1px solid var(--Version-2-main-color, #2A3647);
   background: #F6F7F8;
   font-size: 20px;
+  cursor: pointer;
 }
 
 .create_task_finish_buttons {
