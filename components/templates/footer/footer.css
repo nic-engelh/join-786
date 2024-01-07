@@ -43,6 +43,15 @@ a {
     background-color: #091931;
     width: 80px;
   }
+  .footer_privacy{
+    display: none;
+  }
+  .footer_legal{
+    display: none;
+  }
+  .footer_links{
+    display: none;
+  }
 }
 
 @media(min-width:1000px) {
