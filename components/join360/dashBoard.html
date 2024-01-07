@@ -7,14 +7,14 @@
         </div>
         <div id="j36_tasksMenu">
             <div class="j36_ToDoPosition">
-                <div class="j36_toDo" onclick="openSection('sectionBoard')">
+                <div class="j36_toDo" onclick="updateBoardHTML(); openSection('sectionBoard')">
                     <img src="/assets/img/Group 7.png" alt="">
                     <div class="j36_numberPosition">
                         <b id="j36_todo" >1</b>
                         <p class="j36_todoText">To-Do</p>
                     </div>
                 </div>
-                <div  class="j36_toDoDone" onclick="openSection('sectionBoard')">
+                <div  class="j36_toDoDone" onclick="updateBoardHTML(); openSection('sectionBoard')">
                     <img src="/assets/img/Group 7 (1).png" alt="">
                     <div class="j36_numberPosition">
                         <b id="j36_done" >1</b>
@@ -22,7 +22,7 @@
                     </div>
                 </div>
             </div>
-            <div class="j36_UrgentDeadline" onclick="openSection('sectionBoard')">
+            <div class="j36_UrgentDeadline" onclick="updateBoardHTML(); openSection('sectionBoard')">
                 <div id="j36_Urgent" class="j36_urgent">
                     <img class="j36_image1" src="/assets/img/Ellipse 4.jpg" alt="">
                     <img class="j36_image2" src="/assets/img/Prio alta.jpg" alt="asdasd">
@@ -38,15 +38,15 @@
                 </div>
             </div>
             <div class="j36_TaskProgress">
-                <div onclick="openSection('sectionBoard')" class="j36_AllTheTasks">
+                <div onclick="updateBoardHTML(); openSection('sectionBoard')" class="j36_AllTheTasks">
                     <b id="j36_board" class="j36_numberOfTasks">5</b>
                     <p>Task in Board</p>
                 </div>
-                <div onclick="openSection('sectionBoard')" class="j36_AllTheTasks">
+                <div onclick="updateBoardHTML(); openSection('sectionBoard')" class="j36_AllTheTasks">
                     <b id="j36_progress" class="j36_numberOfTasks">2</b>
                     <p>Task in Progress</p>
                 </div>
-                <div onclick="openSection('sectionBoard')" class="j36_AllTheTasks">
+                <div onclick="updateBoardHTML(); openSection('sectionBoard')" class="j36_AllTheTasks">
                     <b id="j36_feedback" class="j36_numberOfTasks">2</b>
                     <p>Awaiting Feedback</p>
                 </div>

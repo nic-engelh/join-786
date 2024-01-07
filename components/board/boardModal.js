@@ -97,7 +97,6 @@ function finishSubtasks(id, i) {
         img.src = '/assets/img/board/check_checked.png';
         img.classList.add("board_modal_subtask_status_img");
         USERS[ACTIVEUSERKEY].tasks[id].subtasks.subtaskStatus[i] = 1;
-
     }
     else if (img.src.endsWith('/assets/img/board/check_checked.png')) {
         img.src = '/assets/img/board/check_empty.png';
