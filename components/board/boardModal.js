@@ -23,7 +23,7 @@ async function getTaskBoardModalValue(id) {
     loadBoardModal(id, title, description, date, category);
     loadBoardModalPrio(prio);
     loadBoardModalAssignedUsers(user);
-    loadBoardModalSubtasks(subtasks, status, id);
+    loadBoardModalSubtasks(subtasks, id);
 }
 
 async function loadBoardModal(id, title, description, date, category) {
@@ -63,7 +63,7 @@ async function loadBoardModalPrio(prio) {
     }
 }
 
-async function loadBoardModalSubtasks(subtasks, status, id) {
+async function loadBoardModalSubtasks(subtasks, id) {
     const subtaskContainer = document.getElementById("board_modal_subtasks");
     subtaskContainer.innerHTML = "";
     if (subtasks != "undefined") {
@@ -368,15 +368,54 @@ function modalTaskAddPrio(id) {
     const lowButton = document.getElementById('low_button_modal');
 
     if (prio == 'urgent') {
-        urgentButton.classList.add('urgent_button_active');
-        document.getElementById('task_prio_img_urgent_modal').src = '/assets/img/addTask/high_nocolor.png';
+        modalTaskPrioUrgent(urgentButton, mediumButton, lowButton)
     } else if (prio == 'medium') {
-        mediumButton.classList.add('medium_button_active');
-        document.getElementById('task_prio_img_medium_modal').src = '/assets/img/addTask/medium_nocolor.png';
+        modalTaskPrioMedium(urgentButton, mediumButton, lowButton)
     } else if (prio == 'low') {
-        lowButton.classList.add('low_button_active');
-        document.getElementById('task_prio_img_low_modal').src = '/assets/img/addTask/low_nocolor.png';
+        modalTaskPrioLow(urgentButton, mediumButton, lowButton)
     }
+}
+
+/**
+ * This function is used to change the images from button for prio urgent
+ * 
+ *  
+ */
+function modalTaskPrioUrgent(urgentButton, mediumButton, lowButton){
+    urgentButton.classList.add('urgent_button_active');
+    mediumButton.classList.remove('medium_button_active');
+    lowButton.classList.remove('low_button_active');
+    document.getElementById('task_prio_img_urgent_modal').src = '/assets/img/addTask/high_nocolor.png';
+    document.getElementById('task_prio_img_medium_modal').src = '/assets/img/addTask/prio_medium.png';
+    document.getElementById('task_prio_img_low_modal').src = '/assets/img/addTask/prio_low.png';
+}
+
+/**
+ * This function is used to change the images from button for prio medium
+ * 
+ *  
+ */
+function modalTaskPrioMedium(urgentButton, mediumButton, lowButton){
+    mediumButton.classList.add('medium_button_active');
+    urgentButton.classList.remove('urgent_button_active');
+    lowButton.classList.remove('low_button_active');
+    document.getElementById('task_prio_img_urgent_modal').src = '/assets/img/addTask/prio_urgent.png';
+    document.getElementById('task_prio_img_medium_modal').src = '/assets/img/addTask/medium_nocolor.png';
+    document.getElementById('task_prio_img_low_modal').src = '/assets/img/addTask/prio_low.png';
+}
+
+/**
+ * This function is used to change the images from button for prio low
+ * 
+ *  
+ */
+function modalTaskPrioLow(urgentButton, mediumButton, lowButton){
+    lowButton.classList.add('low_button_active');
+    urgentButton.classList.remove('urgent_button_active');
+    mediumButton.classList.remove('medium_button_active');
+    document.getElementById('task_prio_img_urgent_modal').src = '/assets/img/addTask/prio_urgent.png';
+    document.getElementById('task_prio_img_medium_modal').src = '/assets/img/addTask/prio_medium.png';
+    document.getElementById('task_prio_img_low_modal').src = '/assets/img/addTask/low_nocolor.png';
 }
 
 /**
