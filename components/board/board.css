@@ -378,6 +378,12 @@ h3 {
   cursor: pointer;
 }
 
+.board_modal_subtask_status_img {
+  width: 18px;
+  height: 18px;
+  padding: 3px;
+}
+
 .task_card_buttons {
   display: flex;
   flex-direction: row;

@@ -324,6 +324,7 @@ ul {
   background: #F6F7F8;
   visibility: visible;
   font-size: 20px;
+  cursor: pointer;
 }
 
 .create_task_finish_buttons {

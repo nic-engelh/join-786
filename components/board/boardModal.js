@@ -31,15 +31,15 @@ async function loadBoardModal(id, title, description, date, category) {
     document.getElementById("board_modal_title").innerHTML = title;
     document.getElementById("board_modal_description").innerHTML = description;
     document.getElementById("board_modal_date").innerHTML = date;
-    document.getElementById("board_modal_edit_task_button").innerHTML =`
+    document.getElementById("board_modal_edit_task_button").innerHTML = `
         <div onclick="openBoardModalEditTask('${id}')" class="task_card_button">
             <img src="/assets/img/board/edit.png" alt="edit">
                 <span class="task_category_font">Edit</span>
         </div>`;
-    document.getElementById("subtask_button_input_modal").innerHTML =`
+    document.getElementById("subtask_button_input_modal").innerHTML = `
     <button class="add_task_inputs" id="task_subtask_button_modal" onclick="transformSubtaskButtonModal('${id}')" type="text"><span>Add new Subtask</span><img src="/assets/img/addTask/add_subtask.png" alt=""></button>
     `;
-    document.getElementById("modal_edit_task_finish").innerHTML =`
+    document.getElementById("modal_edit_task_finish").innerHTML = `
     <button id="create_task_button" value="Create Task " onclick="formValidationModal('${id}')"><span>OK</span><img src="/assets/img/addTask/check_icon.png" alt=""></button>
     `;
 }
@@ -68,22 +68,43 @@ async function loadBoardModalSubtasks(subtasks, status, id) {
     subtaskContainer.innerHTML = "";
     if (subtasks != "undefined") {
         for (let i = 0; i < subtasks.length; i++) {
-            subtaskContainer.innerHTML += `
+            if (USERS[ACTIVEUSERKEY].tasks[id].subtasks.subtaskStatus[i] != 1) {
+                subtaskContainer.innerHTML += `
             <div class="task_card_subtask">
-            <img id="board_modal_subtask_status_${id}" src="/assets/img/board/check_empty.png" alt="checkbox empty">
+            <img id="board_modal_subtask_status_${i}" onclick="finishSubtasks('${id}', ${i})" src="/assets/img/board/check_empty.png" alt="checkbox empty">
             <span>${subtasks[i]}</span>
           </div>`;
+            } else if (USERS[ACTIVEUSERKEY].tasks[id].subtasks.subtaskStatus[i] == 1){
+                subtaskContainer.innerHTML += `
+            <div class="task_card_subtask">
+            <img id="board_modal_subtask_status_${i}" class="board_modal_subtask_status_img" onclick="finishSubtasks('${id}', ${i})" src="/assets/img/board/check_checked.png" alt="checkbox empty">
+            <span>${subtasks[i]}</span>
+          </div>`;
+            }
         }
     }
 }
 
-async function loadBoardModalSubtasksStatus(subtasks, status) {
-    const subtaskContainer = document.getElementById("board_modal_subtasks")
-    if (subtasks != "undefined") {
-        for (let i = 0; i < subtasks.length; i++) {
-            subtaskContainer.innerHTML += subtasks[i];
-        }
+/**
+ * This function changes the subtask status
+ * 
+ * 
+ */
+function finishSubtasks(id, i) {
+    let img = document.getElementById(`board_modal_subtask_status_${i}`);
+
+    if (img.src.endsWith('/assets/img/board/check_empty.png')) {
+        img.src = '/assets/img/board/check_checked.png';
+        img.classList.add("board_modal_subtask_status_img");
+        USERS[ACTIVEUSERKEY].tasks[id].subtasks.subtaskStatus[i] = 1;
+
     }
+    else if (img.src.endsWith('/assets/img/board/check_checked.png')) {
+        img.src = '/assets/img/board/check_empty.png';
+        img.classList.remove("board_modal_subtask_status_img");
+        USERS[ACTIVEUSERKEY].tasks[id].subtasks.subtaskStatus[i] = 0;
+    }
+    pushUSERS()
 }
 
 /**
@@ -107,10 +128,6 @@ function loadBoardModalAssignedUsers(user) {
                 </div>
             </li>`;
     }
-}
-
-function finishSubtasks() {
-
 }
 
 /**
@@ -287,7 +304,7 @@ function chooseContactModal(i) {
  */
 async function pushAssignedContactModal(i, li) {
     const name = await userContacts[i];
-    
+
     const index = await assignedToTask.indexOf(name);
 
     if (li.classList.contains('assigned_user_li_toggled')) {
@@ -318,7 +335,7 @@ function showAssignedInitialsModal(i) {
     container.innerHTML = '';
     for (let j = 0; j < assignedInitial.length; j++) {
         const displayedInitial = assignedInitial[j];
-        let color = userContacts[j]["color"];            
+        let color = userContacts[j]["color"];
         container.innerHTML += `<span id="assigned_initials${i}" class="assigned_initials" style="background-color:#${color};">${displayedInitial}</span>`;
     }
 }
@@ -328,13 +345,13 @@ function showAssignedInitialsModal(i) {
  * 
  * 
  */
-function modalTaskAddContacts(id){
+function modalTaskAddContacts(id) {
     let chosenTaskUser = USERS[ACTIVEUSERKEY].tasks[id].user;
     const container = document.getElementById("modal_task_assigned_user");
     container.innerHTML = "";
     for (let j = 0; j < chosenTaskUser.length; j++) {
         let displayedInitial = chosenTaskUser[j].initials;
-        let color = chosenTaskUser[j].color;            
+        let color = chosenTaskUser[j].color;
         container.innerHTML += `<span id="assigned_initials${j}" class="assigned_initials" style="background-color:#${color};">${displayedInitial}</span>`;
     }
 }
@@ -350,13 +367,13 @@ function modalTaskAddPrio(id) {
     const mediumButton = document.getElementById('medium_button_modal');
     const lowButton = document.getElementById('low_button_modal');
 
-    if(prio == 'urgent') {
+    if (prio == 'urgent') {
         urgentButton.classList.add('urgent_button_active');
         document.getElementById('task_prio_img_urgent_modal').src = '/assets/img/addTask/high_nocolor.png';
     } else if (prio == 'medium') {
         mediumButton.classList.add('medium_button_active');
         document.getElementById('task_prio_img_medium_modal').src = '/assets/img/addTask/medium_nocolor.png';
-    } else if (prio =='low') {
+    } else if (prio == 'low') {
         lowButton.classList.add('low_button_active');
         document.getElementById('task_prio_img_low_modal').src = '/assets/img/addTask/low_nocolor.png';
     }
@@ -518,7 +535,7 @@ function addNewSubtaskToListModal(id) {
  * 
  * 
  */
-function modalTaskAddSubtasks(id){
+function modalTaskAddSubtasks(id) {
     let subtasks = USERS[ACTIVEUSERKEY].tasks[id].subtasks;
     let subtaskContainer = document.getElementById('modal_subtask_list');
     subtaskContainer.innerHTML = '';
@@ -601,7 +618,7 @@ async function boardModalDeleteTask() {
     ID = null;
     closeBoardModal();
     await setStorageData("user", USERS);
-    showSuccessInfo("3"); 
+    showSuccessInfo("3");
     // show modal task deleted
     // TODO set local user storage
 }
