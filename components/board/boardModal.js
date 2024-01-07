@@ -32,7 +32,7 @@ async function loadBoardModal(id, title, description, date, category) {
     document.getElementById("board_modal_description").innerHTML = description;
     document.getElementById("board_modal_date").innerHTML = date;
     document.getElementById("board_modal_edit_task_button").innerHTML =`
-        <div onclick="openBoardModalEditTask('${id}')">
+        <div onclick="openBoardModalEditTask('${id}')" class="task_card_button">
             <img src="/assets/img/board/edit.png" alt="edit">
                 <span class="task_category_font">Edit</span>
         </div>`;
@@ -100,13 +100,17 @@ function loadBoardModalAssignedUsers(user) {
         const name = user[i]["name"];
         const color = user[i]["color"];
         selectElement.innerHTML += `
-            <li onclick="chooseContactModal(${i})" id="toggle_name_modal${i}" class="assigned_user_li">
+            <li class="assigned_user_li">
                 <div class="task_contacts_name_initials">
                     <div id="modal_initials_img${i}" class="assigned_initials" style="background-color:#${color};">${initial}</div>
                     <span id="assigned_name_span">${name}</span>
                 </div>
             </li>`;
     }
+}
+
+function finishSubtasks() {
+
 }
 
 /**
