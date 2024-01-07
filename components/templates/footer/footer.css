@@ -46,6 +46,30 @@ a {
 }
 
 @media(min-width:1000px) {
+  .footer_links{
+    display: flex;
+    flex-direction: column;
+    text-align:start;
+    gap: 25px;
+    position: absolute;
+    left: 60px;
+    top: 820px;
+    font-size: 18px;
+  }
+  .footer_privacy{
+    color: #cdcdcd;
+  }
+  .footer_legal{
+    color: #cdcdcd;
+  }
+  .footer_privacy:hover{
+    color: white;
+    text-decoration: underline;
+  }
+  .footer_legal:hover{
+    color: white;
+    text-decoration: underline;
+  }
   .footerImg {
     visibility: visible;
     width: 100.034px;
