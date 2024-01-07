@@ -46,6 +46,7 @@ function renderContactsStructure () {
     container.innerHTML += createContactAddButtonHtml();
 }
 
+
 function renderContactProfil (contactId) {
     let contactObject = findContact(contactId);
     const profil = document.createElement("div");

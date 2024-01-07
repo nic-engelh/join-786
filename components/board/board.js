@@ -265,11 +265,8 @@ function resetFindBoardTask () {
  * @returns {Array of objects} results
  */
 function findBoardTask() {
-    // TODO use following funtion from utils: filterNestedObject(inputObject, targetValue, targetKey)
-    // TODO Result - only the task which was found shall be shown at the board
     let container = document.getElementById("board_search_inputfield");
     let searchInput = container.value.toLowerCase();
-    //let tasks = Object.keys(USERS[ACTIVEUSERKEY].tasks);
     let tasks = new Map(Object.entries(USERS[ACTIVEUSERKEY].tasks));
     let results = [];
     for (const [key, value] of tasks.entries()) {
