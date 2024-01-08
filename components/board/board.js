@@ -150,7 +150,7 @@ function removeHighlight(id) {
 function renderingBoardTasks(filteredTasks, containerId) {
     for (const key in filteredTasks) {
         let task = filteredTasks[key];
-        renderBoardCard (task, containerId);
+        renderBoardCard(task, containerId);
     }
 }
 
@@ -161,7 +161,7 @@ function renderingBoardTasks(filteredTasks, containerId) {
  * @param {object} task 
  * @param {string} containerId 
  */
-function renderBoardCard (task, containerId) {
+function renderBoardCard(task, containerId) {
     document.getElementById(`${containerId}`).innerHTML += generateTodoHTML(task);
     renderingBoardUserInitials(task.user, task.id);
     generatePriority(task);
@@ -239,11 +239,16 @@ function openCreateTaskModal(section, boardFieldStatus) {
  * function add Eventlistener to watch for search bar inputs
  * 
  */
-function searchFieldEventListener () {
+function searchFieldEventListener() {
     document.getElementById("board_search_inputfield").addEventListener("onchange", resetFindBoardTask);
 }
 
-
+function updateProgressBar(value) {
+    let progressBar=document.querySelector(".progress");
+    value = Math.round(value);
+    progressBar.querySelector(".progress__fill").style.width = `${value}%`;
+    progressBar.querySelector(".progress__text").textContent = `${value}%`;
+}
 
 /**
  * function reloads the board if search bar is empty 
@@ -251,8 +256,8 @@ function searchFieldEventListener () {
  * @returns {boolean}
  *
  */
-function resetFindBoardTask () {
-    let searchValue =   document.getElementById("board_search_inputfield").value;
+function resetFindBoardTask() {
+    let searchValue = document.getElementById("board_search_inputfield").value;
     if (searchValue.lenth == 0) {
         updateBoardHTML();
         return true
@@ -273,9 +278,9 @@ function findBoardTask() {
         let title = value.title.toLowerCase();
         if (title.search(searchInput) >= 0 && title.length > 0) {
             results.push(value);
-        } 
+        }
     }
-    return results 
+    return results
 }
 
 /**
@@ -283,19 +288,19 @@ function findBoardTask() {
  * 
  * @returns 
  */
-async function renderFilteredTasks () {
+async function renderFilteredTasks() {
     // TODO function needs so render the filtered array into the board
     let containerIds = ["todo", "inProgress", "feedback", "done"]
     let filteredTasks = await findBoardTask();
     for (const id of containerIds) {
         if (document.getElementById(id)) {
-            document.getElementById(id).innerHTML  = clear();
+            document.getElementById(id).innerHTML = clear();
         }
         for (const task of filteredTasks) {
             let taskStatus = task.status.toLowerCase().replaceAll(" ", "");
-            if (taskStatus == id.toLowerCase() ) {
-                renderBoardCard (task, id);
-            } 
+            if (taskStatus == id.toLowerCase()) {
+                renderBoardCard(task, id);
+            }
         }
     }
     return true
@@ -349,9 +354,10 @@ function generateTodoHTML(task) {
             <div class="title">${task.title}</div>
             <div class="description">${task.description}</div>
             <div class="progressPosition"> 
-                <div class="w3-light-grey w3-round">
-                    <div id="taskBoardCarProgressBar" class="w3-container w3-round w3-blue" style="height:8px; width:1%"></div></div>
-                <div class="subnumber"> 0/${(task.subtasks.subtaskContent.length)}</div>
+                  <div class="progress">
+                       <div class="progress__fill"></div>
+                       <span class="progress__text">0%</span>
+                  </div>
             </div>
             <div class="boardAssignedUserAndPrio">
                 <div id="boardAssignedUserInitialsContainer_${task.id}" class="d-flex boardAssignedUserInitialsContainer"></div>

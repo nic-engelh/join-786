@@ -10,7 +10,7 @@
 #j36_mobileVersion {
     background-color: #F6F7F8;
     margin-right: 16px;
-    margin-left: 16px;
+    margin-left: 76px;
 }
 
 .j36_headline {
@@ -252,7 +252,7 @@ h1 {
 
 @media(max-width:2000px) {
     .j36_morning-Text {
-        left: 60%;
+        left: 55%;
     }
 }
 
@@ -343,7 +343,11 @@ h1 {
         font-weight: bold;
     }
 }
-
+@media(max-width:600px) {
+    #j36_mobileVersion{
+        margin-left: 0px !important;
+    }
+}
 
 @media(max-width:1000px) {
     #sectionJoin360 {
@@ -351,13 +355,13 @@ h1 {
     }
 }
 
-@media(max-width:1350px) {
+@media(max-width:1550px) {
     .j36_morning-Text {
         left: 70%;
     }
 }
 
-@media(max-width:1200px) {
+@media(max-width:1230px) {
     .j36_morning-Text {
         left: 80%;
         top: 400px;
@@ -372,7 +376,7 @@ h1 {
     }
 }
 
-@media(max-width:900px) {
+@media(max-width:1080px) {
     .j36_morning-Text {
         display: none;
     }
