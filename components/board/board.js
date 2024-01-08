@@ -243,12 +243,6 @@ function searchFieldEventListener() {
     document.getElementById("board_search_inputfield").addEventListener("onchange", resetFindBoardTask);
 }
 
-function updateProgressBar(value) {
-    let progressBar=document.querySelector(".progress");
-    value = Math.round(value);
-    progressBar.querySelector(".progress__fill").style.width = `${value}%`;
-    progressBar.querySelector(".progress__text").textContent = `${value}%`;
-}
 
 /**
  * function reloads the board if search bar is empty 
@@ -331,12 +325,18 @@ function checkUserSubtasksStatus(taskId) {
  * 
  */
 function renderSubtasksProgress(taskId) {
-    // TODO Task card needs specific ID in order to get
     let container = document.getElementById('taskBoardCarProgressBar');
     let subTasksTotal = USERS[ACTIVEUSERKEY].tasks[taskId].subtasks.subtaskContent.length;
     let subTasksDone = checkUserSubtasksStatus(taskId);
     let progressbarWidth = (subTasksDone / subTasksTotal) * 100;
-    // TODO chance style width = progressbar length
+    updateProgressBar(progressbarWidth);
+}
+
+function updateProgressBar(value) {
+    let progressBar=document.querySelector(".progress");
+    value = Math.round(value);
+    progressBar.querySelector(".progress__fill").style.width = `${value}%`;
+    progressBar.querySelector(".progress__text").textContent = `${value}%`;
 }
 
 /**
