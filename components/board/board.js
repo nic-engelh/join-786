@@ -313,7 +313,7 @@ function checkUserSubtasksStatus(taskId) {
         for (const subtask of userSubTasks) {
             if (subtask == 1) {
                 subTasksDone++;
-            };            
+            };
         }
     }
     return subTasksDone
@@ -327,12 +327,16 @@ function renderSubtasksProgress(taskId) {
     let container = document.getElementById('taskBoardCarProgressBar');
     let subTasksTotal = USERS[ACTIVEUSERKEY].tasks[taskId].subtasks.subtaskContent.length;
     let subTasksDone = checkUserSubtasksStatus(taskId);
-    let progressbarWidth = (subTasksDone / subTasksTotal) * 100;
-    updateProgressBar(progressbarWidth);
+    if (subTasksDone == 0 && subTasksTotal == 0) {
+        var progressbarWidth = 0;
+    } else {
+        var progressbarWidth = (subTasksDone / subTasksTotal) * 100;
+    }
+    updateProgressBar(progressbarWidth, taskId);
 }
 
-function updateProgressBar(value) {
-    let progressBar=document.querySelector(".progress");
+function updateProgressBar(value, taskId) {
+    let progressBar = document.querySelector(`#progress_${taskId}`);
     value = Math.round(value);
     progressBar.querySelector(".progress__fill").style.width = `${value}%`;
     progressBar.querySelector(".progress__text").textContent = `${value}%`;
@@ -353,7 +357,7 @@ function generateTodoHTML(task) {
             <div class="title">${task.title}</div>
             <div class="description">${task.description}</div>
             <div class="progressPosition"> 
-                  <div class="progress">
+                  <div id="progress_${task.id}" class="progress">
                        <div class="progress__fill"></div>
                        <span class="progress__text">0%</span>
                   </div>

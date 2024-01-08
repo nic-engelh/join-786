@@ -485,7 +485,7 @@ h3 {
 .progress__text {
   position: absolute;
   top: 50%;
-  right: 50%;
+  right: 45%;
   transform: translateY(-50%);
   font: bold 14px "Quicksand", sans-serif;
   color: #ffffff;
