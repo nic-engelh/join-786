@@ -462,7 +462,10 @@ h3 {
 #task_subtask_button_modal {
   width: 100%;
 }
-
+#board_modal_assigned_user{
+  max-height: 120px;
+  overflow-y: scroll;
+}
 .progress {
   position: relative;
   width: 210px;
