@@ -308,13 +308,12 @@ async function renderFilteredTasks() {
  */
 function checkUserSubtasksStatus(taskId) {
     let subTasksDone = 0;
-    let userSubTasks = USERS[ACTIVEUSERKEY].tasks[taskId].subtasks.subtaskContent;
-    if (userSubTasks == null) {
+    let userSubTasks = USERS[ACTIVEUSERKEY].tasks[taskId].subtasks.subtaskStatus;
+    if (userSubTasks != null) {
         for (const subtask of userSubTasks) {
-            if (subtask[0].length == 0) {
-                continue;
-            };
-            subTasksDone++;
+            if (subtask == 1) {
+                subTasksDone++;
+            };            
         }
     }
     return subTasksDone

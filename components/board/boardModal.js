@@ -104,6 +104,7 @@ function finishSubtasks(id, i) {
         USERS[ACTIVEUSERKEY].tasks[id].subtasks.subtaskStatus[i] = 0;
     }
     pushUSERS()
+    // TODO Insert reload Board Task for updated progressbar here?! @Robin
 }
 
 /**
