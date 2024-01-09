@@ -7,6 +7,17 @@ body {
   margin: 0;
   padding: 0;
   padding-bottom: 100px;
+  scrollbar-color: #2A3647 white;
+	scrollbar-width: none;
+}
+
+body::-webkit-scrollbar {
+  width: 8px;   
+}
+
+body::-webkit-scrollbar-thumb {
+  border-radius: 20px;       /* roundness of the scroll thumb */
+  border: 5px solid #2A3647;  /* creates padding around scroll thumb */
 }
 
 .board_h1 {
@@ -56,6 +67,16 @@ h3 {
 .board_sections {
   gap: 16px;
   margin: 24px 0;
+}
+
+.board_sections::-webkit-scrollbar {
+  width: 12px;   
+  height: 6px;
+}
+
+.board_sections::-webkit-scrollbar-thumb {
+  border-radius: 30px;       /* roundness of the scroll thumb */
+  border: 3px solid #2A3647;  /* creates padding around scroll thumb */
 }
 
 .board_search {
@@ -463,7 +484,7 @@ h3 {
   width: 100%;
 }
 #board_modal_assigned_user{
-  max-height: 120px;
+  max-height: 180px;
   overflow-y: scroll;
 }
 .progress {
