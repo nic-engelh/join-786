@@ -104,7 +104,7 @@ function finishSubtasks(id, i) {
         USERS[ACTIVEUSERKEY].tasks[id].subtasks.subtaskStatus[i] = 0;
     }
     pushUSERS()
-    // TODO Insert reload Board Task for updated progressbar here?! @Robin
+    updateBoardHTML()
 }
 
 /**
@@ -730,4 +730,6 @@ function pushTaskModal(id, title, description, user, date, prio, category, subta
         dateCreated: dateCreated
     }
     pushUSERS();
+    updateBoardHTML()
+    closeBoardModalTask()
 }
