@@ -399,7 +399,7 @@ function modalTaskPrioMedium(urgentButton, mediumButton, lowButton){
     mediumButton.classList.add('medium_button_active');
     urgentButton.classList.remove('urgent_button_active');
     lowButton.classList.remove('low_button_active');
-    document.getElementById('task_prio_img_urgent_modal').src = '/assets/img/addTask/prio_urgent.png';
+    document.getElementById('task_prio_img_urgent_modal').src = '/assets/img/addTask/prio_high.png';
     document.getElementById('task_prio_img_medium_modal').src = '/assets/img/addTask/medium_nocolor.png';
     document.getElementById('task_prio_img_low_modal').src = '/assets/img/addTask/prio_low.png';
 }
@@ -413,7 +413,7 @@ function modalTaskPrioLow(urgentButton, mediumButton, lowButton){
     lowButton.classList.add('low_button_active');
     urgentButton.classList.remove('urgent_button_active');
     mediumButton.classList.remove('medium_button_active');
-    document.getElementById('task_prio_img_urgent_modal').src = '/assets/img/addTask/prio_urgent.png';
+    document.getElementById('task_prio_img_urgent_modal').src = '/assets/img/addTask/prio_high.png';
     document.getElementById('task_prio_img_medium_modal').src = '/assets/img/addTask/prio_medium.png';
     document.getElementById('task_prio_img_low_modal').src = '/assets/img/addTask/low_nocolor.png';
 }

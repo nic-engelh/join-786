@@ -487,6 +487,8 @@ h3 {
 #board_modal_assigned_user{
   max-height: 180px;
   overflow-y: scroll;
+  overscroll-behavior-inline: contain;
+  -webkit-overflow-scrolling: touch;
 }
 
 #board_modal_assigned_user::-webkit-scrollbar {
@@ -557,6 +559,7 @@ h3 {
   .board_section {
     margin-left: 0px !important;
     overflow-x: hidden;
+    overscroll-behavior-inline: contain;
   }
 
   .board_h1 {
@@ -566,6 +569,7 @@ h3 {
     gap: 16px;
     margin: 24px 0;
     overflow-x: scroll;
+    overscroll-behavior-inline: contain;
     -webkit-overflow-scrolling: touch;
   }
 }
