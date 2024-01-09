@@ -98,6 +98,7 @@ a {
 
   .footer_category {
     display: block;
+    height: 20px;
   }
 
   .footerContacts {

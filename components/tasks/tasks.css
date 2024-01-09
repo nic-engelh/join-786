@@ -344,9 +344,11 @@ ul {
   border: none;
   padding: 16px 32px;
 }
+
 .delete_and_check {
   margin-right: 20px;
 }
+
 @media(min-width:1000px) {
   #sectionAddTasks {
     margin-left: 350px;
@@ -440,7 +442,7 @@ ul {
 
 }
 
-@media(max-width:1470px) {
+@media(max-width:1500px) {
   .tasks_line {
     left: 58%;
   }
@@ -506,10 +508,6 @@ ul {
 
   .form_categories_date input {
     width: 260px !important;
-  }
-
-  .add_task_priorities {
-    width: 250px;
   }
 }
 

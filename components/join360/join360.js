@@ -134,7 +134,6 @@ function generateUrgentWidgetHTML(size, deadlineDate) {
     return /*html*/` 
         <div class="j36_urgent">
         <img class="j36_image1" src="/assets/img/Ellipse 4.jpg" alt="">
-        <img class="j36_image2" src="/assets/img/Prio alta.jpg" alt="asdasd">
         <div class="j36_numberPosition">
             <b>${size}</b>
             <p class="j36_todoText">Urgent</p>
