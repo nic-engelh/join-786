@@ -429,7 +429,7 @@ ul {
   }
 }
 
-@media(max-width:1550px) {
+@media(max-width:1590px) {
   .tasks_line {
     left: 58%;
   }
@@ -508,6 +508,30 @@ ul {
 
   .form_categories_date input {
     width: 260px !important;
+  }
+
+  .form_categories_text {
+    top: 270px;
+  }
+
+  .add_task_priorities {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .add_task_low_button {
+    width: 290px;
+    height: 30px;
+  }
+
+  #urgent_button {
+    width: 290px;
+    height: 30px;
+  }
+
+  #medium_button {
+    width: 290px;
+    height: 30px;
   }
 }
 

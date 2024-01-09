@@ -102,6 +102,7 @@ h1 {
 
 .j36_numberPosition {
     flex-direction: column;
+    text-align: center;
 }
 
 .j36_toDoDone {
@@ -147,7 +148,6 @@ h1 {
     font-size: 47px;
     font-style: normal;
     font-weight: 600;
-    text-align: center;
     padding-left: 30px;
     gap: 30px;
 }
