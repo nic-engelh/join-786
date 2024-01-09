@@ -344,7 +344,9 @@ ul {
   border: none;
   padding: 16px 32px;
 }
-
+.delete_and_check {
+  margin-right: 20px;
+}
 @media(min-width:1000px) {
   #sectionAddTasks {
     margin-left: 350px;

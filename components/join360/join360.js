@@ -126,7 +126,7 @@ function checkUrgentDates(urgentTaskIds) {
             deadlineDate = nextDate;
         }
     };
-    deadlineDate = deadlineDate.toDateString();
+    deadlineDate = deadlineDate.toLocaleDateString('de-DE', { month: 'long', day: 'numeric', year: 'numeric' });;
     return deadlineDate;
 } 
 
