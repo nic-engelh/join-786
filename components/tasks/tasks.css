@@ -613,6 +613,7 @@ ul {
     width: 100%;
     box-sizing: border-box;
     padding-right: 4px;
+    flex-direction: row;
   }
 }
 
