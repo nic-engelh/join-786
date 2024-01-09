@@ -20,6 +20,7 @@
   color: #cdcdcd;
   gap: 4px;
   height: 76px;
+  width: 80px;
 }
 
 
@@ -41,7 +42,6 @@ a {
     cursor: pointer;
     border-radius: 8px;
     background-color: #091931;
-    width: 80px;
   }
   .footer_privacy{
     display: none;
@@ -109,9 +109,8 @@ a {
     width: 100%;
     box-sizing: border-box;
     top: 500px;
-
   }
-
+  
   .footerContacts img {
     position: absolute;
     top: 8px;
@@ -120,7 +119,7 @@ a {
     height: 30px;
     padding-right: 10px;
   }
-
+  
   .footerContacts:hover {
     background-color: #091931;
     cursor: pointer;
