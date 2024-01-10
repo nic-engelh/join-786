@@ -181,8 +181,8 @@ function renderingBoardUserInitials(assignedUser, id) {
 
     for (const user of assignedUser) {
         if (count < 3){
-        container.innerHTML += generateUserInitialBadge(user);
-        setBadgeColor(user.color, `boardAssignedUserInitials_${user.contactId}`);
+        container.innerHTML += generateUserInitialBadge(user, id);
+        setBadgeColor(user.color, `boardAssignedUserInitials_${user.contactId}${id}`);
         count++;
     } else {
         break;
@@ -383,9 +383,9 @@ function generateTodoHTML(task) {
  * @param {array} elements 
  * @returns 
  */
-function generateUserInitialBadge(user) {
+function generateUserInitialBadge(user, id) {
     return /*html*/`
-        <div class="boardAssignedUserInitials" id="boardAssignedUserInitials_${user.contactId}">
+        <div class="boardAssignedUserInitials" id="boardAssignedUserInitials_${user.contactId}${id}">
         ${(user.initials)}
         </div>
     `
