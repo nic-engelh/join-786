@@ -635,4 +635,8 @@ ul {
   #medium_button {
     width: 90px;
   }
+  #add_task_form {
+    margin-left: 0px;
+    margin-right: 0px;
+  }
 }

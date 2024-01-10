@@ -5,6 +5,7 @@
     margin-top: 100px;
     box-sizing: unset;
     margin-left: 262px;
+    overflow-x: hidden;
 }
 
 #j36_mobileVersion {

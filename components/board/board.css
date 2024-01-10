@@ -8,16 +8,18 @@ body {
   padding: 0;
   padding-bottom: 100px;
   scrollbar-color: #2A3647 white;
-	scrollbar-width: none;
+  scrollbar-width: none;
 }
 
 body::-webkit-scrollbar {
-  width: 0;   
+  width: 0;
 }
 
 body::-webkit-scrollbar-thumb {
-  border-radius: 20px;       /* roundness of the scroll thumb */
-  border: 5px solid #2A3647;  /* creates padding around scroll thumb */
+  border-radius: 20px;
+  /* roundness of the scroll thumb */
+  border: 5px solid #2A3647;
+  /* creates padding around scroll thumb */
 }
 
 .board_h1 {
@@ -69,14 +71,16 @@ h3 {
   margin: 24px 0;
 }
 
-.board_sections::-webkit-scrollbar {
-  width: 12px;   
+.boardTaskScrolling::-webkit-scrollbar {
+  width: 22px;
   height: 6px;
 }
 
-.board_sections::-webkit-scrollbar-thumb {
-  border-radius: 30px;       /* roundness of the scroll thumb */
-  border: 3px solid #2A3647;  /* creates padding around scroll thumb */
+.boardTaskScrolling::-webkit-scrollbar-thumb {
+  border-radius: 30px;
+  /* roundness of the scroll thumb */
+  border: 3px solid #2A3647;
+  /* creates padding around scroll thumb */
 }
 
 .board_search {
@@ -484,7 +488,7 @@ h3 {
   width: 100%;
 }
 
-#board_modal_assigned_user{
+#board_modal_assigned_user {
   max-height: 180px;
   overflow-y: scroll;
   overscroll-behavior-inline: contain;
@@ -492,7 +496,7 @@ h3 {
 }
 
 #board_modal_assigned_user::-webkit-scrollbar {
-  width: 0;   
+  width: 0;
 }
 
 .progress {
@@ -519,11 +523,17 @@ h3 {
   font: bold 14px "Quicksand", sans-serif;
   color: #ffffff;
 }
-
+.boardTaskScrolling {
+  overflow-x: scroll;
+  overscroll-behavior-inline: contain;
+  -webkit-overflow-scrolling: touch;
+}
 @media(max-width:2000px) {
   .board_section {
     justify-content: space-around;
     margin-left: 120px !important;
+    overflow-x: hidden;
+    overscroll-behavior-inline: contain;
   }
 
   .board_h1 {
@@ -558,6 +568,7 @@ h3 {
 @media(max-width:1000px) {
   .board_section {
     margin-left: 0px !important;
+    margin-right: 0px !important;
     overflow-x: hidden;
     overscroll-behavior-inline: contain;
   }
@@ -565,9 +576,13 @@ h3 {
   .board_h1 {
     margin-left: 0px !important;
   }
+
   .board_sections {
     gap: 16px;
     margin: 24px 0;
+  }
+
+  .boardTaskScrolling {
     overflow-x: scroll;
     overscroll-behavior-inline: contain;
     -webkit-overflow-scrolling: touch;
@@ -591,7 +606,7 @@ h3 {
 
   .board_input {
     position: absolute;
-    top:15%;
+    top: 15%;
     right: 200px;
     width: 312px;
   }
