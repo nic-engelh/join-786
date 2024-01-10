@@ -125,6 +125,8 @@ h3 {
   display: flex;
   flex-direction: row;
   gap: 16px;
+  width: 300px;
+
   /* -ms-overflow-style: none;
   scrollbar-width: none;  */
 }
@@ -530,7 +532,6 @@ h3 {
 }
 @media(max-width:2000px) {
   .board_section {
-    justify-content: space-around;
     margin-left: 120px !important;
     overflow-x: hidden;
     overscroll-behavior-inline: contain;
@@ -544,6 +545,9 @@ h3 {
 @media(max-width:1700px) {
   .board_section {
     margin-left: 190px !important;
+  }
+  .boardTaskScrolling{
+    width: unset;
   }
 }
 
@@ -567,8 +571,8 @@ h3 {
 
 @media(max-width:1000px) {
   .board_section {
-    margin-left: 0px !important;
-    margin-right: 0px !important;
+    margin-left: 16px !important;
+    margin-right: 16px !important;
     overflow-x: hidden;
     overscroll-behavior-inline: contain;
   }
@@ -600,7 +604,7 @@ h3 {
 
   .board_section {
     display: flex;
-    justify-content: space-between;
+    justify-content:space-evenly;
     margin: 0px;
   }
 

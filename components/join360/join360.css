@@ -14,6 +14,78 @@
     margin-left: 76px;
 }
 
+.j36_toDo:hover {
+    background-color: #2a3647;
+
+    #j36_todo {
+        color: white;
+    }
+
+    .j36_todoText {
+        color: white;
+    }
+
+    #Ellipse4 {
+        fill: #ffffff;
+    }
+
+    #edit_2 {
+        fill: #2a3647;
+    }
+}
+
+.j36_toDoDone:hover {
+    background-color: #2a3647;
+
+    #j36_done {
+        color: white;
+    }
+
+    .j36_todoText {
+        color: white;
+    }
+
+    #Ellipse4 {
+        fill: #ffffff;
+    }
+
+    #Vector {
+        stroke: #2a3647;
+    }
+}
+
+.j36_UrgentDeadline:hover {
+    background-color: #2a3647;
+
+    .j36_urgent {
+        color: white;
+    }
+
+    .j36_numberPosition {
+        color: white;
+    }
+
+    .j36_dateText {
+        color: white;
+    }
+
+    .j36_todoText {
+        color: white;
+    }
+
+}
+
+.j36_AllTheTasks:hover {
+    background-color: #2a3647;
+
+    .j36_numberOfTasks {
+        color: white;
+    }
+    p{
+        color: white;
+    }
+}
+
 .j36_headline {
     display: flex;
     align-items: center;
@@ -87,7 +159,7 @@ h1 {
     text-align: center;
 }
 
-#j36_toDo img {
+.j36_todo_img {
     width: 40px;
     height: 40px;
 }
@@ -344,8 +416,9 @@ h1 {
         font-weight: bold;
     }
 }
+
 @media(max-width:600px) {
-    #j36_mobileVersion{
+    #j36_mobileVersion {
         margin-left: 0px !important;
     }
 }

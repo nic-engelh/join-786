@@ -12,3 +12,20 @@
     right: 0;
     z-index: 2;
 }
+
+.HeaderSlogan {
+    position: fixed;
+    top: 20;
+    left: 350px;
+    color: black;
+    font-family: Inter;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+}
+
+@media(max-width:1000px) {
+    .HeaderSlogan {
+      display: none;
+    }
+}

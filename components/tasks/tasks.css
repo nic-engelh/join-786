@@ -290,6 +290,7 @@ ul {
   justify-content: space-between;
   position: fixed;
   bottom: 65px;
+  width: 100%;
   left: 0;
   right: 0;
   background-color: #F6F7F8;
@@ -297,6 +298,8 @@ ul {
   z-index: 2;
   margin-right: 370px;
   padding-bottom: 50px;
+  margin-right: 16px;
+  padding-bottom: 100px;
 }
 
 #create_task_button {
@@ -332,6 +335,8 @@ ul {
   display: flex;
   flex-direction: row;
   gap: 16px;
+  position: absolute;
+  left: 66%;
 }
 
 #succes_alert_addedTask {
@@ -427,6 +432,10 @@ ul {
   .form_categories_date {
     left: 60%;
   }
+  .create_task_finish_buttons {
+    position: absolute;
+    left: 73%;
+  }
 }
 
 @media(max-width:1590px) {
@@ -437,7 +446,7 @@ ul {
 
 @media(max-width:1300px) {
   .tasks_line {
-    left: 63% !important;
+    left: 62% !important;
   }
 
 }
@@ -486,18 +495,18 @@ ul {
   .add_task_inputs {
     width: 350px;
   }
-
-  .create_task_finish {
-    margin-right: 0px;
-    padding-bottom: 20px;
+  .create_task_finish_buttons{
+    left: 68%;
   }
 }
 
 @media(max-width:1210px) {
   .tasks_line {
-    left: 62%;
+   display: none;
   }
-
+  .create_task_finish_buttons{
+    left: 64%
+  }
   #sectionAddTasks {
     margin-left: 280px;
   }
@@ -535,13 +544,17 @@ ul {
   }
 }
 
-@media(max-width:1020px) {
-  .tasks_line {
-    left: 63%;
-  }
-}
 
 @media(max-width:1000px) {
+  .create_task_finish_buttons{
+    position: unset;
+    padding-right: 16px;
+  }
+  .create_task_finish {
+    bottom: 0px !important;
+    padding-bottom: 82px;
+  }
+
   .tasks_line {
     left: 58%;
     display: none;
