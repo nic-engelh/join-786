@@ -177,9 +177,16 @@ function renderBoardCard(task, containerId) {
 function renderingBoardUserInitials(assignedUser, id) {
 
     let container = document.getElementById(`boardAssignedUserInitialsContainer_${id}`);
+    let count = 0;
+
     for (const user of assignedUser) {
+        if (count < 3){
         container.innerHTML += generateUserInitialBadge(user);
         setBadgeColor(user.color, `boardAssignedUserInitials_${user.contactId}`);
+        count++;
+    } else {
+        break;
+    }
     }
 }
 
