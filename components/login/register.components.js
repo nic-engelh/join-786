@@ -17,12 +17,13 @@ async function register() {
      let passwordConfirm = document.getElementById('passwordConfirm').value;
      let key = Math.floor((Math.random() * 1000000) + 1);
      let notsame = document.getElementById('notsame');
+     let initials = generateInitials(name);
      if (findUserByEmail(email)) {
           notsame.innerHTML = 'email is already in use';
           notsame.classList.remove('d-none')
      } else {
           if (checkPassword(password, passwordConfirm)) {
-               userData = { 'userData': { key: key, name: name, email: email, password: password, failedAttemped: true } };
+               userData = { 'userData': { key: key, name: name, email: email, password: password, initials: initials, failedAttemped: true } };
                USERS[key] = userData;
                updateStorageData('users', USERS);
                await popup();
@@ -89,7 +90,7 @@ function back() {
 /**
  * password vissibility and changes the img
  */
-function passwordVisibleRegister() {//changes the lock img and the passwort vissibility
+function passwordVisibleRegister() {//changes the lock img and the passwort visibility
      let password = document.getElementById('password');
      let passwordConfirm = document.getElementById('passwordConfirm');
 

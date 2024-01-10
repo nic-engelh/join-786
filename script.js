@@ -18,5 +18,5 @@ async function init() {
 	await getVariables();
 	await loadAssignableNames();
 	updateDashBoard();
+	loadHeaderInitials();
 }
-
