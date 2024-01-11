@@ -273,7 +273,8 @@ function filterContactsByInitials(initial) {
     // Konvertiere den Input-Wert in Großbuchstaben, um die Groß-/Kleinschreibung zu ignorieren
     let targetInitial = initial.toUpperCase();
     // Verwende die filter-Methode, um die Objekte zu filtern
-    let filteredContacts = userContacts.filter(contact => {
+    let contacts = USERS[ACTIVEUSERKEY].contacts;
+    let filteredContacts = contacts.filter(contact => {
       // Überprüfe, ob das Initial des Kontakts den zweiten Buchstaben mit dem Zielinitial übereinstimmt
       return contact.initials.length >= 2 && contact.initials[1].toUpperCase() === targetInitial;
     });
