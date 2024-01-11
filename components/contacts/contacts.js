@@ -6,6 +6,7 @@ function renderContactList() {
     // getUserContacts();
     renderContactsStructure("contact-view-profil-main");
     renderContactsStructure("contact-list-desktop");
+    updateStorageData("users", USERS);
 }
 
 function renderContacts (contacts, targetContainer) {
@@ -219,6 +220,10 @@ function checkWindowWidth () {
 }
 
 function deleteContact (contactID, bool) {
+    if (checkWindowWidth ()) {
+        deleteContactDesktop(contactID, bool);
+        return true
+    }
     let entryIndex = userContacts.findIndex(contact => contact["contactId"] === contactID);
     let response = userContacts.splice(entryIndex,1);
     if (response == undefined) {
@@ -230,6 +235,7 @@ function deleteContact (contactID, bool) {
     renderContactList();
     toggleHide("contact-list-background");
     if (bool){showSuccessInfo("1");}
+    return true
 }
 
 function removeElemente(elementId) {
