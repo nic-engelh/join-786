@@ -55,7 +55,6 @@ function addCreateContactAddButton (container) {
     return true
 }
 
-
 function renderContactProfil (contactId) {
     let contactObject = findContact(contactId);
     const profil = document.createElement("div");
@@ -66,9 +65,6 @@ function renderContactProfil (contactId) {
     document.body.appendChild(profil);
     setBadgeColor(contactObject.color,"frame-105");
 }   
-
-
-
 
 function sortUserContacts () {
     userContacts.sort((a,b) => {
@@ -205,11 +201,21 @@ function generateContactID () {
 }
 
 function showProfilDetails (contactId) {
-    // function shows selected contact details from overview 
-    // window.location.assign = 'route.contactView.html';
-    // visual hide contacts lists
+    if (checkWindowWidth()) {
+        renderContactProfilDesktop(contactId);
+        return true
+    }
     toggleHide("contact-list-background");
     renderContactProfil(contactId);
+    return false
+}
+
+function checkWindowWidth () {
+    const vw = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0);
+    if (vw >= 1000) {
+        return true; 
+    }
+    return false;
 }
 
 function deleteContact (contactID, bool) {
