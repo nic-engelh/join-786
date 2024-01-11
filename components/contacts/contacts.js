@@ -4,12 +4,13 @@ let activeContact = null;
 
 function renderContactList() {
     // getUserContacts();
-    renderContactsStructure();
+    renderContactsStructure("contact-view-profil-main");
+    renderContactsStructure("contact-list-desktop");
 }
 
-function renderContacts (contacts) {
+function renderContacts (contacts, targetContainer) {
     // render all contacts within the userContacts object
-    let container = document.getElementById("contact-list-mobile");
+    let container = document.getElementById(targetContainer);
     for (const profile of contacts) {
         let name = profile['name'];
         let email = profile['email'];
@@ -21,7 +22,7 @@ function renderContacts (contacts) {
     }
 }
 
-function renderContactsStructure () {
+function renderContactsStructure (targetContainer) {
     // functions renders contacts abc-structure
     // iterate abcSting
     // for each CHAR load profile form userContacts
@@ -30,7 +31,7 @@ function renderContactsStructure () {
     // render profile for the iterated letter
     // do it again for next CHAR in abcString
     //sortUserContacts();
-    const container = document.getElementById("contact-list-mobile");
+    const container = document.getElementById(targetContainer);
     if (container == null) {console.log("Element not found.");}
     container.innerHTML = clear();
     for (let index = 0; index < abcString.length; index++) {
@@ -39,11 +40,19 @@ function renderContactsStructure () {
         if (filteredContacts.length > 0) {
             container.innerHTML += createCharHeaderHTML(char);
             container.innerHTML += createLineHTML();
-            renderContacts(filteredContacts);
+            renderContacts(filteredContacts, container);
             filteredContacts = null;
         }
     }
+    addCreateContactAddButton(container);
+}
+
+function addCreateContactAddButton (container) {
+    if (container != "contact-view-profil-main") {
+        return false
+    }
     container.innerHTML += createContactAddButtonHtml();
+    return true
 }
 
 
@@ -57,6 +66,9 @@ function renderContactProfil (contactId) {
     document.body.appendChild(profil);
     setBadgeColor(contactObject.color,"frame-105");
 }   
+
+
+
 
 function sortUserContacts () {
     userContacts.sort((a,b) => {

@@ -115,3 +115,38 @@ function createContactOptionsHTML (activeContact) {
 </div>
     `
 }
+
+
+function createContactProfilViewDesktopHTML (contactInitials, contactName, contactEmail, contactPhone) {
+    return `
+        <div id="contact-view-middle-section" class="d-flex flex-column g-21 ms-16">
+            <div class="d-flex flex-row base-line g-20">
+                <div id="frame-105" class="d-flex justify-content-center align-items-center">
+                    <span class="" id="contact-view-symbol-initials">${contactInitials}</span>
+                </div>
+                <span id="frame-81">${contactName}</span>
+                <div>
+                    <div id="contact-opitons-edit" class="d-flex flex-row justify-content-center g-8  pointer" onclick="showDialog('overlay-edit-contact-mobile'); hideDialog('contact-options-modal');loadEditContactData()";">
+                        <div class="symbol-frame">
+                            <img src="/assets/img/contacts/edit.svg" alt="Editieren">
+                        </div>
+                        <span class="fw-4 fs-1">Edit</span>
+                        </div>
+                    <div id="contact-options-delete" class="d-flex flex-row justify-content-center g-8 pointer" onclick="deleteContact('${activeContact}', true); deleteContactProfilView();">
+                        <div class="symbol-frame">
+                        <img src="/assets/img/contacts/delete.svg" alt="Löschen">
+                        </div>
+                        <span class="fw-4 fs-1">Delete</span>
+                    </div>
+                </div>
+            </div>
+            <span class="fs-2 fw-4">Contact Information</span>
+            <div id="frame-101" class="d-flex flex-column space-evenly flex-start g-15">
+                <span class="fw-7 fs-1">Email</span>
+                <a id="contact-profil-email" class="contact-view-email" href="mailto:${contactEmail}">${contactEmail}</a>
+                <span class="fw-7 fs-1">Phone</span>
+                <span id="contact-profil-phone">${contactPhone}</span>
+            </div>
+        </div>
+    `
+}
