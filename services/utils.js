@@ -66,6 +66,9 @@ function toggleHide (elementId) {
  */
 function openSection (sectionID) {
   let sections = ["sectionAddTasks", "sectionBoard", "sectionJoin360", "contact-list-background"];
+  // TODO corner cases contacts desktop and mobil have to be catched here
+  // if inner.width > 1000px default element = contacts-view-desktop
+  // if innner.width < 1000px = default desktop mobil
   for (const section of sections) {
     let element = document.getElementById(section);
     if (element.classList.contains('visually-hidden')){
