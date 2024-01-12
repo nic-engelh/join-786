@@ -20,6 +20,17 @@
     padding-right: 24px;
 }
 
+.HeaderSlogan {
+    position: fixed;
+    top: 20;
+    left: 350px;
+    color: black;
+    font-family: Inter;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+}
+
 #header_user_image {
     display: flex;
     justify-content: center;
@@ -32,3 +43,8 @@
     border: solid 3px #2A3647;
     border-radius: 40px;
 }
+
+@media(max-width:1000px) {
+    .HeaderSlogan {
+        display: none;
+    }
