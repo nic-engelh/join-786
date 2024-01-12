@@ -7,7 +7,7 @@ function renderContactProfilDesktop (contactId) {
     profil.id = "contact-profil-desktop";
     profil.innerHTML = createContactProfilViewDesktopHTML(contactObject.initials, contactObject.name, contactObject.email, contactObject.phone);
     // document.body.appendChild(profil);
-    document.getElementbyId("contact-view-desktop-section-right").appendChild(profil);
+    document.getElementbyId("contact-profil-desktop-container").appendChild(profil);
     setBadgeColor(contactObject.color,"frame-105");
 }   
 

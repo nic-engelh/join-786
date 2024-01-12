@@ -4,21 +4,19 @@ let activeContact = null;
 
 function renderContactList() {
     // getUserContacts();
-    renderContactsStructure("contact-view-profil-main");
-    renderContactsStructure("contact-list-desktop");
+    renderContactsStructure("contact-list-mobile");
+    renderContactsStructure("contact-list-desktop-container");
     updateStorageData("users", USERS);
 }
 
 function renderContacts (contacts, targetContainer) {
-    // render all contacts within the userContacts object
-    let container = document.getElementById(targetContainer);
     for (const profile of contacts) {
         let name = profile['name'];
         let email = profile['email'];
         let key = profile['contactId'];
         let color = profile.color;
         let initials = generateInitials(name);
-        container.innerHTML += createContactProfilHTML(name, email, initials, key);
+        targetContainer.innerHTML += createContactProfilHTML(name, email, initials, key);
         setBadgeColor(color, `badge-${key}`);
     }
 }

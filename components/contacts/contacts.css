@@ -690,21 +690,12 @@ dialog {
     visibility: hidden;
 }
 
-.dektop-slogan-position {
+.desktop-slogan-position {
     visibility: hidden;
 }
 
 @media(min-width:1000px) {
    
-    #contact-list-mobile {
-        position: absolute;
-        left: 260px;
-        overflow-y: scroll;
-        padding-top: 70px;
-        height: 100%;
-        width: 400px;
-    }
-
     #contact-list-add-button {
         display: none;
     }
@@ -730,7 +721,7 @@ dialog {
         font-weight: bold;
     }
 
-    .dektop-slogan-position {
+    .desktop-slogan-position {
         visibility: visible;
         display: flex;
         justify-content: center;
@@ -746,30 +737,14 @@ dialog {
         font-family: Inter;
     }
 
-    .contacts-dekstop-slogan {
+    .contacts-desktop-slogan {
         font-family: Inter;
         font-size: 27px;
         font-style: normal;
         font-weight: 400;
     }
-    .contacts-dekstop-line{
+    .contacts-desktop-line{
         border: 1px solid  #29ABE2;;
         height: 59px;
-    }
-}
-@media (max-width:1700px){
-    .dektop-slogan-position {
-        right: 200px !important;
-    }
-}
-
-@media (max-width:1500px){
-    .dektop-slogan-position {
-        right: 0px !important;
-    }
-}
-@media (max-width:1300px){
-    .dektop-slogan-position {
-        visibility: hidden;
     }
 }
