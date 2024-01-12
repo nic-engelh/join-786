@@ -142,3 +142,9 @@ function setContactStyleColor (color) {
   styleSheet.insertRule(string, styleSheet.cssRules.length);
   return true
 }
+
+function loadHeaderInitials(){
+	let user = USERS[ACTIVEUSERKEY].userData.initials;
+	let initials = document.getElementById("header_user_image");
+	initials.innerHTML = `${user}`;
+}

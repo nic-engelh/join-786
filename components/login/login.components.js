@@ -176,7 +176,7 @@ async function guestLogin() {
           { "name": "Anja Schulz", "email": "anjas@gmail.com", "phone": "+1234567", "contactId": "12345ghf", "initials": "AS", "color": "3e59c2" },
           { "name": "David Eisenberg", "email": "davide@gmail.com", "phone": "+1234567", "contactId": "12345oiu", "initials": "DE", "color": "4f98ce" }
      ];
-     userData = { key: 0, name: 'Guest', email: 'GuestTest@hotmail.de', password: 'password', failedAttemped: true };
+     userData = { key: 0, name: 'Guest', email: 'GuestTest@hotmail.de', password: 'password', initials: 'G', failedAttemped: true };
      // initalize entry with key guest and empty value as an object
      USERS = await  getStorageData('users', USERS);
      if (!("guest" in USERS)) {

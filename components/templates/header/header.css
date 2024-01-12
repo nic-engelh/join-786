@@ -13,19 +13,22 @@
     z-index: 2;
 }
 
-.HeaderSlogan {
-    position: fixed;
-    top: 20;
-    left: 350px;
-    color: black;
-    font-family: Inter;
-    font-size: 20px;
-    font-style: normal;
-    font-weight: 400;
+.header_user_container {
+    display: flex;
+    flex-direction: row;
+    gap: 16px;
+    padding-right: 24px;
 }
 
-@media(max-width:1000px) {
-    .HeaderSlogan {
-      display: none;
-    }
+#header_user_image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+    color: #29ABE2;
+    width: 56px;
+    height: 56px;
+    flex-shrink: 0;
+    border: solid 3px #2A3647;
+    border-radius: 40px;
 }
