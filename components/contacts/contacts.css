@@ -509,7 +509,7 @@ fw-bold {
     }
 }
 
-#contact-list-background {
+#contact-view-mobile {
     padding: 80px 14px;
     flex-direction: column;
     justify-content: flex-end;
