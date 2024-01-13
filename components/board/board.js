@@ -177,9 +177,16 @@ function renderBoardCard(task, containerId) {
 function renderingBoardUserInitials(assignedUser, id) {
 
     let container = document.getElementById(`boardAssignedUserInitialsContainer_${id}`);
+    let count = 0;
+
     for (const user of assignedUser) {
-        container.innerHTML += generateUserInitialBadge(user);
-        setBadgeColor(user.color, `boardAssignedUserInitials_${user.contactId}`);
+        if (count < 3){
+        container.innerHTML += generateUserInitialBadge(user, id);
+        setBadgeColor(user.color, `boardAssignedUserInitials_${user.contactId}${id}`);
+        count++;
+    } else {
+        break;
+    }
     }
 }
 
@@ -376,9 +383,9 @@ function generateTodoHTML(task) {
  * @param {array} elements 
  * @returns 
  */
-function generateUserInitialBadge(user) {
+function generateUserInitialBadge(user, id) {
     return /*html*/`
-        <div class="boardAssignedUserInitials" id="boardAssignedUserInitials_${user.contactId}">
+        <div class="boardAssignedUserInitials" id="boardAssignedUserInitials_${user.contactId}${id}">
         ${(user.initials)}
         </div>
     `
