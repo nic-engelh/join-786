@@ -2,12 +2,12 @@
 function renderContactProfilDesktop (contactId) {
     let contactObject = findContact(contactId);
     const profil = document.createElement("div");
-    let elementUsed = document.getElementById("contact-profil-desktop");
+    let elementUsed = document.getElementById("contact-profil-desktop-container");
     if (elementUsed){elementUsed.remove();}
-    profil.id = "contact-profil-desktop";
+    profil.id = "contact-profil-desktop-container";
     profil.innerHTML = createContactProfilViewDesktopHTML(contactObject.initials, contactObject.name, contactObject.email, contactObject.phone);
     // document.body.appendChild(profil);
-    document.getElementbyId("contact-profil-desktop-container").appendChild(profil);
+    document.getElementById("contact-profil-desktop").appendChild(profil);
     setBadgeColor(contactObject.color,"frame-105");
 }   
 

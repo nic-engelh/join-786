@@ -546,11 +546,10 @@ fw-bold {
     flex-direction: column;
     align-items: center;
     background: var(--white, #FFF);
-    max-width: 31.6%;
-    height: 100%;
-    position: absolute;
-    left: 27%;
+    max-width: 456px;
     box-shadow: 4px 0px 6px 0px rgba(0, 0, 0, 0.08);
+    padding-top: 15%;
+    overflow: scroll;
 }
 
 .contact-list-line {
@@ -675,6 +674,24 @@ fw-bold {
     background-color: #29ABE2;
 }
 
+#contact-view-desktop{
+    display: flex;
+    width: 100%;
+    height: 100%;
+    margin-top: 80px;
+    margin-left: 260px;
+    overflow-y: hidden;
+    overflow-x: hidden;
+}
+#contact-view-desktop-section-left {
+    height: 100%;
+    width: 30%;
+}
+
+#contact-view-desktop-section-right {
+    height: 100%;
+    width: 60%;
+}
 
 .visually-hidden {
     display: none;
@@ -731,16 +748,15 @@ dialog {
         cursor: pointer;
         font-size: 20px;
         font-weight: bold;
+        z-index: 10;
     }
 
-    .desktop-slogan-position {
+    .desktop-slogan-container {
         visibility: visible;
         display: flex;
-        justify-content: center;
         align-items: center;
-        position: fixed;
         gap: 30px;
-        right: 500px;
+        margin-top: 10%;
     }
 
     .contacts-desktop-h2 {
