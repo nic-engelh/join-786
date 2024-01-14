@@ -693,6 +693,11 @@ fw-bold {
     width: 60%;
 }
 
+#contact-view-options-container {
+    display: flex;
+    flex-direction: row;
+}
+
 .visually-hidden {
     display: none;
     position: absolute;

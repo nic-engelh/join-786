@@ -1,0 +1,106 @@
+.add-contact-btn-desktop-close {
+    width: 150px;
+    height: 51px;
+    border-radius: 10px;
+    background-color: white;
+    color: black;
+    font-weight: 700;
+    font-size: 21px;
+    text-align: center;
+    position: absolute !important;
+    top: 220px;
+    left:-50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid black;
+}
+
+.add-contact-btn-desktop {
+    width: 202px;
+    height: 51px;
+    border-radius: 10px;
+    background-color: #2A3647;
+    color: white;
+    border: none !important;
+    font-weight: 700;
+    font-size: 21px;
+    text-align: center;
+    position: absolute !important;
+    top: 220px;
+    left:150px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#group-13-desktop {
+    position: absolute;
+    top: 186px;
+    left: 535px;
+}
+
+#addcontact-top-close-desktop {
+    width: 32px;
+    position: absolute;
+    top: 24px;
+    left: 1100px;
+    background-color: #000;
+}
+
+#add-contact-text-Desktop {
+    width: 364px;
+    height: 153px;
+    position: absolute;
+    top: 280px;
+    left: 800px;
+}
+
+#frame-79-desktop {
+    width: 120px;
+    height: 120px;
+    border-radius: 70px;
+    border-width: 3px;
+    border-style: solid;
+    border-color: white;
+    box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.1);
+    background-color: #D1D1D1;
+}
+
+#frame-206-desktop {
+    height: 204px;
+    width: 282px;
+    padding-left: 40px;
+}
+
+.add_Desktop{
+    width: 50px;
+}
+
+.contact-bg-desktop {
+    height: 371px;
+    width: 462px;
+    padding: 66px 48px;
+    background-color: #2A3647;
+    border-radius: 30px 0px 0px 30px;
+    position: absolute;
+    left: 5%;
+    top: 20%;
+}
+
+.overlay-desktop {
+    width: 1212px;
+    height: 592px;
+    border-radius: 30px;
+    background-color: white;
+    overflow-y: hidden;
+    overflow-x: hideen;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+dialog {
+    display: block !important;
+}
+
