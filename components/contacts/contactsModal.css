@@ -102,3 +102,17 @@
 .d-block {
     display: block !important;
 }
+
+.contact-input-desktop {
+    min-width: 422px;
+    min-height: 51px;
+    border-radius: 10px;
+    border-style: solid;
+    border-width: 1px;
+    border-color: #D1D1D1;
+    font-size: 20px;
+    font-family: 'Inter';
+    font-weight: 400;
+    color: black;
+    padding: 13px 21px 13px 21px;
+}
