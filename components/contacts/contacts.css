@@ -370,6 +370,13 @@ fw-bold {
     color: white;
 }
 
+#contact-user-symbol-initials-mobile {
+    font-size: 27px;
+    font-weight: 400;
+    text-align: center;
+    color: white;
+}
+
 #contact-view-symbol-initials {
     font-size: 27px;
     font-weight: 400;

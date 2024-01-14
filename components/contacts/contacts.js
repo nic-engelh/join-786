@@ -276,7 +276,7 @@ function changeProfilBadge(initials, color) {
     if (checkWindowWidth) {
         target = "desktop";
     }
-    let badge = document.getElementById(`contact-user-symbol-badge-${target}`);
+    let badge = `contact-user-symbol-badge-${target}`;
     let initialBox = document.getElementById(`contact-user-symbol-initials-${target}`);
     initialBox.innerHTML = initials;
     setBadgeColor(color, badge);
