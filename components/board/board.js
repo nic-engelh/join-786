@@ -339,14 +339,14 @@ function renderSubtasksProgress(taskId) {
     } else {
         var progressbarWidth = (subTasksDone / subTasksTotal) * 100;
     }
-    updateProgressBar(progressbarWidth, taskId);
+    updateProgressBar(progressbarWidth, taskId,subTasksDone ,subTasksTotal);
 }
 
-function updateProgressBar(value, taskId) {
+function updateProgressBar(value, taskId ,subTasksDone ,subTasksTotal) {
     let progressBar = document.querySelector(`#progress_${taskId}`);
     value = Math.round(value);
     progressBar.querySelector(".progress__fill").style.width = `${value}%`;
-    progressBar.querySelector(".progress__text").textContent = `${value}%`;
+    document.getElementById(`progress__text_${taskId}`).innerHTML = `${subTasksDone}/${subTasksTotal} Subtasks`;
 }
 
 /**
@@ -366,8 +366,8 @@ function generateTodoHTML(task) {
             <div class="progressPosition"> 
                   <div id="progress_${task.id}" class="progress">
                        <div class="progress__fill"></div>
-                       <span class="progress__text">0%</span>
-                  </div>
+                    </div>
+                       <span id="progress__text_${task.id}" class="progress__text"></span>
             </div>
             <div class="boardAssignedUserAndPrio">
                 <div id="boardAssignedUserInitialsContainer_${task.id}" class="d-flex boardAssignedUserInitialsContainer"></div>

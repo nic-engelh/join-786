@@ -20,3 +20,10 @@ async function init() {
 	updateDashBoard();
 	loadHeaderInitials();
 }
+
+function toggleHeaderModal(){
+	const dialog = document.getElementById("header_modal_container");
+    dialog.classList.toggle('visually-hidden');
+    dialog.classList.toggle('d-flex');
+    dialog.show();
+}
