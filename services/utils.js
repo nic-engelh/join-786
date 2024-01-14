@@ -67,14 +67,14 @@ function toggleHide (elementId) {
 function openSection (sectionID) {
   let sections = ["sectionAddTasks", "sectionBoard", "sectionJoin360", "contact-view-desktop", "contact-view-mobile"];
   for (const section of sections) {
-    if (section == "contact-view-desktop" && !checkWindowWidth()) {
-      sectionID = "contact-view-mobile";
-    }
     let element = document.getElementById(section);
     if (element.classList.contains('visually-hidden')){
       continue;
     }
     element.classList.add('visually-hidden');
+    if (sectionID == "contact-view-desktop") {
+      toggleHide("contact-view-mobile");
+    }
   }
   toggleHide(sectionID);
 }

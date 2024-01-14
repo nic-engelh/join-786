@@ -48,11 +48,11 @@ function renderContactsStructure (targetContainer) {
             filteredContacts = null;
         }
     }
-    addCreateContactAddButton(container);
+    addCreateContactAddButton(targetContainer, container);
 }
 
-function addCreateContactAddButton (container) {
-    if (container != "contact-list-mobile") {
+function addCreateContactAddButton (targetId, container) {
+    if (targetId !== "contact-list-mobile") {
         return false
     }
     container.innerHTML += createContactAddButtonHtml();

@@ -729,3 +729,17 @@ dialog {
     background-color: unset;
     padding: 0;
 }
+
+
+@media screen and (max-width: 1000px) {
+    #contact-view-desktop {
+        display: none;
+    }
+  }
+
+
+  @media screen and (min-width: 1000px) {
+    #contact-view-mobile {
+        display: none;
+    }
+  }
