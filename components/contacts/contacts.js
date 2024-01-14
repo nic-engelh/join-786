@@ -16,7 +16,7 @@ function renderContacts (contacts, targetContainer) {
         let key = profile['contactId'];
         let color = profile.color;
         let initials = generateInitials(name);
-        if(checkWindowWidth){
+        if(checkWindowWidth()){
             targetContainer.innerHTML += createContactProfilDesktopHTML(name, email, initials, key);
             setBadgeColor(color, `badge-${key}-desktop`);
         } else {
@@ -115,7 +115,7 @@ function loadEditContactData () {
     // read/find contact data
     // insert contact data into input fields
     let targetElement = "mobile";
-    if (checkWindowWidth){
+    if (checkWindowWidth()){
         targetElement = "desktop";
     }
     let name = document.getElementById(`edit-contact-name-${targetElement}`);
@@ -236,7 +236,7 @@ function checkWindowWidth () {
 }
 
 function deleteContact (contactID, bool) {
-    if (checkWindowWidth ()) {
+    if (checkWindowWidth()) {
         deleteContactDesktop(contactID, bool);
         return true
     }
@@ -278,14 +278,13 @@ function generateInitials (name) {
 
 function changeProfilBadge(initials, color) {
     let target = "mobile";
-    if (checkWindowWidth) {
+    if (checkWindowWidth()) {
         target = "desktop";
     }
     let badge = `contact-user-symbol-badge-${target}`;
     let initialBox = document.getElementById(`contact-user-symbol-initials-${target}`);
     initialBox.innerHTML = initials;
     setBadgeColor(color, badge);
-    // TODO add setbadgecolor 
 }
 
 
