@@ -64,14 +64,6 @@ function createContactAddButtonHtml () {
         <div id="contact-list-add-button" onclick="showDialog('overlay-add-contact-mobile');" >
             <img src="/assets/img/contacts/person_add.svg" alt="add person button">
         </div>
-        <div id="desktop-contact-list-add-button" onclick="showDialog('overlay-add-contact-mobile');" >
-       <b>Add new contact</b> <img src="/assets/img/contacts/person_add.svg" alt="add person button">
-    </div>
-    <div class="dektop-slogan-position">
-       <b class="contacts-desktop-h2">Contacts</b>
-       <div class="contacts-dekstop-line"></div>
-       <p class="contacts-dekstop-slogan">Better with a team</p>
-    </div>
     `
 }
 

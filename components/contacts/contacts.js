@@ -52,7 +52,7 @@ function renderContactsStructure (targetContainer) {
 }
 
 function addCreateContactAddButton (container) {
-    if (container != "contact-view-profil-main") {
+    if (container != "contact-list-mobile") {
         return false
     }
     container.innerHTML += createContactAddButtonHtml();

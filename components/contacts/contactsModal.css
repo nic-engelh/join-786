@@ -167,3 +167,48 @@
     border-color: white;
     box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.1);
 }
+
+#desktop-contact-list-add-button {
+    position: fixed;
+    top: 80px;
+    left: 320px;
+    padding: 12px;
+    gap: 10px;
+    width: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    border-radius: 10px;
+    border: 1px solid var(--version-2-main-color, #2A3647);
+    background: var(--version-2-main-color, #2A3647);
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+    cursor: pointer;
+    font-size: 20px;
+    font-weight: bold;
+    z-index: 10;
+}
+
+.desktop-slogan-container {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    margin-top: 10%;
+}
+
+.contacts-desktop-h2 {
+    font-size: 62px;
+    font-weight: 700;
+    font-family: Inter;
+}
+
+.contacts-desktop-slogan {
+    font-family: Inter;
+    font-size: 27px;
+    font-style: normal;
+    font-weight: 400;
+}
+.contacts-desktop-line{
+    border: 1px solid  #29ABE2;;
+    height: 59px;
+}
