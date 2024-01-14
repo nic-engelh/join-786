@@ -313,7 +313,9 @@ h3 {
 .progressPosition {
   display: flex;
   align-items: center;
+  flex-direction: row;
   gap: 16px;
+  width: 128px;
 }
 
 /* //////////////////////////////////////// board-modal /////////////////////////////////////////////////// */
@@ -503,27 +505,23 @@ h3 {
 
 .progress {
   position: relative;
-  width: 210px;
-  height: 20px;
+  width: 128px;
+  height: 15px;
   background: #9cbab4;
-  border-radius: 5px;
-  overflow: hidden;
+  border-radius: 8px;
+ 
 }
 
 .progress__fill {
   width: 0%;
   height: 100%;
-  background: #009579;
+  background: #4589ff;
   transition: all 0.2s;
 }
 
 .progress__text {
-  position: absolute;
-  top: 50%;
-  right: 45%;
-  transform: translateY(-50%);
-  font: bold 14px "Quicksand", sans-serif;
-  color: #ffffff;
+  font: bold 12px "Quicksand", sans-serif;
+  color: black;
 }
 .boardTaskScrolling {
   overflow-x: scroll;
