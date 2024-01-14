@@ -738,7 +738,17 @@ dialog {
     visibility: hidden;
 }
 
+
+#contact-view-desktop {
+    visibility: hidden;
+}
+
 @media(min-width:1000px) {
+
+    #contact-view-desktop {
+        visibility: visible;
+    }
+
    
     #contact-list-add-button {
         display: none;
