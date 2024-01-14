@@ -6,14 +6,14 @@
 
       <div class="form_categories">
         <span>Title<span class="add_task_required">*</span></span>
-        <input class="add_task_inputs" id="modal_task_title" required type="text" placeholder="Enter a title" />
+        <input class="add_task_inputs_modal" id="modal_task_title" required type="text" placeholder="Enter a title" />
         <span id="title_is_required" class="d-none">This field is required</span>
       </div>
   
   
       <div class="form_categories">
         <span>Description</span>
-        <textarea class="add_task_inputs" name="" id="modal_task_description" cols="30" rows="3"
+        <textarea class="add_task_inputs_modal" name="" id="modal_task_description" cols="30" rows="3"
           placeholder="Enter a Description"></textarea>
       </div>
   
@@ -36,14 +36,14 @@
   
       <div class="form_categories">
         <span>Due date<span class="add_task_required">*</span></span>
-        <input class="add_task_inputs" id="modal_task_date" required type="date">
+        <input class="add_task_inputs_modal" id="modal_task_date" required type="date">
         <span id="date_is_required" class="d-none">This field is required</span>
       </div>
   
   
       <div class="form_categories">
         <span>Category<span class="add_task_required">*</span></span>
-        <select required class="add_task_inputs" name="Category" id="modal_task_category">
+        <select required class="add_task_inputs_modal" name="Category" id="modal_task_category">
           <option value="" disabled selected hidden>Select task Category</option>
           <option value="Technical Task">Technical Task</option>
           <option value="User Story">User Story</option>
@@ -54,7 +54,7 @@
   
       <div class="form_categories">
         <span>Assigned to</span>
-        <input class="add_task_inputs" onclick="toggleSelectModal()" id="modal_task_user" placeholder="Select contacts to assign">
+        <input class="add_task_inputs_modal" onclick="toggleSelectModal()" id="modal_task_user" placeholder="Select contacts to assign">
         <div id="modal_tasks_contacts_container" class="d-none">
           <ul id="modal_assigned_user"></ul>
         </div>

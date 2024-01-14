@@ -37,7 +37,7 @@ async function loadBoardModal(id, title, description, date, category) {
                 <span class="task_category_font">Edit</span>
         </div>`;
     document.getElementById("subtask_button_input_modal").innerHTML = `
-    <button class="add_task_inputs" id="task_subtask_button_modal" onclick="transformSubtaskButtonModal('${id}')" type="text"><span>Add new Subtask</span><img src="/assets/img/addTask/add_subtask.png" alt=""></button>
+    <button class="add_task_inputs_modal" id="task_subtask_button_modal" onclick="transformSubtaskButtonModal('${id}')" type="text"><span>Add new Subtask</span><img src="/assets/img/addTask/add_subtask.png" alt=""></button>
     `;
     document.getElementById("modal_edit_task_finish").innerHTML = `
     <button id="create_task_button" value="Create Task " onclick="formValidationModal('${id}')"><span>OK</span><img src="/assets/img/addTask/check_icon.png" alt=""></button>
@@ -511,7 +511,7 @@ function transformSubtaskButtonModal(id) {
     const subtaskButton = document.getElementById('subtask_button_input_modal');
 
     subtaskButton.innerHTML = `
-    <div class="add_task_inputs">
+    <div class="add_task_inputs_modal">
         <input onkeyup="handleKeyUp(event)" id="subtask_input_modal" class="subtask_input" placeholder="Add new Subtask">
         <div class="delete_and_check">
             <img onclick="revertBackToButtonModal('${id}')" class="exit" id="exit" src="/assets/img/addTask/subtask_delete.png">
@@ -533,7 +533,7 @@ function revertBackToButtonModal(id) {
     const subtaskButton = document.getElementById('subtask_button_input_modal');
 
     subtaskButton.innerHTML = `
-    <button class="add_task_inputs" id="task_subtask_button_modal" onclick="transformSubtaskButtonModal('${id}')" type="text">
+    <button class="add_task_inputs_modal" id="task_subtask_button_modal" onclick="transformSubtaskButtonModal('${id}')" type="text">
     <span>Add new Subtask</span><img src="/assets/img/addTask/add_subtask.png" alt="">
     </button>
     `;
@@ -582,7 +582,7 @@ function modalTaskAddSubtasks(id) {
         const addedTask = subtasks.subtaskContent[i];
         subtaskContainer.innerHTML +=
             `<li id="subtask_list_item${i}" class="add_subtask_list">
-        <div style="display: flex; align-items: center; gap: 8px;">
+        <div style="display: flex; align-items: center;">
             <input readonly id="readonlyInputModal${i}" value="${addedTask}"
                 class="input_edit_subtask"></input>
             <div id="editAndDeleteModal${i}" class="edit_and_delete">
