@@ -82,16 +82,16 @@ function sortUserContacts () {
     return true
 }
 
-function addContactData () {
-    let name = document.getElementById('add-contact-name').value;
-    let email = document.getElementById('add-contact-email').value;
-    let phone = document.getElementById('add-contact-phone').value;
+function addContactData (target) {
+    let name = document.getElementById(`add-contact-name-${target}`).value;
+    let email = document.getElementById(`add-contact-email-${target}`).value;
+    let phone = document.getElementById(`add-contact-phone-${target}`).value;
     let id = generateContactID();
     let initials = generateInitials(name);
     userContacts.push({name: name, email: email, phone: phone , contactId: id, initials: initials, color: randomColor()});
     USERS[ACTIVEUSERKEY].contacts = userContacts;
     renderContactList();
-    hideDialog('overlay-add-contact-mobile');
+    hideDialog(`overlay-add-contact-${target}`);
     showSuccessInfo("0");
 }
 
