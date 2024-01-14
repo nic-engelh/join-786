@@ -48,12 +48,12 @@
     background-color: #000;
 }
 
-#add-contact-text-Desktop {
+#add-contact-text-desktop {
     width: 364px;
     height: 153px;
     position: absolute;
-    top: 280px;
-    left: 800px;
+    top: 137px;
+    right: 48px;
 }
 
 #frame-79-desktop {
@@ -73,19 +73,19 @@
     padding-left: 40px;
 }
 
-.add_Desktop{
-    width: 50px;
+.add-desktop{
+    width: 55.6px;
+    height: 66.483px;
 }
 
 .contact-bg-desktop {
-    height: 371px;
-    width: 462px;
-    padding: 66px 48px;
+    height: 460px;
+    padding: 66px 48px !important;
     background-color: #2A3647;
     border-radius: 30px 0px 0px 30px;
     position: absolute;
-    left: 5%;
-    top: 20%;
+    left: 0%;
+    top: 0%;
 }
 
 .overlay-desktop {
@@ -100,7 +100,6 @@
     align-items: center;
 }
 
-dialog {
+.d-block {
     display: block !important;
 }
-

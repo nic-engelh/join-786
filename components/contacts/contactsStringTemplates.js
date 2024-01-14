@@ -126,7 +126,7 @@ function createContactProfilViewDesktopHTML (contactInitials, contactName, conta
                 </div>
                 <span id="frame-81">${contactName}</span>
                 <div id="contact-view-options-container">
-                    <div id="contact-opitons-edit" class="d-flex flex-row justify-content-center g-8  pointer" onclick="showDialog('overlay-edit-contact-Desktop'); loadEditContactData()";">
+                    <div id="contact-opitons-edit" class="d-flex flex-row justify-content-center g-8  pointer" onclick="showDialog('overlay-edit-contact-desktop'); loadEditContactData()";">
                         <div class="symbol-frame">
                             <img src="/assets/img/contacts/edit.svg" alt="Editieren">
                         </div>
