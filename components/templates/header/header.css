@@ -18,6 +18,7 @@
     flex-direction: row;
     gap: 16px;
     padding-right: 24px;
+    align-items: center;
 }
 
 .header_user_container img {
