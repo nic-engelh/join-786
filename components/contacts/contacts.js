@@ -100,14 +100,23 @@ function setActiveContact (contactID) {
     return true
 } 
 
+
+/**
+ * function loads needed contact data into the input fields of the opened edit contact modal version
+ * 
+ */
 function loadEditContactData () {
     let contactObject = findContact(activeContact);
      // show modal-edit-contact
     // read/find contact data
     // insert contact data into input fields
-    let name = document.getElementById('edit-contact-name');
-    let email = document.getElementById('edit-contact-email');
-    let phone = document.getElementById('edit-contact-phone');
+    let targetElement = "mobile";
+    if (checkWindowWidth){
+        targetElement = "desktop";
+    }
+    let name = document.getElementById(`edit-contact-name-${targetElement}`);
+    let email = document.getElementById(`edit-contact-email-${targetElement}`);
+    let phone = document.getElementById(`edit-contact-phone-${targetElement}`);
     let initials = generateInitials(contactObject.name);
     let color = contactObject.color;
     changeProfilBadge(initials, color);
@@ -116,18 +125,24 @@ function loadEditContactData () {
     phone.value = contactObject.phone;
 }
 
-function saveEditedContactData () {
+
+/**
+ * function fetches all values from input fields and updates USERS Object accordingly
+ * 
+ * @param {string} target 
+ */
+function saveEditedContactData (target) {
     let contactObject = findContact(activeContact);
     // wait for input or changes - user clicks edit button
     // read input/changes
     // save input/changes within the contacts array with the id/key
     // hide or move out the modal
     // show user sign with succesfull changes - user feedback
-    let nameEdited = document.getElementById('edit-contact-name').value;
-    let emailEdited = document.getElementById('edit-contact-email').value;
-    let phoneEdited = document.getElementById('edit-contact-phone').value;
+    let nameEdited = document.getElementById(`edit-contact-name-${target}`).value;
+    let emailEdited = document.getElementById(`edit-contact-email-${target}`).value;
+    let phoneEdited = document.getElementById(`edit-contact-phone-${target}`).value;
     userContacts.push({name: nameEdited, email: emailEdited, phone: phoneEdited , contactId: activeContact, initials: contactObject.initials, color: contactObject.color});
-    hideDialog('overlay-edit-contact-mobile');
+    hideDialog(`overlay-edit-contact-${target}`);
     deleteContact(activeContact, false);
     USERS[ACTIVEUSERKEY].contacts = userContacts;
     renderContactList();
