@@ -16,8 +16,13 @@ function renderContacts (contacts, targetContainer) {
         let key = profile['contactId'];
         let color = profile.color;
         let initials = generateInitials(name);
-        targetContainer.innerHTML += createContactProfilHTML(name, email, initials, key);
-        setBadgeColor(color, `badge-${key}`);
+        if(checkWindowWidth){
+            targetContainer.innerHTML += createContactProfilDesktopHTML(name, email, initials, key);
+            setBadgeColor(color, `badge-${key}-desktop`);
+        } else {
+            targetContainer.innerHTML += createContactProfilHTML(name, email, initials, key);
+            setBadgeColor(color, `badge-${key}`);
+        }
     }
 }
 

@@ -16,6 +16,24 @@ function createContactProfilHTML (name, email, badgeInitials, contactID) {
     `
 }
 
+function createContactProfilDesktopHTML (name, email, badgeInitials, contactID) {
+    return /*html*/`
+        <div id="${contactID}" class="contact-list-profile-mobile pointer" onclick="showProfilDetails('${contactID}'); setActiveContact('${contactID}');">
+            <div class="contact-list-profile-badge-box" id="badge-${contactID}-box">
+                    <div class="ellipse-profil-badge" id="badge-${contactID}-desktop">
+                        <span id="badge-${contactID}-span-desktop">${badgeInitials}</span>
+                    </div>
+                </div>
+                <div class="contact-name-box">
+                    <span class="contact-name" id="contact-${contactID}-name">${name}</span>
+                    <span class="contact-email" id="contact-${contactID}-email">${email}</span>
+                </div>
+            </div>
+        </div>
+       
+    `
+}
+
 function createSuccessInfoHTML () {
     return  /*html*/`
             <div class="alert d-flex align-items-center justify-content-center" >
@@ -74,7 +92,7 @@ function createContactViewProfilHTML (contactInitials, contactName, contactEmail
         </section>
         <section id="contact-view-middle-section" class="d-flex flex-column g-21 ms-16">
                 <div class="d-flex flex-row base-line g-20">
-                    <div id="frame-105" class="d-flex justify-content-center align-items-center">
+                    <div id="frame-105-desktop" class="d-flex justify-content-center align-items-center">
                         <span class="" id="contact-view-symbol-initials">${contactInitials}</span>
                     </div>
                     <span id="frame-81">${contactName}</span>  
