@@ -222,7 +222,7 @@ function showProfilDetails (contactId) {
         renderContactProfilDesktop(contactId);
         return true
     }
-    toggleHide("contact-list-mobile");
+    toggleHide("contact-view-mobile");
     renderContactProfil(contactId);
     return false
 }

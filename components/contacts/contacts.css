@@ -737,9 +737,11 @@ dialog {
     }
   }
 
-
   @media screen and (min-width: 1000px) {
     #contact-view-mobile {
+        display: none;
+    }
+    #contact-view-profil-main {
         display: none;
     }
   }
