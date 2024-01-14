@@ -140,3 +140,14 @@
     background-size: 24px;
     cursor: pointer;
 }
+
+#contact-user-symbol-badge-desktop {
+    width: 120px;
+    height: 120px;
+    border-radius: 70px;
+    border-width: 3px;
+    border-style: solid;
+    border-color: white;
+    box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.1);
+    background-color: #D1D1D1;
+}

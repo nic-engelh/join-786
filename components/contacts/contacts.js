@@ -100,7 +100,6 @@ function setActiveContact (contactID) {
     return true
 } 
 
-
 /**
  * function loads needed contact data into the input fields of the opened edit contact modal version
  * 
@@ -124,7 +123,6 @@ function loadEditContactData () {
     email.value = contactObject.email;
     phone.value = contactObject.phone;
 }
-
 
 /**
  * function fetches all values from input fields and updates USERS Object accordingly
@@ -274,8 +272,12 @@ function generateInitials (name) {
 }
 
 function changeProfilBadge(initials, color) {
-    let badge = document.getElementById('contact-user-symbol-badge');
-    let initialBox = document.getElementById('contact-user-symbol-initials');
+    let target = "mobile";
+    if (checkWindowWidth) {
+        target = "desktop";
+    }
+    let badge = document.getElementById(`contact-user-symbol-badge-${target}`);
+    let initialBox = document.getElementById(`contact-user-symbol-initials-${target}`);
     initialBox.innerHTML = initials;
     setBadgeColor(color, badge);
     // TODO add setbadgecolor 
