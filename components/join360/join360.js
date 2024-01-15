@@ -31,7 +31,6 @@ function updateToDoWidget() {
     todo.innerHTML = `<b>${size}</b>`;
 }
 
-
 /**
  * function filters all tasks with status "inprogress" from active user tasks object
  * 
