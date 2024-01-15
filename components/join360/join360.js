@@ -1,21 +1,24 @@
-function init() {
-    updateDashBoard();
-}
+// function init() {
+//     updateDashBoard();
+// }
 
 /**
  * main functions for updating the drag & drop fields for tasks objects
  */
-function updateDashBoard() {
-    updateToDoWidget();
-    updateInProgressWidget();
-    updateFeedbackWidget();
-    updateDoneWidget();
-    updateNameWidget();
-    updateUrgentWidget();
+async function updateDashBoard() {
+    await updateToDoWidget();
+    await updateInProgressWidget();
+    await updateFeedbackWidget();
+    await updateDoneWidget();
+    await updateNameWidget();
+    await updateUrgentWidget();
 }
 
 /**
  * function filters all tasks with status todo from active user tasks object
+ * 
+ * 
+ * WENN DIESE FUNKTION ASYNC updateBoardWidget Await hat funktioniert es nicht mehr
  * 
  */
 function updateToDoWidget() {
@@ -61,12 +64,12 @@ function updateFeedbackWidget() {
  * function filters all tasks with status "done" from active user tasks object
  * 
  */
-function updateDoneWidget() {
+async function updateDoneWidget() {
     let done = document.getElementById('j36_done');
     done.innerHTML = clear();
     let doneTasks = getFilteredTasksByStatus("done");
     let size = Object.keys(doneTasks).length;
-    updateBoardWidget(size)
+    await updateBoardWidget(size)
     done.innerHTML = `<b>${size}</b>`;
 }
 
@@ -74,7 +77,7 @@ function updateDoneWidget() {
  * update task in board 
  * @param {number} number 
  */
-function updateBoardWidget(number) {
+async function updateBoardWidget(number) {
     let board = document.getElementById('j36_board');
     let size = + number;
     board.innerHTML = clear();
@@ -99,7 +102,7 @@ function getFilteredTasksByStatus(targetValue) {
  * function changes the urgent widget data. It searches for the number of tasks which are urgent and the next upcoming dead line date.
  * 
  */
-function updateUrgentWidget() {
+async function updateUrgentWidget() {
     let deadlineDate, nextDate, urgentWidget, size;
     urgentWidget = document.getElementById('j36_Urgent');
     urgentWidget.innerHTML = clear();    

@@ -398,9 +398,9 @@ ul {
     left: 55%;
   }
 
-  /* .add_task_low_button {
+  .add_task_low_button {
     width: 260px;
-  } */
+  }
 
   .tasks_line {
     border: 1px solid #D1D1D1;
@@ -529,7 +529,7 @@ ul {
     gap: 10px;
   }
 
-  /* .add_task_low_button {
+  .add_task_low_button {
     width: 290px;
     height: 30px;
   }
@@ -542,7 +542,7 @@ ul {
   #medium_button {
     width: 290px;
     height: 30px;
-  } */
+  }
 }
 
 
