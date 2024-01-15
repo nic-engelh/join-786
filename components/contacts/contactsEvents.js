@@ -17,22 +17,36 @@
  */
 function checkScreenSize() {
     // Bildschirmbreite abrufen
-    var screenWidth = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
-  
+    const screenWidth = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
+    let modalA = document.getElementById('overlay-add-contact-mobile');
+    let modalC = document.getElementById('overlay-edit-contact-mobile');
+    let modalB = document.getElementById('overlay-add-contact-desktop');
+    let modalD = document.getElementById('overlay-edit-contact-desktop');
     // Überprüfen, ob die Bildschirmbreite größer als 1000px ist
-    if (screenWidth > 1000) {
+    if (screenWidth >= 1000) {
       // Modal_a schließen (falls es geöffnet ist)
-      var modalA = document.getElementById('modal_a');
-      if (modalA) {
-        modalA.style.display = 'none';
+      if (modalA.open) {
+        modalA.close();
+        modalB.showModal();
       }
-  
-      // Modal_b öffnen (falls vorhanden)
-      var modalB = document.getElementById('modal_b');
-      if (modalB) {
-        modalB.style.display = 'block';
+      if (modalC.open) {
+        modalC.close();
+        modalD.showModal();
+        loadEditContactData();
       }
     }
+    if (screenWidth < 1000) {
+      if (modalB.open) {
+        modalB.close();
+        modalA.showModal();
+      }
+      if (modalD.open) {
+        modalD.close();
+        modalC.showModal();
+        loadEditContactData(); 
+      }
+    }
+
   }
   
   // Eventlistener hinzufügen, um die Funktion bei Änderungen der Bildschirmgröße aufzurufen
