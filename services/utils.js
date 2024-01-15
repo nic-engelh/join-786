@@ -66,6 +66,7 @@ function toggleHide (elementId) {
  */
 function openSection (sectionID) {
   let sections = ["sectionAddTasks", "sectionBoard", "sectionJoin360", "contact-view-desktop", "contact-view-mobile"];
+  removeElemente("contact-view-profil-main");
   for (const section of sections) {
     let element = document.getElementById(section);
     if (element.classList.contains('visually-hidden')){

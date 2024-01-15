@@ -34,9 +34,9 @@
 }
 
 #group-13-desktop {
-    position: absolute;
-    top: 186px;
-    left: 535px;
+    position: relative;
+    top: -258px;
+    left: -199px;
 }
 
 #addcontact-top-close-desktop {

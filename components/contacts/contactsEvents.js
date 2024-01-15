@@ -4,15 +4,8 @@
 // if so remove contact-view-profil-main
 
 
-// event listener 2:
-// check if modal (desktop or mobile) is active
-// listen for innerwidth with changes event
-// if innerwidth is < 1000 px activate modal mobile and close modal desktop
-// if innderwidth is > 1000 px activete modal desktop and close modal mobile
-
-
 /**
- * function for check window size and controlling modals
+ * function for checking window size and controlling modals
  * 
  */
 function checkScreenSize() {
@@ -51,6 +44,5 @@ function checkScreenSize() {
   
   // Eventlistener hinzufügen, um die Funktion bei Änderungen der Bildschirmgröße aufzurufen
   window.addEventListener('resize', checkScreenSize);
-  
   // Die Funktion beim Laden der Seite einmalig aufrufen, um den initialen Status zu überprüfen
   window.addEventListener('load', checkScreenSize);
