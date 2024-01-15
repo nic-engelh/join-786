@@ -509,39 +509,19 @@ ul {
     left: 64%
   }
   #sectionAddTasks {
-    margin-left: 280px;
-  }
-
-  .add_task_inputs {
-    width: 290px !important;
-  }
-
-  .form_categories_date input {
-    width: 260px !important;
-  }
-
-  .form_categories_text {
-    top: 270px;
-  }
-
-  .add_task_priorities {
-    flex-direction: column;
-    gap: 10px;
+    margin-left: 245px;
   }
 
   .add_task_low_button {
     width: 290px;
-    height: 30px;
   }
 
   #urgent_button {
     width: 290px;
-    height: 30px;
   }
 
   #medium_button {
     width: 290px;
-    height: 30px;
   }
 }
 

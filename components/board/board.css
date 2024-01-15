@@ -6,9 +6,9 @@ body {
   font-weight: 400;
   margin: 0;
   padding: 0;
-  padding-bottom: 100px;
   scrollbar-color: #2A3647 white;
   scrollbar-width: none;
+  overflow-x: hidden;
 }
 
 body::-webkit-scrollbar {
@@ -616,9 +616,13 @@ border-radius: 8px;
     overscroll-behavior-inline: contain;
     -webkit-overflow-scrolling: touch;
   }
+  body{
+    padding-bottom: 100px !important;
+  }
 }
 
 @media(min-width:1350px) {
+
   #sectionBoard {
     margin-right: 64px;
   }

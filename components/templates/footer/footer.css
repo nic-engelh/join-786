@@ -144,7 +144,7 @@ a {
 
   .footerBoard img {
     position: absolute;
-    top: 8px;
+    top: 12px;
     left: 60px;
     width: 30px;
     height: 30px;
@@ -170,7 +170,7 @@ a {
 
   .footerTasks img {
     position: absolute;
-    top: 8px;
+    top: 12px;
     left: 60px;
     width: 30px;
     height: 30px;
