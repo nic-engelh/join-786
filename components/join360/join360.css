@@ -19,6 +19,7 @@
     background-image: url("/assets/img/Group 7 _hover.svg");
     background-repeat: no-repeat;
     background-position: 10% 50%;
+
     #j36_todo {
         color: white;
     }
@@ -371,10 +372,18 @@ h1 {
         min-width: 0px !important;
     }
 
+    .j36_toDoDone {
+        background-image: unset;
+    }
+
     .j36_toDo {
         width: 100%;
         min-width: 0px !important;
         background-image: unset;
+    }
+
+    .j36_urgent img {
+        display: none;
     }
 
     .j36_ToDoPosition {
