@@ -135,7 +135,10 @@ function checkUrgentDates(urgentTaskIds) {
 function generateUrgentWidgetHTML(size, deadlineDate) {
     return /*html*/` 
         <div class="j36_urgent">
-        <img class="j36_image1" src="assets/img/Ellipse 4.svg" alt="">
+        <svg width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle id="Ellipse 4" cx="30" cy="30" r="30" fill="#FF3D00"/>
+        </svg>
+        
         <div class="j36_numberPosition">
             <b>${size}</b>
             <p class="j36_todoText">Urgent</p>
