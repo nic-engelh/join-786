@@ -348,6 +348,24 @@ h3 {
   margin: 0;
 }
 
+@keyframes cardAnimation {
+  0% {
+    transform: translate(100%, -30%);
+    opacity: 0;
+  }
+  100% {
+    transform: translate(-100%, -30%);
+    opacity: 1;
+  }
+}
+
+#board_modal{
+  position: fixed;
+  top: 40%;
+  left: 50%; /* Startposition von rechts außerhalb des Bildschirms */
+  transform: translate(-50%, -50%);
+  animation: cardAnimation 0.5s ease-in-out 0s 1 normal forwards;
+}
 .task_card {
   background-color: white;
   display: flex;
@@ -601,7 +619,13 @@ border-radius: 8px;
     overflow-x: hidden;
     overscroll-behavior-inline: contain;
   }
-
+  #board_modal{
+    position: fixed;
+    top: 40%;
+    left: 80%; /* Startposition von rechts außerhalb des Bildschirms */
+    transform: translate(-50%, -50%);
+    animation: cardAnimation 0.5s ease-in-out 0s 1 normal forwards;
+  }
   .board_h1 {
     margin-left: 0px !important;
   }
@@ -670,4 +694,13 @@ border-radius: 8px;
     margin-bottom: 10px;
   }
 
+}
+@media(max-width:550px){
+  #board_modal{
+    position: fixed;
+    top: 40%;
+    left: 95%; /* Startposition von rechts außerhalb des Bildschirms */
+    transform: translate(-50%, -50%);
+    animation: cardAnimation 0.5s ease-in-out 0s 1 normal forwards;
+  }
 }
