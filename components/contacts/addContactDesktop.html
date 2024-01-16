@@ -1,68 +1,102 @@
-    <dialog id="overlay-add-contact-desktop">
-        <div class="overlay-desktop">
-            <div id="add-contact-text-desktop">
-                <form onsubmit="addContactData('desktop'); return false;">
-                    <div class="d-flex flex-column justify-content-center align-items-center g-24 grow-1">
-                        <label class="visually-hidden" for="add-contact-name-desktop">Name:</label>
-                        <input type="text" name="fname" id="add-contact-name-desktop" required
-                            class="contact-input-desktop contact-input-name-desktop" placeholder="Name" aria-invalid="true"
-                            aria-describedby="description">
-                        <label class="visually-hidden" for="add-contact-email-desktop">Email:</label>
-                        <input type="email" name="femail" id="add-contact-email-desktop" required
-                            class="contact-input-desktop  contact-input-email-desktop" placeholder="Email" aria-invalid="true"
-                            aria-describedby="description">
-                        <label class="visually-hidden" for="add-contact-phone-desktop">Phone:</label>
-                        <input type="tel" name="fphone" id="add-contact-phone-desktop" required
-                            class="contact-input-desktop  contact-input-phone-desktop" placeholder="Phone" aria-invalid="true"
-                            aria-describedby="description">
-                    </div>
-                    <button type="submit" class="add-contact-btn-desktop pointer d-flex flex-row justify-content-center"
-                        id="add-contact-create-button">
-                        <span>Create contact</span>
-                        <div id="add-contact-create-button-symbol-box">
-                            <img src="/assets/img/contacts/check.svg" alt="check symbol"
-                                id="add-contact-create-button-symbol">
-                        </div>
-                    </button>
-                    <button type="button" class="add-contact-btn-desktop-close pointer d-flex flex-row justify-content-center"
-                    id="add-contact-create-button" onclick="hideDialog('overlay-add-contact-desktop');">
-                    <span>Cancel</span>
-                    <div id="add-contact-create-button-symbol-box">
-                        <img src="/assets/img/contacts/check.svg" alt="check symbol"
-                            id="add-contact-create-button-symbol">
-                    </div>
-                </button>
-                </form>
-            </div>
-            <div class="contact-bg-desktop d-flex align-items-center" id="frame-195">
-                <div id="addcontact-top-close-desktop" onclick="hideDialog('overlay-add-contact-desktop');" class="pointer">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-                        <mask id="mask0_123233_666" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="24" height="24">
-                          <rect width="24" height="24" fill="#D9D9D9"/>
+ <dialog id="overlay-add-contact-desktop">
+    <div class="overlay-desktop">
+        <section id="add-contact-right-section">
+            <div id="add-contact-right-section-text-close-box">
+                <div id="addcontact-top-close-desktop"
+                    onclick="hideDialog('overlay-add-contact-desktop');"
+                    class="pointer">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24"
+                        height="24" viewBox="0 0 24 24" fill="none">
+                        <mask id="mask0_123233_666" style="mask-type:alpha"
+                            maskUnits="userSpaceOnUse" x="0" y="0" width="24"
+                            height="24">
+                            <rect width="24" height="24" fill="#D9D9D9" />
                         </mask>
                         <g mask="url(#mask0_123233_666)">
-                          <path d="M12 13.4L7.09999 18.3C6.91665 18.4834 6.68332 18.575 6.39999 18.575C6.11665 18.575 5.88332 18.4834 5.69999 18.3C5.51665 18.1167 5.42499 17.8834 5.42499 17.6C5.42499 17.3167 5.51665 17.0834 5.69999 16.9L10.6 12L5.69999 7.10005C5.51665 6.91672 5.42499 6.68338 5.42499 6.40005C5.42499 6.11672 5.51665 5.88338 5.69999 5.70005C5.88332 5.51672 6.11665 5.42505 6.39999 5.42505C6.68332 5.42505 6.91665 5.51672 7.09999 5.70005L12 10.6L16.9 5.70005C17.0833 5.51672 17.3167 5.42505 17.6 5.42505C17.8833 5.42505 18.1167 5.51672 18.3 5.70005C18.4833 5.88338 18.575 6.11672 18.575 6.40005C18.575 6.68338 18.4833 6.91672 18.3 7.10005L13.4 12L18.3 16.9C18.4833 17.0834 18.575 17.3167 18.575 17.6C18.575 17.8834 18.4833 18.1167 18.3 18.3C18.1167 18.4834 17.8833 18.575 17.6 18.575C17.3167 18.575 17.0833 18.4834 16.9 18.3L12 13.4Z" fill="#2A3647"/>
+                            <path
+                                d="M12 13.4L7.09999 18.3C6.91665 18.4834 6.68332 18.575 6.39999 18.575C6.11665 18.575 5.88332 18.4834 5.69999 18.3C5.51665 18.1167 5.42499 17.8834 5.42499 17.6C5.42499 17.3167 5.51665 17.0834 5.69999 16.9L10.6 12L5.69999 7.10005C5.51665 6.91672 5.42499 6.68338 5.42499 6.40005C5.42499 6.11672 5.51665 5.88338 5.69999 5.70005C5.88332 5.51672 6.11665 5.42505 6.39999 5.42505C6.68332 5.42505 6.91665 5.51672 7.09999 5.70005L12 10.6L16.9 5.70005C17.0833 5.51672 17.3167 5.42505 17.6 5.42505C17.8833 5.42505 18.1167 5.51672 18.3 5.70005C18.4833 5.88338 18.575 6.11672 18.575 6.40005C18.575 6.68338 18.4833 6.91672 18.3 7.10005L13.4 12L18.3 16.9C18.4833 17.0834 18.575 17.3167 18.575 17.6C18.575 17.8834 18.4833 18.1167 18.3 18.3C18.1167 18.4834 17.8833 18.575 17.6 18.575C17.3167 18.575 17.0833 18.4834 16.9 18.3L12 13.4Z"
+                                fill="#2A3647" />
                         </g>
-                      </svg>
+                    </svg>
                 </div>
+                <div id="add-contact-right-section-text-icon-box">
+                    <div id="add-contact-text-desktop">
+                        <form
+                            onsubmit="addContactData('desktop'); return false;">
+                            <div
+                                class="d-flex flex-column justify-content-center align-items-center g-24 grow-1">
+                                <label class="visually-hidden"
+                                    for="add-contact-name-desktop">Name:</label>
+                                <input type="text" name="fname"
+                                    id="add-contact-name-desktop" required
+                                    class="contact-input-desktop contact-input-name-desktop"
+                                    placeholder="Name" aria-invalid="true"
+                                    aria-describedby="description">
+                                <label class="visually-hidden"
+                                    for="add-contact-email-desktop">Email:</label>
+                                <input type="email" name="femail"
+                                    id="add-contact-email-desktop" required
+                                    class="contact-input-desktop  contact-input-email-desktop"
+                                    placeholder="Email" aria-invalid="true"
+                                    aria-describedby="description">
+                                <label class="visually-hidden"
+                                    for="add-contact-phone-desktop">Phone:</label>
+                                <input type="tel" name="fphone"
+                                    id="add-contact-phone-desktop" required
+                                    class="contact-input-desktop  contact-input-phone-desktop"
+                                    placeholder="Phone" aria-invalid="true"
+                                    aria-describedby="description">
+                            </div>
+                            <button type="submit"
+                                class="add-contact-btn-desktop pointer d-flex flex-row justify-content-center"
+                                id="add-contact-create-button">
+                                <span>Create contact</span>
+                                <div id="add-contact-create-button-symbol-box">
+                                    <img src="/assets/img/contacts/check.svg"
+                                        alt="check symbol"
+                                        id="add-contact-create-button-symbol">
+                                </div>
+                            </button>
+                            <button type="button"
+                                class="add-contact-btn-desktop-close pointer d-flex flex-row justify-content-center"
+                                id="add-contact-create-button"
+                                onclick="hideDialog('overlay-add-contact-desktop');">
+                                <span>Cancel</span>
+                                <div id="add-contact-create-button-symbol-box">
+                                    <object data="/assets/img/contacts/iconoir_cancel.svg" type="image/svg+xml">
+                                        <!---Fallback--->
+                                        Ihr Browser kann leider kein svg darstellen!  
+                                    </object>
+                                </div>
+                            </button>
+                        </form>
+                    </div>
+                    <div id="group-13-desktop">
+                        <div id="frame-79-desktop"
+                            class="d-flex justify-content-center align-items-center">
+                            <!-- Insert SVG for Person -->
+                            <img src="/assets/img/contacts/person.png" alt>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </section>
+        <section id="add-contact-left-section">
+            <div class="contact-bg-desktop" id="frame-195">
                 <div class="d-flex flex-column g-16" id="frame-206_Desktop">
-                    <img class="add-desktop" src="/assets/img/Capa 2.svg" alt="">
+                    <img class="add-desktop" src="/assets/img/Capa 2.svg" alt>
                     <div class="d-flex flex-column g-8" id="frame-205">
                         <span class="fw-7 fs-6 white">Add contact</span>
-                        <span class="fw-4 fs-2 white">Tasks are better with a team!</span>
+                        <span class="fw-4 fs-2 white">Tasks are better with a
+                            team!</span>
                     </div>
-                    <div class="bw-3 w-9 bc-lightblue" id="addcontact-top-text-Vector">
-                    </div>
-                </div>
-                <div id="group-13-desktop">
-                    <div id="frame-79-desktop" class="d-flex justify-content-center align-items-center">
-                        <svg width="44" height="44" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path
-                                d="M21.9993 21.9998C19.066 21.9998 16.5549 20.9554 14.466 18.8665C12.3771 16.7776 11.3327 14.2665 11.3327 11.3332C11.3327 8.39984 12.3771 5.88873 14.466 3.79984C16.5549 1.71095 19.066 0.666504 21.9993 0.666504C24.9327 0.666504 27.4438 1.71095 29.5327 3.79984C31.6216 5.88873 32.666 8.39984 32.666 11.3332C32.666 14.2665 31.6216 16.7776 29.5327 18.8665C27.4438 20.9554 24.9327 21.9998 21.9993 21.9998ZM37.9994 43.3332H5.99935C4.53268 43.3332 3.27713 42.811 2.23268 41.7665C1.18824 40.7221 0.666016 39.4665 0.666016 37.9998V35.8665C0.666016 34.3554 1.0549 32.9665 1.83268 31.6998C2.61046 30.4332 3.64379 29.4665 4.93268 28.7998C7.68824 27.4221 10.4882 26.3887 13.3327 25.6998C16.1771 25.0109 19.066 24.6665 21.9993 24.6665C24.9327 24.6665 27.8216 25.0109 30.666 25.6998C33.5105 26.3887 36.3105 27.4221 39.066 28.7998C40.3549 29.4665 41.3882 30.4332 42.166 31.6998C42.9438 32.9665 43.3327 34.3554 43.3327 35.8665V37.9998C43.3327 39.4665 42.8105 40.7221 41.766 41.7665C40.7216 42.811 39.466 43.3332 37.9994 43.3332ZM5.99935 37.9998H37.9994V35.8665C37.9994 35.3776 37.8771 34.9332 37.6327 34.5332C37.3882 34.1332 37.066 33.8221 36.666 33.5998C34.266 32.3998 31.8438 31.4998 29.3994 30.8998C26.9549 30.2998 24.4882 29.9998 21.9993 29.9998C19.5105 29.9998 17.0438 30.2998 14.5993 30.8998C12.1549 31.4998 9.73268 32.3998 7.33268 33.5998C6.93268 33.8221 6.61046 34.1332 6.36602 34.5332C6.12157 34.9332 5.99935 35.3776 5.99935 35.8665V37.9998ZM21.9993 16.6665C23.466 16.6665 24.7216 16.1443 25.766 15.0998C26.8105 14.0554 27.3327 12.7998 27.3327 11.3332C27.3327 9.8665 26.8105 8.61095 25.766 7.5665C24.7216 6.52206 23.466 5.99984 21.9993 5.99984C20.5327 5.99984 19.2771 6.52206 18.2327 7.5665C17.1882 8.61095 16.666 9.8665 16.666 11.3332C16.666 12.7998 17.1882 14.0554 18.2327 15.0998C19.2771 16.1443 20.5327 16.6665 21.9993 16.6665Z"
-                                fill="white" />
-                        </svg>
+                    <div class="bw-3 w-9 bc-lightblue"
+                        id="addcontact-top-text-Vector">
                     </div>
                 </div>
             </div>
-        </div>
-    </dialog>
+        </section>
+    </div>
+</dialog>
