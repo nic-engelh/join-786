@@ -104,7 +104,7 @@ function getFilteredTasksByStatus(targetValue) {
 async function updateUrgentWidget() {
     let deadlineDate, nextDate, urgentWidget, size;
     urgentWidget = document.getElementById('j36_Urgent');
-    urgentWidget.innerHTML = clear();    
+    urgentWidget.innerHTML = clear();
     urgentTaskIds = Object.keys(filterNestedObject(userTasks, 'urgent', 'prio'));
     size = Object.keys(urgentTaskIds).length;
     deadlineDate = 'No';
@@ -121,24 +121,22 @@ async function updateUrgentWidget() {
  * @returns {string} deadline 
  */
 function checkUrgentDates(urgentTaskIds) {
-    deadlineDate = new Date(USERS[ACTIVEUSERKEY].tasks[urgentTaskIds[0]].date); 
+    deadlineDate = new Date(USERS[ACTIVEUSERKEY].tasks[urgentTaskIds[0]].date);
     for (const taskId of urgentTaskIds) {
-        nextDate = new Date(USERS[ACTIVEUSERKEY].tasks[taskId].date) ;
-        if (nextDate < deadlineDate) { 
+        nextDate = new Date(USERS[ACTIVEUSERKEY].tasks[taskId].date);
+        if (nextDate < deadlineDate) {
             deadlineDate = nextDate;
         }
     };
     deadlineDate = deadlineDate.toLocaleDateString('de-DE', { month: 'long', day: 'numeric', year: 'numeric' });;
     return deadlineDate;
-} 
+}
 
 function generateUrgentWidgetHTML(size, deadlineDate) {
     return /*html*/` 
         <div class="j36_urgent">
         <div  style="width: 60px; height: 60px;">
-           <svg width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <circle id="Ellipse 4" cx="30" cy="30" r="30" fill="#FF3D00"/>
-           </svg>
+        <img src="/assets/img/Ellipse 4 (1).svg" alt="">
         </div>
         <div class="j36_numberPosition">
             <b>${size}</b>
