@@ -126,29 +126,43 @@ function createContactOptionsHTML (activeContact) {
     `
 }
 
+function createContactAddButtonDesktopHTML () {
+
+    return /*html*/`
+        <div id="desktop-contact-list-add-button-box">
+            <div id="desktop-contact-list-add-button" onclick="showDialog('overlay-add-contact-desktop');">
+                    <b>Add new contact</b> <img src="/assets/img/contacts/person_add.svg" alt="add person button">
+            </div>
+        </div>
+        
+    `
+}
+
 
 function createContactProfilViewDesktopHTML (contactInitials, contactName, contactEmail, contactPhone) {
-    return `
+    return /*html*/`
         <div id="contact-view-middle-section" class="d-flex flex-column g-21 ms-16">
             <div class="d-flex flex-row base-line g-20">
                 <div id="frame-105-desktop" class="d-flex justify-content-center align-items-center">
                     <span class="" id="contact-view-symbol-initials">${contactInitials}</span>
                 </div>
-                <span id="frame-81">${contactName}</span>
-                <div id="contact-view-options-container">
-                    <div id="contact-opitons-edit" class="d-flex flex-row justify-content-center g-8  pointer" onclick="showDialog('overlay-edit-contact-desktop'); loadEditContactData()";">
-                        <div class="symbol-frame">
-                            <img src="/assets/img/contacts/edit.svg" alt="Editieren">
+                    <div id="contact-view-profil-name-box" class="d-flex flex-column">
+                        <span id="frame-81">${contactName}</span>
+                        <div id="contact-view-options-container">
+                            <div id="contact-opitons-edit" class="d-flex flex-row justify-content-center g-8  pointer" onclick="showDialog('overlay-edit-contact-desktop'); loadEditContactData()";">
+                                <div class="symbol-frame">
+                                    <img src="/assets/img/contacts/edit.svg" alt="Editieren">
+                                </div>
+                                <span class="fw-4 fs-1">Edit</span>
+                                </div>
+                            <div id="contact-options-delete" class="d-flex flex-row justify-content-center g-8 pointer" onclick="deleteContact('${activeContact}', true); deleteContactProfilView();">
+                                <div class="symbol-frame">
+                                <img src="/assets/img/contacts/delete.svg" alt="Löschen">
+                                </div>
+                                <span class="fw-4 fs-1">Delete</span>
+                            </div>
                         </div>
-                        <span class="fw-4 fs-1">Edit</span>
-                        </div>
-                    <div id="contact-options-delete" class="d-flex flex-row justify-content-center g-8 pointer" onclick="deleteContact('${activeContact}', true); deleteContactProfilView();">
-                        <div class="symbol-frame">
-                        <img src="/assets/img/contacts/delete.svg" alt="Löschen">
-                        </div>
-                        <span class="fw-4 fs-1">Delete</span>
                     </div>
-                </div>
             </div>
             <span class="fs-2 fw-4">Contact Information</span>
             <div id="frame-101" class="d-flex flex-column space-evenly flex-start g-15">

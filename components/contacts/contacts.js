@@ -38,6 +38,9 @@ function renderContactsStructure (targetContainer) {
     const container = document.getElementById(targetContainer);
     if (container == null) {console.log("Element not found.");}
     container.innerHTML = clear();
+    if (targetContainer == "contact-list-desktop-container") {
+        container.innerHTML += createContactAddButtonDesktopHTML ();
+    }
     for (let index = 0; index < abcString.length; index++) {
         const char = abcString[index];
         let filteredContacts = filterContactsByInitials(char);

@@ -169,9 +169,6 @@
 }
 
 #desktop-contact-list-add-button {
-    position: fixed;
-    top: 80px;
-    left: 320px;
     padding: 12px;
     gap: 10px;
     width: 300px;
@@ -194,6 +191,7 @@
     align-items: center;
     gap: 30px;
     margin-top: 10%;
+    margin-left: 5%;
 }
 
 .contacts-desktop-h2 {
@@ -211,4 +209,16 @@
 .contacts-desktop-line{
     border: 1px solid  #29ABE2;;
     height: 59px;
+}
+
+#desktop-contact-list-add-button-box {
+    position: fixed;
+    background-color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    top: 100px;
+    min-width: 370px;
+    width: 25%;
+    height: 10%;
 }
