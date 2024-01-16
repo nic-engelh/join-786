@@ -7,11 +7,11 @@
  */
 async function updateDashBoard() {
     await updateToDoWidget();
-    await updateInProgressWidget();
-    await updateFeedbackWidget();
-    await updateDoneWidget();
-    await updateNameWidget();
     await updateUrgentWidget();
+    await updateFeedbackWidget();
+    await updateInProgressWidget();
+    await updateNameWidget();
+    await updateDoneWidget();
 }
 
 /**
@@ -21,7 +21,7 @@ async function updateDashBoard() {
  * WENN DIESE FUNKTION ASYNC updateBoardWidget Await hat funktioniert es nicht mehr
  * 
  */
-function updateToDoWidget() {
+async function updateToDoWidget() {
     let todo = document.getElementById('j36_todo');
     todo.innerHTML = clear();
     let targetValue = 'todo';
@@ -35,7 +35,7 @@ function updateToDoWidget() {
  * function filters all tasks with status "inprogress" from active user tasks object
  * 
  */
-function updateInProgressWidget() {
+async function updateInProgressWidget() {
     let inprogress = document.getElementById('j36_progress');
     inprogress.innerHTML = ``;
     let targetValue = 'inprogress';
@@ -49,7 +49,7 @@ function updateInProgressWidget() {
  * function filters all taks with status "feedback" from active user tasks object
  * 
  */
-function updateFeedbackWidget() {
+async function updateFeedbackWidget() {
     let feedback = document.getElementById('j36_feedback');
     feedback.innerHTML = clear();
     let targetValue = 'feedback';
