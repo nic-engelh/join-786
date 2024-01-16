@@ -19,6 +19,12 @@
 
 }
 
+#overlay-edit-contact-desktop {
+    width: 90%;
+    height: 62%;
+
+}
+
 #add-contact-right-section-text-close-box {
     height: 75%;
     display: flex;
