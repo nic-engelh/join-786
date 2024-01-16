@@ -688,12 +688,11 @@ fw-bold {
     display: flex;
     margin-top: 80px;
     margin-left: 260px;
-    overflow-y: hidden;
-    overflow-x: hidden;
 }
 #contact-view-desktop-section-left {
-    height: 100%;
     width: 30%;
+    height: 100%;
+    overflow-y: hidden !important;
 }
 
 #contact-view-desktop-section-right {
