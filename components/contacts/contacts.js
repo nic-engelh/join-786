@@ -9,6 +9,13 @@ function renderContactList() {
     updateStorageData("users", USERS);
 }
 
+/**
+ * function renders a contact list entry according to the contact data from the array contacts. If differentiates between desktop and mobil view
+ * 
+ * @param {Array} contacts 
+ * @param {string} targetContainer 
+ */
+
 function renderContacts (contacts, targetContainer) {
     for (const profile of contacts) {
         let name = profile['name'];
@@ -16,7 +23,7 @@ function renderContacts (contacts, targetContainer) {
         let key = profile['contactId'];
         let color = profile.color;
         let initials = generateInitials(name);
-        if(checkWindowWidth()){
+        if(targetContainer == "contact-list-desktop-container"){
             targetContainer.innerHTML += createContactProfilDesktopHTML(name, email, initials, key);
             setBadgeColor(color, `badge-${key}-desktop`);
         } else {
@@ -26,15 +33,13 @@ function renderContacts (contacts, targetContainer) {
     }
 }
 
+
+/**
+ * function renders the list structure with contact entry, lines, headers and buttons. It iterates the abc and and will active the render function for the corresponding letter.
+ * 
+ * @param {string} targetContainer 
+ */
 function renderContactsStructure (targetContainer) {
-    // functions renders contacts abc-structure
-    // iterate abcSting
-    // for each CHAR load profile form userContacts
-    // for each CHAR insert the letter into container - group of profiles
-    // for each CHAR and if there is a corresponding profile within userContacts add a marker line beneath the letter for each group
-    // render profile for the iterated letter
-    // do it again for next CHAR in abcString
-    //sortUserContacts();
     const container = document.getElementById(targetContainer);
     if (container == null) {console.log("Element not found.");}
     container.innerHTML = clear();
@@ -54,6 +59,14 @@ function renderContactsStructure (targetContainer) {
     addCreateContactAddButton(targetContainer, container);
 }
 
+
+/**
+ * function renders a button to the html of the given div-element.
+ * 
+ * @param {string} targetId 
+ * @param {element} container 
+ * @returns 
+ */
 function addCreateContactAddButton (targetId, container) {
     if (targetId !== "contact-list-mobile") {
         return false
@@ -62,6 +75,12 @@ function addCreateContactAddButton (targetId, container) {
     return true
 }
 
+
+/**
+ * function renders the profil detail view of an corresponding contact. It will create a new child-element within the body.
+ * 
+ * @param {string} contactId 
+ */
 function renderContactProfil (contactId) {
     let contactObject = findContact(contactId);
     const profil = document.createElement("div");
@@ -72,6 +91,12 @@ function renderContactProfil (contactId) {
     document.body.appendChild(profil);
     setBadgeColor(contactObject.color,"frame-105");
 }   
+
+/**
+ * functons sorts contacts array.
+ * 
+ * @returns boolean
+ */
 
 function sortUserContacts () {
     userContacts.sort((a,b) => {
@@ -90,6 +115,11 @@ function sortUserContacts () {
     return true
 }
 
+/**
+ * Function fetches data from the input form and creates a new data object within the nested object USERS. It will activate further functions.
+ * 
+ * @param {string} target 
+ */
 function addContactData (target) {
     let name = document.getElementById(`add-contact-name-${target}`).value;
     let email = document.getElementById(`add-contact-email-${target}`).value;
@@ -104,7 +134,12 @@ function addContactData (target) {
     clearAddContactData(target);
 }
 
-
+/**
+ * Function sets active contact globally, if a contact is click for details view. It will set up an event for an event listener.
+ * 
+ * @param {string} contactID 
+ * @returns boolean
+ */
 function setActiveContact (contactID) {
     activeContact = contactID;
     const event = new Event('activeContactChanged');
@@ -175,6 +210,11 @@ function findContact (searchId) {
     return result
 }
 
+
+/**
+ * function renders and creates an options modal the edit or delete the showed contact profil
+ * 
+ */
 function showContactProfilOptions () {
     // open options dialog with animation
     const modalId = "contact-options-modal";
@@ -187,6 +227,10 @@ function showContactProfilOptions () {
     setTimeout(() => clickModal(), 500);
 }
 
+/**
+ * Eventlistener function to close an options modal if clicked somewhere within the window but not on the option modal
+ * 
+ */
 function clickModal() {
     document.getElementById('contact-options-modal').addEventListener('click', (event) => {
         if (document.getElementById('contact-options-modal').open) {
@@ -198,6 +242,13 @@ function clickModal() {
 
 }
 
+/**
+ * Function renders a given modal. It will appended on the body element.
+ * 
+ * @param {string} htmlString 
+ * @param {string} modalId 
+ * @returns 
+ */
 function renderDialog (htmlString, modalId) {
     const dialog = document.createElement('dialog');
     dialog.innerHTML = (htmlString);
@@ -206,6 +257,12 @@ function renderDialog (htmlString, modalId) {
     return dialog
 }
 
+
+/**
+ * functions shows different info dialogs according to the array entry. iI will show succes iinformation modals to the user.
+ * 
+ * @param {string} number 
+ */
 function showSuccessInfo(number) {
     const texts = ["Contact successfully created", "Contact successfully edited", "Contact successfully deleted", "Task succesfully deleted", , "Task successfully edited"];
     const modalId = "contact-alert";
@@ -219,11 +276,22 @@ function showSuccessInfo(number) {
     setTimeout(() => modal.close(), 2000);
 }
 
+/**
+ * functions returns a random string number for token purposes.
+ * 
+ * @returns string
+ */
 function generateContactID () {
     let contactID = randomString();
     return contactID 
 }
 
+/**
+ * Function renders the profil view according to the screen size.
+ * 
+ * @param {string} contactId 
+ * @returns 
+ */
 function showProfilDetails (contactId) {
     if (checkWindowWidth()) {
         renderContactProfilDesktop(contactId);
@@ -234,6 +302,12 @@ function showProfilDetails (contactId) {
     return false
 }
 
+
+/**
+ * function checks inner window screen size to differentiate between mobile or desktop version
+ * 
+ * @returns boolean
+ */
 function checkWindowWidth () {
     const vw = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0);
     if (vw >= 1000) {
@@ -242,6 +316,14 @@ function checkWindowWidth () {
     return false;
 }
 
+
+/**
+ * functions deletes contact entry. It will remove the corresponding contact list entry as well. It will show a succes information.
+ * 
+ * @param {string} contactID 
+ * @param {boolean} bool 
+ * @returns 
+ */
 function deleteContact (contactID, bool) {
     if (checkWindowWidth()) {
         deleteContactDesktop(contactID, bool);
@@ -274,8 +356,13 @@ function getModal (elementId) {
     return modal
 }
 
+/**
+ * Function generates the name initals. Name variables needs pre and surname.
+ * 
+ * @param {string} name 
+ * @returns string 
+ */
 function generateInitials (name) {
-    // check string for the first char overall and first char after space
     name = name.trim();
     let firstLetter = name.charAt(0);
     let indexSpace = name.indexOf(' ');
@@ -284,6 +371,13 @@ function generateInitials (name) {
     return initials.toUpperCase();
 }
 
+
+/**
+ * Functions changes profil badge color and sets name initials in it.
+ * 
+ * @param {string} initials 
+ * @param {string} color 
+ */
 function changeProfilBadge(initials, color) {
     let target = "mobile";
     if (checkWindowWidth()) {
@@ -295,7 +389,12 @@ function changeProfilBadge(initials, color) {
     setBadgeColor(color, badge);
 }
 
-
+/**
+ * Function filters USERS Object for users contact by initials
+ * 
+ * @param {string} initial 
+ * @returns array
+ */
 function filterContactsByInitials(initial) {
     // Konvertiere den Input-Wert in Großbuchstaben, um die Groß-/Kleinschreibung zu ignorieren
     let targetInitial = initial.toUpperCase();
