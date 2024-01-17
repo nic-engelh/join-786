@@ -25,3 +25,8 @@ function deleteContactDesktop (contactID, bool) {
     if (bool){showSuccessInfo("1");}
     activeContact = null;
 }
+
+function coloringActiveContactListEntry() {
+    const divElement = document.getElementById(activeContact);
+    divElement.style.backgroundColor = `#2A3647`;
+}

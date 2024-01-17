@@ -105,9 +105,8 @@ function addContactData (target) {
 
 function setActiveContact (contactID) {
     activeContact = contactID;
-    if (activeContact !== null) {
-        document.getElementById(`contactID`)
-    }
+    const event = new Event('activeContactChanged');
+    document.dispatchEvent(event);
     return true
 } 
 
@@ -306,7 +305,7 @@ function filterContactsByInitials(initial) {
     });
     return filteredContacts;
   }
-
+ 
 function clear () {
     return ``;
 }
