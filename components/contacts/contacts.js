@@ -101,7 +101,9 @@ function addContactData (target) {
     renderContactList();
     hideDialog(`overlay-add-contact-${target}`);
     showSuccessInfo("0");
+    clearAddContactData(target);
 }
+
 
 function setActiveContact (contactID) {
     activeContact = contactID;

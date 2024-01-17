@@ -30,3 +30,10 @@ function coloringActiveContactListEntry() {
     const divElement = document.getElementById(activeContact);
     divElement.style.backgroundColor = `#2A3647`;
 }
+
+function clearAddContactData (target) {
+    document.getElementById(`add-contact-name-${target}`).value = '';
+    document.getElementById(`add-contact-email-${target}`).value = '';
+    document.getElementById(`add-contact-phone-${target}`).value = '';
+    return true
+}
