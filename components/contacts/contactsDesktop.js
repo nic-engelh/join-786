@@ -27,8 +27,12 @@ function deleteContactDesktop (contactID, bool) {
 }
 
 function coloringActiveContactListEntry() {
-    const divElement = document.getElementById(activeContact);
-    divElement.style.backgroundColor = `#2A3647`;
+    const divElementMobile = document.getElementById(activeContact);
+    const divElementDesktop = document.getElementById(`${activeContact}-desktop`);
+    divElementMobile.style.backgroundColor = `#2A3647`;
+    document.getElementById(`contact-${activeContact}-name`).style.color = 'white';
+    divElementDesktop.style.backgroundColor = `#2A3647`;
+    document.getElementById(`contact-${activeContact}-name-desktop`).style.color = 'white';
 }
 
 function clearAddContactData (target) {

@@ -16,14 +16,14 @@ function renderContactList() {
  * @param {string} targetContainer 
  */
 
-function renderContacts (contacts, targetContainer) {
+function renderContacts (contacts, targetId, targetContainer) {
     for (const profile of contacts) {
         let name = profile['name'];
         let email = profile['email'];
         let key = profile['contactId'];
         let color = profile.color;
         let initials = generateInitials(name);
-        if(targetContainer == "contact-list-desktop-container"){
+        if(targetId == "contact-list-desktop-container"){
             targetContainer.innerHTML += createContactProfilDesktopHTML(name, email, initials, key);
             setBadgeColor(color, `badge-${key}-desktop`);
         } else {
@@ -52,7 +52,7 @@ function renderContactsStructure (targetContainer) {
         if (filteredContacts.length > 0) {
             container.innerHTML += createCharHeaderHTML(char);
             container.innerHTML += createLineHTML();
-            renderContacts(filteredContacts, container);
+            renderContacts(filteredContacts,targetContainer, container);
             filteredContacts = null;
         }
     }

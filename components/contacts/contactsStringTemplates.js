@@ -18,14 +18,14 @@ function createContactProfilHTML (name, email, badgeInitials, contactID) {
 
 function createContactProfilDesktopHTML (name, email, badgeInitials, contactID) {
     return /*html*/`
-        <div id="${contactID}" class="contact-list-profile-mobile pointer btn-hover-grey-fill" onclick="showProfilDetails('${contactID}'); setActiveContact('${contactID}');">
+        <div id="${contactID}-desktop" class="contact-list-profile-mobile pointer btn-hover-grey-fill" onclick="showProfilDetails('${contactID}'); setActiveContact('${contactID}');">
             <div class="contact-list-profile-badge-box" id="badge-${contactID}-box-desktop">
                     <div class="ellipse-profil-badge" id="badge-${contactID}-desktop">
                         <span id="badge-${contactID}-span-desktop">${badgeInitials}</span>
                     </div>
                 </div>
                 <div class="contact-name-box">
-                    <span class="contact-name" id="contact-${contactID}-name">${name}</span>
+                    <span class="contact-name" id="contact-${contactID}-name-desktop">${name}</span>
                     <span class="contact-email" id="contact-${contactID}-email">${email}</span>
                 </div>
             </div>
