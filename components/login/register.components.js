@@ -42,7 +42,6 @@ async function register() {
 function findUserByEmail(email) {
      if (USERS.length == 0) {
           console.log('ist nicht existent')
-
      } else {
           let usersArray = Object.values(USERS);
           let foundUser = usersArray.find(user =>

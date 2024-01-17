@@ -170,7 +170,6 @@ input {
 .arrow:hover {
     cursor: pointer;
 }
-
 #popup {
     position: absolute;
     display: flex;
@@ -182,11 +181,20 @@ input {
     color: #fff;
     border-radius: 20px;
     z-index: 1;
-    top: 40%;
+    top: 100%; /* Startposition unterhalb des Bildschirms */
+    transform: translateY(100%);
     box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.10);
     font-size: 20px;
     font-style: normal;
     font-weight: 400;
+    animation: slideUp 0.5s ease-in-out forwards; /* Animationseffekt über 0.5 Sekunden */
+}
+
+@keyframes slideUp {
+    to {
+        top: 40%; /* Zielposition, wenn das Popup aktiv ist */
+        transform: translateY(0);
+    }
 }
 
 .d-none {
