@@ -7,6 +7,9 @@ let userTasks;
 let localUserTasks = [];
 let localGuestTasks = [];
 
+// Variable saves the number of active tasks within the board section
+let BOARDTASKS = null;
+
 /**
  * Functions loads / sets from USERS all important variables for further use
  * 
