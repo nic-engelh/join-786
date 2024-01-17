@@ -76,14 +76,14 @@ function popup() {
  * leads you to login html
  */
 function openLogin() {
-     window.location.href = '/components/login/login.html';
+     window.location.href = 'http://gruppe-786.developerakademie.net/join-786/components/login/login.html';
 }
 
 /**
  * /from register back to login html
  */
 function back() {
-     window.location.href = '/components/login/login.html';
+     window.location.href = 'http://gruppe-786.developerakademie.net/join-786/components/login/login.html';
 }
 
 /**
