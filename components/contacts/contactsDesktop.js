@@ -35,20 +35,6 @@ function coloringActiveContactListEntry() {
     document.getElementById(`contact-${activeContact}-name-desktop`).style.color = 'white';
 }
 
-function clearElementMarkings (oldActiveContact) {
-    const divElementMobile = document.getElementById(oldActiveContact);
-    const divElementDesktop = document.getElementById(`${oldActiveContact}-desktop`);
-    
-    if(divElementMobile)
-    divElementMobile.style.removeProperty('backgroundColor');
-
-    document.getElementById(`contact-${oldActiveContact}-name`).style.removeProperty('color');
-    
-    divElementDesktop.style.removeProperty('backgroundColor')
-    
-    document.getElementById(`contact-${oldActiveContact}-name-desktop`).style.removeProperty('color');
-}
-
 function clearAddContactData (target) {
     document.getElementById(`add-contact-name-${target}`).value = '';
     document.getElementById(`add-contact-email-${target}`).value = '';

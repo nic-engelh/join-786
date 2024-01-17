@@ -141,7 +141,7 @@ function addContactData (target) {
  * @returns boolean
  */
 function setActiveContact (contactID) {
-    clearElementMarkings(activeContact); 
+    renderContactList();
     activeContact = contactID;
     const event = new Event('activeContactChanged');
     document.dispatchEvent(event);
