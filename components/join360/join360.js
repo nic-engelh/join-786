@@ -27,7 +27,7 @@ async function updateToDoWidget() {
     let targetValue = 'todo';
     let toDoTasks = getFilteredTasksByStatus(targetValue);
     let size = Object.keys(toDoTasks).length;
-    updateBoardWidget(size)
+    updateBoardWidget(size);
     todo.innerHTML = `<b>${size}</b>`;
 }
 
@@ -41,7 +41,7 @@ async function updateInProgressWidget() {
     let targetValue = 'inprogress';
     let progressTasks = getFilteredTasksByStatus(targetValue);
     let size = Object.keys(progressTasks).length;
-    updateBoardWidget(size)
+    updateBoardWidget(size);
     inprogress.innerHTML = `<b>${size}</b>`;
 }
 
@@ -55,7 +55,7 @@ async function updateFeedbackWidget() {
     let targetValue = 'feedback';
     let feedbackTasks = getFilteredTasksByStatus(targetValue);
     let size = Object.keys(feedbackTasks).length;
-    updateBoardWidget(size)
+    updateBoardWidget(size);
     feedback.innerHTML = `<b>${size}</b>`;
 }
 
@@ -68,19 +68,19 @@ async function updateDoneWidget() {
     done.innerHTML = clear();
     let doneTasks = getFilteredTasksByStatus("done");
     let size = Object.keys(doneTasks).length;
-    await updateBoardWidget(size)
+    await updateBoardWidget(size);
     done.innerHTML = `<b>${size}</b>`;
 }
 
 /**
- * update task in board 
+ * update task in board; adds up all tasks on the board and saves it within the global variable BOARDTASKS
  * @param {number} number 
  */
 async function updateBoardWidget(number) {
     let board = document.getElementById('j36_board');
-    let size = + number;
+    BOARDTASKS += number;
     board.innerHTML = clear();
-    board.innerHTML = `<b>${size}</b>`;
+    board.innerHTML = `<b>${BOARDTASKS}</b>`;
 }
 
 /**

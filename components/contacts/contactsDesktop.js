@@ -23,4 +23,21 @@ function deleteContactDesktop (contactID, bool) {
     removeElemente("contact-profil-desktop-container");
     renderContactList();
     if (bool){showSuccessInfo("1");}
+    activeContact = null;
+}
+
+function coloringActiveContactListEntry() {
+    const divElementMobile = document.getElementById(activeContact);
+    const divElementDesktop = document.getElementById(`${activeContact}-desktop`);
+    divElementMobile.style.backgroundColor = `#2A3647`;
+    document.getElementById(`contact-${activeContact}-name`).style.color = 'white';
+    divElementDesktop.style.backgroundColor = `#2A3647`;
+    document.getElementById(`contact-${activeContact}-name-desktop`).style.color = 'white';
+}
+
+function clearAddContactData (target) {
+    document.getElementById(`add-contact-name-${target}`).value = '';
+    document.getElementById(`add-contact-email-${target}`).value = '';
+    document.getElementById(`add-contact-phone-${target}`).value = '';
+    return true
 }

@@ -152,3 +152,19 @@ function loadHeaderInitials(){
 	let initials = document.getElementById("header_user_image");
 	initials.innerHTML = `${user}`;
 }
+
+/**
+ * Function generates the name initals. Name variables needs pre and surname.
+ * 
+ * @param {string} name 
+ * @returns string 
+ */
+function generateInitials (name) {
+  name = name.trim();
+  let firstLetter = name.charAt(0);
+  let indexSpace = name.indexOf(' ');
+  let secondLetter = name.charAt((indexSpace + 1));
+  let initials = `${firstLetter}${secondLetter}`;
+  return initials.toUpperCase();
+}
+

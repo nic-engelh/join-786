@@ -44,5 +44,8 @@ function checkScreenSize() {
   
   // Eventlistener hinzufügen, um die Funktion bei Änderungen der Bildschirmgröße aufzurufen
   window.addEventListener('resize', checkScreenSize);
-  // Die Funktion beim Laden der Seite einmalig aufrufen, um den initialen Status zu überprüfen
-  window.addEventListener('load', checkScreenSize);
+  
+  document.addEventListener('activeContactChanged', function () {
+    coloringActiveContactListEntry();
+  });
+
