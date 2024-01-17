@@ -210,7 +210,6 @@
     border-radius: 10px;
     border: 1px solid var(--version-2-main-color, #2A3647);
     background: var(--version-2-main-color, #2A3647);
-    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
     cursor: pointer;
     font-size: 20px;
     font-weight: bold;
@@ -277,9 +276,14 @@
 }
 
 .btn-hover-blue-fill:hover {
-    background-color: #29ABE2;
+    background-color: #29ABE2 !important;
+    border-color: #29ABE2 !important;
     color: #fff;
     box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+}
+
+.btn-hover-grey-fill:hover {
+    background-color: #D1D1D1;
 }
 
 .btn-hover-blue-rim:hover {

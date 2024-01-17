@@ -105,6 +105,9 @@ function addContactData (target) {
 
 function setActiveContact (contactID) {
     activeContact = contactID;
+    if (activeContact !== null) {
+        document.getElementById(`contactID`)
+    }
     return true
 } 
 
@@ -254,6 +257,7 @@ function deleteContact (contactID, bool) {
     renderContactList();
     toggleHide("contact-list-background");
     if (bool){showSuccessInfo("1");}
+    activeContact = null;
     return true
 }
 

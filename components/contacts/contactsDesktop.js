@@ -23,4 +23,5 @@ function deleteContactDesktop (contactID, bool) {
     removeElemente("contact-profil-desktop-container");
     renderContactList();
     if (bool){showSuccessInfo("1");}
+    activeContact = null;
 }

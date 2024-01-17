@@ -1,6 +1,6 @@
 function createContactProfilHTML (name, email, badgeInitials, contactID) {
     return /*html*/`
-        <div id="${contactID}" class="contact-list-profile-mobile pointer" onclick="showProfilDetails('${contactID}'); setActiveContact('${contactID}');">
+        <div id="${contactID}" class="contact-list-profile-mobile pointer btn-hover-grey-fill" onclick="showProfilDetails('${contactID}'); setActiveContact('${contactID}');">
             <div class="contact-list-profile-badge-box" id="badge-${contactID}-box">
                     <div class="ellipse-profil-badge" id="badge-${contactID}">
                         <span id="badge-${contactID}-span">${badgeInitials}</span>
@@ -18,7 +18,7 @@ function createContactProfilHTML (name, email, badgeInitials, contactID) {
 
 function createContactProfilDesktopHTML (name, email, badgeInitials, contactID) {
     return /*html*/`
-        <div id="${contactID}" class="contact-list-profile-mobile pointer" onclick="showProfilDetails('${contactID}'); setActiveContact('${contactID}');">
+        <div id="${contactID}" class="contact-list-profile-mobile pointer btn-hover-grey-fill" onclick="showProfilDetails('${contactID}'); setActiveContact('${contactID}');">
             <div class="contact-list-profile-badge-box" id="badge-${contactID}-box-desktop">
                     <div class="ellipse-profil-badge" id="badge-${contactID}-desktop">
                         <span id="badge-${contactID}-span-desktop">${badgeInitials}</span>
@@ -130,14 +130,13 @@ function createContactAddButtonDesktopHTML () {
 
     return /*html*/`
         <div id="desktop-contact-list-add-button-box">
-            <div id="desktop-contact-list-add-button" onclick="showDialog('overlay-add-contact-desktop');">
+            <div id="desktop-contact-list-add-button" onclick="showDialog('overlay-add-contact-desktop');" class="btn-hover-blue-fill">
                     <b>Add new contact</b> <img src="/assets/img/contacts/person_add.svg" alt="add person button">
             </div>
         </div>
         
     `
 }
-
 
 function createContactProfilViewDesktopHTML (contactInitials, contactName, contactEmail, contactPhone) {
     return /*html*/`
