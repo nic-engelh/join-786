@@ -172,7 +172,7 @@ function mediumButton() {
 
     if (!mediumButton.classList.contains('medium_button_active')) {
         mediumButton.classList.add('medium_button_active');
-        img.src = '/assets/img/addTask/medium_nocolor.png';
+        img.src = '/assets/img/addTask/Medium_nocolor.png';
     } else {
         mediumButton.classList.remove('medium_button_active');
         img.src = '/assets/img/addTask/prio_medium.png';
@@ -247,8 +247,6 @@ function handleKeyUp(event) {
  */
 function addNewSubtaskToList() {
     let newSubtask = document.getElementById('subtask_input').value;
-
-    console.log(newSubtask);
 
     if (newSubtask != '') {
         subtasksArray.subtaskContent.push(newSubtask);
