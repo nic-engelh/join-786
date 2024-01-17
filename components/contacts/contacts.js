@@ -141,11 +141,13 @@ function addContactData (target) {
  * @returns boolean
  */
 function setActiveContact (contactID) {
+    clearElementMarkings(activeContact); 
     activeContact = contactID;
     const event = new Event('activeContactChanged');
     document.dispatchEvent(event);
     return true
 } 
+
 
 /**
  * function loads needed contact data into the input fields of the opened edit contact modal version
@@ -355,22 +357,6 @@ function getModal (elementId) {
     const modal = document.getElementById(elementId);
     return modal
 }
-
-/**
- * Function generates the name initals. Name variables needs pre and surname.
- * 
- * @param {string} name 
- * @returns string 
- */
-function generateInitials (name) {
-    name = name.trim();
-    let firstLetter = name.charAt(0);
-    let indexSpace = name.indexOf(' ');
-    let secondLetter = name.charAt((indexSpace + 1));
-    let initials = `${firstLetter}${secondLetter}`;
-    return initials.toUpperCase();
-}
-
 
 /**
  * Functions changes profil badge color and sets name initials in it.
