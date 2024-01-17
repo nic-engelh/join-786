@@ -187,5 +187,5 @@ async function guestLogin() {
      }     
      ACTIVEUSERKEY = "guest";
      await setLocalStorage("activeUser", ACTIVEUSERKEY);
-     window.location.href = 'http://gruppe-786.developerakademie.net/join-786/index.html';
+     window.location.href = '/index.html';
 }
