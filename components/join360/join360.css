@@ -16,6 +16,9 @@
 
 .j36_toDo:hover {
     background-color: #2a3647;
+    background-image: url("/assets/img/Group 7 _hover.svg");
+    background-repeat: no-repeat;
+    background-position: 10% 50%;
 
     #j36_todo {
         color: white;
@@ -25,13 +28,6 @@
         color: white;
     }
 
-    #Ellipse4 {
-        fill: #ffffff;
-    }
-
-    #edit_2 {
-        fill: #2a3647;
-    }
 }
 
 .j36_toDoDone:hover {
@@ -43,14 +39,6 @@
 
     .j36_todoText {
         color: white;
-    }
-
-    #Ellipse4 {
-        fill: #ffffff;
-    }
-
-    #Vector {
-        stroke: #2a3647;
     }
 }
 
@@ -81,7 +69,8 @@
     .j36_numberOfTasks {
         color: white;
     }
-    p{
+
+    p {
         color: white;
     }
 }
@@ -157,6 +146,9 @@ h1 {
     font-style: normal;
     font-weight: 600;
     text-align: center;
+    background-image: url("/assets/img/Group 7.svg");
+    background-repeat: no-repeat;
+    background-position: 20% 50%;
 }
 
 .j36_todo_img {
@@ -195,6 +187,9 @@ h1 {
     font-style: normal;
     font-weight: 600;
     text-align: center;
+    background-image: url("/assets/img/Group\ 7\ \(1\).svg");
+    background-repeat: no-repeat;
+    background-position: 20% 50%;
 }
 
 .j36_ToDoPosition {
@@ -313,6 +308,9 @@ h1 {
 
 .j36_toDoDone:hover {
     cursor: pointer;
+    background-image: url("/assets/img/Group 7 (1) copy.svg");
+    background-repeat: no-repeat;
+    background-position: 20% 50%;
 }
 
 .j36_urgent:hover {
@@ -374,9 +372,18 @@ h1 {
         min-width: 0px !important;
     }
 
+    .j36_toDoDone {
+        background-image: unset;
+    }
+
     .j36_toDo {
         width: 100%;
         min-width: 0px !important;
+        background-image: unset;
+    }
+
+    .j36_urgent img {
+        display: none;
     }
 
     .j36_ToDoPosition {

@@ -7,11 +7,11 @@
  */
 async function updateDashBoard() {
     await updateToDoWidget();
-    await updateInProgressWidget();
-    await updateFeedbackWidget();
-    await updateDoneWidget();
-    await updateNameWidget();
     await updateUrgentWidget();
+    await updateFeedbackWidget();
+    await updateInProgressWidget();
+    await updateNameWidget();
+    await updateDoneWidget();
 }
 
 /**
@@ -21,7 +21,7 @@ async function updateDashBoard() {
  * WENN DIESE FUNKTION ASYNC updateBoardWidget Await hat funktioniert es nicht mehr
  * 
  */
-function updateToDoWidget() {
+async function updateToDoWidget() {
     let todo = document.getElementById('j36_todo');
     todo.innerHTML = clear();
     let targetValue = 'todo';
@@ -35,7 +35,7 @@ function updateToDoWidget() {
  * function filters all tasks with status "inprogress" from active user tasks object
  * 
  */
-function updateInProgressWidget() {
+async function updateInProgressWidget() {
     let inprogress = document.getElementById('j36_progress');
     inprogress.innerHTML = ``;
     let targetValue = 'inprogress';
@@ -49,7 +49,7 @@ function updateInProgressWidget() {
  * function filters all taks with status "feedback" from active user tasks object
  * 
  */
-function updateFeedbackWidget() {
+async function updateFeedbackWidget() {
     let feedback = document.getElementById('j36_feedback');
     feedback.innerHTML = clear();
     let targetValue = 'feedback';
@@ -104,7 +104,7 @@ function getFilteredTasksByStatus(targetValue) {
 async function updateUrgentWidget() {
     let deadlineDate, nextDate, urgentWidget, size;
     urgentWidget = document.getElementById('j36_Urgent');
-    urgentWidget.innerHTML = clear();    
+    urgentWidget.innerHTML = clear();
     urgentTaskIds = Object.keys(filterNestedObject(userTasks, 'urgent', 'prio'));
     size = Object.keys(urgentTaskIds).length;
     deadlineDate = 'No';
@@ -121,21 +121,23 @@ async function updateUrgentWidget() {
  * @returns {string} deadline 
  */
 function checkUrgentDates(urgentTaskIds) {
-    deadlineDate = new Date(USERS[ACTIVEUSERKEY].tasks[urgentTaskIds[0]].date); 
+    deadlineDate = new Date(USERS[ACTIVEUSERKEY].tasks[urgentTaskIds[0]].date);
     for (const taskId of urgentTaskIds) {
-        nextDate = new Date(USERS[ACTIVEUSERKEY].tasks[taskId].date) ;
-        if (nextDate < deadlineDate) { 
+        nextDate = new Date(USERS[ACTIVEUSERKEY].tasks[taskId].date);
+        if (nextDate < deadlineDate) {
             deadlineDate = nextDate;
         }
     };
     deadlineDate = deadlineDate.toLocaleDateString('de-DE', { month: 'long', day: 'numeric', year: 'numeric' });;
     return deadlineDate;
-} 
+}
 
 function generateUrgentWidgetHTML(size, deadlineDate) {
     return /*html*/` 
         <div class="j36_urgent">
-        <img class="j36_image1" src="assets/img/Ellipse 4.svg" alt="">
+        <div>
+        <img src="/assets/img/Ellipse 4 (1).svg" alt="">
+        </div>
         <div class="j36_numberPosition">
             <b>${size}</b>
             <p class="j36_todoText">Urgent</p>
