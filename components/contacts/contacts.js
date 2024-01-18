@@ -155,9 +155,6 @@ function setActiveContact (contactID) {
  */
 function loadEditContactData () {
     let contactObject = findContact(activeContact);
-     // show modal-edit-contact
-    // read/find contact data
-    // insert contact data into input fields
     let targetElement = "mobile";
     if (checkWindowWidth()){
         targetElement = "desktop";
@@ -180,11 +177,6 @@ function loadEditContactData () {
  */
 function saveEditedContactData (target) {
     let contactObject = findContact(activeContact);
-    // wait for input or changes - user clicks edit button
-    // read input/changes
-    // save input/changes within the contacts array with the id/key
-    // hide or move out the modal
-    // show user sign with succesfull changes - user feedback
     let nameEdited = document.getElementById(`edit-contact-name-${target}`).value;
     let emailEdited = document.getElementById(`edit-contact-email-${target}`).value;
     let phoneEdited = document.getElementById(`edit-contact-phone-${target}`).value;

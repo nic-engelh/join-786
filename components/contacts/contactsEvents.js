@@ -1,9 +1,4 @@
 
-// event listener 1:
-// check if section join36, board, add tasks or contacts are active
-// if so remove contact-view-profil-main
-
-
 /**
  * function for checking window size and controlling modals
  * 
@@ -18,29 +13,28 @@ function checkScreenSize() {
     // Überprüfen, ob die Bildschirmbreite größer als 1000px ist
     if (screenWidth >= 1000) {
       // Modal_a schließen (falls es geöffnet ist)
-      if (modalA.open) {
-        modalA.close();
-        modalB.showModal();
-      }
-      if (modalC.open) {
-        modalC.close();
-        modalD.showModal();
-        loadEditContactData();
-      }
+      checkForOpenModal (modalA, modalB, false);
+      checkForOpenModal(modalC, modalD, true);
     }
     if (screenWidth < 1000) {
-      if (modalB.open) {
-        modalB.close();
-        modalA.showModal();
-      }
-      if (modalD.open) {
-        modalD.close();
-        modalC.showModal();
-        loadEditContactData(); 
-      }
+      checkForOpenModal(modalB, modalA, false);
+      checkForOpenModal(modalD, modalC, true);
     }
 
   }
+
+function checkForOpenModal (modalToClose, modalToOpen, checkEditValuesNeeded) {
+  if (modalToClose.open) {
+    modalToClose.close();
+    modalToOpen.showModal();
+    if(checkEditValuesNeeded) {
+      loadEditContactData();
+    }
+    return true
+  }
+  return false
+}
+
   
   // Eventlistener hinzufügen, um die Funktion bei Änderungen der Bildschirmgröße aufzurufen
   window.addEventListener('resize', checkScreenSize);
