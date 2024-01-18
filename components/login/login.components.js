@@ -29,7 +29,6 @@ async function login() {
      let email = document.getElementById('mail').value;
      let password = document.getElementById('password').value;
      let message = document.getElementById('message');
-
      if (findKey(email)) {
           var key = findKey(email)
           timeOutCheck(key)
@@ -43,29 +42,47 @@ async function login() {
                     setLocalStorage("activeUser", ACTIVEUSERKEY);
                     window.location.href = '/index.html';
                } else {
-                    inCorrect(message)
-                    if (USERS[key]) {
-                         if (USERS[key].userData.timepassed) {
-                              keySettStrorage(key)
-                         } else {
-                              loginTrys -= 1
-                         }
-                    } else {
-                         loginTrys -= 1
-                    }
+                   TimePassedData(key,message)
                }
           } else {
-               inCorrect(message)
-               if (USERS[key]) {
-                    if (user[key].userData.timepassed) {
-                         keySettStrorage(key)
-                    } else {
-                         loginTrys -= 1
-                    }
-               } else {
-                    loginTrys -= 1
-               }
+               CheckMailFailed(message,key)
           }
+     }
+}
+
+/**
+ * shortening the login function
+ * @param {number} key 
+ * @param {string} message 
+ */
+function TimePassedData(key,message) {
+     inCorrect(message)
+     if (USERS[key]) {
+          if (USERS[key].userData.timepassed) {
+               keySettStrorage(key)
+          } else {
+               loginTrys -= 1
+          }
+     } else {
+          loginTrys -= 1
+     }
+}
+
+/**
+ * shortening the login function
+ * @param {string} message 
+ * @param {number} key 
+ */
+function CheckMailFailed(message,key) {
+     inCorrect(message)
+     if (USERS[key]) {
+          if (user[key].userData.timepassed) {
+               keySettStrorage(key)
+          } else {
+               loginTrys -= 1
+          }
+     } else {
+          loginTrys -= 1
      }
 }
 
@@ -178,13 +195,13 @@ async function guestLogin() {
      ];
      userData = { key: 0, name: 'Guest', email: 'GuestTest@hotmail.de', password: 'password', initials: 'G', failedAttemped: true };
      // initalize entry with key guest and empty value as an object
-     USERS = await  getStorageData('users', USERS);
+     USERS = await getStorageData('users', USERS);
      if (!("guest" in USERS)) {
           USERS["guest"] = {};
           USERS["guest"]["userData"] = userData;
           USERS["guest"]["contacts"] = contacts;
-          await  updateStorageData('users', USERS);
-     }     
+          await updateStorageData('users', USERS);
+     }
      ACTIVEUSERKEY = "guest";
      await setLocalStorage("activeUser", ACTIVEUSERKEY);
      window.location.href = '/index.html';

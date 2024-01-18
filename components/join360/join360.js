@@ -6,7 +6,7 @@
  * main functions for updating the drag & drop fields for tasks objects
  */
 async function updateDashBoard() {
-    
+    BOARDTASKS = null;
     await updateToDoWidget();
     await updateUrgentWidget();
     await updateFeedbackWidget();

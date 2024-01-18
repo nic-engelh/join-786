@@ -18,7 +18,8 @@
     background-color: #2a3647;
     background-image: url("/assets/img/Group 7 _hover.svg");
     background-repeat: no-repeat;
-    background-position: 10% 50%;
+    background-position: 20% 50%;
+    cursor: pointer;
 
     #j36_todo {
         color: white;
@@ -149,6 +150,7 @@ h1 {
     background-image: url("/assets/img/Group 7.svg");
     background-repeat: no-repeat;
     background-position: 20% 50%;
+    background-size: 63px;
 }
 
 .j36_todo_img {
@@ -190,6 +192,7 @@ h1 {
     background-image: url("/assets/img/Group\ 7\ \(1\).svg");
     background-repeat: no-repeat;
     background-position: 20% 50%;
+    background-size: 63px;
 }
 
 .j36_ToDoPosition {
@@ -302,9 +305,6 @@ h1 {
     line-height: 120%;
 }
 
-.j36_toDo:hover {
-    cursor: pointer;
-}
 
 .j36_toDoDone:hover {
     cursor: pointer;
