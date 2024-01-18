@@ -115,7 +115,7 @@ h1 {
     text-align: left;
     flex-direction: column;
     position: fixed;
-    left: 40%;
+    left: 50%;
     top: 300px;
 }
 
@@ -264,7 +264,7 @@ h1 {
 .j36_TaskProgress {
     margin-top: 18px;
     display: flex;
-    width: 510px;
+    width: 520px;
     height: 116px;
     justify-content: center;
     align-items: flex-start;
