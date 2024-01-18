@@ -18,23 +18,34 @@ async function updateBoardHTML() {
     searchFieldEventListener();
 }
 
+
+
+/**
+ * function filters all tasks with status targetValue from active user tasks object in USERS
+ * 
+ * @param {string} targetValue 
+ * @param {Object} inputObject 
+ * @param {string} targetKey 
+ */
+function updateBoardField(targetValue, inputObject, targetKey ) {
+    let filteredTasks = filterNestedObject(inputObject, targetValue, targetKey);
+    document.getElementById(targetValue).innerHTML = '';
+    let size = Object.keys(filteredTasks).length;
+    if (size == 0) {
+        showNoTasksDone(targetValue);
+    } else {
+        showTask(targetValue);
+        renderingBoardTasks(filteredTasks , targetValue);
+    }
+}
+
+
 /**
  * function filters all tasks with status todo from active user tasks object
  * 
  */
 function updateToDoField() {
-    let targetValue = 'todo';
-    let inputObject = USERS[ACTIVEUSERKEY].tasks;
-    let targetKey = 'status';
-    let toDoTasks = filterNestedObject(inputObject, targetValue, targetKey);
-    let size = Object.keys(toDoTasks).length;
-    document.getElementById('todo').innerHTML = '';
-    if (size == 0) {
-        showNoTasksDone('todo');
-    } else {
-        showTask('todo');
-        renderingBoardTasks(toDoTasks, 'todo');
-    }
+    updateBoardField('todo', USERS[ACTIVEUSERKEY].tasks, 'status');
 }
 
 /**
@@ -42,19 +53,7 @@ function updateToDoField() {
  * 
  */
 function updateInProgressField() {
-    let targetValue = 'inprogress';
-    let inputObject = USERS[ACTIVEUSERKEY].tasks;
-    let targetKey = 'status';
-    let progressTasks = filterNestedObject(inputObject, targetValue, targetKey);
-    //let progress = userTasks.filter(t => t['status'].toLowerCase().replaceAll(" ","") == 'inprogress');
-    let size = Object.keys(progressTasks).length;
-    document.getElementById('inProgress').innerHTML = '';
-    if (size == 0) {
-        showNoTasksDone('inProgress');
-    } else {
-        showTask('inProgress');
-        renderingBoardTasks(progressTasks, 'inProgress');
-    }
+    updateBoardField('inprogress', USERS[ACTIVEUSERKEY].tasks, 'status');
 }
 
 /**
@@ -62,18 +61,7 @@ function updateInProgressField() {
  * 
  */
 function updateFeedbackField() {
-    let targetValue = 'feedback';
-    let inputObject = USERS[ACTIVEUSERKEY].tasks;
-    let targetKey = 'status';
-    let feedbackTasks = filterNestedObject(inputObject, targetValue, targetKey);
-    let size = Object.keys(feedbackTasks).length;
-    document.getElementById('feedback').innerHTML = '';
-    if (size == 0) {
-        showNoTasksDone('feedback');
-    } else {
-        showTask('feedback');
-        renderingBoardTasks(feedbackTasks, 'feedback');
-    }
+    updateBoardField('feedback', USERS[ACTIVEUSERKEY].tasks, 'status');
 }
 
 /**
@@ -81,18 +69,7 @@ function updateFeedbackField() {
  * 
  */
 function updateDoneField() {
-    let targetValue = 'done';
-    let inputObject = USERS[ACTIVEUSERKEY].tasks;
-    let targetKey = 'status';
-    let doneTasks = filterNestedObject(inputObject, targetValue, targetKey);
-    let size = Object.keys(doneTasks).length;
-    document.getElementById('done').innerHTML = '';
-    if (size == 0) {
-        showNoTasksDone('done');
-    } else {
-        showTask('done');
-        renderingBoardTasks(doneTasks, 'done');
-    }
+    updateBoardField('done', USERS[ACTIVEUSERKEY].tasks, 'status');
 }
 
 /**

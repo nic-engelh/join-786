@@ -6,10 +6,8 @@ function renderContactProfilDesktop (contactId) {
     if (elementUsed){elementUsed.remove();}
     profil.id = "contact-profil-desktop-container";
     profil.innerHTML = createContactProfilViewDesktopHTML(contactObject.initials, contactObject.name, contactObject.email, contactObject.phone);
-    // document.body.appendChild(profil);
     document.getElementById("contact-profil-desktop").appendChild(profil);
     setBadgeColor(contactObject.color,"frame-105-desktop");
-    // TODO set badge color contact-user-symbol-badge-desktop
 }   
 
 function deleteContactDesktop (contactID, bool) {
