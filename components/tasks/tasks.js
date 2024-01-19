@@ -139,49 +139,50 @@ function getPriority() {
 }
 
 /**
+ * This function is used to set the variables for the pririty buttons
+ * 
+ * 
+ */
+function setPriority(buttonId, imgId, activeClass, inactiveImgSrc, activeImgSrc, resetIds) {
+    let img = document.getElementById(imgId);
+    const button = document.getElementById(buttonId);
+
+    if (!button.classList.contains(activeClass)) {
+        button.classList.add(activeClass);
+        img.src = activeImgSrc;
+    } else {
+        button.classList.remove(activeClass);
+        img.src = inactiveImgSrc;
+    }
+
+    for (const resetId of resetIds) {
+        document.getElementById(resetId.img).src = resetId.src;
+        document.getElementById(resetId.button).classList.remove(resetId.activeClass);
+    }
+}
+
+/**
  * This function is used to set the priority to urgent and set the urgent button active
  * 
  * 
  */
 function urgentButton() {
-    let img = document.getElementById('task_prio_img_urgent');
-    const urgentButton = document.getElementById('urgent_button');
-
-    if (!urgentButton.classList.contains('urgent_button_active')) {
-        urgentButton.classList.add('urgent_button_active');
-        img.src = '/assets/img/addTask/high_nocolor.png';
-    } else {
-        urgentButton.classList.remove('urgent_button_active');
-        img.src = '/assets/img/addTask/prio_high.png';
-    }
-
-    document.getElementById('task_prio_img_medium').src = '/assets/img/addTask/prio_medium.png';
-    document.getElementById('task_prio_img_low').src = '/assets/img/addTask/prio_low.png';
-    document.getElementById('medium_button').classList.remove('medium_button_active');
-    document.getElementById('low_button').classList.remove('low_button_active');
+    setPriority('urgent_button', 'task_prio_img_urgent', 'urgent_button_active', '/assets/img/addTask/prio_high.png', '/assets/img/addTask/high_nocolor.png', [
+        { img: 'task_prio_img_medium', src: '/assets/img/addTask/prio_medium.png', button: 'medium_button', activeClass: 'medium_button_active' },
+        { img: 'task_prio_img_low', src: '/assets/img/addTask/prio_low.png', button: 'low_button', activeClass: 'low_button_active' }
+    ]);
 }
 
 /**
- * This function is used to set the priority to medium and set the medium button active
+ * This function is used to set the priority to low and set the low button active
  * 
  * 
  */
 function mediumButton() {
-    let img = document.getElementById('task_prio_img_medium');
-    const mediumButton = document.getElementById('medium_button');
-
-    if (!mediumButton.classList.contains('medium_button_active')) {
-        mediumButton.classList.add('medium_button_active');
-        img.src = '/assets/img/addTask/Medium_nocolor.png';
-    } else {
-        mediumButton.classList.remove('medium_button_active');
-        img.src = '/assets/img/addTask/prio_medium.png';
-    }
-
-    document.getElementById('task_prio_img_urgent').src = '/assets/img/addTask/prio_high.png';
-    document.getElementById('task_prio_img_low').src = '/assets/img/addTask/prio_low.png';
-    document.getElementById('urgent_button').classList.remove('urgent_button_active');
-    document.getElementById('low_button').classList.remove('low_button_active');
+    setPriority('medium_button', 'task_prio_img_medium', 'medium_button_active', '/assets/img/addTask/prio_medium.png', '/assets/img/addTask/Medium_nocolor.png', [
+        { img: 'task_prio_img_urgent', src: '/assets/img/addTask/prio_high.png', button: 'urgent_button', activeClass: 'urgent_button_active' },
+        { img: 'task_prio_img_low', src: '/assets/img/addTask/prio_low.png', button: 'low_button', activeClass: 'low_button_active' }
+    ]);
 }
 
 /**
@@ -190,21 +191,10 @@ function mediumButton() {
  * 
  */
 function lowButton() {
-    let img = document.getElementById('task_prio_img_low');
-    const lowButton = document.getElementById('low_button');
-
-    if (!lowButton.classList.contains('low_button_active')) {
-        lowButton.classList.add('low_button_active');
-        img.src = '/assets/img/addTask/low_nocolor.png';
-    } else {
-        lowButton.classList.remove('low_button_active')
-        img.src = '/assets/img/addTask/prio_low.png';
-    }
-
-    document.getElementById('task_prio_img_urgent').src = '/assets/img/addTask/prio_high.png';
-    document.getElementById('task_prio_img_medium').src = '/assets/img/addTask/prio_medium.png';
-    document.getElementById('urgent_button').classList.remove('urgent_button_active');
-    document.getElementById('medium_button').classList.remove('medium_button_active');
+    setPriority('low_button', 'task_prio_img_low', 'low_button_active', '/assets/img/addTask/prio_low.png', '/assets/img/addTask/low_nocolor.png', [
+        { img: 'task_prio_img_urgent', src: '/assets/img/addTask/prio_high.png', button: 'urgent_button', activeClass: 'urgent_button_active' },
+        { img: 'task_prio_img_medium', src: '/assets/img/addTask/prio_medium.png', button: 'medium_button', activeClass: 'medium_button_active' }
+    ]);
 }
 
 /**
