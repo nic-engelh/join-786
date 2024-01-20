@@ -1,8 +1,3 @@
-
-// userContacts = USERS[ACTIVEUSERKEY].contacts; 
-// userContacts will be set in uitils.js with setVariables()
-
-
 let assignedToTask = [];
 let assignedInitial = [];
 
@@ -12,7 +7,6 @@ let subtasksArray = {
     'subtaskContent': [],
     'subtaskStatus': []
 };
-
 
 /**
  * This function is used to fetch all the data for the new task from inputs and functions

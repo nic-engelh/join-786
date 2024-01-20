@@ -337,3 +337,13 @@
         font-size: 20px;
     }
 }
+
+#overlay-edit-contact-mobile {
+    height: 100%;
+    width: 100%;
+}
+
+#overlay-add-contact-mobile {
+    height: 100%;
+    width: 100%;
+}
