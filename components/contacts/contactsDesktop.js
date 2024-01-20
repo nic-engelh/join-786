@@ -20,7 +20,7 @@ function deleteContactDesktop (contactID, bool) {
     USERS[ACTIVEUSERKEY].contacts = userContacts;
     removeElemente("contact-profil-desktop-container");
     renderContactList();
-    if (bool){showSuccessInfo("1");}
+    if (bool){showSuccessInfo("2");}
     activeContact = null;
 }
 

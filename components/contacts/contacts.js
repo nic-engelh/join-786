@@ -333,7 +333,7 @@ function deleteContact (contactID, bool) {
     removeElemente("contact-view-profil-main");
     renderContactList();
     toggleHide("contact-list-background");
-    if (bool){showSuccessInfo("1");}
+    if (bool){showSuccessInfo("2");}
     activeContact = null;
     return true
 }
