@@ -258,7 +258,7 @@ fw-bold {
 
 .contact-input-name {
     background-image: url('/assets/img/contacts/person-contact-input.svg');
-    background-position: 301px;
+    background-position: 90%;
     background-repeat: no-repeat;
     background-size: 24px;
     cursor: pointer;
@@ -266,7 +266,7 @@ fw-bold {
 
 .contact-input-email {
     background-image: url('/assets/img/contacts/mail-contact-input.png');
-    background-position: 301px;
+    background-position: 90%;
     background-repeat: no-repeat;
     background-size: 24px;
     cursor: pointer;
@@ -274,7 +274,7 @@ fw-bold {
 
 .contact-input-phone {
     background-image: url('/assets/img/contacts/call-contact-input.svg');
-    background-position: 301px;
+    background-position: 90%;
     background-repeat: no-repeat;
     background-size: 24px;
     cursor: pointer;
@@ -296,9 +296,6 @@ fw-bold {
     font-weight: 700;
     font-size: 21px;
     text-align: center;
-    position: absolute !important;
-    top: 190px;
-    left: 97px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -755,7 +752,7 @@ dialog {
 
   @media screen and (max-width: 400px) {
     .contact-bg {
-        height: 25%;
+        height: 30%;
     }
     #contact-user-symbol-badge-mobile {
         width: 100px;
@@ -773,7 +770,7 @@ dialog {
         padding-bottom: 5%;
    }
    #frame-195 {
-        gap: 18%;
+        gap: 27%;
         padding: 66px 24px 8px 24px;
    }
 
@@ -792,4 +789,8 @@ dialog {
         justify-content: unset;
     } 
 
+    #add-contact-text-mobile form {
+        justify-content: center;
+        gap: 10%;
+    }
   }
