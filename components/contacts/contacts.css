@@ -702,6 +702,7 @@ fw-bold {
     flex-direction: row;
     width: 70%;
     justify-content: space-between;
+    gap: 35%;
 }
 
 .visually-hidden {
