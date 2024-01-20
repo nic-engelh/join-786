@@ -40,6 +40,7 @@ async function login() {
                if (checkPasswordLogin(password)) {
                     ACTIVEUSERKEY = key;
                     setLocalStorage("activeUser", ACTIVEUSERKEY);
+                    loadingScreen();
                     window.location.href = '/index.html';
                } else {
                    TimePassedData(key,message)
@@ -48,6 +49,11 @@ async function login() {
                CheckMailFailed(message,key)
           }
      }
+}
+
+function loadingScreen() {
+     let element=document.getElementById('loading');
+     element.classList.toggle("d-none")
 }
 
 /**
@@ -204,5 +210,6 @@ async function guestLogin() {
      }
      ACTIVEUSERKEY = "guest";
      await setLocalStorage("activeUser", ACTIVEUSERKEY);
+     loadingScreen();
      window.location.href = '/index.html';
 }
