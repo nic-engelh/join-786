@@ -53,7 +53,7 @@ function updateToDoField() {
  * 
  */
 function updateInProgressField() {
-    updateBoardField('inProgress', USERS[ACTIVEUSERKEY].tasks, 'status');
+    updateBoardField('inprogress', USERS[ACTIVEUSERKEY].tasks, 'status');
 }
 
 /**
@@ -68,7 +68,8 @@ function updateFeedbackField() {
  * function filters all tasks with status "done" from active user tasks object
  * 
  */
-function updateDoneField() {
+function updateDoneField() {Summary
+
     updateBoardField('done', USERS[ACTIVEUSERKEY].tasks, 'status');
 }
 
@@ -268,7 +269,7 @@ function findBoardTask() {
  */
 async function renderFilteredTasks() {
     // TODO function needs so render the filtered array into the board
-    let containerIds = ["todo", "inProgress", "feedback", "done"]
+    let containerIds = ["todo", "inprogress", "feedback", "done"]
     let filteredTasks = await findBoardTask();
     for (const id of containerIds) {
         if (document.getElementById(id)) {
