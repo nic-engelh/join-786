@@ -53,7 +53,7 @@ function updateToDoField() {
  * 
  */
 function updateInProgressField() {
-    updateBoardField('inprogress', USERS[ACTIVEUSERKEY].tasks, 'status');
+    updateBoardField('inProgress', USERS[ACTIVEUSERKEY].tasks, 'status');
 }
 
 /**

@@ -30,11 +30,10 @@ async function getTaskValue(inputStatus) {
     let category = document.getElementById('task_category').value;
     let subtasks = subtasksArray;
     let status;
-    if (inputStatus) {
+    status = 'To Do';
+    if (inputStatus !== 'todo' ) {
         status = inputStatus;
     };
-    status = 'To Do';
-
     pushTask(dateCreated, id, title, description, user, date, prio, category, subtasks, status);
 }
 
