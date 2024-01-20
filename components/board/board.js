@@ -68,7 +68,7 @@ function updateFeedbackField() {
  * function filters all tasks with status "done" from active user tasks object
  * 
  */
-function updateDoneField() {Summary
+function updateDoneField() {
 
     updateBoardField('done', USERS[ACTIVEUSERKEY].tasks, 'status');
 }
