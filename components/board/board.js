@@ -215,7 +215,7 @@ function showTask(id) {
 function openCreateTaskModal(section, boardFieldStatus) {
     openSection(section);
     let element = document.getElementById("create_task_button");
-    element.setAttribute("onclick", `formValidation(${boardFieldStatus})`);
+    element.setAttribute("onclick", `formValidation("${boardFieldStatus}")`);
     return true;
 }
 

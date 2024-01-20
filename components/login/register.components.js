@@ -105,3 +105,30 @@ function passwordVisibleRegister() {//changes the lock img and the passwort visi
           passwordConfirm.style.backgroundImage = "url('/assets/img/lock.jpg')";
      }
 }
+
+function addStartingData () {
+     contacts = [
+          { "name": "JOIN Servicedesk", "email": "service@join.com", "phone": "+0800123123", "contactId": "9876!oek", "initials": "SD", "color": "812731"},
+          { "name": "JOIN Product Genius", "email": "genius@join.com", "phone": "+08001234567", "contactId": "987?ert", "initials": "PG", "color": "3e59c2"}
+     ];
+
+     tasks = {
+          rIyVoCsvw4:
+          {
+               "dateCreated": 1705769521351,
+               "id": "rIyVoCsvw4",
+               "title": "Überprüfe die Einsteigertips",
+               "description": "Einsteigertips findest du HIER",
+               "prio": "medium",
+               "date": "2024-01-31",
+               "status": "todo",
+               "category": "User Story",
+               "user": [],
+               "subtasks": {
+                   "subtaskContent": [],
+                   "subtaskStatus": []
+               },
+               "status": {}
+           }
+     }
+}
