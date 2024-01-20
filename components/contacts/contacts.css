@@ -2,6 +2,7 @@
     height: 95%;
     width: 100%;
     max-width: 390px;
+    max-height: 850px;
     border-radius: 30px;
     background-color: white;
     overflow-y: hidden;
@@ -233,6 +234,7 @@ fw-bold {
 
 #add-contact-text-mobile {
    width: auto;
+   height:100%;
 }
 
 .contact-input {
@@ -731,7 +733,7 @@ dialog {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: space-between;
+    justify-content: space-evenly;
     height: 100%;
 }
 
@@ -771,6 +773,23 @@ dialog {
         padding-bottom: 5%;
    }
    #frame-195 {
-        gap: 18%
+        gap: 18%;
+        padding: 66px 24px 8px 24px;
    }
+
+   #add-contact-text-mobile form {
+        justify-content: space-between;
+   }
+  }
+
+  @media screen and (min-width: 400px) { 
+    .contact-bg {
+        height: 64%;
+    }
+    #frame-195 {
+        padding: 66px 24px 0px 24px;
+        gap: 31%;
+        justify-content: unset;
+    } 
+
   }
