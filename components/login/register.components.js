@@ -128,7 +128,23 @@ function addStartingData () {
                    "subtaskContent": [],
                    "subtaskStatus": []
                },
-               "status": {}
+               "status": "todo"
+           },
+           cUeUmyhTLm:
+           {
+               "dateCreated": 1705827706266,
+               "id": "cUeUmyhTLm",
+               "title": "Start JOIN Tutorial",
+               "description": "The tutorial can be found HERE",
+               "prio": "medium",
+               "date": "2024-01-23",
+               "category": "Technical Task",
+               "user": [],
+               "subtasks": {
+                   "subtaskContent": [],
+                   "subtaskStatus": []
+               },
+               "status": "feedback"
            }
      }
 }
