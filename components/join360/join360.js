@@ -135,9 +135,7 @@ function checkUrgentDates(urgentTaskIds) {
 
 function generateUrgentWidgetHTML(size, deadlineDate) {
     return /*html*/` 
-        <div class="j36_urgent">
-        <div>
-        <img src="/assets/img/Ellipse 4 (1).svg" alt="">
+        <div class="j360_urgentImg">
         </div>
         <div class="j36_numberPosition">
             <b>${size}</b>

@@ -213,6 +213,10 @@ h1 {
     box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.10);
 }
 
+.j360_urgentImg{
+    width: 20px;
+}
+
 .j36_urgent {
     display: flex;
     align-items: center;
@@ -221,6 +225,10 @@ h1 {
     font-weight: 600;
     padding-left: 30px;
     gap: 30px;
+    background-image: url("/assets/img/Ellipse 4 (1).svg");
+    background-repeat: no-repeat;
+    background-position: 5% 50%;
+    background-size: 63px;
 }
 
 .j36_partingLine {
@@ -382,8 +390,8 @@ h1 {
         background-image: unset;
     }
 
-    .j36_urgent img {
-        display: none;
+    .j36_urgent {
+        background-image: unset;
     }
 
     .j36_ToDoPosition {

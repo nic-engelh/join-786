@@ -111,7 +111,6 @@ function addStartingData () {
           { "name": "JOIN Servicedesk", "email": "service@join.com", "phone": "+0800123123", "contactId": "9876!oek", "initials": "SD", "color": "812731"},
           { "name": "JOIN Product Genius", "email": "genius@join.com", "phone": "+08001234567", "contactId": "987?ert", "initials": "PG", "color": "3e59c2"}
      ];
-
      tasks = {
           rIyVoCsvw4:
           {
