@@ -575,7 +575,6 @@ border-radius: 8px;
 }
 @media(max-width:2000px) {
   .board_section {
-    margin-left: 220px !important;
     overflow-x: hidden;
     overscroll-behavior-inline: contain;
   }
@@ -586,17 +585,9 @@ border-radius: 8px;
 }
 
 @media(max-width:1700px) {
-  .board_section {
-    margin-left: 190px !important;
-  }
+
   .boardTaskScrolling{
     width: unset;
-  }
-}
-
-@media(max-width:1500px) {
-  .board_section {
-    margin-left: 240px !important;
   }
 }
 
@@ -650,6 +641,20 @@ border-radius: 8px;
   }
 }
 
+@media(min-width:1450px) {
+  .board_section {
+    display: flex;
+    justify-content:space-evenly;
+    margin-left: 290px;
+  }
+
+  .boardTaskScrolling {
+    display: flex;
+    flex-direction: column !important;
+    align-items: center;
+  }
+}
+
 @media(min-width:1350px) {
   .board_search {
     display: none;
@@ -660,12 +665,6 @@ border-radius: 8px;
 
   .board_h1 {
     margin-left: 390px;
-  }
-
-  .board_section {
-    display: flex;
-    justify-content:space-evenly;
-    margin-left: 220px;
   }
 
   .board_input {
@@ -687,12 +686,6 @@ border-radius: 8px;
 
   .board_done_img {
     display: none;
-  }
-
-  .boardTaskScrolling {
-    display: flex;
-    flex-direction: column !important;
-    align-items: center;
   }
 
   .todo {
