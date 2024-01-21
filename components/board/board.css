@@ -15,6 +15,43 @@ body::-webkit-scrollbar {
   width: 0;
 }
 
+.board_popup {
+  height: 200px;
+  width: 200px;
+  background-color: #2a3647;
+  border-radius: 0px 20px 20px 20px;
+  padding: 10px;
+  z-index: 5;
+}
+
+#board_modal_category {
+  text-align: center;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  color: white;
+  gap: 10px;
+  z-index: 6;
+}
+
+#board_modal_category b:hover {
+  cursor: pointer;
+  text-decoration: underline;
+  color: wheat;
+}
+
+.board_dropDown_position {
+  position: absolute;
+  right: 20px;
+  top: 10px;
+  z-index: 4;
+}
+
+.board_dropDown {
+  width: 30px;
+  visibility: hidden;
+}
+
 body::-webkit-scrollbar-thumb {
   border-radius: 20px;
   /* roundness of the scroll thumb */
@@ -74,6 +111,7 @@ h3 {
 .boardTaskScrolling::-webkit-scrollbar {
   width: 22px;
   height: 6px;
+  z-index: 1;
 }
 
 .boardTaskScrolling::-webkit-scrollbar-thumb {
@@ -208,6 +246,7 @@ h3 {
   border-radius: 24px;
   gap: 10px;
   background-color: white;
+  position: relative;
 }
 
 .todo:hover {
@@ -353,19 +392,22 @@ h3 {
     transform: translate(100%, -30%);
     opacity: 0;
   }
+
   100% {
     transform: translate(-100%, -30%);
     opacity: 1;
   }
 }
 
-#board_modal{
+#board_modal {
   position: fixed;
   top: 40%;
-  left: 50%; /* Startposition von rechts außerhalb des Bildschirms */
+  left: 50%;
+  /* Startposition von rechts außerhalb des Bildschirms */
   transform: translate(-50%, -50%);
   animation: cardAnimation 0.5s ease-in-out 0s 1 normal forwards;
 }
+
 .task_card {
   background-color: white;
   display: flex;
@@ -554,11 +596,11 @@ h3 {
   height: 10px;
   background: #F4F4F4;
   border-radius: 8px;
- 
+
 }
 
 .progress__fill {
-border-radius: 8px;
+  border-radius: 8px;
   height: 100%;
   background: #4589ff;
   transition: all 0.2s;
@@ -568,11 +610,13 @@ border-radius: 8px;
   font: bold 12px "Quicksand", sans-serif;
   color: black;
 }
+
 .boardTaskScrolling {
   overflow-x: scroll;
   overscroll-behavior-inline: contain;
   -webkit-overflow-scrolling: touch;
 }
+
 @media(max-width:2000px) {
   .board_section {
     overflow-x: hidden;
@@ -586,7 +630,7 @@ border-radius: 8px;
 
 @media(max-width:1700px) {
 
-  .boardTaskScrolling{
+  .boardTaskScrolling {
     width: unset;
   }
 }
@@ -602,8 +646,9 @@ border-radius: 8px;
     font-weight: bold;
   }
 }
+
 @media(max-width:1350px) {
-  .inputD_none{
+  .inputD_none {
     display: none;
   }
 }
@@ -615,13 +660,20 @@ border-radius: 8px;
     overflow-x: hidden;
     overscroll-behavior-inline: contain;
   }
-  #board_modal{
+
+  .board_dropDown {
+    visibility: visible;
+  }
+
+  #board_modal {
     position: fixed;
     top: 40%;
-    left: 80%; /* Startposition von rechts außerhalb des Bildschirms */
+    left: 80%;
+    /* Startposition von rechts außerhalb des Bildschirms */
     transform: translate(-50%, -50%);
     animation: cardAnimation 0.5s ease-in-out 0s 1 normal forwards;
   }
+
   .board_h1 {
     margin-left: 0px !important;
   }
@@ -636,7 +688,8 @@ border-radius: 8px;
     overscroll-behavior-inline: contain;
     -webkit-overflow-scrolling: touch;
   }
-  body{
+
+  body {
     padding-bottom: 100px !important;
   }
 }
@@ -644,7 +697,7 @@ border-radius: 8px;
 @media(min-width:1450px) {
   .board_section {
     display: flex;
-    justify-content:space-evenly;
+    justify-content: space-evenly;
     margin-left: 290px;
   }
 
@@ -659,6 +712,7 @@ border-radius: 8px;
   .board_search {
     display: none;
   }
+
   #sectionBoard {
     margin-right: 64px;
   }
@@ -668,8 +722,8 @@ border-radius: 8px;
   }
 
   .board_input {
-   width: 500px;
-  
+    width: 500px;
+
   }
 
   .board_fontH1 {
@@ -693,11 +747,13 @@ border-radius: 8px;
   }
 
 }
-@media(max-width:550px){
-  #board_modal{
+
+@media(max-width:550px) {
+  #board_modal {
     position: fixed;
     top: 40%;
-    left: 95%; /* Startposition von rechts außerhalb des Bildschirms */
+    left: 95%;
+    /* Startposition von rechts außerhalb des Bildschirms */
     transform: translate(-50%, -50%);
     animation: cardAnimation 0.5s ease-in-out 0s 1 normal forwards;
   }

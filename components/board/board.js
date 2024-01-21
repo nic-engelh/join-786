@@ -27,7 +27,7 @@ async function updateBoardHTML() {
  * @param {Object} inputObject 
  * @param {string} targetKey 
  */
-function updateBoardField(targetValue, inputObject, targetKey ) {
+function updateBoardField(targetValue, inputObject, targetKey) {
     let filteredTasks = filterNestedObject(inputObject, targetValue, targetKey);
     document.getElementById(targetValue).innerHTML = '';
     let size = Object.keys(filteredTasks).length;
@@ -35,7 +35,7 @@ function updateBoardField(targetValue, inputObject, targetKey ) {
         showNoTasksDone(targetValue);
     } else {
         showTask(targetValue);
-        renderingBoardTasks(filteredTasks , targetValue);
+        renderingBoardTasks(filteredTasks, targetValue);
     }
 }
 
@@ -158,13 +158,13 @@ function renderingBoardUserInitials(assignedUser, id) {
     let count = 0;
 
     for (const user of assignedUser) {
-        if (count < 3){
-        container.innerHTML += generateUserInitialBadge(user, id);
-        setBadgeColor(user.color, `boardAssignedUserInitials_${user.contactId}${id}`);
-        count++;
-    } else {
-        break;
-    }
+        if (count < 3) {
+            container.innerHTML += generateUserInitialBadge(user, id);
+            setBadgeColor(user.color, `boardAssignedUserInitials_${user.contactId}${id}`);
+            count++;
+        } else {
+            break;
+        }
     }
 }
 
@@ -317,14 +317,27 @@ function renderSubtasksProgress(taskId) {
     } else {
         var progressbarWidth = (subTasksDone / subTasksTotal) * 100;
     }
-    updateProgressBar(progressbarWidth, taskId,subTasksDone ,subTasksTotal);
+    updateProgressBar(progressbarWidth, taskId, subTasksDone, subTasksTotal);
 }
 
-function updateProgressBar(value, taskId ,subTasksDone ,subTasksTotal) {
+function updateProgressBar(value, taskId, subTasksDone, subTasksTotal) {
     let progressBar = document.querySelector(`#progress_${taskId}`);
     value = Math.round(value);
     progressBar.querySelector(".progress__fill").style.width = `${value}%`;
     document.getElementById(`progress__text_${taskId}`).innerHTML = `${subTasksDone}/${subTasksTotal} Subtasks`;
+}
+
+function changeStatusBoardMobile(id, status) {
+    USERS[ACTIVEUSERKEY].tasks[id].status = status;
+    setStorageData('users',USERS);
+    updateBoardHTML();
+}
+
+function openDropDownBoard(taskid) {
+    const dialog = document.getElementById(`board_modal_container${taskid}`);
+    dialog.classList.toggle('visually-hidden');
+    dialog.classList.toggle('d-flex');
+    dialog.show();
 }
 
 /**
@@ -339,6 +352,17 @@ function generateTodoHTML(task) {
     <div class ="todo" id="taskBoardCard_${task.id})" onclick="getTaskBoardModalValue('${task.id}')">
         <div draggable="true" ondragstart="startDragging('${task.id}')" class="taskToDo">
             <div class="userHeadline">${task.category}</div>
+            <div  class="board_dropDown_position">
+            <img onclick="event.stopPropagation(); openDropDownBoard('${task.id}')" id=board_dropDown class="board_dropDown" src="/assets/img/dropDown.png" alt="">
+            <dialog id="board_modal_container${task.id}" class="visually-hidden board_popup">
+            <div id="board_modal_category">
+                <h3>Move to</h3>
+                <b onclick="event.stopPropagation(); changeStatusBoardMobile('${task.id}', 'todo')">To-Do</b>
+                <b onclick="event.stopPropagation(); changeStatusBoardMobile('${task.id}', 'inprogress')">In-progress</b>
+                <b onclick="event.stopPropagation(); changeStatusBoardMobile('${task.id}', 'feedback')">Await-Feedback</b>
+                <b onclick="event.stopPropagation(); changeStatusBoardMobile('${task.id}', 'done')">Done</b>
+            </div>
+        </dialog></div>
             <div class="title">${task.title}</div>
             <div class="description">${task.description}</div>
             <div class="progressPosition"> 
@@ -353,6 +377,7 @@ function generateTodoHTML(task) {
             </div>
         
     </div>`;
+
 }
 
 /**
