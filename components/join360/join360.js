@@ -13,73 +13,65 @@ async function updateDashBoard() {
     await updateInProgressWidget();
     await updateNameWidget();
     await updateDoneWidget();
+    updateAllInBoardWidget();
 }
+
+
+/**
+ * Functions uses two arguments in order to update the number widget in the summary. It updates the size of tasks of a specific status.
+ * 
+ * @param {string} targetElement 
+ * @param {string} status 
+ */
+function updateStatusWidget (targetElement, status) {
+    let element = document.getElementById(targetElement);
+    element.innerHTML = clear();
+    let filteredTasks = getFilteredTasksByStatus(status);
+    let size = Object.keys(filteredTasks).length;
+    BOARDTASKS += size;
+    element.innerHTML = `<b>${size}</b>`;
+}
+
+
 
 /**
  * function filters all tasks with status todo from active user tasks object
  * 
- * 
- * WENN DIESE FUNKTION ASYNC updateBoardWidget Await hat funktioniert es nicht mehr
- * 
  */
-async function updateToDoWidget() {
-    let todo = document.getElementById('j36_todo');
-    todo.innerHTML = clear();
-    let targetValue = 'todo';
-    let toDoTasks = getFilteredTasksByStatus(targetValue);
-    let size = Object.keys(toDoTasks).length;
-    updateBoardWidget(size);
-    todo.innerHTML = `<b>${size}</b>`;
+function updateToDoWidget() {
+    updateStatusWidget('j36_todo','todo');
 }
 
 /**
  * function filters all tasks with status "inprogress" from active user tasks object
  * 
  */
-async function updateInProgressWidget() {
-    let inprogress = document.getElementById('j36_progress');
-    inprogress.innerHTML = ``;
-    let targetValue = 'inprogress';
-    let progressTasks = getFilteredTasksByStatus(targetValue);
-    let size = Object.keys(progressTasks).length;
-    updateBoardWidget(size);
-    inprogress.innerHTML = `<b>${size}</b>`;
+function updateInProgressWidget() {
+    updateStatusWidget('j36_progress','inprogress');
 }
 
 /**
  * function filters all taks with status "feedback" from active user tasks object
  * 
  */
-async function updateFeedbackWidget() {
-    let feedback = document.getElementById('j36_feedback');
-    feedback.innerHTML = clear();
-    let targetValue = 'feedback';
-    let feedbackTasks = getFilteredTasksByStatus(targetValue);
-    let size = Object.keys(feedbackTasks).length;
-    updateBoardWidget(size);
-    feedback.innerHTML = `<b>${size}</b>`;
+function updateFeedbackWidget() {
+    updateStatusWidget('j36_feedback','feedback');
 }
 
 /**
  * function filters all tasks with status "done" from active user tasks object
  * 
  */
-async function updateDoneWidget() {
-    let done = document.getElementById('j36_done');
-    done.innerHTML = clear();
-    let doneTasks = getFilteredTasksByStatus("done");
-    let size = Object.keys(doneTasks).length;
-    await updateBoardWidget(size);
-    done.innerHTML = `<b>${size}</b>`;
+function updateDoneWidget() {
+    updateStatusWidget('j36_done','done');
 }
 
 /**
  * update task in board; adds up all tasks on the board and saves it within the global variable BOARDTASKS
  * @param {number} number 
  */
-async function updateBoardWidget(number) {
+function updateAllInBoardWidget() {
     let board = document.getElementById('j36_board');
-    BOARDTASKS += number;
     board.innerHTML = clear();
     board.innerHTML = `<b>${BOARDTASKS}</b>`;
 }
@@ -102,7 +94,7 @@ function getFilteredTasksByStatus(targetValue) {
  * function changes the urgent widget data. It searches for the number of tasks which are urgent and the next upcoming dead line date.
  * 
  */
-async function updateUrgentWidget() {
+function updateUrgentWidget() {
     let deadlineDate, nextDate, urgentWidget, size;
     urgentWidget = document.getElementById('j36_Urgent');
     urgentWidget.innerHTML = clear();
