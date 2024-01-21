@@ -25,6 +25,7 @@ async function register() {
           if (checkPassword(password, passwordConfirm)) {
                userData = { 'userData': { key: key, name: name, email: email, password: password, initials: initials, failedAttemped: true } };
                USERS[key] = userData;
+               // TODO insert pre join pre contact and pre tasks function here - addStartingData () 
                updateStorageData('users', USERS);
                await popup();
           } else {
