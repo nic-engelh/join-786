@@ -6,7 +6,7 @@
     border-radius: 30px;
     background-color: white;
     overflow-y: hidden;
-    overflow-x: hideen;
+    overflow-x: hidden;
     display: flex;
     align-items: center;
     flex-direction: column-reverse;
@@ -776,7 +776,7 @@ dialog {
    }
 
    #add-contact-text-mobile form {
-        justify-content: space-between;
+        justify-content: space-evenly;
    }
   }
 
@@ -794,4 +794,10 @@ dialog {
         justify-content: center;
         gap: 10%;
     }
+
+    #overlay-add-contact-mobile {
+        max-width: 325px !important;
+    }
+    
+
   }
