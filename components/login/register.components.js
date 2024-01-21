@@ -25,6 +25,7 @@ async function register() {
           if (checkPassword(password, passwordConfirm)) {
                userData = { 'userData': { key: key, name: name, email: email, password: password, initials: initials, failedAttemped: true } };
                USERS[key] = userData;
+               // TODO insert pre join pre contact and pre tasks function here - addStartingData () 
                updateStorageData('users', USERS);
                await popup();
           } else {
@@ -127,7 +128,23 @@ function addStartingData () {
                    "subtaskContent": [],
                    "subtaskStatus": []
                },
-               "status": {}
+               "status": "todo"
+           },
+           cUeUmyhTLm:
+           {
+               "dateCreated": 1705827706266,
+               "id": "cUeUmyhTLm",
+               "title": "Start JOIN Tutorial",
+               "description": "The tutorial can be found HERE",
+               "prio": "medium",
+               "date": "2024-01-23",
+               "category": "Technical Task",
+               "user": [],
+               "subtasks": {
+                   "subtaskContent": [],
+                   "subtaskStatus": []
+               },
+               "status": "feedback"
            }
      }
 }

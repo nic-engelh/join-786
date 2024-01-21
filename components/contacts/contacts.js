@@ -129,6 +129,7 @@ function addContactData (target) {
     userContacts.push({name: name, email: email, phone: phone , contactId: id, initials: initials, color: randomColor()});
     USERS[ACTIVEUSERKEY].contacts = userContacts;
     renderContactList();
+    setActiveContact("id");
     hideDialog(`overlay-add-contact-${target}`);
     showSuccessInfo("0");
     clearAddContactData(target);
