@@ -274,6 +274,7 @@ function renderSubtaskContainer() {
         </div>
     </li>`;
     }
+    loadAssignableNames()
 }
 
 /**
@@ -351,29 +352,6 @@ function filterByVariable(array, variable, value) {
     return array.find(item => item[variable] == value);
   }
 
-/**
- * This function loads the users
- * 
- * 
- */
-function loadAssignableNames() {
-    const selectElement = document.getElementById("assigned_user");
-    selectElement.innerHTML = "";
-    let user = USERS[ACTIVEUSERKEY].contacts
-    for (let i = 0; i < user.length; i++) {
-        const initial = user[i]["initials"];
-        const name = user[i]["name"];
-        const color = user[i]["color"];
-        selectElement.innerHTML += `
-            <li onclick="chooseContact(${i})" id="toggle_name${i}" class="assigned_user_li">
-                <div class="task_contacts_name_initials">
-                    <div id="initials_img${i}" class="assigned_initials" style="background-color:#${color};">${initial}</div>
-                    <span id="assigned_name_span">${name}</span>
-                </div>
-                <img class="checkbox" id="checkbox${i}" src="/assets/img/addTask/check_empty.png">
-            </li>`;
-    }
-}
 
 /**
  * This function toggles the visibility of the tasks_contacts_container
@@ -382,7 +360,6 @@ function loadAssignableNames() {
  */
 function toggleSelect() {
     document.getElementById('tasks_contacts_container').classList.toggle('d-none');
-    loadAssignableNames()
 }
 
 /**
@@ -406,14 +383,40 @@ function hideContactSelect(event) {
  */
 document.addEventListener("click", hideContactSelect);
 
+
+/**
+ * This function loads the users
+ * 
+ * 
+ */
+function loadAssignableNames() {
+    const selectElement = document.getElementById("assigned_user");
+    selectElement.innerHTML = "";
+    let user = USERS[ACTIVEUSERKEY].contacts
+    for (let i = 0; i < user.length; i++) {
+        const initial = user[i]["initials"];
+        const name = user[i]["name"];
+        const color = user[i]["color"];
+        const id = user[i]["contactId"];
+        selectElement.innerHTML += `
+            <li onclick="chooseContact('${i}', '${id}')" id="toggle_name${id}" class="assigned_user_li">
+                <div class="task_contacts_name_initials">
+                    <div id="initials_img${id}" class="assigned_initials" style="background-color:#${color};">${initial}</div>
+                    <span id="assigned_name_span">${name}</span>
+                </div>
+                <img class="checkbox" id="checkbox${id}" src="/assets/img/addTask/check_empty.png">
+            </li>`;
+    }
+}
+
 /**
  * This function is used to assign a user and show it with css and images
  * 
  * 
  */
-function chooseContact(i) {
-    let li = document.getElementById(`toggle_name${i}`);
-    let checkbox = document.getElementById(`checkbox${i}`);
+function chooseContact(i, id) {
+    let li = document.getElementById(`toggle_name${id}`);
+    let checkbox = document.getElementById(`checkbox${id}`);
 
     li.classList.toggle('assigned_user_li_toggled');
 
@@ -423,7 +426,7 @@ function chooseContact(i) {
         checkbox.src = '/assets/img/addTask/check_empty.png';
     }
 
-    pushAssignedContact(i, li);
+    pushAssignedContact(i, id, li);
 }
 
 /**
@@ -431,7 +434,7 @@ function chooseContact(i) {
  * 
  * 
  */
-async function pushAssignedContact(i, li) {
+async function pushAssignedContact(i, id, li) {
     const name = await userContacts[i];
     
     const index = await assignedToTask.indexOf(name);
@@ -439,7 +442,7 @@ async function pushAssignedContact(i, li) {
     if (li.classList.contains('assigned_user_li_toggled')) {
         assignedToTask.push(name);
     } else { assignedToTask.splice(index, 1) }
-    showAssignedInitials(i);
+    getAssignedInitials(i, id);
 }
 
 /**
@@ -447,27 +450,32 @@ async function pushAssignedContact(i, li) {
  * 
  * 
  */
-function showAssignedInitials(i) {
-    const toBeAssigned = userContacts[i]['initials'];
+function getAssignedInitials(i, id) {
+    const toBeAssigned = userContacts[i];
     const index = assignedInitial.indexOf(toBeAssigned);
-    let checkbox = document.getElementById(`checkbox${i}`);
-    let container = document.getElementById('assigned_user_initials');
+    let checkbox = document.getElementById(`checkbox${id}`);
 
-    if (checkbox.src.endsWith('check_checked.png')) {
+
+    if (checkbox.src.endsWith('check_checked.png') && index === -1) {
         assignedInitial.push(toBeAssigned);
     } else {
         if (index !== -1) {
             assignedInitial.splice(index, 1);
         }
     }
+    showAssignedInitials(i, id);
+}
 
-    container.innerHTML = '';
+function showAssignedInitials(i, id) {
+    let container = document.getElementById('assigned_user_initials');
+    container.innerHTML = "";  
     for (let j = 0; j < assignedInitial.length; j++) {
-        const displayedInitial = assignedInitial[j];
-        let color = userContacts[j]["color"];            
-        container.innerHTML += `<span id="assigned_initials${i}" class="assigned_initials" style="background-color:#${color};">${displayedInitial}</span>`;
+        const displayedInitial = assignedInitial[j]['initials'];
+        let color = assignedInitial[j]["color"];
+        container.innerHTML += `<span id="assigned_initials${id}" class="assigned_initials" style="background-color:#${color};">${displayedInitial}</span>`;
     }
 }
+
 
 /**
  * This function validates if every required input was filled out and marks them if not
