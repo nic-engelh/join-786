@@ -40,11 +40,13 @@ function revertBackToButtonModal(id) {
  * 
  * 
  */
-function handleKeyUp(event) {
-    if (event.key === 'Enter' || event.keyCode === 13) {
-        addNewSubtaskToListModal(ID);
-    }
-}
+// function handleKeyUp(event) {
+//     if (event.key === 'Enter' || event.keyCode === 13 && "board_modal_task".open) {
+//         addNewSubtaskToListModal(ID);
+//     } else if (event.key === 'Enter' || event.keyCode === 13) {
+//         addNewSubtaskToList();
+//     }
+// }
 
 /**
  * This function pushes the new subtask to the subtasks arrays

@@ -18,8 +18,6 @@ async function updateBoardHTML() {
     searchFieldEventListener();
 }
 
-
-
 /**
  * function filters all tasks with status targetValue from active user tasks object in USERS
  * 
@@ -213,11 +211,65 @@ function showTask(id) {
     document.getElementById(`${id}`).classList.remove('noTask');
 }
 
+/**
+ * linking to addTask or with higher resolution opening a modal for add task
+ * 
+ * 
+ */
 function openCreateTaskModal(section, boardFieldStatus) {
-    openSection(section);
+    if (window.innerWidth < 1000) {
+        openSection(section);
+        let element = document.getElementById("create_task_button");
+        element.setAttribute("onclick", `formValidation("${boardFieldStatus}")`);
+        return true;
+    } else {
+        let addTaskContent = document.getElementById("sectionAddTasks");
+        const dialogTask = document.getElementById("board_add_task");
+        dialogTask.innerHTML = addTaskContent.innerHTML;
+        // dialogTask.classList.toggle('visually-hidden');
+        dialogTask.classList.add('d-flex');
+        dialogTask.showModal();
+        let w3Task = document.getElementById("w3AddTask");
+        w3Task.parentNode.removeChild(w3Task);
+        styleCreateTaskModal(boardFieldStatus)
+    }
+}
+
+function styleCreateTaskModal(boardFieldStatus) {
+    document.getElementById("add_task_h1").style.backgroundColor = "white";
+    document.getElementById("add_task_h1").style.marginBottom = "36px";
+    document.getElementById("create_task_finish").style.backgroundColor = "white";
+    document.getElementById("create_task_finish").style.position = "absolute";
+    document.getElementById("create_task_finish_span").style.paddingLeft = "16px";
+    document.getElementById("tasks_line").style.display = "none";
+    let newImg = document.createElement("img");
+    newImg.id = "addTaskModalClose";
+    newImg.src = "/assets/img/board/modal_close.png";
+    let newDiv = document.createElement("div");
+    newDiv.id = "addTaskModalLine";
+    let container = document.getElementById("board_add_task");
+    let containerH1 = document.getElementById("add_task_h1");
+    container.appendChild(newDiv);
+    containerH1.appendChild(newImg);
+    document.getElementById("addTaskModalClose").setAttribute("onclick", `closeCreateTaskModal()`);
     let element = document.getElementById("create_task_button");
     element.setAttribute("onclick", `formValidation("${boardFieldStatus}")`);
-    return true;
+}
+
+function closeCreateTaskModal() {
+    const dialog = document.getElementById("board_add_task");
+    // dialog.classList.add('visually-hidden');
+    dialog.classList.remove('d-flex');
+    dialog.close();
+    resetCreateTaskModal();
+}
+
+async function resetCreateTaskModal() {
+    document.getElementById("body").innerHTML += `
+    <div id="w3AddTask" w3-include-html="/components/tasks/tasksInclude.html"></div>`;
+    await includeHTML();
+    await updateBoardHTML();
+    await openSection('sectionBoard');
 }
 
 /***

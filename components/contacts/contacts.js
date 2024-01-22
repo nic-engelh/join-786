@@ -120,7 +120,7 @@ function sortUserContacts () {
  * 
  * @param {string} target 
  */
-function addContactData (target) {
+async function addContactData (target) {
     let name = document.getElementById(`add-contact-name-${target}`).value;
     let email = document.getElementById(`add-contact-email-${target}`).value;
     let phone = document.getElementById(`add-contact-phone-${target}`).value;
@@ -128,11 +128,12 @@ function addContactData (target) {
     let initials = generateInitials(name);
     userContacts.push({name: name, email: email, phone: phone , contactId: id, initials: initials, color: randomColor()});
     USERS[ACTIVEUSERKEY].contacts = userContacts;
-    renderContactList();
-    setActiveContact("id");
+    await renderContactList();
+    await setActiveContact(id);
     hideDialog(`overlay-add-contact-${target}`);
     showSuccessInfo("0");
     clearAddContactData(target);
+    showProfilDetails(id);
 }
 
 /**
@@ -141,11 +142,11 @@ function addContactData (target) {
  * @param {string} contactID 
  * @returns boolean
  */
-function setActiveContact (contactID) {
-    renderContactList();
+async function setActiveContact (contactID) {
+    await renderContactList();
     activeContact = contactID;
-    const event = new Event('activeContactChanged');
-    document.dispatchEvent(event);
+    const event = await new Event('activeContactChanged');
+    await document.dispatchEvent(event);
     return true
 } 
 
@@ -319,7 +320,7 @@ function checkWindowWidth () {
  * @param {boolean} bool 
  * @returns 
  */
-function deleteContact (contactID, bool) {
+async function deleteContact (contactID, bool) {
     if (checkWindowWidth()) {
         deleteContactDesktop(contactID, bool);
         return true
@@ -331,9 +332,9 @@ function deleteContact (contactID, bool) {
         return false
     }
     USERS[ACTIVEUSERKEY].contacts = userContacts;
-    removeElemente("contact-view-profil-main");
-    renderContactList();
-    toggleHide("contact-list-background");
+    await removeElemente("contact-view-profil-main");
+    await renderContactList();
+    await toggleHide("contact-list-background");
     if (bool){showSuccessInfo("2");}
     activeContact = null;
     return true

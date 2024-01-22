@@ -12,6 +12,11 @@ body {
   display: flex;
 }
 
+#addTasksContainer {
+  width: 100%;
+  margin-left: 16px;
+}
+
 #add_task_form {
   gap: 8px;
   display: flex;
@@ -32,6 +37,9 @@ body {
   top: 0;
   z-index: 1;
   background-color: #f6f7f8;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .add_task_required {
@@ -135,6 +143,10 @@ body {
   font-size: 16px;
 }
 
+.add_task_input_button:hover {
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+}
+
 .urgent_button_active {
   background-color: #FF3D00;
   color: white;
@@ -161,6 +173,7 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
+  width: 384px;
 }
 
 #task_user {
@@ -355,13 +368,31 @@ ul {
   margin-right: 20px;
 }
 
+#addTaskModalLine {
+  position: absolute;
+  top: 22%;
+  right: 50%;
+  width: 1px;
+  height: 424px;
+  flex-shrink: 0;
+  background-color: #D1D1D1;
+}
+
+#addTaskModalClose {
+  height: 24px;
+  width: 24px;
+  position: relative;
+  right: 3%;
+  cursor: pointer;
+}
+
 @media(min-width:1000px) {
   #sectionAddTasks {
     margin-left: 350px;
   }
 
   .create_task_finish {
-    bottom: 0px !important;
+    bottom: 0px;
   }
 
   .form_categories {
@@ -371,7 +402,7 @@ ul {
   .form_categories_date {
     width: 500px;
     position: absolute;
-    left: 55%;
+    right: 3%;
   }
 
   .form_categories_assigned {
@@ -381,21 +412,21 @@ ul {
   .form_categories_subtask {
     width: 500px;
     position: absolute;
-    left: 55%;
+    right: 3%;
     top: 520px;
   }
 
   .form_categories_category {
     width: 500px;
     position: absolute;
-    left: 55%;
+    right: 3%;
     top: 420px;
   }
 
   .form_categories_text {
     position: absolute;
     top: 330px;
-    left: 55%;
+    right: 3%;;
   }
 
   .add_task_low_button {
@@ -407,7 +438,7 @@ ul {
     width: 0px;
     height: 370px;
     position: absolute;
-    left: 50%;
+    right: 37%;
     top: 230px;
   }
 
@@ -415,24 +446,25 @@ ul {
 
 @media(max-width:1700px) {
   .tasks_line {
-    left: 55%;
+    right: 42%;
   }
 
-  .form_categories_text {
+  /* .form_categories_text {
     left: 60%;
-  }
+  } */
 
-  .form_categories_category {
+  /* .form_categories_category {
     left: 60%;
-  }
+  } */
 
-  .form_categories_subtask {
+  /* .form_categories_subtask {
     left: 60%;
-  }
+  } */
 
-  .form_categories_date {
+  /* .form_categories_date {
     left: 60%;
-  }
+  } */
+
   .create_task_finish_buttons {
     position: absolute;
     left: 73%;
@@ -441,39 +473,39 @@ ul {
 
 @media(max-width:1590px) {
   .tasks_line {
-    left: 58%;
+    right: 39%;
   }
 }
 
 @media(max-width:1300px) {
   .tasks_line {
-    left: 62% !important;
+    right: 35% !important;
   }
 
 }
 
 @media(max-width:1500px) {
   .tasks_line {
-    left: 58%;
+    right: 36%;
   }
 
   .form_categories_text {
-    left: 65%;
+    /* left: 65%; */
     width: 350px;
   }
 
   .form_categories_category {
-    left: 65%;
+    /* left: 65%; */
     width: 350px;
   }
 
   .form_categories_subtask {
-    left: 65%;
+    /* left: 65%; */
     width: 350px;
   }
 
   .form_categories_date {
-    left: 65%;
+    /* left: 65%; */
     width: 350px !important;
   }
 
@@ -496,18 +528,21 @@ ul {
   .add_task_inputs {
     width: 350px;
   }
-  .create_task_finish_buttons{
+
+  .create_task_finish_buttons {
     left: 68%;
   }
 }
 
 @media(max-width:1210px) {
   .tasks_line {
-   display: none;
+    display: none;
   }
-  .create_task_finish_buttons{
+
+  .create_task_finish_buttons {
     left: 64%
   }
+
   #sectionAddTasks {
     margin-left: 245px;
   }
@@ -525,12 +560,31 @@ ul {
   }
 }
 
+@media(max-width:1100px) {
+  .add_task_inputs {
+    width: 300px;
+  }
 
-@media(max-width:1000px) {
-  .create_task_finish_buttons{
+  #task_category {
+    width: 350px;
+  }
+}
+
+
+@media(max-width:999px) {
+  #addTaskModalLine {
+    display: none;
+  }
+
+  #tasks_contacts_container {
+    width: 105%;
+  }
+
+  .create_task_finish_buttons {
     position: unset;
     padding-right: 16px;
   }
+
   .create_task_finish {
     bottom: 0px !important;
     padding-bottom: 82px;
@@ -629,6 +683,7 @@ ul {
   #medium_button {
     width: 90px;
   }
+
   #add_task_form {
     margin-left: 0px;
     margin-right: 0px;

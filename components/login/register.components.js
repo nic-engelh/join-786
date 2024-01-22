@@ -20,11 +20,14 @@ async function register() {
      let initials = generateInitials(name);
      if (findUserByEmail(email)) {
           notsame.innerHTML = 'email is already in use';
-          notsame.classList.remove('d-none')
+          notsame.classList.remove('d-none');
      } else {
           if (checkPassword(password, passwordConfirm)) {
                userData = { 'userData': { key: key, name: name, email: email, password: password, initials: initials, failedAttemped: true } };
                USERS[key] = userData;
+               USERS[key].contacts = [];
+               USERS[key].tasks = {};
+               addStartingData(key);
                // TODO insert pre join pre contact and pre tasks function here - addStartingData () 
                updateStorageData('users', USERS);
                await popup();
@@ -107,11 +110,9 @@ function passwordVisibleRegister() {//changes the lock img and the passwort visi
      }
 }
 
-function addStartingData () {
-     contacts = [
-          { "name": "JOIN Servicedesk", "email": "service@join.com", "phone": "+0800123123", "contactId": "9876!oek", "initials": "SD", "color": "812731"},
-          { "name": "JOIN Product Genius", "email": "genius@join.com", "phone": "+08001234567", "contactId": "987?ert", "initials": "PG", "color": "3e59c2"}
-     ];
+function addStartingData (key) {
+     PreSetContactOne = { "name": "JOIN Servicedesk", "email": "service@join.com", "phone": "+0800123123", "contactId": "9876!oek", "initials": "SD", "color": "812731"};   
+     PreSetContacttwo = { "name": "JOIN Product Genius", "email": "genius@join.com", "phone": "+08001234567", "contactId": "987?ert", "initials": "PG", "color": "3e59c2"};
      tasks = {
           rIyVoCsvw4:
           {
@@ -147,4 +148,7 @@ function addStartingData () {
                "status": "feedback"
            }
      }
+     USERS[key].contacts.push(PreSetContactOne);
+     USERS[key].contacts.push(PreSetContactTwo);
+     USERS[key].tasks = tasks; 
 }

@@ -27,12 +27,12 @@
     <script src="/components/contacts/contactsEvents.js"></script>
     <script src="/components/join360/join360.js"></script>
 </head>
-<body onload="init()">
+<body onload="init()" id="body">
     <div w3-include-html="/components/templates/header/header.html"></div>
     <div w3-include-html="/components/contacts/contactsOverview.html"></div>
     <div w3-include-html="/components/contacts/addContacts.html"></div>
     <div w3-include-html="/components/contacts/editContacts.html"></div>
-    <div w3-include-html="/components/tasks/tasksInclude.html"></div>
+    <div id="w3AddTask" w3-include-html="/components/tasks/tasksInclude.html"></div>
     <div w3-include-html="/components/board/board.html"></div>
     <div w3-include-html="/components/board/board_modal.html"></div>
     <div w3-include-html="/components/board/board_modal_task.html"></div>

@@ -128,7 +128,7 @@ function getPriority() {
         return 'medium';
     } else if (lowButton.classList.contains('low_button_active')) {
         return 'low';
-    }
+    } else {return 'medium'}
 }
 
 /**
@@ -218,8 +218,18 @@ function transformSubtaskButton() {
  * 
  */
 function handleKeyUp(event) {
+    // Überprüfe, ob die gedrückte Taste die Enter-Taste ist
     if (event.key === 'Enter' || event.keyCode === 13) {
-        addNewSubtaskToList();
+        // Überprüfe, ob das Dialog-Element mit der ID "board_modal_task" offen ist
+        var boardModalTask = document.getElementById("board_modal_task");
+        
+        if (boardModalTask && boardModalTask.open) {
+            // Wenn Enter gedrückt wurde und der Dialog offen ist, führe die Funktion aus
+            addNewSubtaskToListModal(ID);
+        } else {
+            // Andernfalls führe die andere Funktion aus
+            addNewSubtaskToList();
+        }
     }
 }
 
@@ -486,11 +496,15 @@ async function formValidation(status) {
         title.value !== '' &&
         date.value !== '' &&
         category.value !== ''
-    ) {
+    ) if(board_add_task.open) {
         await getTaskValue(status);
-        showSuccess();
+        await showSuccess();
+        await closeCreateTaskModal();
+    } else {
+        await getTaskValue(status);
+        await showSuccess();
         await openSection("sectionBoard");
-        await updateBoardHTML(); // TODO it does not work. Why? -> visually-hidden ? The elements can not be accessed? Onclick better?
+        await updateBoardHTML();
     }
 }
 
