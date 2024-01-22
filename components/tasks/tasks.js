@@ -87,8 +87,8 @@ function resetTask() {
     document.getElementById('date_is_required').classList.add('d-none');
     document.getElementById('urgent_button').classList.remove('urgent_button_active');
     document.getElementById('task_prio_img_urgent').src = '/assets/img/addTask/prio_high.png';
-    document.getElementById('medium_button').classList.remove('medium_button_active');
-    document.getElementById('task_prio_img_medium').src = '/assets/img/addTask/prio_medium.png';
+    document.getElementById('medium_button').classList.add('medium_button_active');
+    document.getElementById('task_prio_img_medium').src = '/assets/img/addTask/Medium_nocolor.png';
     document.getElementById('low_button').classList.remove('low_button_active');
     document.getElementById('task_prio_img_low').src = '/assets/img/addTask/prio_low.png';
     document.getElementById('task_category').value = '';
