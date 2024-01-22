@@ -154,7 +154,7 @@ async function boardModalDeleteTask() {
     delete USERS[ACTIVEUSERKEY].tasks[ID];
     ID = null;
     closeBoardModal();
-    await setStorageData("user", USERS);
+    await setStorageData("users", USERS);
     showSuccessInfo("3");
     // show modal task deleted
     // TODO set local user storage

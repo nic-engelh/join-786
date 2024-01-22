@@ -371,12 +371,43 @@ function renderSubtasksProgress(taskId) {
     }
     updateProgressBar(progressbarWidth, taskId, subTasksDone, subTasksTotal);
 }
-
+/**
+ * fills the progressbar
+ * @param {string} value 
+ * @param {string} taskId 
+ * @param {number} subTasksDone 
+ * @param {number} subTasksTotal 
+ */
 function updateProgressBar(value, taskId, subTasksDone, subTasksTotal) {
     let progressBar = document.querySelector(`#progress_${taskId}`);
+
+    if (subTasksTotal == 0) {
+        document.getElementById(`progressPosition_${taskId}`).classList.add("d-none");
+    }
+
     value = Math.round(value);
     progressBar.querySelector(".progress__fill").style.width = `${value}%`;
     document.getElementById(`progress__text_${taskId}`).innerHTML = `${subTasksDone}/${subTasksTotal} Subtasks`;
+}
+/**change status in mobiel tasks
+ * 
+ * @param {string} id 
+ * @param {string} status 
+ */
+function changeStatusBoardMobile(id, status) {
+    USERS[ACTIVEUSERKEY].tasks[id].status = status;
+    setStorageData('users',USERS);
+    updateBoardHTML();
+}
+/**opens popup dialog
+ * 
+ * @param {string} taskid 
+ */
+function openDropDownBoard(taskid) {
+    const dialog = document.getElementById(`board_modal_container${taskid}`);
+    dialog.classList.toggle('visually-hidden');
+    dialog.classList.toggle('d-flex');
+    dialog.show();
 }
 
 /**
@@ -391,9 +422,20 @@ function generateTodoHTML(task) {
     <div class ="todo" id="taskBoardCard_${task.id})" onclick="getTaskBoardModalValue('${task.id}')">
         <div draggable="true" ondragstart="startDragging('${task.id}')" class="taskToDo">
             <div class="userHeadline">${task.category}</div>
+            <div  class="board_dropDown_position">
+            <img onclick="event.stopPropagation(); openDropDownBoard('${task.id}')" id=board_dropDown class="board_dropDown" src="assets/img/dropDown.png" alt="">
+            <dialog id="board_modal_container${task.id}" class="visually-hidden board_popup">
+            <div id="board_modal_category">
+                <h3>Move to</h3>
+                <b onclick="event.stopPropagation(); changeStatusBoardMobile('${task.id}', 'todo')">To-Do</b>
+                <b onclick="event.stopPropagation(); changeStatusBoardMobile('${task.id}', 'inprogress')">In-progress</b>
+                <b onclick="event.stopPropagation(); changeStatusBoardMobile('${task.id}', 'feedback')">Await-Feedback</b>
+                <b onclick="event.stopPropagation(); changeStatusBoardMobile('${task.id}', 'done')">Done</b>
+            </div>
+        </dialog></div>
             <div class="title">${task.title}</div>
             <div class="description">${task.description}</div>
-            <div class="progressPosition"> 
+            <div id="progressPosition_${task.id}" class="progressPosition"> 
                   <div id="progress_${task.id}" class="progress">
                        <div class="progress__fill"></div>
                     </div>
@@ -405,6 +447,7 @@ function generateTodoHTML(task) {
             </div>
         
     </div>`;
+
 }
 
 /**

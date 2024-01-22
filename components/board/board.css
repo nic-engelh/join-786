@@ -15,6 +15,42 @@ body::-webkit-scrollbar {
   width: 0;
 }
 
+.board_popup {
+  height: 200px;
+  width: 200px;
+  background-color: #2a3647;
+  border-radius: 0px 20px 20px 20px;
+  padding: 10px;
+  z-index: 5;
+}
+
+#board_modal_category {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  color: white;
+  gap: 10px;
+  z-index: 6;
+}
+
+#board_modal_category b:hover {
+  cursor: pointer;
+  text-decoration: underline;
+  color: wheat;
+}
+
+.board_dropDown_position {
+  position: absolute;
+  right: 20px;
+  top: 10px;
+  z-index: 4;
+}
+
+.board_dropDown {
+  width: 30px;
+  visibility: hidden;
+}
+
 body::-webkit-scrollbar-thumb {
   border-radius: 20px;
   /* roundness of the scroll thumb */
@@ -74,6 +110,7 @@ h3 {
 .boardTaskScrolling::-webkit-scrollbar {
   width: 22px;
   height: 6px;
+  z-index: 1;
 }
 
 .boardTaskScrolling::-webkit-scrollbar-thumb {
@@ -208,6 +245,7 @@ h3 {
   border-radius: 24px;
   gap: 10px;
   background-color: white;
+  position: relative;
 }
 
 .todo:hover {
@@ -631,6 +669,10 @@ h3 {
     margin-right: 16px !important;
     overflow-x: hidden;
     overscroll-behavior-inline: contain;
+  }
+
+  .board_dropDown {
+    visibility: visible;
   }
 
   #board_modal {

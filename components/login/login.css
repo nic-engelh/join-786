@@ -77,6 +77,7 @@ h1 {
     flex-direction: column;
     margin-top: 10%;
     width: 50%;
+    max-width: 800px;
     height: 515px;
     border-radius: 30px;
     background-color: #ffff;
