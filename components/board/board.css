@@ -26,7 +26,6 @@ body::-webkit-scrollbar {
 
 #board_modal_category {
   text-align: center;
-  width: 100%;
   display: flex;
   flex-direction: column;
   color: white;

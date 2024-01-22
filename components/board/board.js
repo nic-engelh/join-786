@@ -374,6 +374,11 @@ function renderSubtasksProgress(taskId) {
 
 function updateProgressBar(value, taskId, subTasksDone, subTasksTotal) {
     let progressBar = document.querySelector(`#progress_${taskId}`);
+
+    if (subTasksTotal == 0) {
+        document.getElementById(`progressPosition_${taskId}`).classList.add("d-none");
+    }
+
     value = Math.round(value);
     progressBar.querySelector(".progress__fill").style.width = `${value}%`;
     document.getElementById(`progress__text_${taskId}`).innerHTML = `${subTasksDone}/${subTasksTotal} Subtasks`;
@@ -405,7 +410,7 @@ function generateTodoHTML(task) {
         <div draggable="true" ondragstart="startDragging('${task.id}')" class="taskToDo">
             <div class="userHeadline">${task.category}</div>
             <div  class="board_dropDown_position">
-            <img onclick="event.stopPropagation(); openDropDownBoard('${task.id}')" id=board_dropDown class="board_dropDown" src="/assets/img/dropDown.png" alt="">
+            <img onclick="event.stopPropagation(); openDropDownBoard('${task.id}')" id=board_dropDown class="board_dropDown" src="assets/img/dropDown.png" alt="">
             <dialog id="board_modal_container${task.id}" class="visually-hidden board_popup">
             <div id="board_modal_category">
                 <h3>Move to</h3>
@@ -417,7 +422,7 @@ function generateTodoHTML(task) {
         </dialog></div>
             <div class="title">${task.title}</div>
             <div class="description">${task.description}</div>
-            <div class="progressPosition"> 
+            <div id="progressPosition_${task.id}" class="progressPosition"> 
                   <div id="progress_${task.id}" class="progress">
                        <div class="progress__fill"></div>
                     </div>
