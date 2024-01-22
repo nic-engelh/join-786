@@ -371,7 +371,13 @@ function renderSubtasksProgress(taskId) {
     }
     updateProgressBar(progressbarWidth, taskId, subTasksDone, subTasksTotal);
 }
-
+/**
+ * fills the progressbar
+ * @param {string} value 
+ * @param {string} taskId 
+ * @param {number} subTasksDone 
+ * @param {number} subTasksTotal 
+ */
 function updateProgressBar(value, taskId, subTasksDone, subTasksTotal) {
     let progressBar = document.querySelector(`#progress_${taskId}`);
 
@@ -383,13 +389,20 @@ function updateProgressBar(value, taskId, subTasksDone, subTasksTotal) {
     progressBar.querySelector(".progress__fill").style.width = `${value}%`;
     document.getElementById(`progress__text_${taskId}`).innerHTML = `${subTasksDone}/${subTasksTotal} Subtasks`;
 }
-
+/**change status in mobiel tasks
+ * 
+ * @param {string} id 
+ * @param {string} status 
+ */
 function changeStatusBoardMobile(id, status) {
     USERS[ACTIVEUSERKEY].tasks[id].status = status;
     setStorageData('users',USERS);
     updateBoardHTML();
 }
-
+/**opens popup dialog
+ * 
+ * @param {string} taskid 
+ */
 function openDropDownBoard(taskid) {
     const dialog = document.getElementById(`board_modal_container${taskid}`);
     dialog.classList.toggle('visually-hidden');
