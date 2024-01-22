@@ -31,6 +31,7 @@ body::-webkit-scrollbar {
   color: white;
   gap: 10px;
   z-index: 6;
+  width: 100%;
 }
 
 #board_modal_category b:hover {
