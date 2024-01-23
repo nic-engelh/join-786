@@ -184,7 +184,7 @@ async function formValidationModal(id) {
         category.value !== ''
     ) {
         await getTaskValueModal();
-        closeBoardModalTask()
+        // closeBoardModalTask()
         await updateBoardHTML(); // TODO it does not work. Why? -> visually-hidden ? The elements can not be accessed? Onclick better?
     }
 }
@@ -198,7 +198,7 @@ async function getTaskValueModal(inputStatus) {
     let id = ID;
     let title = document.getElementById('modal_task_title').value;
     let description = document.getElementById('modal_task_description').value;
-    let user = assignedToTask;
+    let user = editTaskBuffer;
     let date = document.getElementById('modal_task_date').value;
     let prio = getPriorityModal();
     let category = document.getElementById('modal_task_category').value;
@@ -214,7 +214,7 @@ async function getTaskValueModal(inputStatus) {
  * 
  * @param {object} tasks this is the object where the task is compiled
  */
-function pushTaskModal(id, title, description, user, date, prio, category, subtasks, status, dateCreated) {
+async function pushTaskModal(id, title, description, user, date, prio, category, subtasks, status, dateCreated) {
     tasks[id] = {
         id: id,
         title: title,
@@ -227,7 +227,7 @@ function pushTaskModal(id, title, description, user, date, prio, category, subta
         status: status,
         dateCreated: dateCreated
     }
-    pushUSERS();
-    updateBoardHTML()
-    closeBoardModalTask()
+    await pushUSERS();
+    await updateBoardHTML()
+    await closeBoardModalTask()
 }

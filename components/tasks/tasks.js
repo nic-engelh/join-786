@@ -436,7 +436,6 @@ function chooseContact(i, id) {
  */
 async function pushAssignedContact(i, id, li) {
     const name = await userContacts[i];
-    
     const index = await assignedToTask.indexOf(name);
 
     if (li.classList.contains('assigned_user_li_toggled')) {

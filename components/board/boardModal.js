@@ -1,6 +1,8 @@
 
 let ID = "";
 
+let editTaskBuffer = [];
+
 function showBoardModal() {
     const dialog = document.getElementById("board_modal");
     dialog.classList.remove('visually-hidden');
@@ -114,7 +116,6 @@ function finishSubtasks(id, i) {
  */
 function loadBoardModalAssignedUsers(user) {
     const selectElement = document.getElementById("board_modal_assigned_user");
-
     selectElement.innerHTML = "";
     for (let i = 0; i < user.length; i++) {
         const initial = user[i]["initials"];
@@ -153,6 +154,10 @@ function closeBoardModalTask() {
     dialog.classList.add('visually-hidden');
     dialog.classList.remove('d-flex');
     dialog.close();
+    // assignedToTask.pop();
+    // assignedInitial.pop();
+    assignedToTask = [];
+    assignedInitial = [];
     updateBoardHTML()
 }
 
@@ -205,7 +210,7 @@ function openBoardModalEditTask(id) {
     dialogTask.showModal();
     modalTaskFillValues(id);
     modalTaskAddPrio(id);
-    modalTaskAddContacts(id);
+    // modalTaskAddContacts(id);
     editTaskLoadUsers();
     modalTaskAddSubtasks(id);
 }
@@ -246,6 +251,47 @@ function hideContactSelect(event) {
     }
 }
 
+// /**
+//  * This function loads all users in the edit Task modal 
+//  * 
+//  * 
+//  */
+// function editTaskLoadUsers() {
+//     debugger
+//     const selectElement = document.getElementById("modal_assigned_user");
+//     let taskUser = USERS[ACTIVEUSERKEY].tasks[ID].user; // Ehemals assignedToTask
+//     let taskSet = new Map(taskUser)
+
+//     let user = USERS[ACTIVEUSERKEY].contacts;
+//     let userSet = new Map(user)
+
+//     selectElement.innerHTML = "";
+//     for (let i = 0; i < user.length; i++) {
+//         const initial = user[i]["initials"];
+//         const name = user[i]["name"];
+//         const color = user[i]["color"];
+//         // Wenn User im Task.User ist dann if assignedToTask.includes(user[i].contactId)
+//         // Dann chooseContactModal()
+//        if(taskSet.has(userSet[i].contactId)) {
+//         selectElement.innerHTML += `
+//             <li onclick="chooseContactModal(${i})" id="toggle_name_modal${i}" class="assigned_user_li_toggled assigned_user_li">
+//                 <div class="task_contacts_name_initials">
+//                     <div id="modal_initials_img${i}" class="assigned_initials" style="background-color:#${color};">${initial}</div>
+//                     <span id="assigned_name_span">${name}</span>
+//                 </div>
+//                 <img class="checkbox" id="checkboxModal${i}" src="/assets/img/addTask/check_checked.png">
+//             </li>`;
+//        } else {
+//         selectElement.innerHTML += `
+//             <li onclick="chooseContactModal(${i})" id="toggle_name_modal${i}" class="assigned_user_li">
+//                 <div class="task_contacts_name_initials">
+//                     <div id="modal_initials_img${i}" class="assigned_initials" style="background-color:#${color};">${initial}</div>
+//                     <span id="assigned_name_span">${name}</span>
+//                 </div>
+//                 <img class="checkbox" id="checkboxModal${i}" src="/assets/img/addTask/check_empty.png">
+//             </li>`;}
+//     }
+// }
 /**
  * This function loads all users in the edit Task modal 
  * 
@@ -253,20 +299,48 @@ function hideContactSelect(event) {
  */
 function editTaskLoadUsers() {
     const selectElement = document.getElementById("modal_assigned_user");
-    let user = USERS[ACTIVEUSERKEY].contacts
+    editTaskBuffer = USERS[ACTIVEUSERKEY].tasks[ID].user; // Ehemals assignedToTask
+    let user = USERS[ACTIVEUSERKEY].contacts;
     selectElement.innerHTML = "";
+    
     for (let i = 0; i < user.length; i++) {
         const initial = user[i]["initials"];
         const name = user[i]["name"];
         const color = user[i]["color"];
+        const userID = user[i]["contactId"];
+
         selectElement.innerHTML += `
-            <li onclick="chooseContactModal(${i})" id="toggle_name_modal${i}" class="assigned_user_li">
+            <li onclick="chooseContactModal('${i}', '${userID}')" id="toggle_name_modal${userID}" class="assigned_user_li">
                 <div class="task_contacts_name_initials">
-                    <div id="modal_initials_img${i}" class="assigned_initials" style="background-color:#${color};">${initial}</div>
+                    <div id="modal_initials_img${userID}" class="assigned_initials" style="background-color:#${color};">${initial}</div>
                     <span id="assigned_name_span">${name}</span>
                 </div>
-                <img class="checkbox" id="checkboxModal${i}" src="/assets/img/addTask/check_empty.png">
+                <img class="checkbox" id="checkboxModal${userID}" src="/assets/img/addTask/check_empty.png">
             </li>`;
+            for (let j = 0; j < editTaskBuffer.length; j++){
+                const taskUserID = editTaskBuffer[j]["contactId"];
+                if (taskUserID == userID ){
+                    document.getElementById(`toggle_name_modal${userID}`).classList.add('assigned_user_li_toggled')
+                    document.getElementById(`checkboxModal${userID}`).src = '/assets/img/addTask/check_checked.png';
+                }
+            }
+        }
+        modalEditTaskAddInitials()
+}
+
+/**
+ * This function fills the edit task modal with the assigned user initials
+ * 
+ * 
+ */
+function modalEditTaskAddInitials() {
+    const container = document.getElementById("modal_task_assigned_user");
+    container.innerHTML = "";
+    for (let j = 0; j < editTaskBuffer.length; j++) {
+        let displayedInitial = editTaskBuffer[j].initials;
+        let color = editTaskBuffer[j].color;
+        let id = editTaskBuffer[j].contactId;
+        container.innerHTML += `<span id="assigned_initials${id}" class="assigned_initials" style="background-color:#${color};">${displayedInitial}</span>`;
     }
 }
 
@@ -282,79 +356,91 @@ document.addEventListener("click", hideContactSelect);
  * 
  * 
  */
-function chooseContactModal(i) {
-    let li = document.getElementById(`toggle_name_modal${i}`);
-    let checkbox = document.getElementById(`checkboxModal${i}`);
+// function chooseContactModal(i, id) {
+//     // debugger
+//     let li = document.getElementById(`toggle_name_modal${id}`);
+//     let checkbox = document.getElementById(`checkboxModal${id}`);
+//     let checkedUser = USERS[ACTIVEUSERKEY].contacts[i];
+
+//     li.classList.toggle('assigned_user_li_toggled');
+
+//     if (checkbox.src.endsWith('/assets/img/addTask/check_empty.png')) {
+//         checkbox.src = '/assets/img/addTask/check_checked.png';
+
+//         for (let j = 0; j < editTaskBuffer.length; j++){
+//             const taskUserID = editTaskBuffer[j]["contactId"];
+//             if (taskUserID != id ){
+//                 editTaskBuffer.push(checkedUser);
+//             }
+//         }
+        
+//     } else {
+//         checkbox.src = '/assets/img/addTask/check_empty.png';
+//         for (let j = 0; j < editTaskBuffer.length; j++){
+//             const taskUserID = editTaskBuffer[j]["contactId"];
+//             if (taskUserID != id ){
+//                 editTaskBuffer.splice(checkedUser, 1)
+//             }
+//         }
+//     }
+//     modalEditTaskAddInitials()
+//     // pushAssignedContactModal(i, li);
+// }
+
+
+function chooseContactModal(i, id) {
+    let li = document.getElementById(`toggle_name_modal${id}`);
+    let checkbox = document.getElementById(`checkboxModal${id}`);
+    let checkedUser = USERS[ACTIVEUSERKEY].contacts[i];
 
     li.classList.toggle('assigned_user_li_toggled');
 
     if (checkbox.src.endsWith('/assets/img/addTask/check_empty.png')) {
         checkbox.src = '/assets/img/addTask/check_checked.png';
+
+        // Überprüfen, ob der checkedUser bereits in editTaskBuffer vorhanden ist
+        const userAlreadyInBuffer = editTaskBuffer.some(user => user.contactId === id);
+
+        if (!userAlreadyInBuffer) {
+            editTaskBuffer.push(checkedUser);
+        }
     } else {
         checkbox.src = '/assets/img/addTask/check_empty.png';
-    }
 
-    pushAssignedContactModal(i, li);
+        // Entfernen des checkedUser aus editTaskBuffer, falls vorhanden
+        editTaskBuffer = editTaskBuffer.filter(user => user.contactId !== id);
+    }
+    modalEditTaskAddInitials()
 }
+
 
 /**
  * This function is used to push the assigned user in userContacts
  * 
  * 
  */
-async function pushAssignedContactModal(i, li) {
-    const name = await userContacts[i];
+// async function pushAssignedContactModal(i, li) {
+//     const name = await userContacts[i];
+//     const index = await assignedToTask.indexOf(name);
+    
+//     if (li.classList.contains('assigned_user_li_toggled') && index === -1) {
+//         assignedToTask.push(name);
+//     } else { assignedToTask.splice(index, 1) }
+//     // getAssignedInitialsModal(i);
+//     showAssignedInitialsModal(i);
+// }
 
-    const index = await assignedToTask.indexOf(name);
 
-    if (li.classList.contains('assigned_user_li_toggled')) {
-        assignedToTask.push(name);
-    } else { assignedToTask.splice(index, 1) }
-    showAssignedInitialsModal(i);
-}
+// function showAssignedInitialsModal(i) {
+//     let container = document.getElementById('modal_task_assigned_user');
+//     container.innerHTML = '';
+//     for (let j = 0; j < assignedToTask.length; j++) {
+//         const displayedInitial = assignedToTask[j]['initials'];
+//         let color = assignedToTask[j]["color"];
+//         container.innerHTML += `<span id="assigned_initials${i}" class="assigned_initials" style="background-color:#${color};">${displayedInitial}</span>`;
+//     }
+// }
 
-/**
- * This function shows the initials of the chosen user with his colors
- * 
- * 
- */
-function showAssignedInitialsModal(i) {
-    const toBeAssigned = userContacts[i]['initials'];
-    const index = assignedInitial.indexOf(toBeAssigned);
-    let checkbox = document.getElementById(`checkboxModal${i}`);
-    let container = document.getElementById('modal_task_assigned_user');
-
-    if (checkbox.src.endsWith('check_checked.png')) {
-        assignedInitial.push(toBeAssigned);
-    } else {
-        if (index !== -1) {
-            assignedInitial.splice(index, 1);
-        }
-    }
-
-    container.innerHTML = '';
-    for (let j = 0; j < assignedInitial.length; j++) {
-        const displayedInitial = assignedInitial[j];
-        let color = userContacts[j]["color"];
-        container.innerHTML += `<span id="assigned_initials${i}" class="assigned_initials" style="background-color:#${color};">${displayedInitial}</span>`;
-    }
-}
-
-/**
- * This function fills the edit task modal with the assigned users
- * 
- * 
- */
-function modalTaskAddContacts(id) {
-    let chosenTaskUser = USERS[ACTIVEUSERKEY].tasks[id].user;
-    const container = document.getElementById("modal_task_assigned_user");
-    container.innerHTML = "";
-    for (let j = 0; j < chosenTaskUser.length; j++) {
-        let displayedInitial = chosenTaskUser[j].initials;
-        let color = chosenTaskUser[j].color;
-        container.innerHTML += `<span id="assigned_initials${j}" class="assigned_initials" style="background-color:#${color};">${displayedInitial}</span>`;
-    }
-}
 
 /**
  * This function fills the edit task modal with the priority
