@@ -484,6 +484,12 @@ ul {
 
 }
 
+@media(min-width:1500px) {
+  #tasks_contacts_container {
+    width: 500px;
+  }
+}
+
 @media(max-width:1500px) {
   .tasks_line {
     right: 36%;
