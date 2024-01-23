@@ -572,6 +572,15 @@ ul {
 
 
 @media(max-width:999px) {
+
+  .add_subtask_list{
+    width: 100%;
+  }
+
+  .input_edit_subtask{
+    width: 80%;
+  }
+
   #addTaskModalLine {
     display: none;
   }

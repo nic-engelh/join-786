@@ -154,8 +154,6 @@ function closeBoardModalTask() {
     dialog.classList.add('visually-hidden');
     dialog.classList.remove('d-flex');
     dialog.close();
-    // assignedToTask.pop();
-    // assignedInitial.pop();
     assignedToTask = [];
     assignedInitial = [];
     updateBoardHTML()
