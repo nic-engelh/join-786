@@ -376,7 +376,7 @@ function modalTaskPrioMedium(urgentButton, mediumButton, lowButton, urgentImage,
     urgentButton.classList.remove('urgent_button_active');
     lowButton.classList.remove('low_button_active');
     urgentImage.src = '/assets/img/addTask/prio_high.png';
-    mediumImage.src = '/assets/img/addTask/medium_nocolor.png';
+    mediumImage.src = '/assets/img/addTask/Medium_nocolor.png';
     lowImage.src = '/assets/img/addTask/prio_low.png';
 }
 
