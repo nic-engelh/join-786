@@ -402,7 +402,7 @@ ul {
   .form_categories_date {
     width: 500px;
     position: absolute;
-    right: 3%;
+    right: 20%;
   }
 
   .form_categories_assigned {
@@ -412,21 +412,21 @@ ul {
   .form_categories_subtask {
     width: 500px;
     position: absolute;
-    right: 3%;
+    right: 20%;
     top: 520px;
   }
 
   .form_categories_category {
     width: 500px;
     position: absolute;
-    right: 3%;
+    right: 20%;
     top: 420px;
   }
 
   .form_categories_text {
     position: absolute;
     top: 330px;
-    right: 3%;;
+    right: 20%;
   }
 
   .add_task_low_button {
@@ -438,32 +438,16 @@ ul {
     width: 0px;
     height: 370px;
     position: absolute;
-    right: 37%;
+    right: 50%;
     top: 230px;
   }
 
 }
 
-@media(max-width:1700px) {
+@media(max-width:1800px) {
   .tasks_line {
-    right: 42%;
+   visibility: hidden;
   }
-
-  /* .form_categories_text {
-    left: 60%;
-  } */
-
-  /* .form_categories_category {
-    left: 60%;
-  } */
-
-  /* .form_categories_subtask {
-    left: 60%;
-  } */
-
-  /* .form_categories_date {
-    left: 60%;
-  } */
 
   .create_task_finish_buttons {
     position: absolute;
@@ -490,28 +474,29 @@ ul {
   }
 }
 
-@media(max-width:1500px) {
+@media(max-width:1750px) {
   .tasks_line {
-    right: 36%;
+    right: 46%;
+    visibility: visible;
   }
 
   .form_categories_text {
-    /* left: 65%; */
+    left: 65%;
     width: 350px;
   }
 
   .form_categories_category {
-    /* left: 65%; */
+    left: 65%;
     width: 350px;
   }
 
   .form_categories_subtask {
-    /* left: 65%; */
+    left: 65%;
     width: 350px;
   }
 
   .form_categories_date {
-    /* left: 65%; */
+    left: 65%;
     width: 350px !important;
   }
 
@@ -540,7 +525,7 @@ ul {
   }
 }
 
-@media(max-width:1210px) {
+@media(max-width:1450px) {
   .tasks_line {
     display: none;
   }
@@ -566,7 +551,7 @@ ul {
   }
 }
 
-@media(max-width:1100px) {
+@media(max-width:1280px) {
   .add_task_inputs {
     width: 300px;
   }
@@ -579,11 +564,11 @@ ul {
 
 @media(max-width:999px) {
 
-  .add_subtask_list{
+  .add_subtask_list {
     width: 100%;
   }
 
-  .input_edit_subtask{
+  .input_edit_subtask {
     width: 80%;
   }
 

@@ -6,13 +6,12 @@ body {
   font-weight: 400;
   margin: 0;
   padding: 0;
-  scrollbar-color: #2A3647 white;
-  scrollbar-width: none;
+  scrollbar-width: thin;
   overflow-x: hidden;
 }
 
 body::-webkit-scrollbar {
-  width: 0;
+  width: 0px;
 }
 
 .board_popup {
@@ -54,9 +53,7 @@ body::-webkit-scrollbar {
 
 body::-webkit-scrollbar-thumb {
   border-radius: 20px;
-  /* roundness of the scroll thumb */
   border: 5px solid #2A3647;
-  /* creates padding around scroll thumb */
 }
 
 .board_h1 {
@@ -116,9 +113,7 @@ h3 {
 
 .boardTaskScrolling::-webkit-scrollbar-thumb {
   border-radius: 30px;
-  /* roundness of the scroll thumb */
   border: 3px solid #2A3647;
-  /* creates padding around scroll thumb */
 }
 
 .board_search {
@@ -164,14 +159,8 @@ h3 {
   flex-direction: row;
   gap: 16px;
   width: 300px;
-
-  /* -ms-overflow-style: none;
-  scrollbar-width: none;  */
 }
 
-/* .boardTaskScrolling::-webkit-scrollbar {
-  display: none;      placeholder till js drag functionality
-} */
 
 .board_card {
   display: flex;
@@ -417,7 +406,6 @@ h3 {
   align-items: flex-start;
   gap: 16px;
   border-radius: 30px;
-  box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.16);
 }
 
 .task_card_label {
@@ -716,6 +704,7 @@ h3 {
     display: flex;
     flex-direction: column !important;
     align-items: center;
+
   }
 }
 
@@ -764,7 +753,6 @@ h3 {
     position: fixed;
     top: 40%;
     left: 95%;
-    /* Startposition von rechts außerhalb des Bildschirms */
     transform: translate(-50%, -50%);
     animation: cardAnimation 0.5s ease-in-out 0s 1 normal forwards;
   }
