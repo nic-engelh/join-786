@@ -369,13 +369,7 @@ ul {
 }
 
 #addTaskModalLine {
-  position: absolute;
-  top: 22%;
-  right: 50%;
-  width: 1px;
-  height: 424px;
-  flex-shrink: 0;
-  background-color: #D1D1D1;
+ display: none;
 }
 
 #addTaskModalClose {
@@ -475,6 +469,7 @@ ul {
 }
 
 @media(max-width:1750px) {
+
   .tasks_line {
     right: 46%;
     visibility: visible;

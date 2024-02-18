@@ -35,24 +35,6 @@ function revertBackToButtonModal(id) {
     `;
 }
 
-/**
- * This function is used as means to confirm your new subtask with an 'enter' command on the keyboard
- * 
- * 
- */
-// function handleKeyUp(event) {
-//     if (event.key === 'Enter' || event.keyCode === 13 && "board_modal_task".open) {
-//         addNewSubtaskToListModal(ID);
-//     } else if (event.key === 'Enter' || event.keyCode === 13) {
-//         addNewSubtaskToList();
-//     }
-// }
-
-/**
- * This function pushes the new subtask to the subtasks arrays
- * 
- * 
- */
 function addNewSubtaskToListModal(id) {
     let newSubtask = document.getElementById('subtask_input_modal').value;
     let subtasks = USERS[ACTIVEUSERKEY].tasks[id].subtasks;

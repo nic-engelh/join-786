@@ -607,7 +607,7 @@ h3 {
 
 #board_add_task {
   z-index: 4;
-  width: 1116px;
+  width: 1416px;
   height: 870px;
   border-radius: 30px;
   background: #FFF;
@@ -615,7 +615,11 @@ h3 {
 }
 
 
-
+@media(max-width:1750px) {
+  #board_add_task {
+    width: 1116px;
+  }
+}
 @media(max-width:2000px) {
   .board_section {
     overflow-x: hidden;
@@ -672,7 +676,9 @@ h3 {
     transform: translate(-50%, -50%);
     animation: cardAnimation 0.5s ease-in-out 0s 1 normal forwards;
   }
-
+  #board_add_task {
+    overflow:hidden ;
+  }
   .board_h1 {
     margin-left: 0px !important;
   }
