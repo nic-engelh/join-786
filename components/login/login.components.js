@@ -1,6 +1,5 @@
-
 let loginTrys = 2;
-let timeout = 15000
+let timeout = 15000;
 /**
  * is the onload function 
  */

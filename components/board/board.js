@@ -116,10 +116,7 @@ function highlight(id) {
  * @param {string} id 
  */
 function removeHighlight(id) {
-    if (!removed == 1) {
-        document.getElementById(id).classList.remove('drag-area-highlight');
-        removed = 1;
-    }
+    document.getElementById(id).classList.remove('drag-area-highlight');
 }
 
 /**

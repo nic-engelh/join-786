@@ -204,7 +204,7 @@ input {
     font-weight: bold;
     position: absolute;
     top: 425px;
-    left: 25px;
+    left: 40%;
 }
 
 @media(max-width:700px){
