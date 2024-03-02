@@ -1,4 +1,5 @@
 let currentDraggedElement;
+let removed = 0;
 
 function init() {
     updateBoardHTML();
@@ -94,10 +95,10 @@ function allowDrop(ev) {
  * 
  * @param {string} category 
  */
-function moveTo(status) {
+async function moveTo(status) {
     USERS[ACTIVEUSERKEY].tasks[currentDraggedElement]['status'] = status;
+    await updateStorageData('users', (USERS))
     updateBoardHTML();
-    // tasks müssen upgedatet werden
 }
 
 /**
@@ -106,6 +107,7 @@ function moveTo(status) {
  */
 function highlight(id) {
     document.getElementById(id).classList.add('drag-area-highlight');
+
 }
 
 /**
@@ -114,7 +116,10 @@ function highlight(id) {
  * @param {string} id 
  */
 function removeHighlight(id) {
-    document.getElementById(id).classList.remove('drag-area-highlight');
+    if (!removed == 1) {
+        document.getElementById(id).classList.remove('drag-area-highlight');
+        removed = 1;
+    }
 }
 
 /**
@@ -396,7 +401,7 @@ function updateProgressBar(value, taskId, subTasksDone, subTasksTotal) {
  */
 function changeStatusBoardMobile(id, status) {
     USERS[ACTIVEUSERKEY].tasks[id].status = status;
-    setStorageData('users',USERS);
+    setStorageData('users', USERS);
     updateBoardHTML();
 }
 /**opens popup dialog

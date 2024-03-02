@@ -148,7 +148,8 @@ function addStartingData (key) {
                "status": "feedback"
            }
      }
+     
      USERS[key].contacts.push(PreSetContactOne);
-     USERS[key].contacts.push(PreSetContactTwo);
+     USERS[key].contacts.push(PreSetContacttwo);
      USERS[key].tasks = tasks; 
 }
